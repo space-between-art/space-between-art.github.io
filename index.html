@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Between Art | 間隙藝術</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        /* 導航 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* 主要區域 */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* 首頁橫幅 */
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0 -5%;
+            margin-bottom: 2rem;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        /* 作品集 */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .work-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .work-item h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        /* 關於和聯絡 */
+        .about, .contact {
+            text-align: center;
+        }
+
+        .about p, .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            margin: 0 1rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #2980b9;
+        }
+
+        /* 頁腳 */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Space Between Art</h1>
+            <ul>
+                <li><a href="#home">首頁</a></li>
+                <li><a href="#works">作品</a></li>
+                <li><a href="#about">關於</a></li>
+                <li><a href="#contact">聯絡</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h2>在生活的縫隙中<br>創造藝術的間隙</h2>
+            <p>文學 × 視覺 × 美學</p>
+            <p>探索文字與文字之間，光影與光影之間的無限可能</p>
+        </section>
+
+        <section id="works" class="works">
+            <h2>作品集</h2>
+            <div class="work-grid">
+                <div class="work-item">
+                    <h3>文學創作</h3>
+                    <p>在間隙中尋找詩意，探索文字的無限可能</p>
+                </div>
+                <div class="work-item">
+                    <h3>視覺藝術</h3>
+                    <p>光影間的對話，色彩與形式的平衡</p>
+                </div>
+                <div class="work-item">
+                    <h3>美學實驗</h3>
+                    <p>形式與內容的和諧，傳統與創新的融合</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>關於 Space Between Art</h2>
+            <p>我們相信，最美的藝術往往誕生在間隙之中。</p>
+            <p>在文字與文字的停頓裡，在色彩與色彩的過渡中，在聲音與沉默的交界處。</p>
+            <p>這裡是探索、創作、分享的空間，歡迎與我們一同發現藝術的無限可能。</p>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>聯絡我們</h2>
+            <p>Email: hello@space-between.art</p>
+            <p>讓我們在創作的路上相遇</p>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Space Between Art. All rights reserved.</p>
+    </footer>
+</body>
+</html>
