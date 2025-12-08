@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Between Art - 品牌素材</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1A3A1B 0%, #2C5F2D 50%, #1A3A1B 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #E8DFD5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #D4A84B;
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: #E8DFD5;
+            margin-bottom: 50px;
+            opacity: 0.8;
+        }
+        
+        .section {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(212, 168, 75, 0.2);
+        }
+        
+        .section h2 {
+            color: #D4A84B;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-desc {
+            color: #E8DFD5;
+            opacity: 0.7;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .preview-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .preview-box.avatar {
+            width: 250px;
+            height: 250px;
+            padding: 10px;
+        }
+        
+        .preview-box.avatar svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .preview-box.cover {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+        }
+        
+        .preview-box.cover svg {
+            width: 100%;
+            height: auto;
+        }
+        
+        .preview-box.post {
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+        }
+        
+        .preview-box.post svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .info-panel {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        .info-panel h3 {
+            color: #F5D998;
+            margin-bottom: 15px;
+        }
+        
+        .info-panel ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .info-panel li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(212, 168, 75, 0.1);
+            font-size: 0.9rem;
+        }
+        
+        .info-panel li strong {
+            color: #D4A84B;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4A84B 0%, #B8943F 100%);
+            color: #1A3A1B;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 168, 75, 0.4);
+        }
+        
+        .instructions {
+            background: rgba(212, 168, 75, 0.1);
+            border-left: 3px solid #D4A84B;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .instructions h4 {
+            color: #D4A84B;
+            margin-bottom: 10px;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .color-swatch {
+            width: 80px;
+            text-align: center;
+        }
+        
+        .color-swatch .swatch {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            margin: 0 auto 8px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        
+        .color-swatch .code {
+            font-size: 0.75rem;
+            font-family: monospace;
+            color: #D4A84B;
+        }
+        
+        .color-swatch .name {
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .preview-container {
+                flex-direction: column;
+            }
+            
+            .preview-box.cover {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✦ Space Between Art ✦</h1>
+        <p class="subtitle">品牌視覺素材包</p>
+        
+        <!-- 頭像 -->
+        <div class="section">
+            <h2>📷 頭像 / Logo</h2>
+            <p class="section-desc">適用於 Instagram、Facebook、Linktree 等平台的大頭貼</p>
+            
+            <div class="preview-container">
+                <div class="preview-box avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+                        <defs>
+                            <linearGradient id="bgGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2C5F2D"/>
+                                <stop offset="50%" style="stop-color:#234A24"/>
+                                <stop offset="100%" style="stop-color:#1A3A1B"/>
+                            </linearGradient>
+                            <radialGradient id="goldGlow1" cx="50%" cy="40%" r="60%">
+                                <stop offset="0%" style="stop-color:#D4A84B;stop-opacity:0.3"/>
+                                <stop offset="100%" style="stop-color:#D4A84B;stop-opacity:0"/>
+                            </radialGradient>
+                            <linearGradient id="textGold1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F5D998"/>
+                                <stop offset="50%" style="stop-color:#D4A84B"/>
+                                <stop offset="100%" style="stop-color:#B8943F"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="400" height="400" fill="url(#bgGradient1)"/>
+                        <rect width="400" height="400" fill="url(#goldGlow1)"/>
+                        <circle cx="200" cy="200" r="170" fill="none" stroke="#D4A84B" stroke-width="1" opacity="0.3"/>
+                        <circle cx="200" cy="200" r="150" fill="none" stroke="#D4A84B" stroke-width="0.5" opacity="0.2"/>
+                        <g opacity="0.4" fill="#4A7C4B">
+                            <ellipse cx="60" cy="320" rx="25" ry="50" transform="rotate(-30 60 320)"/>
+                            <ellipse cx="45" cy="350" rx="20" ry="40" transform="rotate(-50 45 350)"/>
+                            <ellipse cx="85" cy="355" rx="18" ry="35" transform="rotate(-10 85 355)"/>
+                        </g>
+                        <g opacity="0.4" fill="#4A7C4B">
+                            <ellipse cx="340" cy="80" rx="25" ry="50" transform="rotate(150 340 80)"/>
+                            <ellipse cx="355" cy="50" rx="20" ry="40" transform="rotate(130 355 50)"/>
+                            <ellipse cx="315" cy="45" rx="18" ry="35" transform="rotate(170 315 45)"/>
+                        </g>
+                        <circle cx="200" cy="150" r="30" fill="#D4A84B" opacity="0.15"/>
+                        <circle cx="200" cy="150" r="15" fill="#D4A84B" opacity="0.3"/>
+                        <circle cx="200" cy="150" r="5" fill="#F5D998" opacity="0.8"/>
+                        <g stroke="#D4A84B" stroke-width="1" opacity="0.2">
+                            <line x1="200" y1="150" x2="200" y2="80"/>
+                            <line x1="200" y1="150" x2="250" y2="100"/>
+                            <line x1="200" y1="150" x2="150" y2="100"/>
+                        </g>
+                        <text x="200" y="230" font-family="Georgia, serif" font-size="120" font-weight="400" fill="url(#textGold1)" text-anchor="middle">S</text>
+                        <text x="200" y="290" font-family="Georgia, serif" font-size="18" fill="#E8DFD5" text-anchor="middle" letter-spacing="8" opacity="0.9">SPACE BETWEEN</text>
+                        <text x="200" y="315" font-family="Georgia, serif" font-size="14" fill="#D4A84B" text-anchor="middle" letter-spacing="5" opacity="0.8">ART</text>
+                        <text x="200" y="345" font-family="Georgia, serif" font-size="12" fill="#D4A84B" text-anchor="middle" opacity="0.6">✦</text>
+                        <line x1="30" y1="30" x2="70" y2="30" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
+                        <line x1="30" y1="30" x2="30" y2="70" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
+                        <line x1="370" y1="30" x2="330" y2="30" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
+                        <line x1="370" y1="30" x2="370" y2="70" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
+                        <line x1="30" y1="370" x2="70" y2="370" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
+                        <line x1="30" y1="370" x2="30" y2="330" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
+                        <line x1="370" y1="370" x2="330" y2="370" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
+                        <line x1="370" y1="370" x2="370" y2="330" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
+                    </svg>
+                </div>
+                
+                <div class="info-panel">
+                    <h3>規格說明</h3>
+                    <ul>
+                        <li><strong>建議尺寸：</strong>400 x 400 px（或更大）</li>
+                        <li><strong>格式：</strong>SVG（可無損縮放）</li>
+                        <li><strong>適用平台：</strong>IG、FB、Linktree、Substack</li>
+                    </ul>
+                    <a href="logo_avatar.svg" download="SpaceBetweenArt_Logo.svg" class="download-btn">下載 SVG</a>
+                    
+                    <div class="instructions">
+                        <h4>💡 如何轉換成 PNG？</h4>
+                        <ol>
+                            <li>下載 SVG 檔案</li>
+                            <li>用瀏覽器開啟 SVG</li>
+                            <li>右鍵 → 另存圖片（或截圖）</li>
+                            <li>或使用線上工具：<a href="https://svgtopng.com" target="_blank" style="color:#D4A84B">svgtopng.com</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FB 封面 -->
+        <div class="section">
+            <h2>📘 Facebook 封面</h2>
+            <p class="section-desc">Facebook 專頁封面照片</p>
+            
+            <div class="preview-container">
+                <div class="preview-box cover">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 312">
+                        <defs>
+                            <linearGradient id="bgGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#1A3A1B"/>
+                                <stop offset="30%" style="stop-color:#2C5F2D"/>
+                                <stop offset="70%" style="stop-color:#234A24"/>
+                                <stop offset="100%" style="stop-color:#1A3A1B"/>
+                            </linearGradient>
+                            <radialGradient id="centerGlow2" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#D4A84B;stop-opacity:0.2"/>
+                                <stop offset="100%" style="stop-color:#D4A84B;stop-opacity:0"/>
+                            </radialGradient>
+                            <linearGradient id="textGold2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#F5D998"/>
+                                <stop offset="50%" style="stop-color:#D4A84B"/>
+                                <stop offset="100%" style="stop-color:#F5D998"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="820" height="312" fill="url(#bgGradient2)"/>
+                        <rect width="820" height="312" fill="url(#centerGlow2)"/>
+                        <line x1="50" y1="40" x2="200" y2="40" stroke="#D4A84B" stroke-width="0.5" opacity="0.4"/>
+                        <line x1="620" y1="40" x2="770" y2="40" stroke="#D4A84B" stroke-width="0.5" opacity="0.4"/>
+                        <line x1="50" y1="272" x2="200" y2="272" stroke="#D4A84B" stroke-width="0.5" opacity="0.4"/>
+                        <line x1="620" y1="272" x2="770" y2="272" stroke="#D4A84B" stroke-width="0.5" opacity="0.4"/>
+                        <g opacity="0.3" fill="#4A7C4B">
+                            <ellipse cx="80" cy="156" rx="40" ry="80" transform="rotate(-15 80 156)"/>
+                            <ellipse cx="50" cy="200" rx="30" ry="60" transform="rotate(-35 50 200)"/>
+                            <ellipse cx="40" cy="110" rx="25" ry="55" transform="rotate(10 40 110)"/>
+                        </g>
+                        <g opacity="0.3" fill="#4A7C4B">
+                            <ellipse cx="740" cy="156" rx="40" ry="80" transform="rotate(15 740 156)"/>
+                            <ellipse cx="770" cy="200" rx="30" ry="60" transform="rotate(35 770 200)"/>
+                            <ellipse cx="780" cy="110" rx="25" ry="55" transform="rotate(-10 780 110)"/>
+                        </g>
+                        <circle cx="410" cy="80" r="40" fill="#D4A84B" opacity="0.08"/>
+                        <circle cx="410" cy="80" r="20" fill="#D4A84B" opacity="0.15"/>
+                        <circle cx="410" cy="80" r="8" fill="#F5D998" opacity="0.4"/>
+                        <text x="300" y="90" font-family="Georgia, serif" font-size="10" fill="#D4A84B" opacity="0.5">✦</text>
+                        <text x="520" y="85" font-family="Georgia, serif" font-size="8" fill="#D4A84B" opacity="0.4">✦</text>
+                        <text x="410" y="145" font-family="Georgia, serif" font-size="42" font-weight="400" fill="url(#textGold2)" text-anchor="middle" letter-spacing="3">Space Between Art</text>
+                        <line x1="310" y1="165" x2="510" y2="165" stroke="#D4A84B" stroke-width="0.5" opacity="0.5"/>
+                        <text x="410" y="195" font-family="Georgia, 'Noto Serif TC', serif" font-size="20" fill="#E8DFD5" text-anchor="middle" letter-spacing="8" opacity="0.9">在光與暗之間，故事發生</text>
+                        <text x="410" y="235" font-family="Georgia, 'Noto Serif TC', serif" font-size="16" fill="#D4A84B" text-anchor="middle" letter-spacing="4" opacity="0.7">《逐光的藥師》連載中</text>
+                        <g stroke="#D4A84B" stroke-width="1" opacity="0.3">
+                            <line x1="30" y1="30" x2="60" y2="30"/>
+                            <line x1="30" y1="30" x2="30" y2="60"/>
+                            <line x1="790" y1="30" x2="760" y2="30"/>
+                            <line x1="790" y1="30" x2="790" y2="60"/>
+                            <line x1="30" y1="282" x2="60" y2="282"/>
+                            <line x1="30" y1="282" x2="30" y2="252"/>
+                            <line x1="790" y1="282" x2="760" y2="282"/>
+                            <line x1="790" y1="282" x2="790" y2="252"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="fb_cover.svg" download="SpaceBetweenArt_FB_Cover.svg" class="download-btn">下載 Facebook 封面 SVG</a>
+            </div>
+            
+            <div class="instructions">
+                <h4>📐 Facebook 封面尺寸</h4>
+                <ol>
+                    <li><strong>桌面顯示：</strong>820 x 312 px</li>
+                    <li><strong>手機顯示：</strong>640 x 360 px（會裁切上下）</li>
+                    <li>重要內容請保持在中央區域</li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- IG 貼文模板 -->
+        <div class="section">
+            <h2>📱 Instagram 貼文模板</h2>
+            <p class="section-desc">療癒小語系列貼文模板</p>
+            
+            <div class="preview-container">
+                <div class="preview-box post">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+                        <defs>
+                            <linearGradient id="bgGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2C5F2D"/>
+                                <stop offset="50%" style="stop-color:#234A24"/>
+                                <stop offset="100%" style="stop-color:#1A3A1B"/>
+                            </linearGradient>
+                            <radialGradient id="centerGlow3" cx="50%" cy="40%" r="50%">
+                                <stop offset="0%" style="stop-color:#D4A84B;stop-opacity:0.2"/>
+                                <stop offset="100%" style="stop-color:#D4A84B;stop-opacity:0"/>
+                            </radialGradient>
+                            <linearGradient id="textGold3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#F5D998"/>
+                                <stop offset="50%" style="stop-color:#D4A84B"/>
+                                <stop offset="100%" style="stop-color:#F5D998"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="1080" height="1080" fill="url(#bgGradient3)"/>
+                        <rect width="1080" height="1080" fill="url(#centerGlow3)"/>
+                        <rect x="60" y="60" width="960" height="960" fill="none" stroke="#D4A84B" stroke-width="1" opacity="0.3"/>
+                        <text x="540" y="150" font-family="Georgia, serif" font-size="14" fill="#D4A84B" text-anchor="middle" letter-spacing="15" opacity="0.6">✦ 療癒小語 ✦</text>
+                        <text x="540" y="250" font-family="Georgia, serif" font-size="80" fill="url(#textGold3)" text-anchor="middle">🌼</text>
+                        <text x="540" y="330" font-family="Georgia, 'Noto Serif TC', serif" font-size="48" fill="#E8DFD5" text-anchor="middle" letter-spacing="10">洋甘菊</text>
+                        <text x="540" y="370" font-family="Georgia, serif" font-size="16" fill="#D4A84B" text-anchor="middle" letter-spacing="3" opacity="0.7">Chamomile</text>
+                        <line x1="340" y1="420" x2="740" y2="420" stroke="#D4A84B" stroke-width="0.5" opacity="0.4"/>
+                        <text x="540" y="500" font-family="Georgia, 'Noto Serif TC', serif" font-size="28" fill="#E8DFD5" text-anchor="middle" opacity="0.95">「最好的洋甘菊，</text>
+                        <text x="540" y="550" font-family="Georgia, 'Noto Serif TC', serif" font-size="28" fill="#E8DFD5" text-anchor="middle" opacity="0.95">是在清晨第一縷陽光</text>
+                        <text x="540" y="600" font-family="Georgia, 'Noto Serif TC', serif" font-size="28" fill="#E8DFD5" text-anchor="middle" opacity="0.95">灑下時採摘的。」</text>
+                        <text x="540" y="680" font-family="Georgia, 'Noto Serif TC', serif" font-size="16" fill="#D4A84B" text-anchor="middle" opacity="0.6">——《逐光藥師的植物魔典》</text>
+                        <line x1="440" y1="730" x2="640" y2="730" stroke="#D4A84B" stroke-width="0.5" opacity="0.3"/>
+                        <text x="540" y="800" font-family="Georgia, 'Noto Serif TC', serif" font-size="22" fill="#E8DFD5" text-anchor="middle" opacity="0.8">💭 本週反思</text>
+                        <text x="540" y="850" font-family="Georgia, 'Noto Serif TC', serif" font-size="24" fill="#F5D998" text-anchor="middle">你最近一次好好休息，</text>
+                        <text x="540" y="890" font-family="Georgia, 'Noto Serif TC', serif" font-size="24" fill="#F5D998" text-anchor="middle">是什麼時候？</text>
+                        <text x="540" y="990" font-family="Georgia, serif" font-size="14" fill="#D4A84B" text-anchor="middle" letter-spacing="5" opacity="0.5">SPACE BETWEEN ART</text>
+                        <g opacity="0.25" fill="#4A7C4B">
+                            <ellipse cx="120" cy="120" rx="30" ry="60" transform="rotate(-45 120 120)"/>
+                            <ellipse cx="960" cy="960" rx="30" ry="60" transform="rotate(135 960 960)"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <div class="info-panel">
+                    <h3>規格說明</h3>
+                    <ul>
+                        <li><strong>尺寸：</strong>1080 x 1080 px</li>
+                        <li><strong>格式：</strong>SVG（可編輯文字）</li>
+                        <li><strong>用途：</strong>療癒小語系列貼文</li>
+                    </ul>
+                    <a href="ig_post_template.svg" download="SpaceBetweenArt_IG_Post.svg" class="download-btn">下載 IG 貼文模板</a>
+                    
+                    <div class="instructions">
+                        <h4>✏️ 如何編輯文字？</h4>
+                        <ol>
+                            <li>用文字編輯器開啟 SVG</li>
+                            <li>搜尋要修改的文字（如「洋甘菊」）</li>
+                            <li>直接替換成新內容</li>
+                            <li>儲存後轉換成 PNG</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 品牌色彩 -->
+        <div class="section">
+            <h2>🎨 品牌色彩</h2>
+            <p class="section-desc">統一使用這些顏色保持品牌一致性</p>
+            
+            <div class="color-palette">
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #2C5F2D;"></div>
+                    <div class="code">#2C5F2D</div>
+                    <div class="name">森林綠</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #1A3A1B;"></div>
+                    <div class="code">#1A3A1B</div>
+                    <div class="name">深森綠</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #D4A84B;"></div>
+                    <div class="code">#D4A84B</div>
+                    <div class="name">溫暖金</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #F5D998;"></div>
+                    <div class="code">#F5D998</div>
+                    <div class="name">淺金色</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #E8DFD5;"></div>
+                    <div class="code">#E8DFD5</div>
+                    <div class="name">米白色</div>
+                </div>
+                <div class="color-swatch">
+                    <div class="swatch" style="background: #4A7C4B;"></div>
+                    <div class="code">#4A7C4B</div>
+                    <div class="name">葉子綠</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
