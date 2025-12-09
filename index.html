@@ -643,6 +643,8 @@
             border-radius: 10px;
             box-shadow: 0 8px 30px var(--shadow-soft);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: block;
         }
 
         .character-card:hover {
@@ -1004,7 +1006,7 @@
             <li><a href="#home">首頁</a></li>
             <li><a href="#featured">作品</a></li>
             <li><a href="#grimoire">植物魔典</a></li>
-            <li><a href="#characters">角色</a></li>
+            <li><a href="characters.html">角色解析</a></li>
             <li><a href="#about">關於</a></li>
             <li><a href="#newsletter">電子報</a></li>
             <li><a href="#contact">聯絡</a></li>
@@ -1087,10 +1089,10 @@
                         <span>✍️ 約 115,000 字</span>
                     </div>
                     <div class="featured-buttons">
-                        <a href="https://www.mirrorfiction.com/book/42470" class="btn btn-primary" target="_blank">
+                        <a href="https://www.mirrorfiction.com/zh-Hant/book/23299" class="btn btn-primary" target="_blank">
                             📚 鏡文學閱讀
                         </a>
-                        <a href="https://www.penana.com/story/199095/%E9%80%90%E5%85%89%E7%9A%84%E8%97%A5%E5%B8%AB-the-light-chasing-healer/" class="btn btn-penana" target="_blank">
+                        <a href="https://www.penana.com/story/178285" class="btn btn-penana" target="_blank">
                             🌏 Penana 閱讀
                         </a>
                         <a href="#grimoire" class="btn btn-gold">
@@ -1197,30 +1199,33 @@
             <h2 class="section-title">角色介紹</h2>
         </div>
         <div class="characters-grid">
-            <div class="character-card fade-in">
+            <a href="characters.html#yao" class="character-card fade-in">
                 <div class="character-avatar">🌿</div>
                 <h3 class="character-name">曜</h3>
                 <p class="character-role">藥師・書店店主</p>
                 <p class="character-desc">能看見「心光」的二手書店店主，習慣壓抑自己的能力，直到命運迫使他成為療癒者。</p>
-            </div>
-            <div class="character-card fade-in">
+            </a>
+            <a href="characters.html#qing" class="character-card fade-in">
                 <div class="character-avatar">☀️</div>
                 <h3 class="character-name">晴</h3>
                 <p class="character-role">社工師</p>
                 <p class="character-desc">專業而溫暖的社工師，成為曜的搭檔，以科學方法輔助心靈療癒。</p>
-            </div>
-            <div class="character-card fade-in">
+            </a>
+            <a href="characters.html#xi" class="character-card fade-in">
                 <div class="character-avatar">🌙</div>
                 <h3 class="character-name">曦婆婆</h3>
                 <p class="character-role">藥師傳承者</p>
                 <p class="character-desc">神秘的老婦人，守護著植物魔典，引導曜走上藥師之路。</p>
-            </div>
-            <div class="character-card fade-in">
+            </a>
+            <a href="characters.html#xiaoxia" class="character-card fade-in">
                 <div class="character-avatar">⭐</div>
                 <h3 class="character-name">小夏</h3>
                 <p class="character-role">記憶中的光</p>
                 <p class="character-desc">曜童年最明亮的朋友，他的離去成為故事核心的創傷與救贖。</p>
-            </div>
+            </a>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;" class="fade-in">
+            <a href="characters.html" class="btn btn-secondary">📖 閱讀完整角色解析</a>
         </div>
     </section>
 
@@ -1389,16 +1394,20 @@
                 observer.observe(el);
             });
 
-            // Smooth scroll for nav links
+            // Smooth scroll for nav links (only for same-page anchors)
             document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
                 anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+                    const href = this.getAttribute('href');
+                    // Only prevent default for same-page anchors, not external links
+                    if (href && href.startsWith('#') && href.length > 1) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
                     }
                 });
             });
