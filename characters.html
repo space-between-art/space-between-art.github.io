@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色解析 | Space Between Art</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-green: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --warm-gold: #D4A84B;
+            --cream: #FAF8F5;
+            --cream-dark: #F0EBE3;
+            --text-dark: #2D2D2D;
+            --text-light: #E8DFD5;
+            --shadow-soft: rgba(44, 95, 45, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--cream);
+            box-shadow: 0 2px 20px var(--shadow-soft);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--forest-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--forest-green);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--forest-green);
+            margin: 5px 0;
+            transition: all 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 150px 2rem 80px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            color: var(--text-dark);
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+
+        /* Character Navigation */
+        .char-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem;
+            flex-wrap: wrap;
+            background: white;
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+            box-shadow: 0 2px 10px var(--shadow-soft);
+        }
+
+        .char-nav a {
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--text-dark);
+            background: var(--cream);
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .char-nav a:hover,
+        .char-nav a.active {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        /* Character Section */
+        .character-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .character-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .char-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .char-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--forest-green), var(--forest-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 40px rgba(44, 95, 45, 0.2);
+        }
+
+        .char-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--forest-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .char-role {
+            color: var(--warm-gold);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px var(--shadow-soft);
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: var(--warm-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Content Sections */
+        .content-block {
+            margin-bottom: 2.5rem;
+        }
+
+        .content-block h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--cream-dark);
+        }
+
+        .content-block p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Heart Light System */
+        .heartlight-box {
+            background: linear-gradient(135deg, var(--forest-dark), var(--forest-green));
+            color: var(--text-light);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .heartlight-box h4 {
+            color: var(--warm-gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .heartlight-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .heartlight-item:last-child {
+            border-bottom: none;
+        }
+
+        .heartlight-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: var(--cream-dark);
+            padding: 2rem;
+            border-left: 4px solid var(--warm-gold);
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        .quote-box .source {
+            text-align: right;
+            margin-top: 1rem;
+            font-style: normal;
+            color: var(--warm-gold);
+        }
+
+        /* Hidden Details */
+        .hidden-details {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px var(--shadow-soft);
+        }
+
+        .hidden-details h4 {
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+        }
+
+        .hidden-details ul {
+            list-style: none;
+        }
+
+        .hidden-details li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--cream-dark);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .hidden-details li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--warm-gold);
+        }
+
+        .hidden-details li:last-child {
+            border-bottom: none;
+        }
+
+        /* Discussion Questions */
+        .discussion {
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .discussion h4 {
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+        }
+
+        .discussion ol {
+            margin-left: 1.5rem;
+        }
+
+        .discussion li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Coming Soon */
+        .coming-soon {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--cream-dark);
+            border-radius: 15px;
+        }
+
+        .coming-soon-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .coming-soon h3 {
+            color: var(--forest-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .coming-soon p {
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-dark);
+            color: var(--cream);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: var(--forest-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--forest-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1.25rem;
+                box-shadow: 0 10px 30px var(--shadow-soft);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex !important;
+            }
+
+            .mobile-menu-btn {
+                display: block !important;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .char-nav {
+                top: 60px;
+                gap: 0.5rem;
+            }
+
+            .char-nav a {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .character-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .char-name {
+                font-size: 2rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 40 40" width="32" height="32">
+                <defs>
+                    <linearGradient id="navLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#F5D998"/>
+                        <stop offset="50%" style="stop-color:#D4A84B"/>
+                        <stop offset="100%" style="stop-color:#B8943F"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F2D" stroke-width="1.5"/>
+                <text x="20" y="26" font-family="Georgia, serif" font-size="18" fill="url(#navLogoGold)" text-anchor="middle">S</text>
+            </svg>
+            Space Between Art
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="index.html#featured">作品</a></li>
+            <li><a href="botanical-grimoire.html">植物魔典</a></li>
+            <li><a href="characters.html" style="color: var(--forest-green); font-weight: 600;">角色解析</a></li>
+            <li><a href="index.html#about">關於</a></li>
+            <li><a href="index.html#contact">聯絡</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="選單">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-title">角色解析</h1>
+        <p class="hero-subtitle">深入了解《逐光的藥師》中的靈魂人物</p>
+    </section>
+
+    <!-- Character Navigation -->
+    <div class="char-nav">
+        <a href="#yao" class="active">🌿 曜</a>
+        <a href="#xi">🌙 曦婆婆</a>
+        <a href="#qing">☀️ 晴</a>
+        <a href="#xiaoxia">⭐ 小夏</a>
+    </div>
+
+    <!-- 曜 -->
+    <section class="character-section" id="yao">
+        <div class="char-header">
+            <div class="char-avatar">🌿</div>
+            <h2 class="char-name">曜</h2>
+            <p class="char-role">逐光的藥師</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <p class="info-label">年齡</p>
+                <p class="info-value">23 歲</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">職業</p>
+                <p class="info-value">二手書店店主</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">特殊能力</p>
+                <p class="info-value">心光視覺</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">代表植物</p>
+                <p class="info-value">洋甘菊</p>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 關於心光視覺</h3>
+            <p>曜擁有一種與生俱來的能力——他能看見每個人胸口燃燒的「心光」。這不是一種超能力，更像是一種詛咒般的感知：</p>
+            
+            <div class="heartlight-box">
+                <h4>心光顏色對照</h4>
+                <div class="heartlight-item">
+                    <div class="heartlight-color" style="background: linear-gradient(135deg, #FFD700, #FFA500);"></div>
+                    <span>金色篝火 — 熱戀中的人，溫暖而明亮</span>
+                </div>
+                <div class="heartlight-item">
+                    <div class="heartlight-color" style="background: linear-gradient(135deg, #4A90D9, #2E5A8C);"></div>
+                    <span>接觸不良的藍色燈管 — 過勞者，忽明忽滅</span>
+                </div>
+                <div class="heartlight-item">
+                    <div class="heartlight-color" style="background: linear-gradient(135deg, #808080, #4A4A4A);"></div>
+                    <span>奄奄一息的殘燭 — 喪親者，隨時可能熄滅</span>
+                </div>
+                <div class="heartlight-item">
+                    <div class="heartlight-color" style="background: linear-gradient(135deg, #1a1a2e, #0a0a0a); box-shadow: 0 0 10px rgba(0,0,0,0.5);"></div>
+                    <span>黑色瘴氣 — 深層創傷，像墨汁滲入光芒</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 核心創傷：目睹者的罪惡感</h3>
+            <p>八歲那年，曜在三個月內失去了兩個最重要的人——母親死於淋巴癌，童年玩伴小夏死於公園鞦韆意外。</p>
+            <p>他目睹了一切，卻無能為力。</p>
+            <p>這種「目睹者的罪惡感」定義了他往後十五年的人生：他選擇躲進舊書店的閣樓，用書本的氣味築起防線，用沉默隔絕世界。他的能力讓他看見所有人的痛苦，卻也讓他無法承受這份重量。</p>
+            
+            <div class="quote-box">
+                「我看見太多了，所以我選擇什麼都不看。」
+                <div class="source">——曜</div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 防衛機制：書店作為避難所</h3>
+            <p>曜的書店「間隙書屋」不只是一門生意，更是他的防衛機制。書本是安全的——它們有情感，但不會對你提出要求；它們有故事，但不會在半夜哭泣。</p>
+            <p>他專門收購那些有筆記、有摺痕、有咖啡漬的舊書。因為這些痕跡是凝固的情感，是可以承受的重量。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 成長弧線：從旁觀者到療癒者</h3>
+            <p><strong>起點</strong>：一個習慣性的旁觀者，看見一切卻選擇什麼都不做</p>
+            <p><strong>轉折</strong>：林伯的心光即將熄滅，曜被迫走出避風港</p>
+            <p><strong>終點</strong>：明白「療癒」不是修復他人，而是陪伴他人面對自己</p>
+            
+            <div class="quote-box">
+                「我以為藥師的工作是讓人不痛。後來我才明白，我們的工作是陪人穿過那份痛。」
+                <div class="source">——曜</div>
+            </div>
+        </div>
+
+        <div class="hidden-details">
+            <h4>📖 隱藏細節</h4>
+            <ul>
+                <li>書店名「間隙書屋」取自他喜歡的一句話：「光從間隙進入」</li>
+                <li>他專門收購有前任主人筆記的舊書，因為他覺得那些被遺忘的註解需要有人記得</li>
+                <li>他有輕微的失眠，但從不承認這是因為害怕在夢中看見小夏</li>
+                <li>他的名字「曜」與「晴」形成對比——他是需要被照亮的那一個</li>
+            </ul>
+        </div>
+
+        <div class="discussion">
+            <h4>💬 讀者討論</h4>
+            <ol>
+                <li>你是否也有過「看見卻選擇不介入」的經驗？那種感覺如何？</li>
+                <li>曜用書店隔絕世界，你有什麼樣的「避風港」？</li>
+                <li>「目睹者的罪惡感」是否合理？我們對自己無法控制的事情該負多少責任？</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- 曦婆婆 -->
+    <section class="character-section" id="xi">
+        <div class="char-header">
+            <div class="char-avatar">🌙</div>
+            <h2 class="char-name">曦婆婆</h2>
+            <p class="char-role">月亮藥師・傳承者</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <p class="info-label">年齡</p>
+                <p class="info-value">七十餘歲</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">身份</p>
+                <p class="info-value">逐光藥師・向陽廬主人</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">特殊能力</p>
+                <p class="info-value">植物療癒・心光感知</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">代表植物</p>
+                <p class="info-value">聖約翰草</p>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 月亮的隱喻</h3>
+            <p>曦婆婆總說自己是月亮，不是太陽。太陽太烈，會灼傷人；月亮只是溫柔地反射，在最黑暗的時刻提供剛剛好的光。</p>
+            
+            <div class="quote-box">
+                「真正的藥師不是太陽，而是月亮。我們不產生光，只是溫柔地反射它。」
+                <div class="source">——曦婆婆</div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 蜂蜜的法則</h3>
+            <p>曦婆婆傳授給曜的第一課，不是任何藥方，而是一個原則：</p>
+            <div class="quote-box">
+                「療癒是蜂蜜的工作。蜜蜂採蜜，從不強迫花朵盛開。」
+                <div class="source">——曦婆婆</div>
+            </div>
+            <p>這個法則貫穿整個故事：真正的療癒不是強行修復，而是創造讓人願意敞開的環境。</p>
+        </div>
+
+        <div class="hidden-details">
+            <h4>📖 隱藏細節</h4>
+            <ul>
+                <li>曦婆婆的名字中「曦」是黎明的第一道光——她是曜（月亮）之前的存在</li>
+                <li>她年輕時也曾經歷巨大的創傷，但故事中從未明說是什麼</li>
+                <li>向陽廬中種植的每一株植物，都對應著一個她曾經療癒過的人</li>
+                <li>她總是在曜最需要的時候出現，又在他能獨立時悄然退開</li>
+            </ul>
+        </div>
+
+        <div class="coming-soon">
+            <div class="coming-soon-icon">🌙</div>
+            <h3>完整角色解析即將推出</h3>
+            <p>訂閱電子報，第一時間收到更新通知</p>
+        </div>
+    </section>
+
+    <!-- 晴 -->
+    <section class="character-section" id="qing">
+        <div class="char-header">
+            <div class="char-avatar">☀️</div>
+            <h2 class="char-name">晴</h2>
+            <p class="char-role">社工師・曜的搭檔</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <p class="info-label">年齡</p>
+                <p class="info-value">28 歲</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">職業</p>
+                <p class="info-value">社區社工師</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">特質</p>
+                <p class="info-value">專業・務實・溫暖</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">代表植物</p>
+                <p class="info-value">向日葵</p>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 科學與靈性的橋樑</h3>
+            <p>晴代表的是「專業」——她相信系統、相信方法、相信可以被證明的東西。她的存在讓曜的靈性療癒有了落地的可能，也讓讀者看見：療癒不只是神秘的儀式，也可以是日復一日的陪伴與專業支持。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 與曜的互補</h3>
+            <p>曜看見心光，卻不知道如何處理；晴看不見心光，卻知道如何建立信任、如何傾聽、如何連結資源。他們的合作，是「看見」與「行動」的結合。</p>
+            
+            <div class="quote-box">
+                「你看得見他們的痛，我知道怎麼陪他們走過。我們是不錯的組合。」
+                <div class="source">——晴</div>
+            </div>
+        </div>
+
+        <div class="coming-soon">
+            <div class="coming-soon-icon">☀️</div>
+            <h3>完整角色解析即將推出</h3>
+            <p>訂閱電子報，第一時間收到更新通知</p>
+        </div>
+    </section>
+
+    <!-- 小夏 -->
+    <section class="character-section" id="xiaoxia">
+        <div class="char-header">
+            <div class="char-avatar">⭐</div>
+            <h2 class="char-name">小夏</h2>
+            <p class="char-role">記憶中的光</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <p class="info-label">享年</p>
+                <p class="info-value">8 歲</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">身份</p>
+                <p class="info-value">曜的童年玩伴</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">象徵</p>
+                <p class="info-value">被遺忘的創傷</p>
+            </div>
+            <div class="info-card">
+                <p class="info-label">代表植物</p>
+                <p class="info-value">雪滴花</p>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 故事的核心</h3>
+            <p>小夏是整個故事的原點。他的死亡不只是一場意外，更是一個被整座城市選擇性遺忘的創傷。十五年來，沒有人真正為他哀悼，沒有人追究那份偽造的安全報告，沒有人記得那個愛笑的男孩。</p>
+            <p>曜的療癒之旅，最終也是一場遲到的告別。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>✦ 水果硬糖的記憶</h3>
+            <p>小夏總是從口袋裡掏出被體溫捂化的水果硬糖分給曜。那些廉價的糖果，是曜母親去世後第一次嚐到的「甜」。</p>
+            <p>這個細節貫穿整個故事——甜味、記憶、與失去的聯繫。</p>
+        </div>
+
+        <div class="coming-soon">
+            <div class="coming-soon-icon">⭐</div>
+            <h3>完整角色解析即將推出</h3>
+            <p>訂閱電子報，第一時間收到更新通知</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <div style="text-align: center; padding: 3rem;">
+        <a href="index.html" class="back-btn">← 返回首頁</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-logo">Space Between Art</p>
+        <p class="footer-tagline">在光與暗之間，故事發生</p>
+        <p>© 2025 Space Between Art. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    mobileMenuBtn.classList.toggle('active');
+                });
+
+                // Close menu when clicking a link
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.classList.remove('active');
+                    });
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.classList.remove('active');
+                    }
+                });
+            }
+
+            // Character navigation active state
+            const charNavLinks = document.querySelectorAll('.char-nav a');
+            const sections = document.querySelectorAll('.character-section');
+
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(function(section) {
+                    const sectionTop = section.offsetTop - 200;
+                    if (window.pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                charNavLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
