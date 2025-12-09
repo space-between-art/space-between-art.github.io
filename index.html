@@ -829,4 +829,452 @@
 
         .about-content {
             max-width: 650px;
-            margin:
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-values {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .value-item { text-align: center; }
+
+        .value-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+        .value-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.9rem;
+            color: var(--forest-green);
+            margin-bottom: 0.2rem;
+        }
+
+        .value-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--forest-dark) 100%);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .newsletter .section-label {
+            color: var(--gold-light);
+        }
+
+        .newsletter .section-title {
+            color: var(--cream);
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-desc {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .newsletter-benefits {
+            list-style: none;
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+
+        .newsletter-benefits li {
+            padding: 0.6rem 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .newsletter-benefits li:last-child {
+            border-bottom: none;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-subscribe {
+            background: var(--warm-gold);
+            color: var(--forest-dark);
+            border: 2px solid var(--warm-gold);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(212, 168, 75, 0.4);
+        }
+
+        .btn-subscribe:hover {
+            background: var(--gold-light);
+            border-color: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 168, 75, 0.5);
+        }
+
+        .newsletter-note {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--cream-dark);
+            text-align: center;
+        }
+
+        .contact-email {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--forest-green);
+            margin-bottom: 2rem;
+        }
+
+        .contact-email a {
+            color: var(--forest-green);
+            text-decoration: none;
+            border-bottom: 1px solid var(--warm-gold);
+            transition: color 0.3s;
+        }
+
+        .contact-email a:hover { color: var(--warm-gold); }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--forest-green);
+            text-decoration: none;
+            box-shadow: 0 4px 15px var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--forest-green);
+            transition: fill 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(44, 95, 45, 0.15);
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .social-link:hover svg {
+            fill: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-dark);
+            color: var(--cream);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold-light);
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .featured-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .featured-visual {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .characters-grid,
+            .grimoire-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav { 
+                padding: 1rem 1.5rem; 
+            }
+
+            .nav-logo {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1.25rem;
+                box-shadow: 0 10px 30px var(--shadow-soft);
+                z-index: 1000;
+            }
+
+            .nav-links.active { 
+                display: flex !important; 
+            }
+            
+            .mobile-menu-btn { 
+                display: block !important;
+                z-index: 1001;
+            }
+
+            section { padding: 4rem 1.5rem; }
+            .about-values { gap: 1.5rem; }
+            .featured-buttons { flex-direction: column; }
+            .btn { justify-content: center; }
+            
+            .journal-grid {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .characters-grid,
+            .grimoire-grid {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .featured-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .platforms {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="grain-overlay"></div>
+
+    <nav>
+        <a href="#" class="nav-logo">
+            <svg class="nav-logo-icon" viewBox="0 0 40 40" width="32" height="32">
+                <defs>
+                    <linearGradient id="navLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#F5D998"/>
+                        <stop offset="50%" style="stop-color:#D4A84B"/>
+                        <stop offset="100%" style="stop-color:#B8943F"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F2D" stroke-width="1.5"/>
+                <text x="20" y="26" font-family="Georgia, serif" font-size="18" fill="url(#navLogoGold)" text-anchor="middle">S</text>
+            </svg>
+            Space Between Art
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">首頁</a></li>
+            <li><a href="#featured">作品</a></li>
+            <li><a href="#grimoire">植物魔典</a></li>
+            <li><a href="characters.html">角色解析</a></li>
+            <li><a href="https://spacebetweenart.substack.com" target="_blank">創作手記</a></li>
+            <li><a href="#about">關於</a></li>
+            <li><a href="#newsletter">電子報</a></li>
+            <li><a href="#contact">聯絡</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="選單">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <svg viewBox="0 0 200 200" width="120" height="120">
+                    <defs>
+                        <linearGradient id="heroLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#F5D998"/>
+                            <stop offset="50%" style="stop-color:#D4A84B"/>
+                            <stop offset="100%" style="stop-color:#B8943F"/>
+                        </linearGradient>
+                        <radialGradient id="heroGlow" cx="50%" cy="30%" r="50%">
+                            <stop offset="0%" style="stop-color:#D4A84B;stop-opacity:0.3"/>
+                            <stop offset="100%" style="stop-color:#D4A84B;stop-opacity:0"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
+                    <circle cx="100" cy="100" r="80" fill="none" stroke="#D4A84B" stroke-width="0.5" opacity="0.2"/>
+                    <circle cx="100" cy="60" r="15" fill="#D4A84B" opacity="0.15"/>
+                    <circle cx="100" cy="60" r="8" fill="#D4A84B" opacity="0.3"/>
+                    <circle cx="100" cy="60" r="3" fill="#F5D998" opacity="0.8"/>
+                    <text x="100" y="115" font-family="Georgia, serif" font-size="70" fill="url(#heroLogoGold)" text-anchor="middle">S</text>
+                    <text x="100" y="150" font-family="Georgia, serif" font-size="12" fill="#D4A84B" text-anchor="middle" letter-spacing="4" opacity="0.7">SPACE BETWEEN</text>
+                    <text x="100" y="168" font-family="Georgia, serif" font-size="10" fill="#D4A84B" text-anchor="middle" letter-spacing="3" opacity="0.5">ART</text>
+                </svg>
+            </div>
+            <h1 class="hero-title">Space Between Art</h1>
+            <p class="hero-subtitle">療癒系創作空間</p>
+            <p class="hero-tagline">在光與暗之間，故事發生</p>
+        </div>
+        <div class="hero-scroll">SCROLL</div>
+    </section>
+
+    <section class="featured" id="featured">
+        <div class="section-header fade-in">
+            <p class="section-label">Now Serializing</p>
+            <h2 class="section-title">現正連載</h2>
+        </div>
+        <div class="featured-container">
+            <div class="featured-card fade-in">
+                <div class="featured-visual">
+                    <span class="featured-badge">連載中</span>
+                    <div class="featured-visual-content">
+                        <div class="book-symbol">🌿</div>
+                        <h3 class="book-title-zh">逐光的藥師</h3>
+                        <p class="book-title-en">The Light Chaser</p>
+                    </div>
+                </div>
+                <div class="featured-info">
+                    <h3>《逐光的藥師》</h3>
+                    <div class="featured-tags">
+                        <span class="tag">都市奇幻</span>
+                        <span class="tag">療癒</span>
+                        <span class="tag">懸疑</span>
+                        <span class="tag">心理</span>
+                    </div>
+                    <p class="featured-description">
+                        二手書店店主曜擁有看見「心光」的能力——每個人胸口的光芒，映照出他們的情緒與傷痛。當社區接連發生心靈崩潰事件，曜發現這一切指向十五年前被掩蓋的公園悲劇。他必須在三天內喚醒集體記憶、淨化吞噬心靈的瘴氣，同時面對自己童年最深的創傷。
+                    </p>
+                    <blockquote class="featured-quote">
+                        「每個人胸口都有一團火焰。有的人是熊熊烈火，有的人是搖曳燭光。而我的工作，就是假裝看不見。」
+                    </blockquote>
+                    <div class="featured-meta">
+                        <span>📖 全 25 集 + 尾聲</span>
+                        <span>📅 每週一、三、五更新</span>
+                        <span>✍️ 約 115,000 字</span>
+                    </div>
+                    <div class="featured-buttons">
+                        <a href="https://www.mirrorfiction.com/zh-Hant/book/23299" class="btn btn-primary" target="_blank">
+                            📚 鏡文學閱讀
+                        </a>
+                        <a href="https://www.penana.com/story/178285" class="btn btn-penana" target="_blank">
+                            🌏 Penana 閱讀
+                        </a>
+                        <a href="#grimoire" class="btn btn-gold">
+                            📜 植物魔典
+                        </a>
+                    </div>
+                    <div class="platform-info">
+                        <p class="platform-title">📍 雙平台同步連載</p>
+                        <div class="platforms">
+                            <div class="platform-item">
+                                <span>鏡文學</span>
+                                <span class="free">前 8 集免費</span>
+                            </div>
+                            <div class="platform-item">
+                                <span>Penana</span>
+                                <span class="free">前 5 集免費</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grimoire" id="grimoire">
+        <div class="section-header fade-in">
+            <p class="section-label">Botanical Grimoire</p>
+            <h2 class="section-title">逐光藥師的植物魔典</h2>
+        </div>
+        <div class="grimoire-container">
+            <div class="grimoire-intro fade-in">
+                <p>
+                    收錄於《逐光的藥師》的植物智慧——<br>
+                    每一株草藥都承載著療癒的隱喻與生命的哲理。
+                </p>
+            </div>
+            <div class="grimoire-grid fade-in">
+                <a href="botanical-grimoire.html#chamomile" class="grimoire-card">
+                    <div class="grimoire-icon">🌼</div>
+                    <h3 class="grimoire-name">洋甘菊</h3>
+                    <p class="grimoire-eng">Chamomile</p>
+                    <p class="grimoire-keyword">安神・夢境</p>
+                </a>
+                <a href="botanical-grimoire.html#rosemary" class="grimoire-card">
+                    <div class="grimoire-icon">🌱</div>
+                    <h3 class="grimoire-name">迷迭香</h3>
+                    <p class="grimoire-eng">Rosemary</p>
+                    <p class="grimoire-keyword">記憶・
