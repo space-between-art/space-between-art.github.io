@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>線上畫廊 | Space Between Art</title>
-    <meta name="description" content="《逐光的藥師》視覺藝術畫廊 - 角色插畫、場景概念圖、植物魔典插畫">
+    <meta name="description" content="《逐光的藥師》視覺藝術畫廊 - 角色寫真、概念藝術、植物圖鑑">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,47 +109,46 @@
             font-size: 1.1rem;
         }
 
-        /* Filter Tabs */
-        .filter-section {
-            padding: 2rem;
-            text-align: center;
-            background: var(--cream-dark);
-        }
-
-        .filter-tabs {
+        /* Section Navigation */
+        .section-nav {
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+            background: white;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
+            box-shadow: 0 2px 10px var(--shadow-soft);
         }
 
-        .filter-tab {
+        .section-nav a {
             padding: 0.6rem 1.5rem;
-            background: white;
-            border: 1px solid var(--cream-dark);
+            background: var(--cream);
             border-radius: 25px;
+            text-decoration: none;
+            color: var(--text-dark);
             font-size: 0.9rem;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .filter-tab:hover,
-        .filter-tab.active {
+        .section-nav a:hover,
+        .section-nav a.active {
             background: var(--forest-green);
             color: white;
-            border-color: var(--forest-green);
         }
 
         /* Gallery Section */
         .gallery-section {
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
         }
 
         .section-label {
@@ -167,11 +166,32 @@
             color: var(--forest-green);
         }
 
+        .section-description {
+            max-width: 600px;
+            margin: 1rem auto 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .style-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--cream-dark);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--forest-green);
+            margin-bottom: 1.5rem;
+        }
+
         /* Gallery Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
+        }
+
+        .gallery-grid.large {
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
         }
 
         .gallery-item {
@@ -232,52 +252,129 @@
             color: var(--text-muted);
         }
 
-        /* Featured Section */
-        .featured-section {
+        /* Featured Hero */
+        .featured-hero {
             background: var(--forest-dark);
             padding: 4rem 2rem;
             color: white;
         }
 
-        .featured-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+        .featured-container {
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 3rem;
+            align-items: center;
         }
 
-        .featured-item {
-            border-radius: 16px;
+        .featured-image {
+            border-radius: 20px;
             overflow: hidden;
-            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
 
-        .featured-item img {
+        .featured-image img {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
+            display: block;
         }
 
-        .featured-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-        }
-
-        .featured-title {
+        .featured-content h2 {
             font-family: 'Noto Serif TC', serif;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: var(--gold-light);
+            margin-bottom: 1rem;
+        }
+
+        .featured-content p {
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .featured-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-style: italic;
+            color: var(--gold-light);
+            border-left: 3px solid var(--warm-gold);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Concept Art Section - Different Background */
+        .concept-section {
+            background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%);
+        }
+
+        .concept-note {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            border-left: 4px solid var(--warm-gold);
+        }
+
+        .concept-note h4 {
+            color: var(--forest-green);
             margin-bottom: 0.5rem;
         }
 
-        .featured-desc {
-            font-size: 0.95rem;
-            opacity: 0.9;
+        .concept-note p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Botanical Section */
+        .botanical-section {
+            background: white;
+        }
+
+        .botanical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .botanical-item {
+            background: var(--cream);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .botanical-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-medium);
+        }
+
+        .botanical-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+
+        .botanical-info {
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .botanical-name-zh {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            color: var(--forest-green);
+        }
+
+        .botanical-name-en {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .botanical-effect {
+            font-size: 0.85rem;
+            color: var(--warm-gold);
+            margin-top: 0.5rem;
         }
 
         /* Lightbox */
@@ -339,35 +436,27 @@
         .cta-section {
             padding: 4rem 2rem;
             text-align: center;
-            background: var(--cream-dark);
-        }
-
-        .cta-card {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px var(--shadow-medium);
+            background: var(--forest-green);
+            color: white;
         }
 
         .cta-title {
             font-family: 'Noto Serif TC', serif;
             font-size: 1.5rem;
-            color: var(--forest-green);
+            color: var(--gold-light);
             margin-bottom: 1rem;
         }
 
         .cta-desc {
-            color: var(--text-muted);
+            opacity: 0.9;
             margin-bottom: 1.5rem;
         }
 
         .cta-btn {
             display: inline-block;
             padding: 1rem 2rem;
-            background: var(--forest-green);
-            color: white;
+            background: var(--warm-gold);
+            color: var(--forest-dark);
             text-decoration: none;
             border-radius: 25px;
             font-weight: 500;
@@ -375,13 +464,13 @@
         }
 
         .cta-btn:hover {
-            background: var(--forest-dark);
+            background: var(--gold-light);
             transform: scale(1.05);
         }
 
         /* Footer */
         footer {
-            background: var(--forest-green);
+            background: var(--forest-dark);
             color: white;
             text-align: center;
             padding: 3rem 2rem;
@@ -408,9 +497,11 @@
             }
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: flex; }
-            .featured-grid { grid-template-columns: 1fr; }
-            .featured-item img { height: 250px; }
+            .featured-container { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-grid.large { grid-template-columns: 1fr; }
+            .section-nav { top: 60px; gap: 0.5rem; }
+            .section-nav a { padding: 0.5rem 1rem; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -447,47 +538,49 @@
         <p class="hero-subtitle">《逐光的藥師》視覺藝術收藏</p>
     </section>
 
-    <!-- Filter Tabs -->
-    <section class="filter-section">
-        <div class="filter-tabs">
-            <button class="filter-tab active" data-filter="all">全部</button>
-            <button class="filter-tab" data-filter="character">🌿 角色插畫</button>
-            <button class="filter-tab" data-filter="scene">🏠 場景概念</button>
-            <button class="filter-tab" data-filter="botanical">🌸 植物魔典</button>
-        </div>
-    </section>
+    <!-- Section Navigation -->
+    <div class="section-nav">
+        <a href="#characters" class="active">📷 角色寫真</a>
+        <a href="#concepts">🎨 概念藝術</a>
+        <a href="#botanicals">🌿 植物圖鑑</a>
+    </div>
 
-    <!-- Featured -->
-    <section class="featured-section">
-        <div class="section-header">
-            <p class="section-label" style="color: var(--gold-light);">Featured</p>
-            <h2 class="section-title" style="color: white;">✨ 精選作品</h2>
-        </div>
-        <div class="featured-grid">
-            <div class="featured-item" onclick="openLightbox('images/characters/yao_heartlight_vision.png', '曜 — 看見心光', '「那些漂浮的光點，是每個人藏在心底的故事。」')">
+    <!-- Featured Hero -->
+    <section class="featured-hero">
+        <div class="featured-container">
+            <div class="featured-image" onclick="openLightbox('images/characters/yao_heartlight_vision.png', '曜 — 看見心光', '「那些漂浮的光點，是每個人藏在心底的故事。」')">
                 <img src="images/characters/yao_heartlight_vision.png" alt="曜看見心光">
-                <div class="featured-overlay">
-                    <h3 class="featured-title">曜 — 看見心光</h3>
-                    <p class="featured-desc">「那些漂浮的光點，是每個人藏在心底的故事。」</p>
-                </div>
             </div>
-            <div class="featured-item" onclick="openLightbox('images/scenes/bookstore_interior.png', '間隙書屋', '書與光交織的療癒空間')">
-                <img src="images/scenes/bookstore_interior.png" alt="間隙書屋內部">
-                <div class="featured-overlay">
-                    <h3 class="featured-title">間隙書屋</h3>
-                    <p class="featured-desc">書與光交織的療癒空間</p>
-                </div>
+            <div class="featured-content">
+                <h2>曜 — 逐光的藥師</h2>
+                <p>
+                    二十三歲的曜，經營著一間名為「間隙書屋」的二手書店。
+                    他擁有一種特殊的能力——能看見人們心中的光。
+                </p>
+                <p>
+                    那些光有不同的顏色、亮度和溫度。
+                    有些像篝火般溫暖，有些像將熄的蠟燭，
+                    還有些...被黑暗的霧氣籠罩。
+                </p>
+                <blockquote class="featured-quote">
+                    「每個人的心裡都有光，只是有時候會被遮住。」
+                </blockquote>
             </div>
         </div>
     </section>
 
     <!-- Character Gallery -->
-    <section class="gallery-section">
+    <section class="gallery-section" id="characters">
         <div class="section-header">
-            <p class="section-label">Characters</p>
-            <h2 class="section-title">🌿 角色插畫</h2>
+            <p class="section-label">Character Portraits</p>
+            <h2 class="section-title">📷 角色寫真</h2>
+            <span class="style-badge">✨ 寫實攝影風格</span>
+            <p class="section-description">
+                以電影質感呈現故事中的角色，捕捉他們的神態與情感
+            </p>
         </div>
-        <div class="gallery-grid" data-category="character">
+        
+        <div class="gallery-grid">
             <div class="gallery-item" onclick="openLightbox('images/characters/yao_heartlight_vision.png', '曜 — 逐光的藥師', '能看見心光的二手書店店主')">
                 <div class="gallery-image-wrapper">
                     <img src="images/characters/yao_heartlight_vision.png" alt="曜" class="gallery-image">
@@ -578,13 +671,27 @@
         </div>
     </section>
 
-    <!-- Scene Gallery -->
-    <section class="gallery-section" style="background: var(--cream-dark);">
+    <!-- Concept Art Section -->
+    <section class="gallery-section concept-section" id="concepts">
         <div class="section-header">
-            <p class="section-label">Scenes</p>
-            <h2 class="section-title">🏠 場景概念圖</h2>
+            <p class="section-label">Concept Art</p>
+            <h2 class="section-title">🎨 概念藝術</h2>
+            <span class="style-badge">🖌️ 動畫風格渲染</span>
+            <p class="section-description">
+                以吉卜力風格描繪故事中的場景，呈現療癒世界的想像
+            </p>
         </div>
-        <div class="gallery-grid" data-category="scene">
+
+        <div class="concept-note">
+            <h4>🎬 關於概念藝術</h4>
+            <p>
+                這些場景圖採用動畫風格渲染，是故事世界的「概念想像」。
+                與角色寫真的寫實風格形成對比，展現從現實到幻想的過渡——
+                正如曜眼中的世界，現實與心光交織。
+            </p>
+        </div>
+        
+        <div class="gallery-grid large">
             <div class="gallery-item" onclick="openLightbox('images/scenes/bookstore_interior.png', '間隙書屋 — 內部', '書香與光影交織的療癒空間')">
                 <div class="gallery-image-wrapper">
                     <img src="images/scenes/bookstore_interior.png" alt="間隙書屋內部" class="gallery-image">
@@ -620,53 +727,51 @@
         </div>
     </section>
 
-    <!-- Botanical Gallery -->
-    <section class="gallery-section">
+    <!-- Botanical Section -->
+    <section class="gallery-section botanical-section" id="botanicals">
         <div class="section-header">
-            <p class="section-label">Botanicals</p>
-            <h2 class="section-title">🌸 植物魔典插畫</h2>
+            <p class="section-label">Botanical Illustrations</p>
+            <h2 class="section-title">🌿 植物圖鑑</h2>
+            <span class="style-badge">🎨 水彩手繪風格</span>
+            <p class="section-description">
+                故事中的療癒植物，以復古植物學插畫風格呈現
+            </p>
         </div>
-        <div class="gallery-grid" data-category="botanical">
-            <div class="gallery-item" onclick="openLightbox('images/botanicals/botanical_chamomile.png', '洋甘菊', '撫慰焦慮的溫柔守護者')">
-                <div class="gallery-image-wrapper">
-                    <img src="images/botanicals/botanical_chamomile.png" alt="洋甘菊" class="gallery-image">
-                    <span class="gallery-tag">植物魔典</span>
-                </div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title">洋甘菊 Chamomile</h3>
-                    <p class="gallery-desc">撫慰焦慮的溫柔守護者</p>
-                </div>
-            </div>
-
-            <div class="gallery-item" onclick="openLightbox('images/botanicals/botanical_rosemary.png', '迷迭香', '喚醒沉睡記憶的芬芳')">
-                <div class="gallery-image-wrapper">
-                    <img src="images/botanicals/botanical_rosemary.png" alt="迷迭香" class="gallery-image">
-                    <span class="gallery-tag">植物魔典</span>
-                </div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title">迷迭香 Rosemary</h3>
-                    <p class="gallery-desc">喚醒沉睡記憶的芬芳</p>
+        
+        <div class="botanical-grid">
+            <div class="botanical-item" onclick="openLightbox('images/botanicals/botanical_chamomile.png', '洋甘菊 Chamomile', '撫慰焦慮的溫柔守護者')">
+                <img src="images/botanicals/botanical_chamomile.png" alt="洋甘菊" class="botanical-image">
+                <div class="botanical-info">
+                    <div class="botanical-name-zh">洋甘菊</div>
+                    <div class="botanical-name-en">Chamomile</div>
+                    <div class="botanical-effect">✦ 撫慰焦慮・安眠</div>
                 </div>
             </div>
 
-            <!-- Coming Soon -->
-            <div class="gallery-item" style="opacity: 0.6;">
-                <div class="gallery-image-wrapper" style="background: var(--cream-dark); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-size: 3rem;">🌻</span>
-                </div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title">聖約翰草 St. John's Wort</h3>
-                    <p class="gallery-desc">即將推出</p>
+            <div class="botanical-item" onclick="openLightbox('images/botanicals/botanical_rosemary.png', '迷迭香 Rosemary', '喚醒沉睡記憶的芬芳')">
+                <img src="images/botanicals/botanical_rosemary.png" alt="迷迭香" class="botanical-image">
+                <div class="botanical-info">
+                    <div class="botanical-name-zh">迷迭香</div>
+                    <div class="botanical-name-en">Rosemary</div>
+                    <div class="botanical-effect">✦ 喚醒記憶・專注</div>
                 </div>
             </div>
 
-            <div class="gallery-item" style="opacity: 0.6;">
-                <div class="gallery-image-wrapper" style="background: var(--cream-dark); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">
-                    <span style="font-size: 3rem;">💜</span>
+            <div class="botanical-item" style="opacity: 0.5;">
+                <div style="aspect-ratio: 3/4; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 4rem;">🌻</div>
+                <div class="botanical-info">
+                    <div class="botanical-name-zh">聖約翰草</div>
+                    <div class="botanical-name-en">St. John's Wort</div>
+                    <div class="botanical-effect">即將推出</div>
                 </div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title">薰衣草 Lavender</h3>
-                    <p class="gallery-desc">即將推出</p>
+            </div>
+
+            <div class="botanical-item" style="opacity: 0.5;">
+                <div style="aspect-ratio: 3/4; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 4rem;">💜</div>
+                <div class="botanical-info">
+                    <div class="botanical-name-zh">薰衣草</div>
+                    <div class="botanical-name-en">Lavender</div>
+                    <div class="botanical-effect">即將推出</div>
                 </div>
             </div>
         </div>
@@ -674,11 +779,9 @@
 
     <!-- CTA -->
     <section class="cta-section">
-        <div class="cta-card">
-            <h2 class="cta-title">🔔 訂閱畫廊更新</h2>
-            <p class="cta-desc">搶先獲得新作品通知、桌布下載、創作幕後故事</p>
-            <a href="https://spacebetweenart.substack.com" class="cta-btn" target="_blank">訂閱電子報</a>
-        </div>
+        <h2 class="cta-title">🔔 訂閱畫廊更新</h2>
+        <p class="cta-desc">搶先獲得新作品通知、桌布下載、創作幕後故事</p>
+        <a href="https://spacebetweenart.substack.com" class="cta-btn" target="_blank">訂閱電子報</a>
     </section>
 
     <!-- Lightbox -->
@@ -705,11 +808,24 @@
             document.querySelector('.nav-links').classList.toggle('active');
         });
 
-        // Filter tabs
-        document.querySelectorAll('.filter-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
+        // Section navigation active state
+        const sectionLinks = document.querySelectorAll('.section-nav a');
+        const sections = document.querySelectorAll('.gallery-section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sectionLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
             });
         });
 

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心光諮詢室 | Space Between Art</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --forest-green: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --forest-light: #4A7C4B;
+            --warm-gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-green) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--cream);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+        }
+
+        .chat-header {
+            background: var(--forest-green);
+            color: white;
+            padding: 1.2rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .chat-header h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.4rem;
+            color: var(--gold-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .chat-header p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .character-select {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: var(--cream-dark);
+            flex-shrink: 0;
+        }
+
+        .character-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--forest-green);
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .character-btn.active {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .character-btn:hover:not(.active) {
+            background: var(--cream);
+        }
+
+        .character-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            min-height: 300px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 0.9rem 1rem;
+            border-radius: 16px;
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.bot {
+            background: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .message.user {
+            background: var(--forest-green);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message .sender {
+            font-size: 0.7rem;
+            color: var(--warm-gold);
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .message.user .sender {
+            color: var(--gold-light);
+            justify-content: flex-end;
+        }
+
+        .message .content {
+            white-space: pre-wrap;
+        }
+
+        .plant-card {
+            background: var(--cream);
+            padding: 0.8rem;
+            border-radius: 10px;
+            margin-top: 0.8rem;
+            border-left: 3px solid var(--warm-gold);
+        }
+
+        .plant-card .name {
+            font-family: 'Noto Serif TC', serif;
+            color: var(--forest-green);
+            font-size: 0.95rem;
+        }
+
+        .plant-card .effect {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 0.8rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            align-self: flex-start;
+        }
+
+        .typing-indicator.active {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--forest-green);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-4px); }
+        }
+
+        .quick-prompts {
+            padding: 0.6rem 1rem;
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            background: var(--cream-dark);
+            flex-shrink: 0;
+        }
+
+        .quick-prompt {
+            padding: 0.35rem 0.7rem;
+            background: white;
+            border: 1px solid var(--cream-dark);
+            border-radius: 15px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-prompt:hover {
+            background: var(--forest-green);
+            color: white;
+            border-color: var(--forest-green);
+        }
+
+        .chat-input-area {
+            padding: 0.8rem;
+            background: white;
+            border-top: 1px solid var(--cream-dark);
+            display: flex;
+            gap: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--cream-dark);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .chat-input:focus {
+            border-color: var(--forest-green);
+        }
+
+        .send-btn {
+            padding: 0.7rem 1.2rem;
+            background: var(--forest-green);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover:not(:disabled) {
+            background: var(--forest-dark);
+        }
+
+        .send-btn:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .disclaimer {
+            padding: 0.6rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            background: var(--cream-dark);
+            flex-shrink: 0;
+        }
+
+        .error-message {
+            background: #FEE;
+            color: #C00;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Scrollbar */
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-messages::-webkit-scrollbar-track {
+            background: var(--cream-dark);
+        }
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--forest-light);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>🌿 心光諮詢室</h1>
+            <p>讓故事中的角色陪伴你</p>
+        </div>
+
+        <div class="character-select">
+            <button class="character-btn active" data-character="xi">
+                🌙 曦婆婆
+            </button>
+            <button class="character-btn" data-character="yao">
+                ✨ 曜
+            </button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="sender">🌙 曦婆婆</div>
+                <div class="content">孩子，歡迎來到心光諮詢室。
+
+這裡是一個可以說說心裡話的地方。無論是睡不好、心情低落、還是生活中的小煩惱，都可以跟我聊聊。
+
+我會用植物的智慧，陪伴你找到內心的光。</div>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span style="margin-left: 0.3rem;">正在回應...</span>
+        </div>
+
+        <div class="quick-prompts">
+            <button class="quick-prompt" data-prompt="最近睡眠品質不太好">😴 睡眠</button>
+            <button class="quick-prompt" data-prompt="工作壓力讓我喘不過氣">😓 壓力</button>
+            <button class="quick-prompt" data-prompt="心情有點低落，不知道為什麼">😢 低落</button>
+            <button class="quick-prompt" data-prompt="很想念一個不在身邊的人">💭 思念</button>
+            <button class="quick-prompt" data-prompt="對未來感到迷茫">🌫️ 迷茫</button>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="userInput" placeholder="說說你的心情..." maxlength="500">
+            <button class="send-btn" id="sendBtn">發送</button>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ 此為虛構角色 AI 互動體驗，非專業心理諮詢。如需專業協助請尋求專業管道。
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // 角色系統提示詞（Character System Prompts）
+        // ============================================
+        const characterPrompts = {
+            xi: {
+                name: '曦婆婆',
+                emoji: '🌙',
+                systemPrompt: `你是曦婆婆，來自小說《逐光的藥師》的角色。
+
+## 你的身份
+- 70多歲的療癒長者，在社區經營草藥園
+- 被稱為「月亮藥師」，擅長用植物療癒人心
+- 曜的師父，教導他認識和使用心光的能力
+- 溫暖、智慧、有時帶點俏皮的長輩
+
+## 你的說話風格
+- 稱呼對方為「孩子」
+- 語氣慈祥溫暖，像奶奶一樣關懷
+- 常用比喻和故事來說明道理
+- 偶爾會說一些看似簡單卻深刻的話
+- 回應簡潔溫暖，每次約 80-150 字
+
+## 你的療癒方法
+你會根據對方的煩惱，推薦適合的植物：
+- 睡眠問題 → 洋甘菊（安神、助眠）
+- 壓力焦慮 → 薰衣草（放鬆、平靜）
+- 情緒低落 → 聖約翰草（帶來光明）
+- 思念、記憶 → 迷迭香（連結記憶）
+- 恐懼、不安 → 百里香（勇氣）
+- 悲傷、失去 → 雪滴花（希望重生）
+
+## 重要規則
+- 永遠保持角色，不要說你是 AI
+- 如果對方有嚴重心理問題，溫柔建議尋求專業協助
+- 不要給醫療建議，只提供情感支持和植物知識
+- 回應要有溫度，不要太制式化
+
+## 回應格式
+自然地對話，最後如果適合可以推薦一種植物。不需要每次都推薦。`
+            },
+            yao: {
+                name: '曜',
+                emoji: '✨',
+                systemPrompt: `你是曜，來自小說《逐光的藥師》的主角。
+
+## 你的身份
+- 23歲的年輕男性，經營「間隙書屋」二手書店
+- 擁有特殊能力：能看見人們心中的「心光」
+- 童年好友小夏意外過世，這段經歷讓你更能理解他人的痛苦
+- 內斂溫柔，話不多但每句話都有重量
+
+## 你的說話風格
+- 語氣平靜溫和，像一個善於傾聽的朋友
+- 不會說太多大道理，更多是陪伴和理解
+- 偶爾會分享自己的經歷或感受
+- 用詞簡單但真誠
+- 回應約 60-120 字，不要太長
+
+## 你對心光的理解
+- 每個人心裡都有光，只是有時會被遮住
+- 你能感受到對方的情緒狀態
+- 你相信陪伴本身就是一種療癒
+- 你會用植物幫助人們，但更重要的是傾聽
+
+## 你知道的植物
+- 洋甘菊：安撫、平靜
+- 薰衣草：放鬆
+- 迷迭香：記憶、連結
+- 聖約翰草：帶來光明
+
+## 重要規則
+- 永遠保持角色，不要說你是 AI
+- 不要太熱情或太話多，保持內斂的風格
+- 如果對方有嚴重問題，溫柔建議尋求專業協助
+- 你可以提到曦婆婆教你的事情
+
+## 回應格式
+自然對話，簡短但有溫度。`
+            }
+        };
+
+        // ============================================
+        // 狀態管理
+        // ============================================
+        let currentCharacter = 'xi';
+        let conversationHistory = [];
+        let isWaiting = false;
+
+        // ============================================
+        // DOM 元素
+        // ============================================
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const characterBtns = document.querySelectorAll('.character-btn');
+        const quickPrompts = document.querySelectorAll('.quick-prompt');
+
+        // ============================================
+        // 角色切換
+        // ============================================
+        characterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (isWaiting) return;
+                
+                characterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const newCharacter = btn.dataset.character;
+                if (newCharacter !== currentCharacter) {
+                    currentCharacter = newCharacter;
+                    conversationHistory = []; // 清空對話歷史
+                    
+                    // 顯示新角色的歡迎訊息
+                    const char = characterPrompts[currentCharacter];
+                    const welcomeMessages = {
+                        xi: `孩子，歡迎來到心光諮詢室。
+
+這裡是一個可以說說心裡話的地方。無論是睡不好、心情低落、還是生活中的小煩惱，都可以跟我聊聊。
+
+我會用植物的智慧，陪伴你找到內心的光。`,
+                        yao: `你好，歡迎來到間隙書屋。
+
+我是曜。如果你願意的話，可以跟我聊聊。
+
+有時候，說出來會比較好。`
+                    };
+                    
+                    chatMessages.innerHTML = `
+                        <div class="message bot">
+                            <div class="sender">${char.emoji} ${char.name}</div>
+                            <div class="content">${welcomeMessages[currentCharacter]}</div>
+                        </div>
+                    `;
+                }
+            });
+        });
+
+        // ============================================
+        // 快速提問
+        // ============================================
+        quickPrompts.forEach(prompt => {
+            prompt.addEventListener('click', () => {
+                if (isWaiting) return;
+                userInput.value = prompt.dataset.prompt;
+                sendMessage();
+            });
+        });
+
+        // ============================================
+        // 發送訊息
+        // ============================================
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !isWaiting) sendMessage();
+        });
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message || isWaiting) return;
+
+            // 顯示用戶訊息
+            addMessage(message, 'user');
+            userInput.value = '';
+            
+            // 設置等待狀態
+            isWaiting = true;
+            sendBtn.disabled = true;
+            typingIndicator.classList.add('active');
+            
+            // 添加到對話歷史
+            conversationHistory.push({
+                role: 'user',
+                content: message
+            });
+
+            try {
+                const response = await callClaudeAPI(message);
+                
+                // 添加到對話歷史
+                conversationHistory.push({
+                    role: 'assistant',
+                    content: response
+                });
+                
+                // 顯示回應
+                addMessage(response, 'bot');
+                
+            } catch (error) {
+                console.error('API Error:', error);
+                addMessage('抱歉，我現在好像有點累了。請稍後再試試。', 'bot', true);
+            } finally {
+                isWaiting = false;
+                sendBtn.disabled = false;
+                typingIndicator.classList.remove('active');
+            }
+        }
+
+        // ============================================
+        // Claude API 呼叫
+        // ============================================
+        async function callClaudeAPI(userMessage) {
+            const char = characterPrompts[currentCharacter];
+            
+            // 構建訊息陣列
+            const messages = conversationHistory.map(msg => ({
+                role: msg.role,
+                content: msg.content
+            }));
+
+            const response = await fetch('https://api.anthropic.com/v1/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': 'YOUR_API_KEY_HERE', // ⚠️ 需要替換
+                    'anthropic-version': '2023-06-01',
+                    'anthropic-dangerous-direct-browser-access': 'true'
+                },
+                body: JSON.stringify({
+                    model: 'claude-sonnet-4-20250514',
+                    max_tokens: 500,
+                    system: char.systemPrompt,
+                    messages: messages
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            return data.content[0].text;
+        }
+
+        // ============================================
+        // 添加訊息到聊天視窗
+        // ============================================
+        function addMessage(text, type, isError = false) {
+            const char = characterPrompts[currentCharacter];
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+
+            if (isError) {
+                messageDiv.innerHTML = `<div class="error-message">${text}</div>`;
+            } else if (type === 'bot') {
+                messageDiv.innerHTML = `
+                    <div class="sender">${char.emoji} ${char.name}</div>
+                    <div class="content">${formatResponse(text)}</div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="sender">你</div>
+                    <div class="content">${text}</div>
+                `;
+            }
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // ============================================
+        // 格式化回應（處理植物推薦）
+        // ============================================
+        function formatResponse(text) {
+            // 檢測是否提到特定植物，可以加入植物卡片
+            const plants = {
+                '洋甘菊': { effect: '安神助眠、撫慰焦慮' },
+                '薰衣草': { effect: '放鬆身心、平靜情緒' },
+                '迷迭香': { effect: '喚醒記憶、增強專注' },
+                '聖約翰草': { effect: '帶來光明、驅散陰霾' },
+                '百里香': { effect: '增添勇氣、克服恐懼' },
+                '雪滴花': { effect: '象徵希望、重新開始' }
+            };
+
+            let formattedText = text;
+            
+            // 這裡可以加入更複雜的格式化邏輯
+            // 例如將植物名稱轉換為卡片格式
+            
+            return formattedText;
+        }
+    </script>
+</body>
+</html>
