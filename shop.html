@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商店 | Space Between Art</title>
+    <meta name="description" content="Space Between Art 官方商店 - IP周邊商品、療癒系文創">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --forest-green: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --forest-light: #4A7C4B;
+            --warm-gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+            --shadow-soft: rgba(44, 95, 45, 0.08);
+            --shadow-medium: rgba(44, 95, 45, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 30px var(--shadow-soft);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--forest-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--forest-green); }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--forest-green);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--warm-gold) 0%, #C49B38 100%);
+            color: var(--forest-dark);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Shop Status Banner */
+        .status-banner {
+            background: var(--forest-dark);
+            color: white;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .status-banner h3 {
+            font-family: 'Noto Serif TC', serif;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Section */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--warm-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            color: var(--forest-green);
+        }
+
+        /* Product Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow-soft);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--warm-gold);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .category-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            color: var(--forest-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .category-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .category-status {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.3rem 1rem;
+            background: var(--cream-dark);
+            color: var(--forest-green);
+            font-size: 0.8rem;
+            border-radius: 15px;
+        }
+
+        .category-status.coming {
+            background: var(--warm-gold);
+            color: var(--forest-dark);
+        }
+
+        /* Product Preview Grid */
+        .products-preview {
+            background: var(--cream-dark);
+            padding: 4rem 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--shadow-soft);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px var(--shadow-medium);
+        }
+
+        .product-image {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--warm-gold);
+            color: var(--forest-dark);
+            font-size: 0.75rem;
+            font-weight: 500;
+            border-radius: 12px;
+        }
+
+        .product-badge.coming {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.2rem;
+        }
+
+        .product-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .product-series {
+            font-size: 0.8rem;
+            color: var(--warm-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: var(--forest-green);
+            font-weight: 600;
+        }
+
+        .product-price.tbd {
+            color: var(--text-muted);
+            font-weight: normal;
+            font-size: 0.9rem;
+        }
+
+        /* IP Development Roadmap */
+        .roadmap-section {
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .roadmap {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--warm-gold), var(--forest-green));
+        }
+
+        .roadmap-item {
+            position: relative;
+            padding: 1.5rem 0 1.5rem 2rem;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .roadmap-item:last-child {
+            border-bottom: none;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 1.8rem;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 3px solid var(--warm-gold);
+            border-radius: 50%;
+            transform: translateX(-5px);
+        }
+
+        .roadmap-item.completed::before {
+            background: var(--warm-gold);
+        }
+
+        .roadmap-item.current::before {
+            background: var(--forest-green);
+            border-color: var(--forest-green);
+            box-shadow: 0 0 0 4px rgba(44, 95, 45, 0.2);
+        }
+
+        .roadmap-phase {
+            font-size: 0.8rem;
+            color: var(--warm-gold);
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .roadmap-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Newsletter CTA */
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--forest-dark);
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--warm-gold);
+            color: var(--forest-dark);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: var(--gold-light);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-green);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1.25rem;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: flex; }
+            .categories { grid-template-columns: 1fr; }
+            .roadmap { padding-left: 1.5rem; }
+            .roadmap-item { padding-left: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 40 40" width="32" height="32">
+                <defs>
+                    <linearGradient id="navGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#F5D998"/>
+                        <stop offset="100%" style="stop-color:#D4A84B"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F2D" stroke-width="1.5"/>
+                <text x="20" y="26" font-family="Georgia, serif" font-size="18" fill="url(#navGold)" text-anchor="middle">S</text>
+            </svg>
+            Space Between Art
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="gallery.html">畫廊</a></li>
+            <li><a href="works.html">創作區</a></li>
+            <li><a href="shop.html" style="color: var(--forest-green); font-weight: 500;">商店</a></li>
+            <li><a href="community.html">互動區</a></li>
+            <li><a href="index.html#contact">聯絡</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="選單">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="hero">
+        <h1 class="hero-title">🛍️ 官方商店</h1>
+        <p class="hero-subtitle">IP 周邊商品 • 療癒系文創</p>
+    </section>
+
+    <div class="status-banner">
+        <h3>🚧 商店籌備中</h3>
+        <p>我們正在精心準備周邊商品，敬請期待！訂閱電子報可搶先收到開店通知。</p>
+    </div>
+
+    <!-- 商品分類 -->
+    <section class="section">
+        <div class="section-header">
+            <p class="section-label">Categories</p>
+            <h2 class="section-title">商品分類</h2>
+        </div>
+
+        <div class="categories">
+            <div class="category-card">
+                <div class="category-icon">📚</div>
+                <h3 class="category-title">實體書籍</h3>
+                <p class="category-desc">精裝小說、典藏版、作者簽名本</p>
+                <span class="category-status coming">即將推出</span>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🎨</div>
+                <h3 class="category-title">藝術印刷品</h3>
+                <p class="category-desc">角色插畫、場景海報、明信片套組</p>
+                <span class="category-status coming">即將推出</span>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">✨</div>
+                <h3 class="category-title">文創小物</h3>
+                <p class="category-desc">書籤、貼紙、徽章、壓克力立牌</p>
+                <span class="category-status coming">即將推出</span>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🌿</div>
+                <h3 class="category-title">療癒生活</h3>
+                <p class="category-desc">香氛蠟燭、植物種子包、療癒茶包</p>
+                <span class="category-status coming">規劃中</span>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">👕</div>
+                <h3 class="category-title">服飾配件</h3>
+                <p class="category-desc">T恤、帆布袋、帽子</p>
+                <span class="category-status coming">規劃中</span>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🎁</div>
+                <h3 class="category-title">限定禮盒</h3>
+                <p class="category-desc">季節限定、週年紀念、聯名合作</p>
+                <span class="category-status coming">規劃中</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 商品預覽 -->
+    <section class="products-preview">
+        <div class="section-header">
+            <p class="section-label">Preview</p>
+            <h2 class="section-title">🌟 商品預覽</h2>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    📖
+                    <span class="product-badge coming">籌備中</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">《逐光的藥師》實體書</h3>
+                    <p class="product-series">逐光的藥師系列</p>
+                    <p class="product-price tbd">價格待定</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    🌿
+                    <span class="product-badge coming">籌備中</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">曜 壓克力立牌</h3>
+                    <p class="product-series">角色周邊</p>
+                    <p class="product-price tbd">價格待定</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    🏷️
+                    <span class="product-badge coming">籌備中</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">植物魔典書籤組</h3>
+                    <p class="product-series">文創小物</p>
+                    <p class="product-price tbd">價格待定</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    🕯️
+                    <span class="product-badge coming">規劃中</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">洋甘菊療癒香氛</h3>
+                    <p class="product-series">療癒生活系列</p>
+                    <p class="product-price tbd">價格待定</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    🖼️
+                    <span class="product-badge coming">籌備中</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">間隙書屋 場景海報</h3>
+                    <p class="product-series">藝術印刷品</p>
+                    <p class="product-price tbd">價格待定</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    💌
+                    <span class="product-badge coming">籌備中</span>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-name">療癒明信片套組</h3>
+                    <p class="product-series">藝術印刷品</p>
+                    <p class="product-price tbd">價格待定</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IP 發展藍圖 -->
+    <section class="roadmap-section">
+        <div class="section-header">
+            <p class="section-label">IP Development</p>
+            <h2 class="section-title">🗺️ IP 發展藍圖</h2>
+        </div>
+
+        <div class="roadmap">
+            <div class="roadmap-item completed">
+                <p class="roadmap-phase">Phase 1 — 已完成</p>
+                <h4 class="roadmap-title">📖 小說連載啟動</h4>
+                <p class="roadmap-desc">《逐光的藥師》在鏡文學、Penana 雙平台連載中</p>
+            </div>
+
+            <div class="roadmap-item completed">
+                <p class="roadmap-phase">Phase 2 — 已完成</p>
+                <h4 class="roadmap-title">🌐 品牌官網上線</h4>
+                <p class="roadmap-desc">Space Between Art 官網、電子報、社群平台建立</p>
+            </div>
+
+            <div class="roadmap-item current">
+                <p class="roadmap-phase">Phase 3 — 進行中</p>
+                <h4 class="roadmap-title">🎨 視覺素材開發</h4>
+                <p class="roadmap-desc">角色設計定稿、場景概念圖、封面插畫製作</p>
+            </div>
+
+            <div class="roadmap-item">
+                <p class="roadmap-phase">Phase 4 — 2025 Q2</p>
+                <h4 class="roadmap-title">🛍️ 首批周邊上市</h4>
+                <p class="roadmap-desc">實體書、書籤、明信片、壓克力立牌</p>
+            </div>
+
+            <div class="roadmap-item">
+                <p class="roadmap-phase">Phase 5 — 2025 Q3</p>
+                <h4 class="roadmap-title">🎵 影音內容推出</h4>
+                <p class="roadmap-desc">小說主題曲、有聲書、創作幕後 Vlog</p>
+            </div>
+
+            <div class="roadmap-item">
+                <p class="roadmap-phase">Phase 6 — 2025 Q4</p>
+                <h4 class="roadmap-title">📚 第二部作品</h4>
+                <p class="roadmap-desc">新小說連載、IP 世界觀擴展</p>
+            </div>
+
+            <div class="roadmap-item">
+                <p class="roadmap-phase">Phase 7 — 2026+</p>
+                <h4 class="roadmap-title">🎬 跨媒體發展</h4>
+                <p class="roadmap-desc">漫畫改編、動畫短片、影視授權洽談</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>🔔 搶先收到開店通知</h2>
+        <p>訂閱電子報，第一時間收到商品上架、限定優惠、新品預購資訊</p>
+        <a href="https://spacebetweenart.substack.com" class="cta-btn" target="_blank">📬 訂閱電子報</a>
+    </section>
+
+    <footer>
+        <p class="footer-logo">Space Between Art</p>
+        <p style="opacity: 0.8; margin-top: 0.5rem;">在光與暗之間，故事發生</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">© 2025 Space Between Art. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
