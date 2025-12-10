@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心光諮詢室 | Space Between Art</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --forest-green: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --warm-gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --steel-blue: #2C3E50;
+            --steel-dark: #1A252F;
+            --copper: #B87333;
+            --copper-light: #D4956A;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            transition: background 0.5s ease;
+        }
+        
+        body.theme-pharmacist {
+            background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-green) 100%);
+        }
+        
+        body.theme-renovator {
+            background: linear-gradient(135deg, var(--steel-dark) 0%, var(--steel-blue) 100%);
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 520px;
+            background: var(--cream);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 85vh;
+        }
+
+        .chat-header {
+            padding: 1.2rem;
+            text-align: center;
+            transition: background 0.5s ease;
+        }
+        
+        .theme-pharmacist .chat-header { background: var(--forest-green); }
+        .theme-renovator .chat-header { background: var(--steel-blue); }
+
+        .chat-header h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.2rem;
+            transition: color 0.5s ease;
+        }
+        
+        .theme-pharmacist .chat-header h1 { color: var(--gold-light); }
+        .theme-renovator .chat-header h1 { color: var(--copper-light); }
+
+        .chat-header p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .work-tabs {
+            display: flex;
+            background: var(--cream-dark);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .work-tab {
+            flex: 1;
+            padding: 0.8rem 0.5rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .work-tab.active {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+        
+        .work-tab.active.pharmacist { border-bottom-color: var(--forest-green); }
+        .work-tab.active.renovator { border-bottom-color: var(--steel-blue); }
+
+        .character-select {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            background: white;
+            flex-wrap: wrap;
+        }
+
+        .character-btn {
+            padding: 0.4rem 0.8rem;
+            border: 2px solid var(--cream-dark);
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .character-btn.active.pharmacist {
+            background: var(--forest-green);
+            border-color: var(--forest-green);
+            color: white;
+        }
+        
+        .character-btn.active.renovator {
+            background: var(--steel-blue);
+            border-color: var(--steel-blue);
+            color: white;
+        }
+
+        .character-btn:hover:not(.active) { background: var(--cream); }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-height: 280px;
+            max-height: 350px;
+        }
+
+        .message {
+            max-width: 85%;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.bot { align-self: flex-start; }
+        .message.user { align-self: flex-end; }
+
+        .message .sender {
+            font-size: 0.75rem;
+            margin-bottom: 0.3rem;
+            opacity: 0.7;
+        }
+
+        .message .content {
+            padding: 0.8rem 1rem;
+            border-radius: 16px;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+        }
+
+        .message.bot .content {
+            background: var(--cream-dark);
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.user .content {
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .theme-pharmacist .message.user .content { background: var(--forest-green); }
+        .theme-renovator .message.user .content { background: var(--steel-blue); }
+
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .typing-indicator.show { display: flex; }
+
+        .typing-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            margin-right: 3px;
+            animation: typingBounce 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-4px); }
+        }
+
+        .quick-prompts {
+            display: flex;
+            gap: 0.4rem;
+            padding: 0.6rem;
+            overflow-x: auto;
+            background: white;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .quick-prompt {
+            flex-shrink: 0;
+            padding: 0.35rem 0.7rem;
+            background: var(--cream);
+            border: 1px solid var(--cream-dark);
+            border-radius: 16px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-prompt:hover { background: var(--cream-dark); }
+
+        .chat-input-area {
+            display: flex;
+            padding: 0.8rem;
+            gap: 0.5rem;
+            background: white;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 2px solid var(--cream-dark);
+            border-radius: 24px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .theme-pharmacist .chat-input:focus { border-color: var(--forest-green); }
+        .theme-renovator .chat-input:focus { border-color: var(--steel-blue); }
+
+        .send-btn {
+            padding: 0.7rem 1.2rem;
+            border: none;
+            border-radius: 24px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-pharmacist .send-btn { background: var(--forest-green); }
+        .theme-renovator .send-btn { background: var(--steel-blue); }
+
+        .send-btn:hover { transform: scale(1.05); }
+        .send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        .disclaimer {
+            padding: 0.5rem;
+            background: var(--cream-dark);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            padding: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        
+        .back-link:hover { color: white; }
+
+        .chat-messages::-webkit-scrollbar { width: 5px; }
+        .chat-messages::-webkit-scrollbar-track { background: var(--cream-dark); }
+        .chat-messages::-webkit-scrollbar-thumb { background: var(--text-muted); border-radius: 3px; }
+
+        .api-notice {
+            background: rgba(255,200,50,0.2);
+            border: 1px solid rgba(255,200,50,0.5);
+            border-radius: 8px;
+            padding: 0.8rem;
+            margin: 0.5rem;
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .api-notice a {
+            color: var(--forest-green);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="theme-pharmacist">
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1 id="headerTitle">🌿 心光諮詢室</h1>
+            <p id="headerSubtitle">讓故事中的角色陪伴你</p>
+        </div>
+
+        <div class="work-tabs">
+            <button class="work-tab active pharmacist" data-work="pharmacist">🌿 逐光的藥師</button>
+            <button class="work-tab renovator" data-work="renovator">🔧 違章靈魂改建</button>
+        </div>
+
+        <div class="character-select" id="characterSelect"></div>
+
+        <div class="api-notice" id="apiNotice">
+            ⚙️ 此為展示版本，使用預設回應。<br>
+            部署 Claude API 後可啟用真實 AI 對話。<a href="AI小編完整部署教學.md">查看教學</a>
+        </div>
+
+        <div class="chat-messages" id="chatMessages"></div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span class="typing-dot"></span>
+            <span style="margin-left: 0.3rem;">正在回應...</span>
+        </div>
+
+        <div class="quick-prompts" id="quickPrompts"></div>
+
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="userInput" placeholder="說說你的心情..." maxlength="500">
+            <button class="send-btn" id="sendBtn">發送</button>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ 此為虛構角色 AI 互動體驗，非專業心理諮詢。如需專業協助請尋求專業管道。
+        </div>
+    </div>
+    
+    <a href="index.html" class="back-link">← 返回首頁</a>
+
+    <script>
+        // ============================================
+        // API 設定（部署後替換）
+        // ============================================
+        const API_ENDPOINT = ''; // 替換成你的 Cloudflare Worker URL
+        const USE_MOCK = !API_ENDPOINT; // 沒有 API 時使用模擬回應
+        
+        // ============================================
+        // 角色與作品設定
+        // ============================================
+        const WORKS = {
+            pharmacist: {
+                name: '逐光的藥師',
+                theme: 'theme-pharmacist',
+                headerTitle: '🌿 心光諮詢室',
+                headerSubtitle: '讓植物的智慧陪伴你',
+                characters: {
+                    xi: {
+                        name: '曦婆婆',
+                        emoji: '🌙',
+                        title: '月亮藥師',
+                        welcome: `孩子，歡迎來到心光諮詢室。
+
+這裡是一個可以說說心裡話的地方。無論是睡不好、心情低落、還是生活中的小煩惱，都可以跟我聊聊。
+
+我會用植物的智慧，陪伴你找到內心的光。`,
+                        mockResponses: {
+                            睡眠: '孩子，睡不好的夜晚確實難熬。我想推薦你洋甘菊——它有安撫心神的力量。睡前泡一杯洋甘菊茶，讓那溫暖的香氣包裹你。記得，不要太苛責自己，有時候身體只是需要多一點時間放鬆。',
+                            壓力: '我看得出你累了。壓力就像背上的石頭，久了會讓人喘不過氣。薰衣草能幫助放鬆，但更重要的是——你願意給自己休息的允許嗎？有時候，暫停不是放棄，是為了走更遠的路。',
+                            低落: '孩子，心情低落的時候，就像心裡的光被雲遮住了。但你要記得，光一直都在。聖約翰草被稱為「趕走陰霾的陽光」，它或許能幫助你。不過最重要的是，允許自己不開心也沒關係。',
+                            思念: '思念是一種很溫柔的痛。迷迭香在古時候代表「記憶」，人們相信它能連結我們與所愛之人。想念一個人，說明你們之間有過美好的連結。這份愛不會因為距離而消失。',
+                            迷茫: '對未來迷茫，其實是很正常的。沒有人能看清所有的路。但我相信，只要你繼續走，路就會在腳下展開。百里香代表勇氣，它提醒我們：不需要看清全程，只需要踏出下一步就好。',
+                            default: '孩子，謝謝你願意說出來。每個人心裡都有光，只是有時候會被遮住。你願意多說一點嗎？我在聽。'
+                        }
+                    },
+                    yao: {
+                        name: '曜',
+                        emoji: '✨',
+                        title: '逐光藥師',
+                        welcome: `你好，歡迎來到間隙書屋。
+
+我是曜。如果你願意的話，可以跟我聊聊。
+
+有時候，說出來會比較好。`,
+                        mockResponses: {
+                            睡眠: '睡不好的感覺，我懂。夜裡特別安靜的時候，反而更容易胡思亂想。曦婆婆常說，洋甘菊能安撫不安的心。...你最近是有什麼事情在煩惱嗎？',
+                            壓力: '我感覺到你的光有點疲憊。壓力太大的時候，連呼吸都會忘記。先深呼吸一下吧。...我在這裡，不急。',
+                            低落: '嗯...低落的感覺，就像心光被什麼東西蓋住了。但它還在，只是暫時看不清楚。你不需要勉強自己振作，就讓它慢慢來吧。',
+                            思念: '想念一個人...我也有過這種感覺。小夏離開之後，我花了很長時間才學會與思念共處。它不會消失，但會慢慢變得不那麼尖銳。',
+                            迷茫: '迷茫啊...說實話，我也常常不確定自己在做什麼。但曦婆婆說，「光會吸引光」。也許不需要現在就找到答案，只要繼續發光就好。',
+                            default: '...謝謝你願意跟我說。我不太會說什麼大道理，但我可以在這裡陪著你。'
+                        }
+                    }
+                },
+                quickPrompts: [
+                    { emoji: '😴', text: '睡眠', prompt: '最近睡眠品質不太好', key: '睡眠' },
+                    { emoji: '😓', text: '壓力', prompt: '工作壓力讓我喘不過氣', key: '壓力' },
+                    { emoji: '😢', text: '低落', prompt: '心情有點低落', key: '低落' },
+                    { emoji: '💭', text: '思念', prompt: '很想念一個人', key: '思念' },
+                    { emoji: '🌫️', text: '迷茫', prompt: '對未來感到迷茫', key: '迷茫' }
+                ]
+            },
+            renovator: {
+                name: '違章靈魂改建事務所',
+                theme: 'theme-renovator',
+                headerTitle: '🔧 靈魂改建諮詢',
+                headerSubtitle: '讓我們看看你心中的房子',
+                characters: {
+                    luyao: {
+                        name: '路遙',
+                        emoji: '🔧',
+                        title: '改建師',
+                        welcome: `你好，這裡是違章靈魂改建事務所。
+
+我是路遙，心靈建築改建師。我能看見每個人心中的「房子」。
+
+如果你願意，可以讓我看看你的。`,
+                        mockResponses: {
+                            邊界: '讓我看看...你的房子似乎沒有門，或者門太容易被打開。這種「玻璃屋」結構很常見，通常是因為習慣把別人的需求放在自己前面。我們可以一起試著砌幾塊邊界磚。',
+                            封閉: '有趣。你的建築外牆很厚實，像個碉堡。這不是壞事——它曾經保護過你。但現在，也許我們可以考慮開一扇小窗？不用一次拆掉整面牆。',
+                            麻木: '嗯...你的房子看起來有點灰暗，像是很久沒有人住的樣子。有時候麻木是一種保護機制，讓我們不用一直感受痛苦。但如果準備好了，我們可以試著打開窗戶透透氣。',
+                            重複: '我看到了...你的建築裡有一座無限樓梯，不斷循環。這通常代表某個還沒處理完的創傷在重播。不是你的錯，有時候我們需要專業的幫助才能走出來。',
+                            迷失: '你的建築很特別——外觀精緻，但內部...有點空。這種「樣品屋」結構，通常是因為一直在符合別人的期待。也許我們可以一起找找，真正屬於你的設計是什麼。',
+                            default: '讓我看看你心中的房子...每一座違章建築，都是一道沒有被聽見的求救信號。你願意多說一點嗎？'
+                        }
+                    },
+                    guman: {
+                        name: '顧曼',
+                        emoji: '💜',
+                        title: '心理師',
+                        welcome: `嗨，歡迎來到這裡。
+
+我是顧曼，路遙的夥伴，也是一名心理諮商師。
+
+有什麼想聊的嗎？我在聽。`,
+                        mockResponses: {
+                            邊界: '謝謝你願意說出來。很難拒絕別人，聽起來讓你很累吧？我很好奇，當你試著拒絕的時候，會有什麼感覺？是害怕讓對方失望，還是擔心關係會改變呢？',
+                            封閉: '不敢敞開心扉...這個感受很多人都有。有時候保持距離是一種保護自己的方式。你還記得是從什麼時候開始，變得比較難信任人嗎？',
+                            麻木: '提不起勁的感覺，很像是心理在告訴我們需要休息。這種狀態持續多久了呢？如果已經有一段時間，也許可以考慮找專業的諮商師聊聊。',
+                            重複: '重複同樣的模式確實很讓人挫折。但你知道嗎？能夠察覺到這一點，其實已經是很大的進步了。有沒有想過，這個模式是在什麼情境下特別容易出現？',
+                            迷失: '不知道真正的自己是什麼樣子...這是一個很深刻的問題。有時候我們太習慣滿足別人的期待，反而忘了問自己真正想要什麼。你現在有什麼是「想要」而不是「應該」做的事嗎？',
+                            default: '謝謝你願意分享。你說的這些聽起來不容易，我很感謝你的信任。你願意多說一點嗎？'
+                        }
+                    }
+                },
+                quickPrompts: [
+                    { emoji: '🏠', text: '邊界', prompt: '我總是很難拒絕別人', key: '邊界' },
+                    { emoji: '🔒', text: '封閉', prompt: '我不太敢對人敞開心扉', key: '封閉' },
+                    { emoji: '😶', text: '麻木', prompt: '最近對什麼事都提不起勁', key: '麻木' },
+                    { emoji: '🔄', text: '重複', prompt: '我好像一直重複同樣的錯誤', key: '重複' },
+                    { emoji: '❓', text: '迷失', prompt: '我不知道真正的自己是什麼樣子', key: '迷失' }
+                ]
+            }
+        };
+
+        // 狀態
+        let currentWork = 'pharmacist';
+        let currentCharacter = 'xi';
+        let conversationHistory = [];
+        let isWaiting = false;
+
+        // DOM
+        const body = document.body;
+        const headerTitle = document.getElementById('headerTitle');
+        const headerSubtitle = document.getElementById('headerSubtitle');
+        const characterSelect = document.getElementById('characterSelect');
+        const chatMessages = document.getElementById('chatMessages');
+        const quickPromptsContainer = document.getElementById('quickPrompts');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const workTabs = document.querySelectorAll('.work-tab');
+        const apiNotice = document.getElementById('apiNotice');
+
+        // 初始化
+        function init() {
+            if (!USE_MOCK) apiNotice.style.display = 'none';
+            renderCharacterButtons();
+            renderQuickPrompts();
+            showWelcomeMessage();
+            
+            workTabs.forEach(tab => tab.addEventListener('click', () => switchWork(tab.dataset.work)));
+            sendBtn.addEventListener('click', sendMessage);
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+            });
+        }
+
+        function switchWork(work) {
+            if (work === currentWork || isWaiting) return;
+            currentWork = work;
+            const workConfig = WORKS[work];
+            
+            body.className = workConfig.theme;
+            headerTitle.textContent = workConfig.headerTitle;
+            headerSubtitle.textContent = workConfig.headerSubtitle;
+            
+            workTabs.forEach(tab => {
+                tab.classList.remove('active', 'pharmacist', 'renovator');
+                if (tab.dataset.work === work) {
+                    tab.classList.add('active', work);
+                }
+            });
+            
+            currentCharacter = Object.keys(workConfig.characters)[0];
+            conversationHistory = [];
+            renderCharacterButtons();
+            renderQuickPrompts();
+            showWelcomeMessage();
+        }
+
+        function switchCharacter(character) {
+            if (character === currentCharacter || isWaiting) return;
+            currentCharacter = character;
+            conversationHistory = [];
+            
+            document.querySelectorAll('.character-btn').forEach(btn => {
+                btn.classList.remove('active', 'pharmacist', 'renovator');
+                if (btn.dataset.character === character) {
+                    btn.classList.add('active', currentWork);
+                }
+            });
+            showWelcomeMessage();
+        }
+
+        function renderCharacterButtons() {
+            const characters = WORKS[currentWork].characters;
+            characterSelect.innerHTML = '';
+            Object.entries(characters).forEach(([key, char], index) => {
+                const btn = document.createElement('button');
+                btn.className = 'character-btn' + (index === 0 ? ` active ${currentWork}` : '');
+                btn.dataset.character = key;
+                btn.innerHTML = `${char.emoji} ${char.name}`;
+                btn.addEventListener('click', () => switchCharacter(key));
+                characterSelect.appendChild(btn);
+            });
+        }
+
+        function renderQuickPrompts() {
+            const prompts = WORKS[currentWork].quickPrompts;
+            quickPromptsContainer.innerHTML = '';
+            prompts.forEach(p => {
+                const btn = document.createElement('button');
+                btn.className = 'quick-prompt';
+                btn.innerHTML = `${p.emoji} ${p.text}`;
+                btn.addEventListener('click', () => {
+                    userInput.value = p.prompt;
+                    userInput.dataset.promptKey = p.key;
+                    sendMessage();
+                });
+                quickPromptsContainer.appendChild(btn);
+            });
+        }
+
+        function showWelcomeMessage() {
+            const char = WORKS[currentWork].characters[currentCharacter];
+            chatMessages.innerHTML = `
+                <div class="message bot">
+                    <div class="sender">${char.emoji} ${char.name}</div>
+                    <div class="content">${char.welcome}</div>
+                </div>
+            `;
+        }
+
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            const promptKey = userInput.dataset.promptKey || '';
+            if (!message || isWaiting) return;
+            
+            isWaiting = true;
+            sendBtn.disabled = true;
+            userInput.value = '';
+            userInput.dataset.promptKey = '';
+            
+            addMessage('user', message);
+            typingIndicator.classList.add('show');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            try {
+                let reply;
+                
+                if (USE_MOCK) {
+                    // 模擬回應
+                    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
+                    const char = WORKS[currentWork].characters[currentCharacter];
+                    reply = char.mockResponses[promptKey] || char.mockResponses.default;
+                } else {
+                    // 真實 API
+                    const response = await fetch(API_ENDPOINT, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message, character: currentCharacter, history: conversationHistory })
+                    });
+                    const data = await response.json();
+                    reply = data.reply || '抱歉，我現在有點累了。';
+                }
+                
+                conversationHistory.push({ role: 'user', content: message });
+                conversationHistory.push({ role: 'assistant', content: reply });
+                
+                const char = WORKS[currentWork].characters[currentCharacter];
+                addMessage('bot', reply, `${char.emoji} ${char.name}`);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage('bot', '抱歉，出了點問題。請稍後再試。', '⚠️ 系統');
+            } finally {
+                isWaiting = false;
+                sendBtn.disabled = false;
+                typingIndicator.classList.remove('show');
+            }
+        }
+
+        function addMessage(type, content, sender = '') {
+            const div = document.createElement('div');
+            div.className = `message ${type}`;
+            div.innerHTML = `
+                ${sender ? `<div class="sender">${sender}</div>` : ''}
+                <div class="content">${content}</div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        init();
+    </script>
+</body>
+</html>
