@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逐光藥師的植物魔典 | Space Between Art</title>
+    <meta name="description" content="收錄於《逐光的藥師》的植物智慧——每一株草藥都承載著療癒的隱喻與生命的哲理。">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --forest-deep: #1A3A1B;
+            --forest-green: #2C5F2D;
+            --forest-light: #4A7C4B;
+            --sage: #7A9E7E;
+            --warm-gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --gold-pale: #F5E6C8;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --parchment: #F9F3E8;
+            --text-dark: #2A2A2A;
+            --text-body: #3D3D3D;
+            --text-muted: #6B6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background: var(--cream);
+            color: var(--text-body);
+            line-height: 1.9;
+            min-height: 100vh;
+        }
+
+        /* Texture Overlay */
+        .texture-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(180deg, var(--forest-deep) 0%, var(--forest-green) 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .header-title {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, var(--forest-green) 0%, var(--forest-deep) 60%, var(--cream) 100%);
+            padding: 4rem 2rem 8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(212, 168, 75, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 20px rgba(212, 168, 75, 0.4));
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--gold-light);
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .hero-intro {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            line-height: 2;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .toc {
+            background: var(--parchment);
+            border-bottom: 1px solid rgba(212, 168, 75, 0.3);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 52px;
+            z-index: 90;
+        }
+
+        .toc-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .toc-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .toc-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+        }
+
+        .toc-link {
+            font-size: 0.8rem;
+            color: var(--forest-green);
+            text-decoration: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .toc-link:hover {
+            background: rgba(44, 95, 45, 0.1);
+            color: var(--forest-deep);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        /* Plant Entry */
+        .plant-entry {
+            margin-bottom: 4rem;
+            scroll-margin-top: 140px;
+        }
+
+        .plant-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 168, 75, 0.3);
+        }
+
+        .plant-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .plant-titles {
+            flex: 1;
+        }
+
+        .plant-name-zh {
+            font-size: 1.4rem;
+            color: var(--forest-green);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .plant-name-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .plant-volume {
+            font-size: 0.75rem;
+            color: var(--warm-gold);
+            background: rgba(212, 168, 75, 0.15);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            white-space: nowrap;
+        }
+
+        .plant-quote {
+            background: linear-gradient(135deg, var(--parchment) 0%, var(--cream-dark) 100%);
+            border-left: 4px solid var(--warm-gold);
+            padding: 1.5rem 2rem;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .plant-quote::before {
+            content: '"';
+            position: absolute;
+            top: 0.5rem;
+            left: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: rgba(212, 168, 75, 0.2);
+            line-height: 1;
+        }
+
+        .plant-quote p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 2;
+        }
+
+        .plant-source {
+            text-align: right;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .plant-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .keyword {
+            font-size: 0.75rem;
+            color: var(--forest-green);
+            background: rgba(44, 95, 45, 0.08);
+            padding: 0.25rem 0.7rem;
+            border-radius: 50px;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            text-align: center;
+            margin: 4rem 0;
+            color: var(--warm-gold);
+            font-size: 1.5rem;
+            letter-spacing: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-deep);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--gold-light);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .footer-source {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Animations */
+        .plant-entry {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .plant-entry:nth-child(1) { animation-delay: 0.1s; }
+        .plant-entry:nth-child(2) { animation-delay: 0.15s; }
+        .plant-entry:nth-child(3) { animation-delay: 0.2s; }
+        .plant-entry:nth-child(4) { animation-delay: 0.25s; }
+        .plant-entry:nth-child(5) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .toc {
+                display: none;
+            }
+
+            .plant-header {
+                flex-wrap: wrap;
+            }
+
+            .plant-volume {
+                width: 100%;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+
+            .plant-quote {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem 6rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, .toc, .texture-overlay {
+                display: none;
+            }
+
+            .plant-entry {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="texture-overlay"></div>
+
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="back-link">← 返回首頁</a>
+            <span class="header-title">Space Between Art</span>
+            <a href="index.html#featured" class="back-link">閱讀小說 →</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">📜</div>
+            <h1>逐光藥師的植物魔典</h1>
+            <p class="hero-subtitle">The Light Chaser's Botanical Grimoire</p>
+            <p class="hero-intro">
+                收錄於《逐光的藥師》的植物智慧——<br>
+                每一株草藥都承載著療癒的隱喻與生命的哲理。<br>
+                這不只是一本植物圖鑑，更是一部關於創傷、重生與希望的寓言集。
+            </p>
+        </div>
+    </section>
+
+    <nav class="toc">
+        <div class="toc-inner">
+            <p class="toc-title">快速導覽</p>
+            <div class="toc-grid">
+                <a href="#chamomile" class="toc-link">洋甘菊</a>
+                <a href="#mint" class="toc-link">薄荷</a>
+                <a href="#clary-sage" class="toc-link">快樂鼠尾草</a>
+                <a href="#yarrow" class="toc-link">西洋蓍草</a>
+                <a href="#rosemary" class="toc-link">迷迭香</a>
+                <a href="#st-johns-wort" class="toc-link">聖約翰草</a>
+                <a href="#dandelion" class="toc-link">蒲公英</a>
+                <a href="#hyacinth" class="toc-link">風信子</a>
+                <a href="#clover" class="toc-link">三葉草</a>
+                <a href="#fern" class="toc-link">鐵線蕨</a>
+                <a href="#mandrake" class="toc-link">曼德拉草</a>
+                <a href="#valerian" class="toc-link">纈草</a>
+                <a href="#snowdrop" class="toc-link">雪滴花</a>
+                <a href="#borage" class="toc-link">琉璃苣</a>
+                <a href="#gentian" class="toc-link">龍膽</a>
+                <a href="#hemlock" class="toc-link">毒芹</a>
+                <a href="#lupine" class="toc-link">羽扇豆</a>
+                <a href="#lemon-balm" class="toc-link">香蜂草</a>
+                <a href="#thyme" class="toc-link">百里香</a>
+                <a href="#moss" class="toc-link">苔蘚</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 核心草藥 -->
+        <article class="plant-entry" id="chamomile">
+            <div class="plant-header">
+                <span class="plant-icon">🌼</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">洋甘菊</h2>
+                    <p class="plant-name-en">Chamomile</p>
+                </div>
+                <span class="plant-volume">卷一</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>最好的洋甘菊，是在清晨第一縷陽光灑下時採摘的。它的花瓣上還帶著露水，那露水裡就藏著太陽的夢。泡成茶時，記得要蓋上蓋子，別讓那夢跑掉了。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">安神</span>
+                <span class="keyword">夢境</span>
+                <span class="keyword">清晨</span>
+                <span class="keyword">溫柔</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="mint">
+            <div class="plant-header">
+                <span class="plant-icon">🌿</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">薄荷</h2>
+                    <p class="plant-name-en">Mint</p>
+                </div>
+                <span class="plant-volume">卷一</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>薄荷的故事提醒我們，即使在最深的黑暗（冥界）中，也能誕生出最清新的香氣。當你覺得與人格格不入時，為他們泡一杯薄荷茶吧。這是最溫柔的邀請。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">清新</span>
+                <span class="keyword">連結</span>
+                <span class="keyword">邀請</span>
+                <span class="keyword">黑暗中的香氣</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="rosemary">
+            <div class="plant-header">
+                <span class="plant-icon">🌱</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">迷迭香</h2>
+                    <p class="plant-name-en">Rosemary</p>
+                </div>
+                <span class="plant-volume">卷三・洞察</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>迷迭香記得一切。它記得太陽，也記得海洋。當你迷路時，聞一聞它的香氣，它會幫你記起回家的路，不只是回到你的房子，而是回到你自己。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷三・洞察》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">記憶</span>
+                <span class="keyword">回家</span>
+                <span class="keyword">自我</span>
+                <span class="keyword">洞察</span>
+            </div>
+        </article>
+
+        <div class="section-divider">✦ ✦ ✦</div>
+
+        <!-- 幻視與療癒 -->
+        <article class="plant-entry" id="clary-sage">
+            <div class="plant-header">
+                <span class="plant-icon">👁️</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">快樂鼠尾草</h2>
+                    <p class="plant-name-en">Clary Sage</p>
+                </div>
+                <span class="plant-volume">卷四・幻視之眼</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>快樂鼠尾草是植物界的致幻劑。它不負責給予快樂，它負責撕開現實的帷幕。當世界褪去色彩，唯有它能充當「第三隻眼」，強迫你直視靈魂深處那些瘋狂的、尖叫的色彩。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷四・幻視之眼》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">幻視</span>
+                <span class="keyword">第三隻眼</span>
+                <span class="keyword">真相</span>
+                <span class="keyword">色彩</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="yarrow">
+            <div class="plant-header">
+                <span class="plant-icon">⚔️</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">西洋蓍草</h2>
+                    <p class="plant-name-en">Yarrow / Achillea</p>
+                </div>
+                <span class="plant-volume">卷五・戰場與療癒</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>西洋蓍草是戰士的草藥。阿基里斯用它為士兵止血，因此它也叫「阿基里斯之草」。它能強制收縮傷口，但記住──有些傷口需要的不是縫合，而是清創。如果你在化膿的傷口上強行止血，毒素會倒流進血液，殺死整個人。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷五・戰場與療癒》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">止血</span>
+                <span class="keyword">清創</span>
+                <span class="keyword">戰士</span>
+                <span class="keyword">療癒的時機</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="st-johns-wort">
+            <div class="plant-header">
+                <span class="plant-icon">☀️</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">聖約翰草</h2>
+                    <p class="plant-name-en">St. John's Wort</p>
+                </div>
+                <span class="plant-volume">卷五・人造黎明</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>聖約翰草是瓶裝的太陽。在那些太陽缺席的日子裡，一滴用它製成的油，就能欺騙你的松果體，告訴靈魂：別怕，黑夜總會過去。但記住──人造的光，永遠無法取代真正的黎明。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷五・人造黎明》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">抗鬱</span>
+                <span class="keyword">人造光</span>
+                <span class="keyword">希望</span>
+                <span class="keyword">過渡</span>
+            </div>
+        </article>
+
+        <div class="section-divider">✦ ✦ ✦</div>
+
+        <!-- 傳播與生根 -->
+        <article class="plant-entry" id="dandelion">
+            <div class="plant-header">
+                <span class="plant-icon">🌬️</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">蒲公英</h2>
+                    <p class="plant-name-en">Dandelion</p>
+                </div>
+                <span class="plant-volume">卷七・傳播與生根 / 卷十八・漂泊與生根</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>蒲公英是風的信使。它的種子看似脆弱，卻擁有征服混凝土縫隙的野心。當你想要傳遞一個不可能的消息時，請向蒲公英學習：把你的意志拆解成一千份，交給風。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷七・傳播與生根》</p>
+            </blockquote>
+            <blockquote class="plant-quote">
+                <p>蒲公英的種子沒有根，卻能在風中旅行數公里，在混凝土的縫隙裡發芽。它不問土地是否準備好──它只問自己是否準備好落地生根。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十八・漂泊與生根》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">傳播</span>
+                <span class="keyword">韌性</span>
+                <span class="keyword">風</span>
+                <span class="keyword">生根</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="hyacinth">
+            <div class="plant-header">
+                <span class="plant-icon">💜</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">風信子</h2>
+                    <p class="plant-name-en">Hyacinth</p>
+                </div>
+                <span class="plant-volume">卷九・重生之痛</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>風信子是從鮮血中誕生的花。傳說中，太陽神阿波羅誤殺了摯友雅辛托斯，從他的血中開出了第一株風信子。所以風信子的花語是「悲傷的愛」與「永遠的懷念」。當你聞到它濃郁到幾乎令人窒息的香氣時，請記得──有些美，是從毀滅中重生的。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷九・重生之痛》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">重生</span>
+                <span class="keyword">悲傷</span>
+                <span class="keyword">懷念</span>
+                <span class="keyword">毀滅中的美</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="clover">
+            <div class="plant-header">
+                <span class="plant-icon">🍀</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">三葉草</h2>
+                    <p class="plant-name-en">Clover</p>
+                </div>
+                <span class="plant-volume">卷十・變異與希望</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>三葉草總是三片葉子長在一起，但每十萬株中會有一株長出第四片葉子。人們說那是幸運的象徵，但藥師知道──那只是生命在重壓下選擇了不一樣的形狀。當你看見四葉幸運草時，請記得問問自己：我願意成為那十萬分之一嗎？</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十・變異與希望》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">變異</span>
+                <span class="keyword">幸運</span>
+                <span class="keyword">獨特</span>
+                <span class="keyword">選擇</span>
+            </div>
+        </article>
+
+        <div class="section-divider">✦ ✦ ✦</div>
+
+        <!-- 耐心與真相 -->
+        <article class="plant-entry" id="fern">
+            <div class="plant-header">
+                <span class="plant-icon">🌿</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">鐵線蕨</h2>
+                    <p class="plant-name-en">Maidenhair Fern</p>
+                </div>
+                <span class="plant-volume">卷十一・耐心的藝術</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>鐵線蕨的葉柄細如鐵絲，卻能支撐起繁複如蕾絲的葉片。它的美來自脆弱與堅韌的平衡──當你試圖強行改變它的形狀時，它會碎裂；但如果你給它時間和適當的支撐，它會自己找到最美的姿態。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十一・耐心的藝術》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">耐心</span>
+                <span class="keyword">脆弱</span>
+                <span class="keyword">堅韌</span>
+                <span class="keyword">時間</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="mandrake">
+            <div class="plant-header">
+                <span class="plant-icon">🫚</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">曼德拉草</h2>
+                    <p class="plant-name-en">Mandrake</p>
+                </div>
+                <span class="plant-volume">卷十二・真相的毒性</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>曼德拉草的根莖長得像人形，傳說它在被拔出地面時會發出尖叫，那聲音能讓人發瘋。但藥師知道──真正的尖叫不是來自植物，是來自那些被迫面對自己最不想看見的真相的人。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十二・真相的毒性》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">真相</span>
+                <span class="keyword">面對</span>
+                <span class="keyword">尖叫</span>
+                <span class="keyword">恐懼</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="valerian">
+            <div class="plant-header">
+                <span class="plant-icon">😴</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">纈草</h2>
+                    <p class="plant-name-en">Valerian</p>
+                </div>
+                <span class="plant-volume">卷十三・不適的智慧</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>纈草的根莖聞起來像穿了三天的襪子，但它的鎮靜效果無可替代。這提醒我們：最有效的療癒，有時來自最不討喜的來源。如果你只追求舒適，你可能會錯過真正的解藥。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十三・不適的智慧》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">鎮靜</span>
+                <span class="keyword">不適</span>
+                <span class="keyword">解藥</span>
+                <span class="keyword">接受</span>
+            </div>
+        </article>
+
+        <div class="section-divider">✦ ✦ ✦</div>
+
+        <!-- 季節與勇氣 -->
+        <article class="plant-entry" id="snowdrop">
+            <div class="plant-header">
+                <span class="plant-icon">❄️</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">雪滴花</h2>
+                    <p class="plant-name-en">Snowdrop</p>
+                </div>
+                <span class="plant-volume">卷十四・耐寒之心</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>雪滴花總在冬末雪未融時綻放，純白的花瓣像一滴凝固的月光。它不等待春天，它自己就是春天的預言──在最冷的季節裡，提醒你土壤深處仍有生命在呼吸。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十四・耐寒之心》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">希望</span>
+                <span class="keyword">先驅</span>
+                <span class="keyword">耐寒</span>
+                <span class="keyword">預言</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="borage">
+            <div class="plant-header">
+                <span class="plant-icon">⭐</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">琉璃苣</h2>
+                    <p class="plant-name-en">Borage</p>
+                </div>
+                <span class="plant-volume">卷十五・見證與回歸</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>琉璃苣的星形藍花總朝著天空開放，像無數隻小小的眼睛在見證。傳說中，騎士在出征前會將它別在盔甲上，不是為了勇氣──而是為了記住：無論走得多遠，都有一片天空在等待他們回家。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十五・見證與回歸》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">見證</span>
+                <span class="keyword">回家</span>
+                <span class="keyword">騎士</span>
+                <span class="keyword">天空</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="gentian">
+            <div class="plant-header">
+                <span class="plant-icon">💙</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">龍膽</h2>
+                    <p class="plant-name-en">Gentian</p>
+                </div>
+                <span class="plant-volume">卷十六・苦澀與清澈</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>龍膽的根極苦，是中藥裡最苦的藥材之一。但它的花卻開在秋末高山之巔，湛藍如凍結的天空。它教會我們：最深的苦味，有時是為了抵達最高的清澈。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十六・苦澀與清澈》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">苦</span>
+                <span class="keyword">清澈</span>
+                <span class="keyword">高山</span>
+                <span class="keyword">蛻變</span>
+            </div>
+        </article>
+
+        <div class="section-divider">✦ ✦ ✦</div>
+
+        <!-- 毒與藥 -->
+        <article class="plant-entry" id="hemlock">
+            <div class="plant-header">
+                <span class="plant-icon">☠️</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">毒芹</h2>
+                    <p class="plant-name-en">Hemlock</p>
+                </div>
+                <span class="plant-volume">卷十七・毒與藥的雙生</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>毒芹的每一部分都含有劇毒，蘇格拉底便是飲此而死。但同一株植物，若經稀釋與精準操控，卻能緩解痙攣與疼痛。它提醒我們：最危險的東西，往往與解藥長在同一條根上。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十七・毒與藥的雙生》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">毒與藥</span>
+                <span class="keyword">雙生</span>
+                <span class="keyword">劑量</span>
+                <span class="keyword">轉化</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="lupine">
+            <div class="plant-header">
+                <span class="plant-icon">🔥</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">羽扇豆</h2>
+                    <p class="plant-name-en">Lupine</p>
+                </div>
+                <span class="plant-volume">卷十九・灰燼中的根系</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>羽扇豆的種子能在火災後的第一場雨中發芽，它的根會深入被燒焦的土壤，固定氮素，為新生命準備養分。它不逃避毀滅──它把毀滅當作重生的邀請函。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷十九・灰燼中的根系》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">重生</span>
+                <span class="keyword">灰燼</span>
+                <span class="keyword">先驅</span>
+                <span class="keyword">養分</span>
+            </div>
+        </article>
+
+        <div class="section-divider">✦ ✦ ✦</div>
+
+        <!-- 本質與永恆 -->
+        <article class="plant-entry" id="lemon-balm">
+            <div class="plant-header">
+                <span class="plant-icon">🍋</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">香蜂草</h2>
+                    <p class="plant-name-en">Lemon Balm</p>
+                </div>
+                <span class="plant-volume">卷二十・本質的記憶</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>香蜂草的葉片在被觸碰時會釋放檸檬香氣，即使被摘下、乾燥、壓碎，那份香氣依然存在。它教會我們：有些本質，連時間也無法剝奪。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷二十・本質的記憶》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">本質</span>
+                <span class="keyword">記憶</span>
+                <span class="keyword">永恆</span>
+                <span class="keyword">香氣</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="thyme">
+            <div class="plant-header">
+                <span class="plant-icon">🛡️</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">百里香</h2>
+                    <p class="plant-name-en">Thyme</p>
+                </div>
+                <span class="plant-volume">卷二十一・根系的記憶</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>百里香在古希臘代表勇氣，戰士出征前會用其沐浴；在中世紀，它被繡在圍巾上贈予騎士。但對藥師而言，它最重要的意義在於──即使被踐踏、被採摘，它依然年復一年地從同一個根系生出新枝。勇氣不是無所畏懼，是知道如何重生。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷二十一・根系的記憶》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">勇氣</span>
+                <span class="keyword">重生</span>
+                <span class="keyword">根系</span>
+                <span class="keyword">傳承</span>
+            </div>
+        </article>
+
+        <article class="plant-entry" id="moss">
+            <div class="plant-header">
+                <span class="plant-icon">🪨</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">苔蘚</h2>
+                    <p class="plant-name-en">Moss</p>
+                </div>
+                <span class="plant-volume">終卷・微小與永恆</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>苔蘚沒有花，沒有種子，靠孢子隨風傳播。它能在岩石上、樹皮上、甚至屋瓦的裂縫裡生存，用最卑微的姿態覆蓋最堅硬的表面。它教會我們：生命的循環不只依靠壯麗的開花，也依靠安靜的蔓延。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・終卷・微小與永恆》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">微小</span>
+                <span class="keyword">永恆</span>
+                <span class="keyword">蔓延</span>
+                <span class="keyword">卑微的力量</span>
+            </div>
+        </article>
+
+        <div class="section-divider">✦ ✦ ✦</div>
+
+        <!-- 藥師箴言 -->
+        <article class="plant-entry" id="healer-wisdom">
+            <div class="plant-header">
+                <span class="plant-icon">🌙</span>
+                <div class="plant-titles">
+                    <h2 class="plant-name-zh">藥師箴言</h2>
+                    <p class="plant-name-en">The Healer's Creed</p>
+                </div>
+                <span class="plant-volume">卷二・溫度</span>
+            </div>
+            <blockquote class="plant-quote">
+                <p>藥師不能只燃燒自己，孩子。你要學會像植物一樣，既要懂得如何將光分享出去，也要懂得如何為自己積蓄雨水。溫柔若沒有韌性，就會被一場風暴輕易折斷。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典》</p>
+            </blockquote>
+            <blockquote class="plant-quote">
+                <p>我們常誤以為療癒是陽光普照，其實更多時候，它像是在暴雨中遞過來的一杯熱薑茶。它治不好感冒，但能讓你在發抖時，重新感覺到指尖的存在。</p>
+                <p class="plant-source">──《逐光藥師的植物魔典・卷二・溫度》</p>
+            </blockquote>
+            <div class="plant-keywords">
+                <span class="keyword">療癒</span>
+                <span class="keyword">自我照顧</span>
+                <span class="keyword">韌性</span>
+                <span class="keyword">溫度</span>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p class="footer-quote">
+            「真正的藥師不是太陽，而是月亮。<br>
+            我們不產生光，我們只是溫柔地反射它，<br>
+            讓黑暗中的人知道──光還在那裡，只是暫時被遮住了。」
+        </p>
+        <p class="footer-source">──曦，寫於丈夫離世後的第一萬個日出</p>
+        
+        <div class="footer-links">
+            <a href="index.html" class="footer-link">首頁</a>
+            <a href="https://www.mirrorfiction.com/zh-Hant/book/23299" class="footer-link" target="_blank">鏡文學閱讀</a>
+            <a href="https://www.penana.com/story/178285" class="footer-link" target="_blank">Penana 閱讀</a>
+        </div>
+        
+        <p class="footer-copy">© 2025 Space Between Art. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${index * 0.05}s`;
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.plant-entry').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            observer.observe(el);
+        });
+
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

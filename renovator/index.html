@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>違章靈魂改建事務所 | Space Between Art</title>
+    <meta name="description" content="每一座違章建築，都是一道沒有被聽見的求救信號。都市奇幻心理療癒小說。">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --renovator-blue: #2C3E50;
+            --renovator-dark: #1A252F;
+            --renovator-steel: #5D6D7E;
+            --renovator-copper: #B87333;
+            --renovator-copper-light: #D4956A;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 37, 47, 0.95);
+            backdrop-filter: blur(15px);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--renovator-copper-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--renovator-copper-light); }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: white;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--renovator-dark) 0%, var(--renovator-blue) 100%);
+            overflow: hidden;
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: 
+                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(184, 115, 51, 0.2) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: glowPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.5; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--renovator-copper-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            color: var(--renovator-copper-light);
+            padding: 1.5rem 2rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            border-left: 4px solid var(--renovator-copper);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .meta-item {
+            text-align: center;
+            color: white;
+        }
+
+        .meta-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--renovator-copper-light);
+        }
+
+        .meta-label {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn.primary {
+            background: var(--renovator-copper);
+            color: white;
+        }
+
+        .cta-btn.primary:hover {
+            background: var(--renovator-copper-light);
+            transform: translateY(-2px);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-btn.secondary:hover {
+            border-color: white;
+        }
+
+        /* Synopsis Section */
+        .synopsis-section {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .synopsis-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--renovator-blue);
+        }
+
+        .synopsis-text {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--text-dark);
+        }
+
+        .synopsis-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .synopsis-highlight {
+            background: var(--renovator-dark);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        .synopsis-highlight h3 {
+            font-family: 'Noto Serif TC', serif;
+            color: var(--renovator-copper-light);
+            margin-bottom: 1rem;
+        }
+
+        .synopsis-highlight ul {
+            list-style: none;
+        }
+
+        .synopsis-highlight li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .synopsis-highlight li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--renovator-copper);
+        }
+
+        /* World Building */
+        .world-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--renovator-dark) 0%, var(--renovator-blue) 100%);
+            color: white;
+        }
+
+        .world-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .world-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .world-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .world-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .world-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            color: var(--renovator-copper-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .world-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Characters Preview */
+        .characters-section {
+            padding: 6rem 2rem;
+            background: var(--cream-dark);
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .character-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .character-header {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .character-card.protagonist .character-header {
+            background: linear-gradient(135deg, var(--renovator-blue) 0%, var(--renovator-steel) 100%);
+            color: white;
+        }
+
+        .character-card.partner .character-header {
+            background: linear-gradient(135deg, var(--renovator-copper) 0%, var(--renovator-copper-light) 100%);
+            color: white;
+        }
+
+        .character-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .character-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .character-title {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .character-body {
+            padding: 1.5rem;
+        }
+
+        .character-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--renovator-copper);
+        }
+
+        .character-desc {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tool-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            color: var(--renovator-blue);
+            margin-bottom: 0.3rem;
+        }
+
+        .tool-effect {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: var(--renovator-dark);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            color: var(--renovator-copper-light);
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: var(--renovator-dark);
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: flex; }
+            .hero-meta { gap: 1.5rem; }
+            .world-grid, .characters-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="nav-logo">
+            ← Space Between Art
+        </a>
+        <ul class="nav-links">
+            <li><a href="#synopsis">故事簡介</a></li>
+            <li><a href="#world">世界觀</a></li>
+            <li><a href="#characters">角色</a></li>
+            <li><a href="#tools">法器</a></li>
+            <li><a href="../index.html">返回首頁</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="選單">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-icon">🏗️</div>
+            <h1 class="hero-title">違章靈魂改建事務所</h1>
+            <p class="hero-subtitle">The Soul Renovator</p>
+            <p class="hero-tagline">
+                都市奇幻 ｜ 心理懸疑 ｜ 療癒
+            </p>
+            <div class="hero-quote">
+                「每一座違章建築，都是一道沒有被聽見的求救信號。」
+            </div>
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <div class="meta-value">25</div>
+                    <div class="meta-label">集數</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-value">7+</div>
+                    <div class="meta-label">心靈法器</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-value">優化中</div>
+                    <div class="meta-label">狀態</div>
+                </div>
+            </div>
+            <div class="hero-cta">
+                <a href="#synopsis" class="cta-btn primary">了解故事</a>
+                <a href="#characters" class="cta-btn secondary">認識角色</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Synopsis -->
+    <section class="synopsis-section" id="synopsis">
+        <div class="synopsis-container">
+            <h2 class="section-title">📖 故事簡介</h2>
+            <div class="synopsis-text">
+                <p>
+                    在S市的下城區，有一間沒有招牌的事務所。門口只掛著一塊銅製小牌：
+                    <strong>「路遙設計——專治疑難雜症」</strong>。
+                </p>
+                <p>
+                    路遙是一名「心靈建築改建師」。他擁有「藍圖之眼」——能看見每個人心中的「房子」。
+                    有人的房子是沒有門的玻璃屋，任何人都能隨意進出；
+                    有人的房子是銅牆鐵壁的碉堡，連光都進不去；
+                    還有人的房子，正在無聲地崩塌。
+                </p>
+                <p>
+                    這些「違章建築」是心理創傷的具象化——
+                    沒有處理的悲傷、被壓抑的憤怒、被遺忘的恐懼。
+                    路遙的工作，就是走進這些危樓，找出問題的根源，
+                    然後用他的工具——共感錘、透視尺、邊界磚——
+                    協助屋主重新改建自己的靈魂。
+                </p>
+            </div>
+
+            <div class="synopsis-highlight">
+                <h3>🔧 核心概念：心靈建築</h3>
+                <ul>
+                    <li><strong>玻璃屋（無門）</strong>——討好型人格，沒有邊界</li>
+                    <li><strong>碉堡（無窗）</strong>——迴避型依戀，拒絕親密</li>
+                    <li><strong>樣品屋（空心）</strong>——假性自體，為他人而活</li>
+                    <li><strong>無限樓梯</strong>——創傷後壓力，困在迴圈</li>
+                    <li><strong>密室</strong>——解離，被封印的記憶</li>
+                </ul>
+            </div>
+
+            <div class="synopsis-text">
+                <p>
+                    但路遙自己的房子，也是一片廢墟。
+                    多年前的一場意外，讓他失去了最重要的人，
+                    從此他只敢替別人蓋房子，卻不敢修繕自己的。
+                </p>
+                <p>
+                    直到心理醫師顧曼出現——
+                    她是路遙的轉介夥伴，也是唯一能讓他放下工具、坐下來喝杯咖啡的人。
+                    兩人之間的關係，在一次次的個案合作中，逐漸生長出某種超越夥伴的東西⋯⋯
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- World Building -->
+    <section class="world-section" id="world">
+        <h2 class="section-title" style="color: var(--renovator-copper-light);">🌆 世界觀設定</h2>
+        <div class="world-grid">
+            <div class="world-card">
+                <div class="world-icon">👁️</div>
+                <h3 class="world-title">藍圖之眼</h3>
+                <p class="world-desc">
+                    改建師的核心能力。啟動時，能看見他人心中的「房子」結構——
+                    包括牆壁材質、房間配置、隱藏的密室，以及正在崩塌的部位。
+                </p>
+            </div>
+            <div class="world-card">
+                <div class="world-icon">🏠</div>
+                <h3 class="world-title">心靈建築</h3>
+                <p class="world-desc">
+                    每個人的內心都是一座「房子」。健康的房子有門有窗、有穩固的地基；
+                    創傷會導致建築「違章」——多餘的牆、封死的門、危險的結構。
+                </p>
+            </div>
+            <div class="world-card">
+                <div class="world-icon">🔨</div>
+                <h3 class="world-title">改建法器</h3>
+                <p class="world-desc">
+                    改建師的工具箱：共感錘（敲開防禦）、透視尺（測量心理距離）、
+                    邊界磚（建立健康界限）、記憶灰泥（修補裂縫）⋯⋯
+                </p>
+            </div>
+            <div class="world-card">
+                <div class="world-icon">⚠️</div>
+                <h3 class="world-title">改建風險</h3>
+                <p class="world-desc">
+                    改建師若共情過深，可能被困在他人的建築裡；
+                    若強行拆除承重牆，可能導致屋主精神崩潰。
+                    最危險的，是愛上自己的委託人。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Characters -->
+    <section class="characters-section" id="characters">
+        <h2 class="section-title">👥 主要角色</h2>
+        <div class="characters-grid">
+            <div class="character-card protagonist">
+                <div class="character-header">
+                    <div class="character-avatar">🔧</div>
+                    <h3 class="character-name">路遙</h3>
+                    <p class="character-title">心靈建築改建師</p>
+                </div>
+                <div class="character-body">
+                    <p class="character-quote">
+                        「我見過太多廢墟了。我自己就住在其中一座。」
+                    </p>
+                    <p class="character-desc">
+                        32歲，擁有「藍圖之眼」的天賦改建師。
+                        外表冷漠，說話刻薄，但面對委託人的痛苦時，
+                        他會不顧一切地走進那些危樓。
+                        他的心靈建築是一片廢墟——
+                        多年前的創傷讓他不敢再建造任何東西。
+                    </p>
+                </div>
+            </div>
+
+            <div class="character-card partner">
+                <div class="character-header">
+                    <div class="character-avatar">📋</div>
+                    <h3 class="character-name">顧曼</h3>
+                    <p class="character-title">心理醫師</p>
+                </div>
+                <div class="character-body">
+                    <p class="character-quote">
+                        「你的廢墟需要有人陪你一起清理。我帶了手套。」
+                    </p>
+                    <p class="character-desc">
+                        30歲，上城區知名心理診所的主治醫師。
+                        專業、理性、永遠保持恰當的邊界——
+                        除了面對路遙的時候。
+                        她的心靈建築是一座井然有序的圖書館，
+                        但有一個房間，從不對任何人開放。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools -->
+    <section class="tools-section" id="tools">
+        <h2 class="section-title">🧰 改建法器</h2>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">👁️</div>
+                <div class="tool-name">藍圖之眼</div>
+                <div class="tool-effect">看見心靈建築</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🔨</div>
+                <div class="tool-name">共感錘</div>
+                <div class="tool-effect">敲開心理防禦</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">📏</div>
+                <div class="tool-name">透視尺</div>
+                <div class="tool-effect">測量心理距離</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🧱</div>
+                <div class="tool-name">邊界磚</div>
+                <div class="tool-effect">建立健康界限</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🪞</div>
+                <div class="tool-name">真實鏡</div>
+                <div class="tool-effect">照見被壓抑的真相</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🔑</div>
+                <div class="tool-name">骨頭鑰匙</div>
+                <div class="tool-effect">開啟封印的記憶</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-icon">🧹</div>
+                <div class="tool-name">記憶灰泥</div>
+                <div class="tool-effect">修補心靈裂縫</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2 class="cta-title">📚 即將推出</h2>
+        <p class="cta-desc">故事正在優化中，敬請期待完整版本</p>
+        <a href="../index.html#newsletter" class="cta-btn primary">訂閱更新通知</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">首頁</a>
+            <a href="../pharmacist/index.html">逐光的藥師</a>
+            <a href="../gallery.html">畫廊</a>
+            <a href="../community.html">互動區</a>
+        </div>
+        <p style="opacity: 0.6; font-size: 0.85rem;">© 2025 Space Between Art</p>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

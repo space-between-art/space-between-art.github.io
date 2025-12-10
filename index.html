@@ -3,36 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Between Art | 間隙藝術</title>
-    <meta name="description" content="在光與暗之間，故事發生。Space Between Art 療癒系創作空間，《逐光的藥師》現正連載中。">
-    <meta property="og:title" content="Space Between Art | 間隙藝術">
-    <meta property="og:description" content="療癒系創作空間。《逐光的藥師》都市奇幻療癒小說，現正連載中。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://space-between.art">
+    <title>Space Between Art | 在光與暗之間，故事發生</title>
+    <meta name="description" content="Space Between Art 創作工作室 - 療癒系都市奇幻小說《逐光的藥師》《違章靈魂改建事務所》">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --forest-green: #2C5F2D;
-            --forest-dark: #1A3A1B;
-            --forest-light: #4A7C4B;
-            --warm-gold: #D4A84B;
-            --gold-light: #E8C97A;
+            /* 共用色彩 */
             --cream: #FDF8F3;
             --cream-dark: #F5EDE4;
-            --parchment: #F9F3E8;
             --text-dark: #2A2A2A;
             --text-muted: #6B6B6B;
-            --shadow-soft: rgba(44, 95, 45, 0.08);
-            --shadow-medium: rgba(44, 95, 45, 0.15);
+            
+            /* 逐光的藥師 - 森林綠金系 */
+            --pharmacist-green: #2C5F2D;
+            --pharmacist-dark: #1A3A1B;
+            --pharmacist-light: #4A7C4B;
+            --pharmacist-gold: #D4A84B;
+            --pharmacist-gold-light: #E8C97A;
+            
+            /* 違章靈魂改建事務所 - 工業藍灰系 */
+            --renovator-blue: #2C3E50;
+            --renovator-dark: #1A252F;
+            --renovator-steel: #5D6D7E;
+            --renovator-copper: #B87333;
+            --renovator-copper-light: #D4956A;
+            
+            --shadow-soft: rgba(0,0,0,0.08);
+            --shadow-medium: rgba(0,0,0,0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
+        
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background: var(--cream);
@@ -41,179 +47,48 @@
             overflow-x: hidden;
         }
 
-        /* ===== 動畫關鍵幀 ===== */
-        
-        /* 光點脈動呼吸 */
-        @keyframes pulse-glow {
-            0%, 100% { 
-                transform: scale(1); 
-                opacity: 0.6;
-                filter: blur(0px);
-            }
-            50% { 
-                transform: scale(1.2); 
-                opacity: 1;
-                filter: blur(1px);
-            }
-        }
-
-        /* 光點漂浮 */
-        @keyframes float-particle {
-            0%, 100% { 
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0.4;
-            }
-            25% { 
-                transform: translate(10px, -15px) rotate(90deg);
-                opacity: 0.8;
-            }
-            50% { 
-                transform: translate(-5px, -25px) rotate(180deg);
-                opacity: 0.5;
-            }
-            75% { 
-                transform: translate(-15px, -10px) rotate(270deg);
-                opacity: 0.7;
-            }
-        }
-
-        /* 植物搖曳 */
-        @keyframes sway {
-            0%, 100% { transform: rotate(-3deg) translateX(0); }
-            50% { transform: rotate(3deg) translateX(5px); }
-        }
-
-        @keyframes sway-reverse {
-            0%, 100% { transform: rotate(3deg) translateX(0); }
-            50% { transform: rotate(-3deg) translateX(-5px); }
-        }
-
-        /* 星星閃爍 */
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.3); }
-        }
-
-        /* 漂浮上下 */
-        @keyframes float-gentle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* 文字逐字顯現 */
-        @keyframes reveal-text {
-            0% { 
-                opacity: 0; 
-                transform: translateY(20px);
-                filter: blur(10px);
-            }
-            100% { 
-                opacity: 1; 
-                transform: translateY(0);
-                filter: blur(0);
-            }
-        }
-
-        /* 光暈擴散 */
-        @keyframes glow-expand {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(212, 168, 75, 0.3);
-            }
-            50% { 
-                box-shadow: 0 0 40px rgba(212, 168, 75, 0.5), 0 0 60px rgba(212, 168, 75, 0.2);
-            }
-        }
-
-        /* ===== 漂浮光點容器 ===== */
-        .floating-particles {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: radial-gradient(circle, rgba(212, 168, 75, 0.8) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float-particle 15s infinite ease-in-out;
-        }
-
-        .particle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; animation-duration: 18s; }
-        .particle:nth-child(2) { top: 20%; left: 80%; animation-delay: 2s; animation-duration: 22s; }
-        .particle:nth-child(3) { top: 60%; left: 10%; animation-delay: 4s; animation-duration: 20s; }
-        .particle:nth-child(4) { top: 70%; left: 70%; animation-delay: 1s; animation-duration: 16s; }
-        .particle:nth-child(5) { top: 40%; left: 50%; animation-delay: 3s; animation-duration: 24s; }
-        .particle:nth-child(6) { top: 85%; left: 30%; animation-delay: 5s; animation-duration: 19s; }
-        .particle:nth-child(7) { top: 15%; left: 60%; animation-delay: 2.5s; animation-duration: 21s; }
-        .particle:nth-child(8) { top: 50%; left: 90%; animation-delay: 4.5s; animation-duration: 17s; }
-
-        .particle.large {
-            width: 6px;
-            height: 6px;
-            background: radial-gradient(circle, rgba(212, 168, 75, 0.6) 0%, rgba(245, 217, 152, 0.3) 50%, transparent 70%);
-        }
-
-        .particle.small {
-            width: 2px;
-            height: 2px;
-            background: rgba(212, 168, 75, 0.5);
-        }
-
-        /* Grain Overlay */
-        .grain-overlay {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            opacity: 0.025;
-            z-index: 9999;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
-
-        /* Navigation */
+        /* ==================== Navigation ==================== */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            padding: 1.2rem 3rem;
+            padding: 1rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to bottom, var(--cream) 0%, transparent 100%);
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 30px var(--shadow-soft);
             transition: all 0.4s ease;
         }
 
         nav.scrolled {
-            background: rgba(253, 248, 243, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 30px var(--shadow-soft);
+            padding: 0.8rem 3rem;
+            background: rgba(253, 248, 243, 0.98);
         }
 
         .nav-logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            color: var(--forest-green);
+            color: var(--text-dark);
             text-decoration: none;
-            letter-spacing: 0.05em;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
+            transition: transform 0.3s ease;
         }
 
-        .nav-logo-icon {
-            flex-shrink: 0;
-        }
+        .nav-logo:hover { transform: scale(1.02); }
+
+        .nav-logo svg { transition: transform 0.5s ease; }
+        .nav-logo:hover svg { transform: rotate(10deg); }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
             list-style: none;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -221,7 +96,7 @@
             color: var(--text-dark);
             text-decoration: none;
             position: relative;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .nav-links a::after {
@@ -230,881 +105,638 @@
             bottom: -4px;
             left: 0;
             width: 0;
-            height: 1px;
-            background: var(--warm-gold);
+            height: 2px;
+            background: linear-gradient(90deg, var(--pharmacist-green), var(--renovator-blue));
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover { color: var(--forest-green); }
         .nav-links a:hover::after { width: 100%; }
 
         .mobile-menu-btn {
             display: none;
+            flex-direction: column;
+            gap: 5px;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 0.5rem;
+            padding: 5px;
         }
 
         .mobile-menu-btn span {
-            display: block;
             width: 24px;
             height: 2px;
-            background: var(--forest-green);
-            margin: 5px 0;
-            transition: all 0.3s;
+            background: var(--text-dark);
+            transition: all 0.3s ease;
         }
 
-        .mobile-menu-btn.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .mobile-menu-btn.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-btn.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        /* Hero Section */
+        /* ==================== Hero Section ==================== */
         .hero {
             min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 50%, #E8DFD5 100%);
+            background: linear-gradient(135deg, 
+                var(--pharmacist-dark) 0%, 
+                var(--renovator-dark) 50%,
+                var(--pharmacist-dark) 100%);
         }
 
         .hero-bg {
             position: absolute;
             inset: 0;
+            opacity: 0.15;
+            background-image: 
+                radial-gradient(circle at 20% 30%, var(--pharmacist-gold) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, var(--renovator-copper) 0%, transparent 40%);
+            animation: heroFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            inset: 0;
             overflow: hidden;
+            pointer-events: none;
         }
 
-        .hero-bg::before {
-            content: '';
+        .particle {
             position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(ellipse at center, rgba(212, 168, 75, 0.1) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
+            width: 4px;
+            height: 4px;
+            background: var(--pharmacist-gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 15s infinite;
         }
 
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -20%;
-            width: 60%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, rgba(44, 95, 45, 0.06) 0%, transparent 70%);
-            animation: float 25s ease-in-out infinite reverse;
+        .particle:nth-child(odd) {
+            background: var(--renovator-copper);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(30px, 20px) rotate(5deg); }
+        @keyframes particleFloat {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { opacity: 0; transform: translateY(-100vh) scale(1); }
         }
 
         .hero-content {
-            text-align: center;
+            position: relative;
             z-index: 10;
+            text-align: center;
             padding: 2rem;
-            max-width: 800px;
+            max-width: 900px;
         }
 
         .hero-logo {
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.3s forwards;
+            margin-bottom: 2rem;
+            animation: logoReveal 1.5s ease-out;
         }
 
-        .hero-logo svg {
-            filter: drop-shadow(0 0 20px rgba(212, 168, 75, 0.3));
-            animation: glow-expand 4s ease-in-out infinite;
-        }
-
-        /* Hero 光點裝飾 */
-        .hero-lights {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        .hero-light {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(212, 168, 75, 0.6) 0%, transparent 70%);
-            animation: pulse-glow 3s ease-in-out infinite;
-        }
-
-        .hero-light:nth-child(1) {
-            width: 8px; height: 8px;
-            top: 25%; left: 20%;
-            animation-delay: 0s;
-        }
-        .hero-light:nth-child(2) {
-            width: 5px; height: 5px;
-            top: 35%; right: 25%;
-            animation-delay: 1s;
-        }
-        .hero-light:nth-child(3) {
-            width: 6px; height: 6px;
-            bottom: 30%; left: 30%;
-            animation-delay: 0.5s;
-        }
-        .hero-light:nth-child(4) {
-            width: 4px; height: 4px;
-            top: 45%; left: 15%;
-            animation-delay: 1.5s;
-        }
-        .hero-light:nth-child(5) {
-            width: 7px; height: 7px;
-            bottom: 25%; right: 20%;
-            animation-delay: 2s;
-        }
-
-        /* 植物裝飾動畫 */
-        .hero-plant {
-            position: absolute;
-            z-index: 2;
-            opacity: 0.15;
-        }
-
-        .hero-plant-left {
-            left: 5%;
-            bottom: 10%;
-            animation: sway 6s ease-in-out infinite;
-            transform-origin: bottom center;
-        }
-
-        .hero-plant-right {
-            right: 5%;
-            bottom: 15%;
-            animation: sway-reverse 7s ease-in-out infinite;
-            transform-origin: bottom center;
-        }
-
-        .hero-symbol {
-            font-size: 2.5rem;
-            color: var(--warm-gold);
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.3s forwards;
+        @keyframes logoReveal {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .hero-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            font-weight: 500;
-            color: var(--forest-green);
-            letter-spacing: 0.12em;
-            margin-bottom: 0.75rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.5s forwards;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 400;
+            color: white;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            animation: titleFade 1.5s ease-out 0.3s both;
         }
 
         .hero-subtitle {
             font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1rem, 2vw, 1.2rem);
-            color: var(--text-muted);
-            font-weight: 400;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.7s forwards;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 2.5rem;
+            animation: titleFade 1.5s ease-out 0.6s both;
+        }
+
+        @keyframes titleFade {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-tagline {
             font-family: 'Noto Serif TC', serif;
             font-size: 1rem;
-            color: var(--forest-green);
-            letter-spacing: 0.08em;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.9s forwards;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.3em;
+            margin-bottom: 3rem;
+            animation: titleFade 1.5s ease-out 0.9s both;
         }
 
-        .hero-scroll {
-            position: absolute;
-            bottom: 2.5rem;
-            left: 50%;
-            transform: translateX(-50%);
+        .hero-cta {
             display: flex;
-            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: titleFade 1.5s ease-out 1.2s both;
+        }
+
+        .cta-btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.4s ease;
+            display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--text-muted);
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.2s forwards;
         }
 
-        .hero-scroll::after {
-            content: '';
-            width: 1px;
-            height: 35px;
-            background: linear-gradient(to bottom, var(--warm-gold), transparent);
-            animation: scrollLine 2s ease-in-out infinite;
+        .cta-btn.primary {
+            background: linear-gradient(135deg, var(--pharmacist-gold), var(--pharmacist-gold-light));
+            color: var(--pharmacist-dark);
+            box-shadow: 0 10px 40px rgba(212, 168, 75, 0.4);
         }
 
-        @keyframes scrollLine {
-            0%, 100% { transform: scaleY(1); opacity: 1; }
-            50% { transform: scaleY(0.5); opacity: 0.5; }
+        .cta-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(212, 168, 75, 0.5);
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.4);
         }
 
-        /* Section Base */
-        section {
+        .cta-btn.secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ==================== Works Section ==================== */
+        .works-section {
             padding: 6rem 2rem;
-            position: relative;
+            background: var(--cream);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .section-label {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.8rem;
-            letter-spacing: 0.25em;
-            color: var(--warm-gold);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 4px;
             text-transform: uppercase;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.8rem;
         }
 
         .section-title {
             font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-            color: var(--forest-green);
-            font-weight: 600;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--text-dark);
         }
 
-        /* Featured Work */
-        .featured {
-            background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%);
-        }
-
-        .featured-container {
-            max-width: 1100px;
+        /* Work Cards - Split Design */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .featured-card {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 3rem;
-            align-items: center;
-            background: white;
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 60px var(--shadow-medium);
-        }
-
-        .featured-visual {
+        .work-card {
             position: relative;
-            aspect-ratio: 3/4;
-            background: linear-gradient(145deg, var(--forest-green) 0%, var(--forest-dark) 100%);
-            border-radius: 8px;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(44, 95, 45, 0.25);
+            min-height: 600px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .featured-visual::before {
+        .work-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .work-card::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: 
-                radial-gradient(circle at 30% 70%, rgba(212, 168, 75, 0.25) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+            z-index: 1;
+            transition: opacity 0.5s ease;
         }
 
-        .featured-visual-content {
-            position: absolute;
-            inset: 0;
+        /* 逐光的藥師 Card */
+        .work-card.pharmacist {
+            background: linear-gradient(180deg, 
+                var(--pharmacist-dark) 0%, 
+                var(--pharmacist-green) 100%);
+        }
+
+        .work-card.pharmacist::before {
+            background: radial-gradient(circle at 30% 70%, 
+                rgba(212, 168, 75, 0.3) 0%, 
+                transparent 50%);
+        }
+
+        /* 違章靈魂改建事務所 Card */
+        .work-card.renovator {
+            background: linear-gradient(180deg, 
+                var(--renovator-dark) 0%, 
+                var(--renovator-blue) 100%);
+        }
+
+        .work-card.renovator::before {
+            background: radial-gradient(circle at 70% 30%, 
+                rgba(184, 115, 51, 0.3) 0%, 
+                transparent 50%);
+        }
+
+        .work-card-content {
+            position: relative;
+            z-index: 10;
+            padding: 3rem;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--cream);
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .book-symbol { font-size: 3rem; margin-bottom: 1rem; opacity: 0.9; }
-
-        .book-title-zh {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .book-title-en {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            letter-spacing: 0.1em;
-            font-style: italic;
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--warm-gold);
             color: white;
-            font-size: 0.7rem;
-            padding: 0.4rem 0.8rem;
-            border-radius: 50px;
-            font-weight: 500;
         }
 
-        .featured-info h3 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.6rem;
-            color: var(--forest-green);
-            margin-bottom: 0.75rem;
-        }
-
-        .featured-tags {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            padding: 0.35rem 0.9rem;
-            background: rgba(44, 95, 45, 0.08);
-            color: var(--forest-green);
-            border-radius: 50px;
-        }
-
-        .featured-description {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-            line-height: 1.9;
-        }
-
-        .featured-quote {
-            font-family: 'Noto Serif TC', serif;
-            font-style: italic;
-            color: var(--forest-green);
-            padding: 1.25rem;
-            background: rgba(212, 168, 75, 0.1);
-            border-left: 3px solid var(--warm-gold);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .featured-meta {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            flex-wrap: wrap;
-        }
-
-        .featured-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .featured-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
+        .work-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.5rem;
-            font-size: 0.9rem;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            gap: 0.4rem;
+            padding: 0.4rem 1rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            width: fit-content;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
         }
 
-        .btn-primary {
-            background: var(--forest-green);
-            color: var(--cream);
-            border: 2px solid var(--forest-green);
+        .work-card.pharmacist .work-badge {
+            background: rgba(212, 168, 75, 0.3);
+            color: var(--pharmacist-gold-light);
         }
 
-        .btn-primary:hover {
-            background: var(--forest-dark);
-            border-color: var(--forest-dark);
+        .work-card.renovator .work-badge {
+            background: rgba(184, 115, 51, 0.3);
+            color: var(--renovator-copper-light);
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--forest-green);
-            border: 2px solid var(--forest-green);
-        }
-
-        .btn-secondary:hover {
-            background: var(--forest-green);
-            color: var(--cream);
-        }
-
-        .btn-penana {
-            background: #FF6B35;
-            color: white;
-            border: 2px solid #FF6B35;
-        }
-
-        .btn-penana:hover {
-            background: #E55A2B;
-            border-color: #E55A2B;
-        }
-
-        .btn-gold {
-            background: transparent;
-            color: var(--warm-gold);
-            border: 2px solid var(--warm-gold);
-        }
-
-        .btn-gold:hover {
-            background: var(--warm-gold);
-            color: white;
-        }
-
-        /* Platform Info */
-        .platform-info {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0,0,0,0.08);
-        }
-
-        .platform-title {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.05em;
-        }
-
-        .platforms {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .platform-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--text-dark);
-        }
-
-        .platform-item .free {
-            color: var(--forest-green);
-            font-weight: 500;
-        }
-
-        /* Grimoire Section - NEW */
-        .grimoire {
-            background: linear-gradient(180deg, var(--cream) 0%, var(--parchment) 50%, var(--cream-dark) 100%);
-        }
-
-        .grimoire-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .grimoire-intro {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-
-        .grimoire-intro p {
+        .work-title-zh {
             font-family: 'Noto Serif TC', serif;
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 2;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
         }
 
-        .grimoire-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .grimoire-card {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            box-shadow: 0 8px 30px var(--shadow-soft);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            border: 1px solid transparent;
-        }
-
-        .grimoire-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(44, 95, 45, 0.12);
-            border-color: var(--warm-gold);
-        }
-
-        .grimoire-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .grimoire-name {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            color: var(--forest-green);
-            margin-bottom: 0.3rem;
-        }
-
-        .grimoire-eng {
+        .work-title-en {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        .grimoire-keyword {
-            font-size: 0.7rem;
-            color: var(--warm-gold);
-            margin-top: 0.5rem;
-        }
-
-        .grimoire-cta {
-            text-align: center;
-        }
-
-        .grimoire-quote {
-            font-family: 'Noto Serif TC', serif;
-            font-style: italic;
-            color: var(--forest-green);
             font-size: 1rem;
-            max-width: 500px;
-            margin: 0 auto 1.5rem;
-            line-height: 1.9;
+            opacity: 0.7;
+            font-style: italic;
+            margin-bottom: 1.5rem;
         }
 
-        /* Characters Section */
-        .characters {
-            background: var(--cream);
-        }
-
-        .characters-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .character-card {
-            text-align: center;
-            padding: 1.5rem 1rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 8px 30px var(--shadow-soft);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            display: block;
-        }
-
-        .character-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(44, 95, 45, 0.12);
-        }
-
-        .character-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
+        .work-genre {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
         }
 
-        .character-card:nth-child(1) .character-avatar { background: linear-gradient(135deg, #3D7A3E, #2C5F2D); }
-        .character-card:nth-child(2) .character-avatar { background: linear-gradient(135deg, #F5A962, #D4A84B); }
-        .character-card:nth-child(3) .character-avatar { background: linear-gradient(135deg, #8B9DC3, #7B8FB8); }
-        .character-card:nth-child(4) .character-avatar { background: linear-gradient(135deg, #F7C873, #F5B041); }
-
-        .character-name {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.15rem;
-            color: var(--forest-green);
-            margin-bottom: 0.3rem;
-        }
-
-        .character-role {
+        .genre-tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
             font-size: 0.75rem;
-            color: var(--warm-gold);
-            margin-bottom: 0.75rem;
         }
 
-        .character-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+        .work-description {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .work-highlight {
+            padding: 1.5rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            border-left: 3px solid;
+        }
+
+        .work-card.pharmacist .work-highlight {
+            border-color: var(--pharmacist-gold);
+        }
+
+        .work-card.renovator .work-highlight {
+            border-color: var(--renovator-copper);
+        }
+
+        .highlight-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-style: italic;
+            font-size: 1rem;
             line-height: 1.6;
         }
 
-        /* About Section */
-        .about {
-            background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+        .work-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .about-content {
-            max-width: 650px;
-            margin: 0 auto;
+        .stat-item {
             text-align: center;
         }
 
-        .about-text {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            line-height: 2;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-values {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin-top: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .value-item { text-align: center; }
-
-        .value-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
-
-        .value-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 0.9rem;
-            color: var(--forest-green);
-            margin-bottom: 0.2rem;
-        }
-
-        .value-subtitle {
+        .stat-value {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-style: italic;
+            font-size: 1.8rem;
+            font-weight: 600;
         }
 
-        /* Newsletter Section */
-        .newsletter {
-            background: linear-gradient(135deg, var(--forest-green) 0%, var(--forest-dark) 100%);
-            color: var(--cream);
-            text-align: center;
+        .work-card.pharmacist .stat-value {
+            color: var(--pharmacist-gold-light);
         }
 
-        .newsletter .section-label {
-            color: var(--gold-light);
+        .work-card.renovator .stat-value {
+            color: var(--renovator-copper-light);
         }
 
-        .newsletter .section-title {
-            color: var(--cream);
+        .stat-label {
+            font-size: 0.75rem;
+            opacity: 0.7;
         }
 
-        .newsletter-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .newsletter-desc {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.95;
-        }
-
-        .newsletter-benefits {
-            list-style: none;
-            text-align: left;
-            max-width: 400px;
-            margin: 0 auto 2rem;
-        }
-
-        .newsletter-benefits li {
-            padding: 0.6rem 0;
-            font-size: 0.95rem;
-            opacity: 0.9;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .newsletter-benefits li:last-child {
-            border-bottom: none;
-        }
-
-        .newsletter-form {
+        .work-cta {
             display: flex;
-            flex-direction: column;
-            align-items: center;
             gap: 1rem;
         }
 
-        .btn-subscribe {
-            background: var(--warm-gold);
-            color: var(--forest-dark);
-            border: 2px solid var(--warm-gold);
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 50px;
+        .work-btn {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 12px;
             text-decoration: none;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(212, 168, 75, 0.4);
         }
 
-        .btn-subscribe:hover {
-            background: var(--gold-light);
-            border-color: var(--gold-light);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(212, 168, 75, 0.5);
+        .work-btn.primary {
+            color: var(--pharmacist-dark);
         }
 
-        .newsletter-note {
-            font-size: 0.8rem;
-            opacity: 0.6;
+        .work-card.pharmacist .work-btn.primary {
+            background: var(--pharmacist-gold);
         }
 
-        /* Contact Section */
-        .contact {
+        .work-card.renovator .work-btn.primary {
+            background: var(--renovator-copper);
+            color: white;
+        }
+
+        .work-btn.secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .work-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Decorative Elements */
+        .work-deco {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            font-size: 8rem;
+            opacity: 0.08;
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1;
+        }
+
+        /* ==================== About Section ==================== */
+        .about-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--pharmacist-dark) 0%, var(--renovator-dark) 100%);
+            color: white;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-title span {
+            background: linear-gradient(90deg, var(--pharmacist-gold), var(--renovator-copper));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 2;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-item {
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-desc {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* ==================== Newsletter Section ==================== */
+        .newsletter-section {
+            padding: 5rem 2rem;
             background: var(--cream-dark);
             text-align: center;
         }
 
-        .contact-email {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: var(--forest-green);
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .newsletter-desc {
+            color: var(--text-muted);
             margin-bottom: 2rem;
         }
 
-        .contact-email a {
-            color: var(--forest-green);
-            text-decoration: none;
-            border-bottom: 1px solid var(--warm-gold);
-            transition: color 0.3s;
-        }
-
-        .contact-email a:hover { color: var(--warm-gold); }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
+        .newsletter-btn {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--forest-green);
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--pharmacist-green), var(--renovator-blue));
+            color: white;
             text-decoration: none;
-            box-shadow: 0 4px 15px var(--shadow-soft);
+            border-radius: 50px;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .social-link svg {
-            width: 24px;
-            height: 24px;
-            fill: var(--forest-green);
-            transition: fill 0.3s ease;
+        .newsletter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(44, 95, 45, 0.3);
         }
 
-        .social-link:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(44, 95, 45, 0.15);
-            background: var(--forest-green);
+        /* ==================== Footer ==================== */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--pharmacist-gold-light);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
             color: white;
         }
 
-        .social-link:hover svg {
-            fill: white;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--forest-dark);
-            color: var(--cream);
-            padding: 2.5rem 2rem;
+        .footer-bottom {
             text-align: center;
-        }
-
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--gold-light);
-        }
-
-        .footer-tagline {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.85rem;
-            opacity: 0.7;
-            margin-bottom: 1.5rem;
+            opacity: 0.6;
         }
 
-        .footer-copy {
-            font-size: 0.75rem;
-            opacity: 0.5;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .featured-card {
+        /* ==================== Mobile Responsive ==================== */
+        @media (max-width: 1024px) {
+            .works-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                max-width: 600px;
             }
-
-            .featured-visual {
-                max-width: 280px;
-                margin: 0 auto;
-            }
-
-            .characters-grid,
-            .grimoire-grid {
-                grid-template-columns: repeat(2, 1fr);
+            
+            .work-card {
+                min-height: 550px;
             }
         }
 
         @media (max-width: 768px) {
-            nav { 
-                padding: 1rem 1.5rem; 
-            }
-
-            .nav-logo {
-                font-size: 1.1rem;
+            nav {
+                padding: 1rem 1.5rem;
             }
 
             .nav-links {
@@ -1116,473 +748,267 @@
                 background: var(--cream);
                 flex-direction: column;
                 padding: 1.5rem;
-                gap: 1.25rem;
-                box-shadow: 0 10px 30px var(--shadow-soft);
-                z-index: 1000;
+                gap: 1rem;
+                box-shadow: 0 10px 30px var(--shadow-medium);
             }
 
-            .nav-links.active { 
-                display: flex !important; 
-            }
-            
-            .mobile-menu-btn { 
-                display: block !important;
-                z-index: 1001;
+            .nav-links.active {
+                display: flex;
             }
 
-            section { padding: 4rem 1.5rem; }
-            .about-values { gap: 1.5rem; }
-            .featured-buttons { flex-direction: column; }
-            .btn { justify-content: center; }
-        }
+            .mobile-menu-btn {
+                display: flex;
+            }
 
-        @media (max-width: 480px) {
-            .characters-grid,
-            .grimoire-grid {
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-features {
                 grid-template-columns: 1fr;
-                max-width: 280px;
-                margin: 0 auto;
             }
 
-            .featured-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .platforms {
-                flex-direction: column;
-                gap: 0.75rem;
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
         }
 
-        /* Scroll Animations */
+        /* ==================== Animations ==================== */
         .fade-in {
-            opacity: 1;
-            transform: translateY(0);
-            transition: all 0.7s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
         }
 
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Logo 核心光點脈動 */
-        .logo-core-light {
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-
-        /* 角色卡片 hover 光效 */
-        .character-card:hover .character-avatar {
-            animation: glow-expand 1s ease-in-out infinite;
-        }
-
-        /* 植物魔典卡片漂浮 */
-        .grimoire-card:hover {
-            animation: float-gentle 2s ease-in-out infinite;
-        }
-
-        /* 按鈕 hover 光效 */
-        .btn-primary:hover {
-            animation: glow-expand 1.5s ease-in-out infinite;
-        }
-
-        /* 減少動畫（無障礙） */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-            }
-            .floating-particles {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="grain-overlay"></div>
-
-    <!-- 漂浮光點 -->
-    <div class="floating-particles">
-        <div class="particle large"></div>
-        <div class="particle small"></div>
-        <div class="particle"></div>
-        <div class="particle large"></div>
-        <div class="particle small"></div>
-        <div class="particle"></div>
-        <div class="particle small"></div>
-        <div class="particle large"></div>
-    </div>
-
     <!-- Navigation -->
-    <nav>
-        <a href="#" class="nav-logo">
-            <svg class="nav-logo-icon" viewBox="0 0 40 40" width="32" height="32">
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 40 40" width="36" height="36">
                 <defs>
-                    <linearGradient id="navLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#F5D998"/>
-                        <stop offset="50%" style="stop-color:#D4A84B"/>
-                        <stop offset="100%" style="stop-color:#B8943F"/>
+                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#D4A84B"/>
+                        <stop offset="100%" style="stop-color:#B87333"/>
                     </linearGradient>
                 </defs>
-                <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F2D" stroke-width="1.5"/>
-                <text x="20" y="26" font-family="Georgia, serif" font-size="18" fill="url(#navLogoGold)" text-anchor="middle">S</text>
+                <circle cx="20" cy="20" r="18" fill="none" stroke="#2A2A2A" stroke-width="1.5"/>
+                <text x="20" y="26" font-family="Cormorant Garamond, serif" font-size="18" fill="url(#logoGradient)" text-anchor="middle">S</text>
             </svg>
             Space Between Art
         </a>
         <ul class="nav-links">
-            <li><a href="#home">首頁</a></li>
+            <li><a href="#works">作品</a></li>
             <li><a href="gallery.html">畫廊</a></li>
-            <li><a href="works.html">創作區</a></li>
-            <li><a href="shop.html">商店</a></li>
             <li><a href="community.html">互動區</a></li>
-            <li><a href="#contact">聯絡</a></li>
+            <li><a href="#about">關於</a></li>
+            <li><a href="#newsletter">訂閱</a></li>
         </ul>
         <button class="mobile-menu-btn" aria-label="選單">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="hero-bg"></div>
-        
-        <!-- 光點裝飾 -->
-        <div class="hero-lights">
-            <div class="hero-light"></div>
-            <div class="hero-light"></div>
-            <div class="hero-light"></div>
-            <div class="hero-light"></div>
-            <div class="hero-light"></div>
+        <div class="particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 0.5s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 3.5s;"></div>
         </div>
-
-        <!-- 植物裝飾 - 左 -->
-        <svg class="hero-plant hero-plant-left" width="120" height="200" viewBox="0 0 120 200">
-            <g fill="#2C5F2D">
-                <ellipse cx="60" cy="180" rx="8" ry="40" transform="rotate(-10 60 180)"/>
-                <ellipse cx="45" cy="160" rx="6" ry="35" transform="rotate(-20 45 160)"/>
-                <ellipse cx="75" cy="165" rx="6" ry="30" transform="rotate(15 75 165)"/>
-                <ellipse cx="35" cy="140" rx="5" ry="25" transform="rotate(-30 35 140)"/>
-                <ellipse cx="80" cy="145" rx="5" ry="28" transform="rotate(25 80 145)"/>
-            </g>
-        </svg>
-
-        <!-- 植物裝飾 - 右 -->
-        <svg class="hero-plant hero-plant-right" width="120" height="200" viewBox="0 0 120 200">
-            <g fill="#2C5F2D">
-                <ellipse cx="60" cy="180" rx="8" ry="40" transform="rotate(10 60 180)"/>
-                <ellipse cx="75" cy="160" rx="6" ry="35" transform="rotate(20 75 160)"/>
-                <ellipse cx="45" cy="165" rx="6" ry="30" transform="rotate(-15 45 165)"/>
-                <ellipse cx="85" cy="140" rx="5" ry="25" transform="rotate(30 85 140)"/>
-                <ellipse cx="40" cy="145" rx="5" ry="28" transform="rotate(-25 40 145)"/>
-            </g>
-        </svg>
-
+        
         <div class="hero-content">
-            <!-- SVG Logo -->
             <div class="hero-logo">
-                <svg viewBox="0 0 200 200" width="120" height="120">
+                <svg viewBox="0 0 120 120" width="100" height="100">
                     <defs>
-                        <linearGradient id="heroLogoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <linearGradient id="heroGold" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" style="stop-color:#F5D998"/>
                             <stop offset="50%" style="stop-color:#D4A84B"/>
-                            <stop offset="100%" style="stop-color:#B8943F"/>
+                            <stop offset="100%" style="stop-color:#B87333"/>
                         </linearGradient>
-                        <radialGradient id="heroGlow" cx="50%" cy="30%" r="50%">
-                            <stop offset="0%" style="stop-color:#D4A84B;stop-opacity:0.3"/>
-                            <stop offset="100%" style="stop-color:#D4A84B;stop-opacity:0"/>
-                        </radialGradient>
                     </defs>
-                    <circle cx="100" cy="100" r="90" fill="none" stroke="#D4A84B" stroke-width="1" opacity="0.4"/>
-                    <circle cx="100" cy="100" r="80" fill="none" stroke="#D4A84B" stroke-width="0.5" opacity="0.2"/>
-                    <circle cx="100" cy="60" r="15" fill="#D4A84B" opacity="0.15"/>
-                    <circle cx="100" cy="60" r="8" fill="#D4A84B" opacity="0.3"/>
-                    <circle cx="100" cy="60" r="3" fill="#F5D998" opacity="0.8" class="logo-core-light"/>
-                    <text x="100" y="115" font-family="Georgia, serif" font-size="70" fill="url(#heroLogoGold)" text-anchor="middle">S</text>
-                    <text x="100" y="150" font-family="Georgia, serif" font-size="12" fill="#D4A84B" text-anchor="middle" letter-spacing="4" opacity="0.7">SPACE BETWEEN</text>
-                    <text x="100" y="168" font-family="Georgia, serif" font-size="10" fill="#D4A84B" text-anchor="middle" letter-spacing="3" opacity="0.5">ART</text>
+                    <circle cx="60" cy="60" r="55" fill="none" stroke="url(#heroGold)" stroke-width="2"/>
+                    <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="60" y="75" font-family="Cormorant Garamond, serif" font-size="50" fill="url(#heroGold)" text-anchor="middle">S</text>
                 </svg>
             </div>
             <h1 class="hero-title">Space Between Art</h1>
-            <p class="hero-subtitle">療癒系創作空間</p>
-            <p class="hero-tagline">在光與暗之間，故事發生</p>
+            <p class="hero-subtitle">在光與暗之間，故事發生</p>
+            <p class="hero-tagline">療癒系都市奇幻創作工作室</p>
+            <div class="hero-cta">
+                <a href="#works" class="cta-btn primary">
+                    <span>探索作品</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="community.html" class="cta-btn secondary">
+                    <span>心光諮詢室</span>
+                </a>
+            </div>
         </div>
-        <div class="hero-scroll">SCROLL</div>
+
+        <div class="scroll-indicator">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
     </section>
 
-    <!-- Featured Work -->
-    <section class="featured" id="featured">
+    <!-- Works Section -->
+    <section class="works-section" id="works">
         <div class="section-header fade-in">
-            <p class="section-label">Now Serializing</p>
-            <h2 class="section-title">現正連載</h2>
+            <p class="section-label">Our Stories</p>
+            <h2 class="section-title">作品系列</h2>
         </div>
-        <div class="featured-container">
-            <div class="featured-card fade-in">
-                <div class="featured-visual">
-                    <span class="featured-badge">連載中</span>
-                    <div class="featured-visual-content">
-                        <div class="book-symbol">🌿</div>
-                        <h3 class="book-title-zh">逐光的藥師</h3>
-                        <p class="book-title-en">The Light Chaser</p>
+
+        <div class="works-grid">
+            <!-- 逐光的藥師 -->
+            <div class="work-card pharmacist fade-in">
+                <div class="work-deco">🌿</div>
+                <div class="work-card-content">
+                    <div class="work-badge">
+                        <span>✦</span> 完結・115,000字
                     </div>
-                </div>
-                <div class="featured-info">
-                    <h3>《逐光的藥師》</h3>
-                    <div class="featured-tags">
-                        <span class="tag">都市奇幻</span>
-                        <span class="tag">療癒</span>
-                        <span class="tag">懸疑</span>
-                        <span class="tag">心理</span>
+                    <h3 class="work-title-zh">逐光的藥師</h3>
+                    <p class="work-title-en">The Light-Chasing Pharmacist</p>
+                    <div class="work-genre">
+                        <span class="genre-tag">都市奇幻</span>
+                        <span class="genre-tag">療癒</span>
+                        <span class="genre-tag">植物魔法</span>
                     </div>
-                    <p class="featured-description">
-                        二手書店店主曜擁有看見「心光」的能力——每個人胸口的光芒，映照出他們的情緒與傷痛。當社區接連發生心靈崩潰事件，曜發現這一切指向十五年前被掩蓋的公園悲劇。他必須在三天內喚醒集體記憶、淨化吞噬心靈的瘴氣，同時面對自己童年最深的創傷。
+                    <p class="work-description">
+                        二十三歲的曜經營著「間隙書屋」二手書店，擁有能看見人們「心光」的特殊能力。
+                        在社工師晴的協助下，他用植物的芳香與智慧，療癒社區居民被黑暗侵蝕的靈魂。
                     </p>
-                    <blockquote class="featured-quote">
-                        「每個人胸口都有一團火焰。有的人是熊熊烈火，有的人是搖曳燭光。而我的工作，就是假裝看不見。」
-                    </blockquote>
-                    <div class="featured-meta">
-                        <span>📖 全 25 集 + 尾聲</span>
-                        <span>📅 每週一、三、五更新</span>
-                        <span>✍️ 約 115,000 字</span>
+                    <div class="work-highlight">
+                        <p class="highlight-quote">
+                            「每個人的心裡都有光，只是有時候會被遮住。」
+                        </p>
                     </div>
-                    <div class="featured-buttons">
-                        <a href="https://www.mirrorfiction.com/book/42470" class="btn btn-primary" target="_blank">
-                            📚 鏡文學閱讀
-                        </a>
-                        <a href="https://www.penana.com/story/199095" class="btn btn-penana" target="_blank">
-                            🌏 Penana 閱讀
-                        </a>
-                        <a href="#grimoire" class="btn btn-gold">
-                            📜 植物魔典
-                        </a>
-                    </div>
-                    <div class="platform-info">
-                        <p class="platform-title">📍 雙平台同步連載</p>
-                        <div class="platforms">
-                            <div class="platform-item">
-                                <span>鏡文學</span>
-                                <span class="free">前 8 集免費</span>
-                            </div>
-                            <div class="platform-item">
-                                <span>Penana</span>
-                                <span class="free">前 5 集免費</span>
-                            </div>
+                    <div class="work-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">25</div>
+                            <div class="stat-label">章節</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">療癒植物</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">∞</div>
+                            <div class="stat-label">心光</div>
                         </div>
                     </div>
+                    <div class="work-cta">
+                        <a href="pharmacist/index.html" class="work-btn primary">進入故事</a>
+                        <a href="pharmacist/characters.html" class="work-btn secondary">角色介紹</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 違章靈魂改建事務所 -->
+            <div class="work-card renovator fade-in">
+                <div class="work-deco">🔧</div>
+                <div class="work-card-content">
+                    <div class="work-badge">
+                        <span>◆</span> 優化中・25集
+                    </div>
+                    <h3 class="work-title-zh">違章靈魂改建事務所</h3>
+                    <p class="work-title-en">The Soul Renovator</p>
+                    <div class="work-genre">
+                        <span class="genre-tag">都市奇幻</span>
+                        <span class="genre-tag">心理懸疑</span>
+                        <span class="genre-tag">療癒</span>
+                    </div>
+                    <p class="work-description">
+                        路遙是一名「心靈建築改建師」，能看見每個人心中的「房子」——
+                        沒有門的玻璃屋、銅牆鐵壁的碉堡、無限迴圈的樓梯⋯⋯
+                        他用藍圖之眼和共感錘，改建那些違章的靈魂結構。
+                    </p>
+                    <div class="work-highlight">
+                        <p class="highlight-quote">
+                            「每一座違章建築，都是一道沒有被聽見的求救信號。」
+                        </p>
+                    </div>
+                    <div class="work-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">25</div>
+                            <div class="stat-label">集數</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">7</div>
+                            <div class="stat-label">心靈法器</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">∞</div>
+                            <div class="stat-label">建築</div>
+                        </div>
+                    </div>
+                    <div class="work-cta">
+                        <a href="renovator/index.html" class="work-btn primary">進入故事</a>
+                        <a href="renovator/characters.html" class="work-btn secondary">角色介紹</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Grimoire Section - NEW -->
-    <section class="grimoire" id="grimoire">
-        <div class="section-header fade-in">
-            <p class="section-label">Botanical Grimoire</p>
-            <h2 class="section-title">逐光藥師的植物魔典</h2>
-        </div>
-        <div class="grimoire-container">
-            <div class="grimoire-intro fade-in">
-                <p>
-                    收錄於《逐光的藥師》的植物智慧——<br>
-                    每一株草藥都承載著療癒的隱喻與生命的哲理。
-                </p>
-            </div>
-            <div class="grimoire-grid fade-in">
-                <a href="botanical-grimoire.html#chamomile" class="grimoire-card">
-                    <div class="grimoire-icon">🌼</div>
-                    <h3 class="grimoire-name">洋甘菊</h3>
-                    <p class="grimoire-eng">Chamomile</p>
-                    <p class="grimoire-keyword">安神・夢境</p>
-                </a>
-                <a href="botanical-grimoire.html#rosemary" class="grimoire-card">
-                    <div class="grimoire-icon">🌱</div>
-                    <h3 class="grimoire-name">迷迭香</h3>
-                    <p class="grimoire-eng">Rosemary</p>
-                    <p class="grimoire-keyword">記憶・回家</p>
-                </a>
-                <a href="botanical-grimoire.html#clary-sage" class="grimoire-card">
-                    <div class="grimoire-icon">👁️</div>
-                    <h3 class="grimoire-name">快樂鼠尾草</h3>
-                    <p class="grimoire-eng">Clary Sage</p>
-                    <p class="grimoire-keyword">幻視・真相</p>
-                </a>
-                <a href="botanical-grimoire.html#dandelion" class="grimoire-card">
-                    <div class="grimoire-icon">🌬️</div>
-                    <h3 class="grimoire-name">蒲公英</h3>
-                    <p class="grimoire-eng">Dandelion</p>
-                    <p class="grimoire-keyword">傳播・生根</p>
-                </a>
-                <a href="botanical-grimoire.html#snowdrop" class="grimoire-card">
-                    <div class="grimoire-icon">❄️</div>
-                    <h3 class="grimoire-name">雪滴花</h3>
-                    <p class="grimoire-eng">Snowdrop</p>
-                    <p class="grimoire-keyword">希望・先驅</p>
-                </a>
-                <a href="botanical-grimoire.html#hemlock" class="grimoire-card">
-                    <div class="grimoire-icon">☠️</div>
-                    <h3 class="grimoire-name">毒芹</h3>
-                    <p class="grimoire-eng">Hemlock</p>
-                    <p class="grimoire-keyword">毒與藥</p>
-                </a>
-                <a href="botanical-grimoire.html#thyme" class="grimoire-card">
-                    <div class="grimoire-icon">🛡️</div>
-                    <h3 class="grimoire-name">百里香</h3>
-                    <p class="grimoire-eng">Thyme</p>
-                    <p class="grimoire-keyword">勇氣・重生</p>
-                </a>
-                <a href="botanical-grimoire.html#moss" class="grimoire-card">
-                    <div class="grimoire-icon">🪨</div>
-                    <h3 class="grimoire-name">苔蘚</h3>
-                    <p class="grimoire-eng">Moss</p>
-                    <p class="grimoire-keyword">微小・永恆</p>
-                </a>
-            </div>
-            <div class="grimoire-cta fade-in">
-                <p class="grimoire-quote">
-                    「真正的藥師不是太陽，而是月亮。<br>
-                    我們不產生光，我們只是溫柔地反射它。」
-                </p>
-                <a href="botanical-grimoire.html" class="btn btn-secondary">
-                    📜 閱讀完整植物魔典
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Characters -->
-    <section class="characters" id="characters">
-        <div class="section-header fade-in">
-            <p class="section-label">Characters</p>
-            <h2 class="section-title">角色介紹</h2>
-        </div>
-        <div class="characters-grid">
-            <a href="characters.html#yao" class="character-card fade-in">
-                <div class="character-avatar">🌿</div>
-                <h3 class="character-name">曜</h3>
-                <p class="character-role">藥師・書店店主</p>
-                <p class="character-desc">能看見「心光」的二手書店店主，習慣壓抑自己的能力，直到命運迫使他成為療癒者。</p>
-            </a>
-            <a href="characters.html#qing" class="character-card fade-in">
-                <div class="character-avatar">☀️</div>
-                <h3 class="character-name">晴</h3>
-                <p class="character-role">社工師</p>
-                <p class="character-desc">專業而溫暖的社工師，成為曜的搭檔，以科學方法輔助心靈療癒。</p>
-            </a>
-            <a href="characters.html#xi" class="character-card fade-in">
-                <div class="character-avatar">🌙</div>
-                <h3 class="character-name">曦婆婆</h3>
-                <p class="character-role">藥師傳承者</p>
-                <p class="character-desc">神秘的老婦人，守護著植物魔典，引導曜走上藥師之路。</p>
-            </a>
-            <a href="characters.html#xiaoxia" class="character-card fade-in">
-                <div class="character-avatar">⭐</div>
-                <h3 class="character-name">小夏</h3>
-                <p class="character-role">記憶中的光</p>
-                <p class="character-desc">曜童年最明亮的朋友，他的離去成為故事核心的創傷與救贖。</p>
-            </a>
-        </div>
-        <div style="text-align: center; margin-top: 2rem;" class="fade-in">
-            <a href="characters.html" class="btn btn-secondary">📖 閱讀完整角色解析</a>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section class="about" id="about">
-        <div class="section-header fade-in">
-            <p class="section-label">About</p>
-            <h2 class="section-title">關於我們</h2>
-        </div>
-        <div class="about-content fade-in">
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container fade-in">
+            <h2 class="about-title">關於 <span>Space Between Art</span></h2>
             <p class="about-text">
-                Space Between Art 誕生於一個簡單的信念：故事能療癒人心。
+                我們相信，最深刻的療癒發生在「之間」——
+                光與暗之間、現實與幻想之間、傷口與痊癒之間。
+                透過都市奇幻的框架，我們探索人心的建築、靈魂的光譜，
+                用故事為每一個需要被看見的人，點亮一盞燈。
             </p>
-            <p class="about-text">
-                在光與暗之間、在傷痛與復原之間、在記憶與遺忘之間——那個微妙的間隙，正是轉化發生的地方。我們相信，最好的故事不是逃避現實，而是陪伴讀者穿越黑暗，在文字中找到共鳴與力量。
-            </p>
-            <p class="about-text">
-                這裡是療癒系創作的棲息地。<br>
-                歡迎你，在間隙之間，找到屬於自己的光。
-            </p>
-            <div class="about-values">
-                <div class="value-item">
-                    <div class="value-icon">💚</div>
-                    <p class="value-title">療癒</p>
-                    <p class="value-subtitle">Healing</p>
+            <div class="about-features">
+                <div class="feature-item">
+                    <div class="feature-icon">🌿</div>
+                    <h3 class="feature-title">植物魔法</h3>
+                    <p class="feature-desc">洋甘菊的安撫、迷迭香的記憶、聖約翰草的光明</p>
                 </div>
-                <div class="value-item">
-                    <div class="value-icon">🔗</div>
-                    <p class="value-title">連結</p>
-                    <p class="value-subtitle">Connection</p>
+                <div class="feature-item">
+                    <div class="feature-icon">🏠</div>
+                    <h3 class="feature-title">心靈建築</h3>
+                    <p class="feature-desc">每個人心中都有一座房子，等待被看見與改建</p>
                 </div>
-                <div class="value-item">
-                    <div class="value-icon">✨</div>
-                    <p class="value-title">光</p>
-                    <p class="value-subtitle">Light</p>
-                </div>
-                <div class="value-item">
-                    <div class="value-icon">💎</div>
-                    <p class="value-title">真誠</p>
-                    <p class="value-subtitle">Authenticity</p>
+                <div class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">療癒故事</h3>
+                    <p class="feature-desc">不說教、不強迫，只是溫柔地陪伴與照亮</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter" id="newsletter">
-        <div class="section-header">
-            <p class="section-label">Newsletter</p>
-            <h2 class="section-title">加入光的旅程</h2>
-        </div>
-        <div class="newsletter-content">
-            <div class="newsletter-info">
-                <p class="newsletter-desc">
-                    訂閱電子報，獲得專屬內容：
-                </p>
-                <ul class="newsletter-benefits">
-                    <li>📜 《植物魔典》完整版 PDF（訂閱禮物）</li>
-                    <li>✨ 每週創作幕後與角色深度解析</li>
-                    <li>🌿 獨家番外篇搶先看</li>
-                    <li>💌 療癒小語與植物智慧</li>
-                </ul>
-            </div>
-            <div class="newsletter-form">
-                <a href="https://substack.com/@spacebetweenart" target="_blank" class="btn btn-subscribe">
-                    ✉️ 免費訂閱電子報
-                </a>
-                <p class="newsletter-note">在 Substack 訂閱，隨時可取消</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contact">
-        <div class="section-header fade-in">
-            <p class="section-label">Contact</p>
-            <h2 class="section-title">聯絡我們</h2>
-        </div>
-        <p class="contact-email fade-in">
-            Email: <a href="/cdn-cgi/l/email-protection#1078757c7c7f5063607173753d7275646775757e3e716264"><span class="__cf_email__" data-cfemail="345c5158585b744744555751195651404351515a1a554640">[email&#160;protected]</span></a>
-        </p>
-        <div class="social-links fade-in">
-            <!-- Instagram 官方圖示 -->
-            <a href="https://www.instagram.com/spacebetweenart/" class="social-link" target="_blank" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-            </a>
-            <!-- Facebook 官方圖示 -->
-            <a href="https://www.facebook.com/SpaceBetweenArt" class="social-link" target="_blank" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-            </a>
-            <!-- Substack 圖示 -->
-            <a href="https://spacebetweenart.substack.com" class="social-link" target="_blank" aria-label="Substack">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                    <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/>
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="newsletter-container fade-in">
+            <h2 class="newsletter-title">📬 訂閱創作電子報</h2>
+            <p class="newsletter-desc">
+                每週療癒小語、創作幕後、新章節更新通知、獨家番外篇
+            </p>
+            <a href="https://spacebetweenart.substack.com" class="newsletter-btn" target="_blank">
+                <span>免費訂閱</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
             </a>
         </div>
@@ -1590,77 +1016,72 @@
 
     <!-- Footer -->
     <footer>
-        <p class="footer-logo">Space Between Art</p>
-        <p class="footer-tagline">在光與暗之間，故事發生</p>
-        <p class="footer-copy">© 2025 Space Between Art. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">Space Between Art</div>
+                <p>在光與暗之間，故事發生。<br>療癒系都市奇幻創作工作室。</p>
+            </div>
+            <div class="footer-links">
+                <h4>作品</h4>
+                <ul>
+                    <li><a href="pharmacist/index.html">逐光的藥師</a></li>
+                    <li><a href="renovator/index.html">違章靈魂改建事務所</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>探索</h4>
+                <ul>
+                    <li><a href="gallery.html">畫廊</a></li>
+                    <li><a href="community.html">互動區</a></li>
+                    <li><a href="shop.html">商店</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>聯絡</h4>
+                <ul>
+                    <li><a href="mailto:hello@space-between.art">Email</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Substack</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Space Between Art. All rights reserved.</p>
+        </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if (mobileMenuBtn && navLinks) {
-                mobileMenuBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    navLinks.classList.toggle('active');
-                    mobileMenuBtn.classList.toggle('active');
-                });
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
 
-                // Close menu when clicking a link
-                navLinks.querySelectorAll('a').forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.classList.remove('active');
-                    });
-                });
-
-                // Close menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!mobileMenuBtn.contains(e.target) && !navLinks.contains(e.target)) {
-                        navLinks.classList.remove('active');
-                        mobileMenuBtn.classList.remove('active');
-                    }
-                });
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
+        });
 
-            // Navbar scroll effect
-            window.addEventListener('scroll', function() {
-                const nav = document.querySelector('nav');
-                if (window.scrollY > 50) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
+        // Fade in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
                 }
             });
+        }, { threshold: 0.1 });
 
-            // Scroll animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+        fadeElements.forEach(el => observer.observe(el));
 
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.fade-in').forEach(function(el) {
-                observer.observe(el);
-            });
-
-            // Smooth scroll for nav links (only for same-page anchors)
-            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    // Only prevent default for same-page anchors, not external links
-                    if (href && href.startsWith('#') && href.length > 1) {
-                        e.preventDefault();
-                        const target = document.querySelector(href);
-                        if (target) {
-                            target.scrollIntoView({
-        
+        // Particle animation timing
+        document.querySelectorAll('.particle').forEach((particle, index) => {
+            particle.style.animationDelay = `${index * 1.5}s`;
+        });
+    </script>
+</body>
+</html>
