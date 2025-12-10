@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>線上畫廊 | Space Between Art</title>
-    <meta name="description" content="Space Between Art 線上畫廊 - 療癒系插畫、角色設計、場景概念圖">
+    <meta name="description" content="《逐光的藥師》視覺藝術畫廊 - 角色插畫、場景概念圖、植物魔典插畫">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,6 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background: var(--cream);
@@ -38,9 +37,7 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
             padding: 1.2rem 3rem;
             display: flex;
@@ -84,53 +81,54 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 5px;
         }
 
         .mobile-menu-btn span {
             width: 24px;
             height: 2px;
             background: var(--forest-green);
-            transition: all 0.3s ease;
         }
 
         /* Hero */
         .hero {
             padding: 8rem 2rem 4rem;
             text-align: center;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            background: linear-gradient(135deg, var(--forest-green) 0%, var(--forest-light) 100%);
+            color: white;
         }
 
         .hero-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--forest-green);
+            color: var(--gold-light);
             margin-bottom: 0.5rem;
         }
 
         .hero-subtitle {
-            font-family: 'Noto Serif TC', serif;
-            color: var(--text-muted);
+            opacity: 0.9;
             font-size: 1.1rem;
         }
 
         /* Filter Tabs */
+        .filter-section {
+            padding: 2rem;
+            text-align: center;
+            background: var(--cream-dark);
+        }
+
         .filter-tabs {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            padding: 2rem;
             flex-wrap: wrap;
         }
 
         .filter-tab {
             padding: 0.6rem 1.5rem;
-            border: 1px solid var(--forest-green);
-            background: transparent;
-            color: var(--forest-green);
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 0.9rem;
+            background: white;
+            border: 1px solid var(--cream-dark);
             border-radius: 25px;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -139,26 +137,47 @@
         .filter-tab.active {
             background: var(--forest-green);
             color: white;
+            border-color: var(--forest-green);
         }
 
-        /* Gallery Grid */
+        /* Gallery Section */
         .gallery-section {
-            padding: 2rem 3rem 4rem;
+            padding: 3rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--warm-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            color: var(--forest-green);
+        }
+
+        /* Gallery Grid */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
         .gallery-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
             background: white;
+            border-radius: 16px;
+            overflow: hidden;
             box-shadow: 0 4px 20px var(--shadow-soft);
             transition: all 0.4s ease;
             cursor: pointer;
@@ -166,33 +185,35 @@
 
         .gallery-item:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 40px var(--shadow-medium);
+            box-shadow: 0 16px 40px var(--shadow-medium);
         }
 
         .gallery-image {
             width: 100%;
             aspect-ratio: 4/3;
-            background: var(--cream-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--forest-light);
-            position: relative;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .gallery-image-wrapper {
             overflow: hidden;
+            position: relative;
         }
 
-        .gallery-image::after {
-            content: '';
+        .gallery-tag {
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-image::after {
-            opacity: 1;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(44, 95, 45, 0.9);
+            color: white;
+            font-size: 0.75rem;
+            border-radius: 12px;
         }
 
         .gallery-info {
@@ -202,80 +223,159 @@
         .gallery-title {
             font-family: 'Noto Serif TC', serif;
             font-size: 1.1rem;
-            color: var(--text-dark);
+            color: var(--forest-green);
             margin-bottom: 0.3rem;
         }
 
-        .gallery-meta {
+        .gallery-desc {
             font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-        .gallery-tag {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            background: var(--cream-dark);
-            color: var(--forest-green);
-            font-size: 0.75rem;
-            border-radius: 12px;
-            margin-top: 0.5rem;
-        }
-
-        /* Coming Soon Overlay */
-        .coming-soon-section {
-            padding: 4rem 2rem;
-            text-align: center;
+        /* Featured Section */
+        .featured-section {
             background: var(--forest-dark);
+            padding: 4rem 2rem;
             color: white;
         }
 
-        .coming-soon-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: var(--gold-light);
-            margin-bottom: 1rem;
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .coming-soon-section p {
-            max-width: 600px;
-            margin: 0 auto 2rem;
+        .featured-item {
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .featured-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .featured-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        }
+
+        .featured-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-desc {
+            font-size: 0.95rem;
             opacity: 0.9;
         }
 
-        .notify-form {
-            display: flex;
-            gap: 1rem;
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
             justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
+            padding: 2rem;
         }
 
-        .notify-input {
-            padding: 0.8rem 1.5rem;
-            border: 1px solid var(--gold-light);
-            background: transparent;
-            color: white;
-            border-radius: 25px;
-            font-size: 1rem;
-            width: 280px;
+        .lightbox.active {
+            display: flex;
         }
 
-        .notify-input::placeholder {
-            color: rgba(255,255,255,0.5);
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
         }
 
-        .notify-btn {
-            padding: 0.8rem 2rem;
-            background: var(--warm-gold);
-            color: var(--forest-dark);
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
             border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox-info {
+            text-align: center;
+            color: white;
+            margin-top: 1rem;
+        }
+
+        .lightbox-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: var(--gold-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--cream-dark);
+        }
+
+        .cta-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px var(--shadow-medium);
+        }
+
+        .cta-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            color: var(--forest-green);
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--forest-green);
+            color: white;
+            text-decoration: none;
             border-radius: 25px;
             font-weight: 500;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .notify-btn:hover {
-            background: var(--gold-light);
+        .cta-btn:hover {
+            background: var(--forest-dark);
             transform: scale(1.05);
         }
 
@@ -291,24 +391,16 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
             color: var(--gold-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-tagline {
-            opacity: 0.8;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
         }
 
         /* Mobile */
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
-            .nav-links { 
+            .nav-links {
                 display: none;
                 position: absolute;
                 top: 100%;
-                left: 0;
-                right: 0;
+                left: 0; right: 0;
                 background: var(--cream);
                 flex-direction: column;
                 padding: 1.5rem;
@@ -316,7 +408,8 @@
             }
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: flex; }
-            .gallery-section { padding: 2rem 1.5rem; }
+            .featured-grid { grid-template-columns: 1fr; }
+            .featured-item img { height: 250px; }
             .gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -345,97 +438,265 @@
             <li><a href="index.html#contact">聯絡</a></li>
         </ul>
         <button class="mobile-menu-btn" aria-label="選單">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
     </nav>
 
     <section class="hero">
-        <h1 class="hero-title">✨ 線上畫廊</h1>
-        <p class="hero-subtitle">療癒系插畫・角色設計・場景概念</p>
+        <h1 class="hero-title">🎨 線上畫廊</h1>
+        <p class="hero-subtitle">《逐光的藥師》視覺藝術收藏</p>
     </section>
 
-    <div class="filter-tabs">
-        <button class="filter-tab active">全部</button>
-        <button class="filter-tab">🌿 角色插畫</button>
-        <button class="filter-tab">🏠 場景概念</button>
-        <button class="filter-tab">📖 書籍封面</button>
-        <button class="filter-tab">🎨 同人創作</button>
-    </div>
+    <!-- Filter Tabs -->
+    <section class="filter-section">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">全部</button>
+            <button class="filter-tab" data-filter="character">🌿 角色插畫</button>
+            <button class="filter-tab" data-filter="scene">🏠 場景概念</button>
+            <button class="filter-tab" data-filter="botanical">🌸 植物魔典</button>
+        </div>
+    </section>
 
+    <!-- Featured -->
+    <section class="featured-section">
+        <div class="section-header">
+            <p class="section-label" style="color: var(--gold-light);">Featured</p>
+            <h2 class="section-title" style="color: white;">✨ 精選作品</h2>
+        </div>
+        <div class="featured-grid">
+            <div class="featured-item" onclick="openLightbox('images/characters/yao_heartlight_vision.png', '曜 — 看見心光', '「那些漂浮的光點，是每個人藏在心底的故事。」')">
+                <img src="images/characters/yao_heartlight_vision.png" alt="曜看見心光">
+                <div class="featured-overlay">
+                    <h3 class="featured-title">曜 — 看見心光</h3>
+                    <p class="featured-desc">「那些漂浮的光點，是每個人藏在心底的故事。」</p>
+                </div>
+            </div>
+            <div class="featured-item" onclick="openLightbox('images/scenes/bookstore_interior.png', '間隙書屋', '書與光交織的療癒空間')">
+                <img src="images/scenes/bookstore_interior.png" alt="間隙書屋內部">
+                <div class="featured-overlay">
+                    <h3 class="featured-title">間隙書屋</h3>
+                    <p class="featured-desc">書與光交織的療癒空間</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Gallery -->
     <section class="gallery-section">
-        <div class="gallery-grid">
-            <!-- 示例作品 - 之後替換為真實圖片 -->
-            <div class="gallery-item" data-category="character">
-                <div class="gallery-image">🌿</div>
+        <div class="section-header">
+            <p class="section-label">Characters</p>
+            <h2 class="section-title">🌿 角色插畫</h2>
+        </div>
+        <div class="gallery-grid" data-category="character">
+            <div class="gallery-item" onclick="openLightbox('images/characters/yao_heartlight_vision.png', '曜 — 逐光的藥師', '能看見心光的二手書店店主')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/characters/yao_heartlight_vision.png" alt="曜" class="gallery-image">
+                    <span class="gallery-tag">主角</span>
+                </div>
                 <div class="gallery-info">
                     <h3 class="gallery-title">曜 — 逐光的藥師</h3>
-                    <p class="gallery-meta">角色設計 • 2025</p>
-                    <span class="gallery-tag">逐光的藥師</span>
+                    <p class="gallery-desc">能看見心光的二手書店店主</p>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="character">
-                <div class="gallery-image">🌙</div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title">曦婆婆 — 月亮藥師</h3>
-                    <p class="gallery-meta">角色設計 • 2025</p>
-                    <span class="gallery-tag">逐光的藥師</span>
+            <div class="gallery-item" onclick="openLightbox('images/characters/qing_portrait.png', '晴 — 社工師', '務實而溫暖的社區守護者')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/characters/qing_portrait.png" alt="晴" class="gallery-image">
+                    <span class="gallery-tag">主要角色</span>
                 </div>
-            </div>
-
-            <div class="gallery-item" data-category="scene">
-                <div class="gallery-image">📚</div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title">間隙書屋</h3>
-                    <p class="gallery-meta">場景概念圖 • 2025</p>
-                    <span class="gallery-tag">逐光的藥師</span>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="scene">
-                <div class="gallery-image">🌺</div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title">曦婆婆的草藥園</h3>
-                    <p class="gallery-meta">場景概念圖 • 2025</p>
-                    <span class="gallery-tag">逐光的藥師</span>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="cover">
-                <div class="gallery-image">📖</div>
-                <div class="gallery-info">
-                    <h3 class="gallery-title">《逐光的藥師》封面</h3>
-                    <p class="gallery-meta">書籍封面 • 2025</p>
-                    <span class="gallery-tag">封面設計</span>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="character">
-                <div class="gallery-image">☀️</div>
                 <div class="gallery-info">
                     <h3 class="gallery-title">晴 — 社工師</h3>
-                    <p class="gallery-meta">角色設計 • 2025</p>
-                    <span class="gallery-tag">逐光的藥師</span>
+                    <p class="gallery-desc">務實而溫暖的社區守護者</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/characters/yao_qing_conversation.png', '曜與晴', '在咖啡廳討論社區個案')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/characters/yao_qing_conversation.png" alt="曜與晴對話" class="gallery-image">
+                    <span class="gallery-tag">雙人</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">曜與晴</h3>
+                    <p class="gallery-desc">在咖啡廳討論社區個案</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/characters/xi_garden.png', '曦婆婆 — 月亮藥師', '守護社區的療癒長者')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/characters/xi_garden.png" alt="曦婆婆" class="gallery-image">
+                    <span class="gallery-tag">主要角色</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">曦婆婆 — 月亮藥師</h3>
+                    <p class="gallery-desc">守護社區的療癒長者</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/characters/xi_herbs_hands.png', '曦婆婆的雙手', '調配草藥的溫柔時刻')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/characters/xi_herbs_hands.png" alt="曦婆婆調配草藥" class="gallery-image">
+                    <span class="gallery-tag">細節</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">曦婆婆的雙手</h3>
+                    <p class="gallery-desc">調配草藥的溫柔時刻</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/characters/xi_young.png', '年輕時的曦', '七〇年代的月光記憶')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/characters/xi_young.png" alt="年輕時的曦" class="gallery-image">
+                    <span class="gallery-tag">回憶</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">年輕時的曦</h3>
+                    <p class="gallery-desc">七〇年代的月光記憶</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/characters/xiaoxia_swing.png', '小夏', '永遠停留在那個夏天')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/characters/xiaoxia_swing.png" alt="小夏" class="gallery-image">
+                    <span class="gallery-tag">回憶</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">小夏</h3>
+                    <p class="gallery-desc">永遠停留在那個夏天</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/characters/yao_xiaoxia_childhood.png', '曜與小夏', '陽光下的童年時光')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/characters/yao_xiaoxia_childhood.png" alt="曜與小夏童年" class="gallery-image">
+                    <span class="gallery-tag">回憶</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">曜與小夏</h3>
+                    <p class="gallery-desc">陽光下的童年時光</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="coming-soon-section">
-        <h2>🎨 更多作品即將登場</h2>
-        <p>我們正在籌備更多精美插畫與設計。訂閱電子報，第一時間收到新作品通知！</p>
-        <div class="notify-form">
-            <input type="email" class="notify-input" placeholder="輸入你的 Email">
-            <button class="notify-btn">訂閱通知</button>
+    <!-- Scene Gallery -->
+    <section class="gallery-section" style="background: var(--cream-dark);">
+        <div class="section-header">
+            <p class="section-label">Scenes</p>
+            <h2 class="section-title">🏠 場景概念圖</h2>
+        </div>
+        <div class="gallery-grid" data-category="scene">
+            <div class="gallery-item" onclick="openLightbox('images/scenes/bookstore_interior.png', '間隙書屋 — 內部', '書香與光影交織的療癒空間')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/scenes/bookstore_interior.png" alt="間隙書屋內部" class="gallery-image">
+                    <span class="gallery-tag">主要場景</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">間隙書屋 — 內部</h3>
+                    <p class="gallery-desc">書香與光影交織的療癒空間</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/scenes/bookstore_exterior.webp', '間隙書屋 — 外觀', '藏身於老社區的溫暖角落')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/scenes/bookstore_exterior.webp" alt="間隙書屋外觀" class="gallery-image">
+                    <span class="gallery-tag">主要場景</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">間隙書屋 — 外觀</h3>
+                    <p class="gallery-desc">藏身於老社區的溫暖角落</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/scenes/neighborhood_golden_hour.webp', '社區街道 — 黃昏', '金色時光下的日常風景')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/scenes/neighborhood_golden_hour.webp" alt="社區街道" class="gallery-image">
+                    <span class="gallery-tag">場景</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">社區街道 — 黃昏</h3>
+                    <p class="gallery-desc">金色時光下的日常風景</p>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!-- Botanical Gallery -->
+    <section class="gallery-section">
+        <div class="section-header">
+            <p class="section-label">Botanicals</p>
+            <h2 class="section-title">🌸 植物魔典插畫</h2>
+        </div>
+        <div class="gallery-grid" data-category="botanical">
+            <div class="gallery-item" onclick="openLightbox('images/botanicals/botanical_chamomile.png', '洋甘菊', '撫慰焦慮的溫柔守護者')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/botanicals/botanical_chamomile.png" alt="洋甘菊" class="gallery-image">
+                    <span class="gallery-tag">植物魔典</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">洋甘菊 Chamomile</h3>
+                    <p class="gallery-desc">撫慰焦慮的溫柔守護者</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/botanicals/botanical_rosemary.png', '迷迭香', '喚醒沉睡記憶的芬芳')">
+                <div class="gallery-image-wrapper">
+                    <img src="images/botanicals/botanical_rosemary.png" alt="迷迭香" class="gallery-image">
+                    <span class="gallery-tag">植物魔典</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">迷迭香 Rosemary</h3>
+                    <p class="gallery-desc">喚醒沉睡記憶的芬芳</p>
+                </div>
+            </div>
+
+            <!-- Coming Soon -->
+            <div class="gallery-item" style="opacity: 0.6;">
+                <div class="gallery-image-wrapper" style="background: var(--cream-dark); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 3rem;">🌻</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">聖約翰草 St. John's Wort</h3>
+                    <p class="gallery-desc">即將推出</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" style="opacity: 0.6;">
+                <div class="gallery-image-wrapper" style="background: var(--cream-dark); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-size: 3rem;">💜</span>
+                </div>
+                <div class="gallery-info">
+                    <h3 class="gallery-title">薰衣草 Lavender</h3>
+                    <p class="gallery-desc">即將推出</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-card">
+            <h2 class="cta-title">🔔 訂閱畫廊更新</h2>
+            <p class="cta-desc">搶先獲得新作品通知、桌布下載、創作幕後故事</p>
+            <a href="https://spacebetweenart.substack.com" class="cta-btn" target="_blank">訂閱電子報</a>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">×</button>
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-info">
+                <h3 class="lightbox-title" id="lightbox-title"></h3>
+                <p id="lightbox-desc"></p>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p class="footer-logo">Space Between Art</p>
-        <p class="footer-tagline">在光與暗之間，故事發生</p>
-        <p>© 2025 Space Between Art. All rights reserved.</p>
+        <p style="opacity: 0.8; margin-top: 0.5rem;">在光與暗之間，故事發生</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">© 2025 Space Between Art. All rights reserved.</p>
     </footer>
 
     <script>
@@ -445,11 +706,33 @@
         });
 
         // Filter tabs
-        document.querySelectorAll('.filter-tab').forEach(function(tab) {
+        document.querySelectorAll('.filter-tab').forEach(tab => {
             tab.addEventListener('click', function() {
                 document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
             });
+        });
+
+        // Lightbox
+        function openLightbox(src, title, desc) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox-title').textContent = title;
+            document.getElementById('lightbox-desc').textContent = desc;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
         });
     </script>
 </body>

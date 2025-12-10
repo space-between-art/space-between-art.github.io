@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心光諮詢室 | Space Between Art</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --forest-green: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --warm-gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-green) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--cream);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: var(--forest-green);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .chat-header h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .chat-header p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .character-select {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--cream-dark);
+        }
+
+        .character-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--forest-green);
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .character-btn.active {
+            background: var(--forest-green);
+            color: white;
+        }
+
+        .character-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 1rem;
+            border-radius: 16px;
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.bot {
+            background: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .message.user {
+            background: var(--forest-green);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message .sender {
+            font-size: 0.75rem;
+            color: var(--warm-gold);
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .message.user .sender {
+            color: var(--gold-light);
+        }
+
+        .plant-recommendation {
+            background: var(--cream-dark);
+            padding: 0.8rem;
+            border-radius: 12px;
+            margin-top: 0.8rem;
+            border-left: 3px solid var(--warm-gold);
+        }
+
+        .plant-recommendation .plant-name {
+            font-family: 'Noto Serif TC', serif;
+            color: var(--forest-green);
+            font-weight: 500;
+        }
+
+        .plant-recommendation .plant-effect {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .chapter-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--forest-green);
+            font-size: 0.85rem;
+            text-decoration: none;
+        }
+
+        .chapter-link:hover {
+            text-decoration: underline;
+        }
+
+        .chat-input-area {
+            padding: 1rem;
+            background: white;
+            border-top: 1px solid var(--cream-dark);
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--cream-dark);
+            border-radius: 20px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .chat-input:focus {
+            border-color: var(--forest-green);
+        }
+
+        .send-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--forest-green);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background: var(--forest-dark);
+            transform: scale(1.05);
+        }
+
+        .send-btn:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 1rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .typing-indicator span {
+            animation: blink 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        .quick-prompts {
+            padding: 0.8rem 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            background: var(--cream-dark);
+        }
+
+        .quick-prompt {
+            padding: 0.4rem 0.8rem;
+            background: white;
+            border: 1px solid var(--cream-dark);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-prompt:hover {
+            background: var(--forest-green);
+            color: white;
+            border-color: var(--forest-green);
+        }
+
+        .disclaimer {
+            padding: 0.8rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--cream-dark);
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>🌿 心光諮詢室</h1>
+            <p>讓故事中的角色陪伴你</p>
+        </div>
+
+        <div class="character-select">
+            <button class="character-btn active" data-character="xi">🌙 曦婆婆</button>
+            <button class="character-btn" data-character="yao">✨ 曜</button>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="sender">曦婆婆</div>
+                <div class="content">
+                    孩子，歡迎來到心光諮詢室。<br><br>
+                    這裡是一個可以說說心裡話的地方。無論是睡不好、心情低落、還是生活中的小煩惱，都可以跟我聊聊。<br><br>
+                    我會用植物的智慧，陪伴你找到內心的光。
+                </div>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            曦婆婆正在回應<span>.</span><span>.</span><span>.</span>
+        </div>
+
+        <div class="quick-prompts">
+            <button class="quick-prompt" data-prompt="最近睡不太好">😴 睡眠困擾</button>
+            <button class="quick-prompt" data-prompt="工作壓力很大">😓 工作壓力</button>
+            <button class="quick-prompt" data-prompt="心情有點低落">😢 心情低落</button>
+            <button class="quick-prompt" data-prompt="想念一個人">💭 思念</button>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" id="userInput" placeholder="說說你的心情..." maxlength="200">
+            <button class="send-btn" id="sendBtn">發送</button>
+        </div>
+
+        <div class="disclaimer">
+            ⚠️ 此為虛構角色互動體驗，非專業心理諮詢。如需專業協助請尋求專業管道。
+        </div>
+    </div>
+
+    <script>
+        // 角色設定
+        const characters = {
+            xi: {
+                name: '曦婆婆',
+                emoji: '🌙',
+                personality: '慈祥、溫暖、充滿智慧的長者',
+                style: '用親切的口吻，像奶奶一樣關懷對方'
+            },
+            yao: {
+                name: '曜',
+                emoji: '✨',
+                personality: '溫柔、內斂、能感受他人情緒',
+                style: '用平靜溫和的口吻，像朋友一樣傾聽'
+            }
+        };
+
+        // 植物資料庫
+        const plants = {
+            sleep: {
+                name: '洋甘菊',
+                effect: '安撫緊繃的神經，帶來平靜的睡眠',
+                chapter: '第三章〈失眠的光〉'
+            },
+            stress: {
+                name: '薰衣草',
+                effect: '釋放壓力，找回內心的寧靜',
+                chapter: '第五章〈紫色的呼吸〉'
+            },
+            sadness: {
+                name: '聖約翰草',
+                effect: '在黑暗中點亮希望的微光',
+                chapter: '第七章〈陽光的種子〉'
+            },
+            memory: {
+                name: '迷迭香',
+                effect: '喚醒珍貴的記憶，連結過去與現在',
+                chapter: '第九章〈記憶的香氣〉'
+            }
+        };
+
+        // 回應模板
+        const responses = {
+            xi: {
+                sleep: `孩子，你的心光是不是有點疲憊了？\n\n睡不好的時候，身體和心靈都在向你發出訊號。來，試試在睡前泡一杯洋甘菊茶，讓它溫柔的香氣包裹你。\n\n記得，允許自己休息，不是軟弱，是智慧。`,
+                stress: `我看見你的心光在閃爍，像是承載了太多東西。\n\n工作的壓力就像一塊大石頭，但你不必一個人扛著。試試深呼吸，聞一聞薰衣草的香氣，讓緊繃的肩膀放鬆下來。\n\n你已經很努力了，孩子。`,
+                sadness: `孩子，心情低落的時候，不要急著趕走那些感受。\n\n有時候，悲傷只是需要被看見、被接納。就像聖約翰草，即使在陰暗的地方，也能開出金黃色的小花。\n\n你的心光還在，只是暫時被雲遮住了。`,
+                memory: `思念是一種溫柔的痛，不是嗎？\n\n那個人在你心裡留下的光，永遠不會消失。迷迭香能幫助我們溫柔地觸碰那些記憶，既不逃避，也不沉溺。\n\n想念，是因為曾經被深深愛過。`,
+                default: `孩子，謝謝你願意跟我說這些。\n\n每個人的心裡都有光，只是有時候會被烏雲遮住。慢慢來，不急。\n\n如果你願意，可以多說一些，我在這裡聽著。`
+            },
+            yao: {
+                sleep: `我能感覺到你的心光有些不穩定，像是蠟燭在風中搖曳。\n\n睡眠問題...我也曾經歷過。洋甘菊茶幫了我很多。它不會強迫你入睡，只是輕輕地告訴你的身體：現在可以休息了。\n\n希望你今晚能睡得好一些。`,
+                stress: `你的心光...帶著一種緊繃的藍色。是工作的壓力嗎？\n\n我理解那種感覺，好像永遠有做不完的事。但是，偶爾停下來也沒關係。薰衣草的香氣能幫助你暫時放下那些重擔。\n\n你不需要完美，只需要照顧好自己。`,
+                sadness: `我看見了...你心光裡的那一點灰暗。\n\n心情低落的時候，不需要假裝沒事。有時候，最勇敢的事就是承認自己不好。聖約翰草是曦婆婆教我用的，它像是黑暗中的一盞小燈。\n\n你不孤單。`,
+                memory: `思念一個人...這種感覺我太熟悉了。\n\n有些人離開了，但他們的光會一直留在我們心裡。迷迭香的香氣，能幫助我們溫柔地想起那些人，那些時光。\n\n想念是一種連結，不是負擔。`,
+                default: `謝謝你願意和我分享。\n\n我不太擅長說話，但我會用心傾聽。每個人的心光都是獨特的，你的也是。\n\n如果你想繼續聊，我在這裡。`
+            }
+        };
+
+        let currentCharacter = 'xi';
+
+        // DOM 元素
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const characterBtns = document.querySelectorAll('.character-btn');
+        const quickPrompts = document.querySelectorAll('.quick-prompt');
+
+        // 切換角色
+        characterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                characterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCharacter = btn.dataset.character;
+                
+                // 更新 typing indicator
+                typingIndicator.innerHTML = `${characters[currentCharacter].name}正在回應<span>.</span><span>.</span><span>.</span>`;
+            });
+        });
+
+        // 快速提問
+        quickPrompts.forEach(prompt => {
+            prompt.addEventListener('click', () => {
+                userInput.value = prompt.dataset.prompt;
+                sendMessage();
+            });
+        });
+
+        // 發送訊息
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+
+            // 顯示用戶訊息
+            addMessage(message, 'user');
+            userInput.value = '';
+            sendBtn.disabled = true;
+
+            // 顯示打字指示器
+            typingIndicator.classList.add('active');
+
+            // 模擬回應延遲
+            setTimeout(() => {
+                typingIndicator.classList.remove('active');
+                const response = generateResponse(message);
+                addMessage(response.text, 'bot', response.plant);
+                sendBtn.disabled = false;
+            }, 1500 + Math.random() * 1000);
+        }
+
+        function addMessage(text, type, plant = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+
+            let html = '';
+            if (type === 'bot') {
+                html += `<div class="sender">${characters[currentCharacter].name}</div>`;
+            } else {
+                html += `<div class="sender">你</div>`;
+            }
+            html += `<div class="content">${text.replace(/\n/g, '<br>')}</div>`;
+
+            if (plant) {
+                html += `
+                    <div class="plant-recommendation">
+                        <div class="plant-name">🌿 ${plant.name}</div>
+                        <div class="plant-effect">${plant.effect}</div>
+                        <a href="#" class="chapter-link">📖 ${plant.chapter}</a>
+                    </div>
+                `;
+            }
+
+            messageDiv.innerHTML = html;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function generateResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            let category = 'default';
+            let plant = null;
+
+            // 簡單關鍵字匹配
+            if (lowerMessage.includes('睡') || lowerMessage.includes('失眠') || lowerMessage.includes('累')) {
+                category = 'sleep';
+                plant = plants.sleep;
+            } else if (lowerMessage.includes('壓力') || lowerMessage.includes('工作') || lowerMessage.includes('忙')) {
+                category = 'stress';
+                plant = plants.stress;
+            } else if (lowerMessage.includes('難過') || lowerMessage.includes('低落') || lowerMessage.includes('沮喪') || lowerMessage.includes('傷心')) {
+                category = 'sadness';
+                plant = plants.sadness;
+            } else if (lowerMessage.includes('想念') || lowerMessage.includes('思念') || lowerMessage.includes('懷念')) {
+                category = 'memory';
+                plant = plants.memory;
+            }
+
+            return {
+                text: responses[currentCharacter][category],
+                plant: plant
+            };
+        }
+    </script>
+</body>
+</html>
