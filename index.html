@@ -776,15 +776,22 @@
         }
 
         /* ==================== Animations ==================== */
+        /* 確保內容預設可見，然後用 JS 添加動畫效果 */
         .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1;
+            transform: translateY(0);
             transition: all 0.8s ease;
         }
 
+        /* JS 載入後才隱藏，確保無 JS 時仍可見 */
+        .js-loaded .fade-in:not(.visible) {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
         .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
     </style>
 </head>
@@ -1066,6 +1073,9 @@
             }
         });
 
+        // 標記 JS 已載入
+        document.body.classList.add('js-loaded');
+
         // Fade in on scroll
         const fadeElements = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries) => {
@@ -1078,5 +1088,15 @@
 
         fadeElements.forEach(el => observer.observe(el));
 
-        // Particle animation timing
-        document.querySelecto
+        // 確保頁面載入時可見的元素立即顯示
+        setTimeout(() => {
+            fadeElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('visible');
+                }
+            });
+        }, 100);
+    </script>
+</body>
+</html>
