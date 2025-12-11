@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>療癒植物卡 | Space Between Art 療癒宇宙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --forest-light: #4A7C4B;
+            --gold: #D4A84B;
+            --gold-light: #E8C97A;
+            --cream: #FDF8F3;
+            --text-dark: #2A2A2A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--gold-light);
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            color: var(--gold-light);
+            font-size: 1.2rem;
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 植物卡片 */
+        .plant-card {
+            background: var(--cream);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .plant-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 100%);
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .plant-emoji {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .plant-name-zh {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            color: var(--gold-light);
+            margin-bottom: 0.3rem;
+        }
+
+        .plant-name-en {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-section {
+            margin-bottom: 1.2rem;
+        }
+
+        .card-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            color: var(--forest);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .section-content {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(44, 95, 45, 0.1);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--forest);
+        }
+
+        .quote {
+            font-family: 'Noto Serif TC', serif;
+            font-style: italic;
+            color: var(--forest);
+            padding: 0.8rem;
+            background: rgba(44, 95, 45, 0.05);
+            border-left: 3px solid var(--forest);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .building-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            background: rgba(184, 115, 51, 0.1);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #B87333;
+        }
+
+        .building-link .icon {
+            font-size: 1.2rem;
+        }
+
+        /* 響應式 */
+        @media (max-width: 600px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🌿 療癒植物卡</h1>
+    <p class="subtitle">來自《逐光的藥師》的植物智慧</p>
+
+    <div class="cards-grid">
+        <!-- 洋甘菊 -->
+        <div class="plant-card">
+            <div class="card-header">
+                <div class="plant-emoji">🌼</div>
+                <h3 class="plant-name-zh">洋甘菊</h3>
+                <p class="plant-name-en">Chamomile</p>
+            </div>
+            <div class="card-body">
+                <div class="card-section">
+                    <div class="section-title">✨ 療癒屬性</div>
+                    <div class="tags">
+                        <span class="tag">安神</span>
+                        <span class="tag">助眠</span>
+                        <span class="tag">撫慰焦慮</span>
+                    </div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">📖 植物故事</div>
+                    <p class="section-content">洋甘菊像一個溫柔的擁抱，能讓躁動的心慢慢安靜下來。古埃及人稱它為「太陽之花」，相信它能帶來平靜與療癒。</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">💭 曦婆婆說</div>
+                    <p class="quote">「睡不著的夜晚，泡一杯洋甘菊茶，讓它的溫暖包裹你。」</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">🔧 對應建築</div>
+                    <div class="building-link">
+                        <span class="icon">🏰</span>
+                        <span>銅牆鐵壁的碉堡——幫助放下防禦，接受溫暖</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 薰衣草 -->
+        <div class="plant-card">
+            <div class="card-header">
+                <div class="plant-emoji">💜</div>
+                <h3 class="plant-name-zh">薰衣草</h3>
+                <p class="plant-name-en">Lavender</p>
+            </div>
+            <div class="card-body">
+                <div class="card-section">
+                    <div class="section-title">✨ 療癒屬性</div>
+                    <div class="tags">
+                        <span class="tag">放鬆</span>
+                        <span class="tag">平靜</span>
+                        <span class="tag">紓壓</span>
+                    </div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">📖 植物故事</div>
+                    <p class="section-content">薰衣草的香氣能讓緊繃的神經放鬆下來。它的名字來自拉丁文「lavare」，意思是「清洗」——清洗身體，也清洗心靈。</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">💭 曦婆婆說</div>
+                    <p class="quote">「壓力太大的時候，讓薰衣草幫你把那些沉重的東西卸下來。」</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">🔧 對應建築</div>
+                    <div class="building-link">
+                        <span class="icon">🕐</span>
+                        <span>搖搖欲墜的鐘樓——幫助減緩過度負荷的壓力</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 聖約翰草 -->
+        <div class="plant-card">
+            <div class="card-header">
+                <div class="plant-emoji">☀️</div>
+                <h3 class="plant-name-zh">聖約翰草</h3>
+                <p class="plant-name-en">St. John's Wort</p>
+            </div>
+            <div class="card-body">
+                <div class="card-section">
+                    <div class="section-title">✨ 療癒屬性</div>
+                    <div class="tags">
+                        <span class="tag">帶來光明</span>
+                        <span class="tag">驅散陰霾</span>
+                        <span class="tag">提振情緒</span>
+                    </div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">📖 植物故事</div>
+                    <p class="section-content">聖約翰草被稱為「趕走陰霾的陽光」。它在夏至前後開花，古人相信它能捕捉太陽的力量，為黑暗中的人帶來光明。</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">💭 曦婆婆說</div>
+                    <p class="quote">「當心裡的光被遮住的時候，聖約翰草會提醒你：光一直都在。」</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">🔧 對應建築</div>
+                    <div class="building-link">
+                        <span class="icon">🏛️</span>
+                        <span>精緻的樣品屋——幫助找回真實的自己，重新發光</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 迷迭香 -->
+        <div class="plant-card">
+            <div class="card-header">
+                <div class="plant-emoji">🌿</div>
+                <h3 class="plant-name-zh">迷迭香</h3>
+                <p class="plant-name-en">Rosemary</p>
+            </div>
+            <div class="card-body">
+                <div class="card-section">
+                    <div class="section-title">✨ 療癒屬性</div>
+                    <div class="tags">
+                        <span class="tag">記憶</span>
+                        <span class="tag">連結</span>
+                        <span class="tag">思念</span>
+                    </div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">📖 植物故事</div>
+                    <p class="section-content">迷迭香在莎士比亞的作品中代表「記憶」。它的香氣能喚醒沉睡的回憶，讓我們與所愛的人保持連結——無論他們在哪裡。</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">💭 曦婆婆說</div>
+                    <p class="quote">「思念不需要被壓抑。迷迭香會幫你把那份愛安放在心裡。」</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">🔧 對應建築</div>
+                    <div class="building-link">
+                        <span class="icon">🔄</span>
+                        <span>迴旋的樓梯——幫助整理記憶，不再被過去困住</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 百里香 -->
+        <div class="plant-card">
+            <div class="card-header">
+                <div class="plant-emoji">🌱</div>
+                <h3 class="plant-name-zh">百里香</h3>
+                <p class="plant-name-en">Thyme</p>
+            </div>
+            <div class="card-body">
+                <div class="card-section">
+                    <div class="section-title">✨ 療癒屬性</div>
+                    <div class="tags">
+                        <span class="tag">勇氣</span>
+                        <span class="tag">力量</span>
+                        <span class="tag">保護</span>
+                    </div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">📖 植物故事</div>
+                    <p class="section-content">古希臘人相信百里香能賦予人勇氣。戰士出征前會用百里香沐浴，中世紀的騎士會在盔甲上繡上百里香圖案。</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">💭 曦婆婆說</div>
+                    <p class="quote">「需要勇氣的時候，讓百里香陪著你。保護自己，不是自私。」</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">🔧 對應建築</div>
+                    <div class="building-link">
+                        <span class="icon">🏠</span>
+                        <span>沒有門的玻璃屋——幫助建立邊界，學會說「不」</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 雪滴花 -->
+        <div class="plant-card">
+            <div class="card-header">
+                <div class="plant-emoji">❄️</div>
+                <h3 class="plant-name-zh">雪滴花</h3>
+                <p class="plant-name-en">Snowdrop</p>
+            </div>
+            <div class="card-body">
+                <div class="card-section">
+                    <div class="section-title">✨ 療癒屬性</div>
+                    <div class="tags">
+                        <span class="tag">希望</span>
+                        <span class="tag">重生</span>
+                        <span class="tag">新開始</span>
+                    </div>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">📖 植物故事</div>
+                    <p class="section-content">雪滴花是冬末最早綻放的花，即使在積雪中也能破土而出。它象徵著：無論冬天多長，春天終究會來。</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">💭 曦婆婆說</div>
+                    <p class="quote">「失去的痛會慢慢轉化。就像雪滴花，最深的冬天裡，也藏著重生的種子。」</p>
+                </div>
+                <div class="card-section">
+                    <div class="section-title">🔧 對應建築</div>
+                    <div class="building-link">
+                        <span class="icon">🔒</span>
+                        <span>上鎖的密室——幫助面對被封印的傷痛，重新開始</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>📥 下載與使用</h2>
+    <p class="subtitle" style="max-width: 600px; margin: 0 auto 2rem; font-size: 0.9rem;">
+        這些植物卡可以作為情緒覺察的輔助工具。<br>
+        當你感到某種情緒時，可以找到對應的植物，<br>
+        讓它的故事和香氣陪伴你。<br><br>
+        ⚠️ 植物療法僅供參考，不構成醫療建議。
+    </p>
+</body>
+</html>

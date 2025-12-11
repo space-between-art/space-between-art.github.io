@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 基本 SEO -->
+    <title>療癒宇宙 | 心靈健康教育平台 - Space Between Art</title>
+    <meta name="description" content="療癒宇宙 - 以故事為載體的心靈健康教育平台。心靈建築測驗、療癒植物卡、AI療癒小編，用都市奇幻小說探索心理防衛機制與情緒療癒。">
+    <meta name="keywords" content="心理測驗, 心靈建築, 療癒植物, AI聊天, 心理健康, 情緒療癒, 防衛機制, 心理學, 自我探索">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://space-between.art/healing-universe.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://space-between.art/healing-universe.html">
+    <meta property="og:title" content="療癒宇宙 | 心靈健康教育平台">
+    <meta property="og:description" content="在光與暗之間，療癒發生。心靈建築測驗、療癒植物卡、AI療癒小編，用故事探索你的內心世界。">
+    <meta property="og:image" content="https://space-between.art/images/og-healing-universe.png">
+    <meta property="og:locale" content="zh_TW">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="療癒宇宙 | 心靈健康教育平台">
+    <meta name="twitter:description" content="心靈建築測驗、療癒植物卡、AI療癒小編，用故事探索你的內心世界。">
+    <meta name="twitter:image" content="https://space-between.art/images/og-healing-universe.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+            
+            /* 逐光的藥師 - 森林綠金系 */
+            --forest: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --forest-light: #4A7C4B;
+            --gold: #D4A84B;
+            --gold-light: #E8C97A;
+            
+            /* 違章靈魂改建事務所 - 工業藍灰系 */
+            --steel: #2C3E50;
+            --steel-dark: #1A252F;
+            --copper: #B87333;
+            --copper-light: #D4956A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--forest), var(--copper));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-links a.active {
+            color: var(--forest);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--forest-dark) 0%, var(--steel-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 168, 75, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 50%, rgba(184, 115, 51, 0.15) 0%, transparent 40%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .hero-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .hero-icon.forest {
+            background: linear-gradient(135deg, var(--forest), var(--forest-light));
+            box-shadow: 0 0 30px rgba(44, 95, 45, 0.5);
+        }
+
+        .hero-icon.steel {
+            background: linear-gradient(135deg, var(--steel), var(--copper));
+            box-shadow: 0 0 30px rgba(184, 115, 51, 0.5);
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--gold-light), var(--copper-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        /* Two Systems */
+        .two-systems {
+            background: var(--cream-dark);
+        }
+
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .system-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .system-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .system-header {
+            padding: 2rem;
+            color: white;
+            position: relative;
+        }
+
+        .system-card.forest .system-header {
+            background: linear-gradient(135deg, var(--forest-dark), var(--forest));
+        }
+
+        .system-card.steel .system-header {
+            background: linear-gradient(135deg, var(--steel-dark), var(--steel));
+        }
+
+        .system-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .system-header h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .system-header p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .system-body {
+            padding: 2rem;
+        }
+
+        .system-work {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--cream);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .system-work:hover {
+            transform: translateX(5px);
+        }
+
+        .work-icon {
+            font-size: 2rem;
+        }
+
+        .work-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .work-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .system-features {
+            list-style: none;
+        }
+
+        .system-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--cream-dark);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .system-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Concept Mapping */
+        .concept-mapping {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .mapping-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .mapping-table th,
+        .mapping-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid var(--cream-dark);
+        }
+
+        .mapping-table th {
+            background: var(--cream-dark);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .mapping-table th:nth-child(2) {
+            color: var(--forest);
+        }
+
+        .mapping-table th:nth-child(3) {
+            color: var(--copper);
+        }
+
+        .mapping-table td {
+            font-size: 0.9rem;
+        }
+
+        .mapping-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .mapping-table tr:hover {
+            background: var(--cream);
+        }
+
+        /* Interactive Section */
+        .interactive-section {
+            background: linear-gradient(135deg, var(--forest-dark), var(--steel-dark));
+            color: white;
+        }
+
+        .interactive-section .section-header h2 {
+            color: white;
+        }
+
+        .interactive-section .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tool-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tool-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-card p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .tool-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--gold);
+            color: var(--text-dark);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        /* Crossover */
+        .crossover-section {
+            background: var(--cream-dark);
+        }
+
+        .crossover-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .crossover-header {
+            padding: 2rem;
+            background: linear-gradient(90deg, var(--forest-dark), var(--steel-dark));
+            color: white;
+            text-align: center;
+        }
+
+        .crossover-header h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+        }
+
+        .crossover-body {
+            padding: 2rem;
+        }
+
+        .character-dialogue {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .character-dialogue.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .dialogue-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .dialogue-avatar.yao {
+            background: linear-gradient(135deg, var(--forest), var(--forest-light));
+        }
+
+        .dialogue-avatar.luyao {
+            background: linear-gradient(135deg, var(--steel), var(--copper));
+        }
+
+        .dialogue-bubble {
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            max-width: 80%;
+        }
+
+        .character-dialogue:not(.reverse) .dialogue-bubble {
+            background: rgba(44, 95, 45, 0.1);
+            border-bottom-left-radius: 4px;
+        }
+
+        .character-dialogue.reverse .dialogue-bubble {
+            background: rgba(44, 62, 80, 0.1);
+            border-bottom-right-radius: 4px;
+        }
+
+        .dialogue-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .character-dialogue:not(.reverse) .dialogue-name {
+            color: var(--forest);
+        }
+
+        .character-dialogue.reverse .dialogue-name {
+            color: var(--copper);
+        }
+
+        .dialogue-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Future Plans */
+        .future-section {
+            text-align: center;
+        }
+
+        .future-works {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .future-work {
+            padding: 1rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .future-work span {
+            font-size: 1.5rem;
+        }
+
+        .future-work p {
+            font-size: 0.9rem;
+        }
+
+        .future-work .status {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--forest-dark), var(--steel-dark));
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn.primary {
+            background: var(--gold);
+            color: var(--text-dark);
+        }
+
+        .cta-btn.secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .systems-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mapping-table {
+                font-size: 0.8rem;
+            }
+
+            .mapping-table th,
+            .mapping-table td {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <svg width="32" height="32" viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#2C5F2D"/>
+                        <stop offset="100%" style="stop-color:#B87333"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logoGrad)" stroke-width="3"/>
+                <circle cx="50" cy="50" r="8" fill="url(#logoGrad)"/>
+                <circle cx="50" cy="50" r="25" fill="none" stroke="url(#logoGrad)" stroke-width="1.5" opacity="0.5"/>
+            </svg>
+            Space Between Art
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="index.html#works">作品</a></li>
+            <li><a href="healing-universe.html" class="active">療癒宇宙</a></li>
+            <li><a href="gallery.html">畫廊</a></li>
+            <li><a href="community.html">社群</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icons">
+                <div class="hero-icon forest">🌿</div>
+                <div class="hero-icon steel">🔧</div>
+            </div>
+            <h1>療癒宇宙</h1>
+            <p class="hero-subtitle">「在光與暗之間，療癒發生」</p>
+            <p>以故事為載體的心靈健康教育平台<br>將抽象的心理學概念，轉化為具象易懂的比喻</p>
+        </div>
+    </section>
+
+    <!-- Two Systems -->
+    <section class="two-systems">
+        <div class="section-header">
+            <h2>🌌 兩大療癒系統</h2>
+            <p>同一議題，兩種視角</p>
+        </div>
+        
+        <div class="systems-grid">
+            <!-- 光之系統 -->
+            <div class="system-card forest">
+                <div class="system-header">
+                    <div class="system-icon">🌿</div>
+                    <h3>光之系統</h3>
+                    <p>心光 + 植物療癒</p>
+                </div>
+                <div class="system-body">
+                    <a href="pharmacist/index.html" class="system-work">
+                        <span class="work-icon">📖</span>
+                        <div class="work-info">
+                            <h4>《逐光的藥師》</h4>
+                            <p>完結・115,000字</p>
+                        </div>
+                    </a>
+                    <ul class="system-features">
+                        <li>✨ 心光：每個人心中的光芒</li>
+                        <li>🌱 植物：12種療癒植物</li>
+                        <li>💚 情緒覺察與接納</li>
+                        <li>🌙 曦婆婆的草藥園</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 建築系統 -->
+            <div class="system-card steel">
+                <div class="system-header">
+                    <div class="system-icon">🔧</div>
+                    <h3>建築系統</h3>
+                    <p>心靈建築 + 結構改建</p>
+                </div>
+                <div class="system-body">
+                    <a href="renovator/index.html" class="system-work">
+                        <span class="work-icon">📖</span>
+                        <div class="work-info">
+                            <h4>《違章靈魂改建事務所》</h4>
+                            <p>優化完成・85,000字</p>
+                        </div>
+                    </a>
+                    <ul class="system-features">
+                        <li>🏠 心靈建築：防衛機制具象化</li>
+                        <li>🔨 心靈法器：改建的工具</li>
+                        <li>🧱 邊界與結構調整</li>
+                        <li>🌧️ S市的雨與霧</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept Mapping -->
+    <section>
+        <div class="section-header">
+            <h2>🔗 概念對照</h2>
+            <p>同一心理議題，兩種視角解讀</p>
+        </div>
+        
+        <div class="concept-mapping">
+            <table class="mapping-table">
+                <thead>
+                    <tr>
+                        <th>心理議題</th>
+                        <th>🌿 光之系統</th>
+                        <th>🔧 建築系統</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>邊界感缺失</td>
+                        <td>心光被他人的黑暗侵蝕</td>
+                        <td>沒有門的玻璃屋</td>
+                    </tr>
+                    <tr>
+                        <td>迴避依戀</td>
+                        <td>心光躲在深處，不敢發亮</td>
+                        <td>銅牆鐵壁的碉堡</td>
+                    </tr>
+                    <tr>
+                        <td>假性自我</td>
+                        <td>心光的顏色不是自己的</td>
+                        <td>精緻但空心的樣品屋</td>
+                    </tr>
+                    <tr>
+                        <td>創傷迴圈</td>
+                        <td>心光被過去的陰影遮蔽</td>
+                        <td>無限延伸的樓梯</td>
+                    </tr>
+                    <tr>
+                        <td>情緒解離</td>
+                        <td>心光被切割、碎片化</td>
+                        <td>上鎖的密室</td>
+                    </tr>
+                    <tr>
+                        <td>過度負荷</td>
+                        <td>心光快要燃燒殆盡</td>
+                        <td>搖搖欲墜的鐘樓</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Interactive Tools -->
+    <section class="interactive-section">
+        <div class="section-header">
+            <h2>🎮 互動體驗</h2>
+            <p>探索你的內心世界</p>
+        </div>
+        
+        <div class="tools-grid">
+            <a href="healing-universe/quiz.html" class="tool-card">
+                <div class="tool-icon">🏠</div>
+                <h3>心靈建築測驗</h3>
+                <p>10道情境題，測出你的心靈建築類型</p>
+                <span class="tool-badge">約3分鐘</span>
+            </a>
+            
+            <a href="healing-universe/plant-cards.html" class="tool-card">
+                <div class="tool-icon">🌿</div>
+                <h3>療癒植物卡</h3>
+                <p>6種療癒植物，找到屬於你的植物處方</p>
+                <span class="tool-badge">數位卡片</span>
+            </a>
+            
+            <a href="ai-chat.html" class="tool-card">
+                <div class="tool-icon">💬</div>
+                <h3>AI 療癒小編</h3>
+                <p>與故事角色對話，獲得療癒建議</p>
+                <span class="tool-badge">4位角色</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Crossover -->
+    <section class="crossover-section">
+        <div class="section-header">
+            <h2>✨ 跨作品對話</h2>
+            <p>當曜遇見路遙</p>
+        </div>
+        
+        <div class="crossover-card">
+            <div class="crossover-header">
+                <h3>「看見」的重量</h3>
+            </div>
+            <div class="crossover-body">
+                <div class="character-dialogue">
+                    <div class="dialogue-avatar yao">✨</div>
+                    <div class="dialogue-bubble">
+                        <div class="dialogue-name">曜</div>
+                        <p class="dialogue-text">「你看見的是什麼？」</p>
+                    </div>
+                </div>
+                
+                <div class="character-dialogue reverse">
+                    <div class="dialogue-avatar luyao">🔧</div>
+                    <div class="dialogue-bubble">
+                        <div class="dialogue-name">路遙</div>
+                        <p class="dialogue-text">「建築。每個人心裡都有一座。你呢？」</p>
+                    </div>
+                </div>
+                
+                <div class="character-dialogue">
+                    <div class="dialogue-avatar yao">✨</div>
+                    <div class="dialogue-bubble">
+                        <div class="dialogue-name">曜</div>
+                        <p class="dialogue-text">「光。有的人很亮，有的人快要熄滅。」</p>
+                    </div>
+                </div>
+                
+                <div class="character-dialogue reverse">
+                    <div class="dialogue-avatar luyao">🔧</div>
+                    <div class="dialogue-bubble">
+                        <div class="dialogue-name">路遙</div>
+                        <p class="dialogue-text">「那你看見我的房子了嗎？」</p>
+                    </div>
+                </div>
+                
+                <div class="character-dialogue">
+                    <div class="dialogue-avatar yao">✨</div>
+                    <div class="dialogue-bubble">
+                        <div class="dialogue-name">曜</div>
+                        <p class="dialogue-text">「是一片廢墟。但廢墟裡⋯⋯還有光。」</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Plans -->
+    <section class="future-section">
+        <div class="section-header">
+            <h2>🚀 未來計畫</h2>
+            <p>療癒宇宙持續擴展中</p>
+        </div>
+        
+        <div class="future-works">
+            <div class="future-work">
+                <span>🌙</span>
+                <div>
+                    <p>《夢境修復師》</p>
+                    <p class="status">構想中</p>
+                </div>
+            </div>
+            <div class="future-work">
+                <span>📚</span>
+                <div>
+                    <p>《記憶圖書館》</p>
+                    <p class="status">構想中</p>
+                </div>
+            </div>
+            <div class="future-work">
+                <span>🎨</span>
+                <div>
+                    <p>《情緒調色師》</p>
+                    <p class="status">構想中</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>加入療癒宇宙</h2>
+        <p>每個人都值得被看見——無論是心中的光，還是心裡的房子</p>
+        <div class="cta-buttons">
+            <a href="healing-universe/quiz.html" class="cta-btn primary">開始測驗</a>
+            <a href="community.html" class="cta-btn secondary">加入社群</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Space Between Art | <a href="index.html">返回首頁</a></p>
+        <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6;">
+            ⚠️ 本內容為心理健康普及教育，不能取代專業心理諮商
+        </p>
+    </footer>
+</body>
+</html>

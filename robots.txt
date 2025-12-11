@@ -1,0 +1,14 @@
+# Space Between Art - Robots.txt
+# https://space-between.art
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://space-between.art/sitemap.xml
+
+# 禁止爬取 API 端點
+Disallow: /api/
+
+# 禁止爬取文件資料夾
+Disallow: /docs/

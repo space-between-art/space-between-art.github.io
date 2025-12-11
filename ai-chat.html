@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 基本 SEO -->
+    <title>AI 療癒小編 | 與小說角色對話 - Space Between Art</title>
+    <meta name="description" content="AI 療癒小編 - 與曦婆婆、曜、路遙、顧曼對話，獲得專屬療癒建議。來自《逐光的藥師》和《違章靈魂改建事務所》的角色陪伴你。">
+    <meta name="keywords" content="AI聊天, 療癒對話, 虛擬角色, 心理支持, 情緒陪伴, 小說角色, 互動體驗">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://space-between.art/ai-chat.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://space-between.art/ai-chat.html">
+    <meta property="og:title" content="AI 療癒小編 | 與小說角色對話">
+    <meta property="og:description" content="與曦婆婆、曜、路遙、顧曼對話，獲得專屬療癒建議。4位療癒宇宙角色陪伴你。">
+    <meta property="og:image" content="https://space-between.art/images/og-ai-chat.png">
+    <meta property="og:locale" content="zh_TW">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI 療癒小編 | 與小說角色對話">
+    <meta name="twitter:description" content="與曦婆婆、曜、路遙、顧曼對話，獲得專屬療癒建議。">
+    <meta name="twitter:image" content="https://space-between.art/images/og-ai-chat.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+            
+            --forest: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --gold: #D4A84B;
+            
+            --steel: #2C3E50;
+            --steel-dark: #1A252F;
+            --copper: #B87333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--forest-dark), var(--steel-dark));
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Main Container */
+        .container {
+            flex: 1;
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Character Selector */
+        .character-panel {
+            width: 280px;
+            background: white;
+            border-right: 1px solid var(--cream-dark);
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .panel-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .character-card {
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .character-card:hover {
+            transform: translateX(5px);
+        }
+
+        .character-card.active {
+            border-color: var(--gold);
+        }
+
+        .character-card.forest {
+            background: linear-gradient(135deg, rgba(44, 95, 45, 0.1), rgba(44, 95, 45, 0.05));
+        }
+
+        .character-card.steel {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.1), rgba(44, 62, 80, 0.05));
+        }
+
+        .character-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .character-card.forest .character-avatar {
+            background: linear-gradient(135deg, var(--forest), var(--forest-dark));
+        }
+
+        .character-card.steel .character-avatar {
+            background: linear-gradient(135deg, var(--steel), var(--copper));
+        }
+
+        .character-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .character-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .character-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .character-work {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            background: rgba(0,0,0,0.05);
+        }
+
+        /* Chat Area */
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--cream);
+        }
+
+        .chat-header {
+            padding: 1rem 1.5rem;
+            background: white;
+            border-bottom: 1px solid var(--cream-dark);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .current-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .current-avatar.forest {
+            background: linear-gradient(135deg, var(--forest), var(--forest-dark));
+        }
+
+        .current-avatar.steel {
+            background: linear-gradient(135deg, var(--steel), var(--copper));
+        }
+
+        .current-info h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .current-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #4CAF50;
+            border-radius: 50%;
+            margin-left: auto;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Messages */
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .message {
+            display: flex;
+            gap: 0.8rem;
+            max-width: 85%;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .message.assistant .message-avatar.forest {
+            background: linear-gradient(135deg, var(--forest), var(--forest-dark));
+        }
+
+        .message.assistant .message-avatar.steel {
+            background: linear-gradient(135deg, var(--steel), var(--copper));
+        }
+
+        .message.user .message-avatar {
+            background: var(--cream-dark);
+        }
+
+        .message-bubble {
+            padding: 1rem 1.2rem;
+            border-radius: 18px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .message.assistant .message-bubble {
+            background: white;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, var(--forest), var(--forest-dark));
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 1rem;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: var(--text-muted);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 100% { opacity: 0.3; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-4px); }
+        }
+
+        /* Input Area */
+        .input-area {
+            padding: 1rem 1.5rem;
+            background: white;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .input-container {
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-end;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--cream-dark);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: none;
+            min-height: 50px;
+            max-height: 150px;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--forest);
+        }
+
+        .send-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--forest), var(--forest-dark));
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .send-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Welcome Message */
+        .welcome-message {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .welcome-message h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .welcome-message p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .suggestion-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .chip {
+            padding: 0.5rem 1rem;
+            background: white;
+            border: 1px solid var(--cream-dark);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chip:hover {
+            background: var(--forest);
+            color: white;
+            border-color: var(--forest);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            text-align: center;
+            padding: 0.8rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--cream-dark);
+        }
+
+        /* Error Message */
+        .error-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #D32F2F;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+            z-index: 1000;
+        }
+
+        .error-toast.show {
+            display: block;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translate(-50%, 20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .character-panel {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--cream-dark);
+                padding: 1rem;
+                display: flex;
+                gap: 0.5rem;
+                overflow-x: auto;
+            }
+
+            .character-card {
+                min-width: 200px;
+                margin-bottom: 0;
+            }
+
+            .character-desc {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <span>🌿🔧</span>
+            <span>Space Between Art</span>
+        </a>
+        <a href="healing-universe.html" class="back-link">← 返回療癒宇宙</a>
+    </header>
+
+    <div class="container">
+        <!-- Character Panel -->
+        <aside class="character-panel">
+            <p class="panel-title">選擇對話角色</p>
+            
+            <div class="character-card forest active" data-character="xi">
+                <div class="character-header">
+                    <div class="character-avatar">🌙</div>
+                    <div>
+                        <div class="character-name">曦婆婆</div>
+                        <div class="character-title">草藥師</div>
+                    </div>
+                </div>
+                <p class="character-desc">溫暖智慧的草藥師，用植物的芳香與故事療癒人心</p>
+                <span class="character-work">《逐光的藥師》</span>
+            </div>
+
+            <div class="character-card forest" data-character="yao">
+                <div class="character-header">
+                    <div class="character-avatar">✨</div>
+                    <div>
+                        <div class="character-name">曜</div>
+                        <div class="character-title">書店老闆</div>
+                    </div>
+                </div>
+                <p class="character-desc">能看見心光的年輕人，用傾聽和陪伴給予溫暖</p>
+                <span class="character-work">《逐光的藥師》</span>
+            </div>
+
+            <div class="character-card steel" data-character="luyao">
+                <div class="character-header">
+                    <div class="character-avatar">🔧</div>
+                    <div>
+                        <div class="character-name">路遙</div>
+                        <div class="character-title">改建師</div>
+                    </div>
+                </div>
+                <p class="character-desc">心靈建築改建師，能看見並修復內心的違章結構</p>
+                <span class="character-work">《違章靈魂改建事務所》</span>
+            </div>
+
+            <div class="character-card steel" data-character="guman">
+                <div class="character-header">
+                    <div class="character-avatar">💜</div>
+                    <div>
+                        <div class="character-name">顧曼</div>
+                        <div class="character-title">心理師</div>
+                    </div>
+                </div>
+                <p class="character-desc">專業心理諮商師，用科學與同理心提供支持</p>
+                <span class="character-work">《違章靈魂改建事務所》</span>
+            </div>
+        </aside>
+
+        <!-- Chat Area -->
+        <main class="chat-area">
+            <div class="chat-header">
+                <div class="current-avatar forest" id="currentAvatar">🌙</div>
+                <div class="current-info">
+                    <h2 id="currentName">曦婆婆</h2>
+                    <p id="currentTitle">來自《逐光的藥師》的草藥師</p>
+                </div>
+                <div class="status-dot"></div>
+            </div>
+
+            <div class="messages" id="messages">
+                <div class="welcome-message">
+                    <h3>👋 歡迎來到療癒空間</h3>
+                    <p>
+                        選擇一個角色，開始你的療癒對話。<br>
+                        這裡是一個安全的空間，你可以分享任何心事。
+                    </p>
+                    <div class="suggestion-chips">
+                        <span class="chip" onclick="useSuggestion('最近心情有點低落')">最近心情有點低落</span>
+                        <span class="chip" onclick="useSuggestion('我不知道怎麼拒絕別人')">我不知道怎麼拒絕別人</span>
+                        <span class="chip" onclick="useSuggestion('工作壓力很大')">工作壓力很大</span>
+                        <span class="chip" onclick="useSuggestion('想聽聽療癒植物的故事')">想聽聽療癒植物的故事</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="userInput" 
+                            placeholder="說說你的心事..."
+                            rows="1"
+                            onkeydown="handleKeyDown(event)"
+                        ></textarea>
+                    </div>
+                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                        ➤
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="disclaimer">
+        ⚠️ AI 療癒小編提供情緒支持，但不能取代專業心理諮商。如需專業協助，請撥打生命線 1925（台灣）或 2389 2222（香港）
+    </div>
+
+    <div class="error-toast" id="errorToast">連線發生錯誤，請稍後再試</div>
+
+    <script>
+        // 狀態管理
+        let currentCharacter = 'xi';
+        let conversationHistory = [];
+        let isLoading = false;
+
+        // 角色資訊
+        const characters = {
+            xi: { 
+                name: '曦婆婆', 
+                title: '來自《逐光的藥師》的草藥師', 
+                avatar: '🌙',
+                theme: 'forest'
+            },
+            yao: { 
+                name: '曜', 
+                title: '來自《逐光的藥師》的書店老闆', 
+                avatar: '✨',
+                theme: 'forest'
+            },
+            luyao: { 
+                name: '路遙', 
+                title: '來自《違章靈魂改建事務所》的改建師', 
+                avatar: '🔧',
+                theme: 'steel'
+            },
+            guman: { 
+                name: '顧曼', 
+                title: '來自《違章靈魂改建事務所》的心理師', 
+                avatar: '💜',
+                theme: 'steel'
+            }
+        };
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 角色卡片點擊
+            document.querySelectorAll('.character-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const character = card.dataset.character;
+                    selectCharacter(character);
+                });
+            });
+
+            // 自動調整 textarea 高度
+            const textarea = document.getElementById('userInput');
+            textarea.addEventListener('input', () => {
+                textarea.style.height = 'auto';
+                textarea.style.height = Math.min(textarea.scrollHeight, 150) + 'px';
+            });
+        });
+
+        // 選擇角色
+        function selectCharacter(character) {
+            currentCharacter = character;
+            const info = characters[character];
+
+            // 更新 UI
+            document.querySelectorAll('.character-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelector(`[data-character="${character}"]`).classList.add('active');
+
+            // 更新 header
+            document.getElementById('currentAvatar').textContent = info.avatar;
+            document.getElementById('currentAvatar').className = `current-avatar ${info.theme}`;
+            document.getElementById('currentName').textContent = info.name;
+            document.getElementById('currentTitle').textContent = info.title;
+
+            // 清空對話
+            conversationHistory = [];
+            document.getElementById('messages').innerHTML = `
+                <div class="welcome-message">
+                    <h3>${info.avatar} ${info.name}在這裡</h3>
+                    <p>有什麼想說的嗎？我在聽。</p>
+                    <div class="suggestion-chips">
+                        <span class="chip" onclick="useSuggestion('最近心情有點低落')">最近心情有點低落</span>
+                        <span class="chip" onclick="useSuggestion('我不知道怎麼拒絕別人')">我不知道怎麼拒絕別人</span>
+                        <span class="chip" onclick="useSuggestion('工作壓力很大')">工作壓力很大</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 使用建議
+        function useSuggestion(text) {
+            document.getElementById('userInput').value = text;
+            sendMessage();
+        }
+
+        // 發送訊息
+        async function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            
+            if (!message || isLoading) return;
+
+            // 清空輸入
+            input.value = '';
+            input.style.height = 'auto';
+
+            // 移除歡迎訊息
+            const welcome = document.querySelector('.welcome-message');
+            if (welcome) welcome.remove();
+
+            // 顯示用戶訊息
+            addMessage(message, 'user');
+
+            // 顯示載入中
+            isLoading = true;
+            document.getElementById('sendBtn').disabled = true;
+            showTyping();
+
+            try {
+                // 呼叫本地 API（同域名，無 CORS 問題！）
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        character: currentCharacter,
+                        conversationHistory: conversationHistory.slice(-10) // 只保留最近 10 則
+                    })
+                });
+
+                const data = await response.json();
+
+                hideTyping();
+
+                if (data.success) {
+                    addMessage(data.reply, 'assistant');
+                    
+                    // 更新對話歷史
+                    conversationHistory.push(
+                        { role: 'user', content: message },
+                        { role: 'assistant', content: data.reply }
+                    );
+                } else {
+                    showError(data.error || '發生錯誤，請稍後再試');
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                hideTyping();
+                showError('連線發生錯誤，請稍後再試');
+            }
+
+            isLoading = false;
+            document.getElementById('sendBtn').disabled = false;
+        }
+
+        // 添加訊息
+        function addMessage(text, role) {
+            const messagesDiv = document.getElementById('messages');
+            const info = characters[currentCharacter];
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+            
+            const avatar = role === 'user' ? '👤' : info.avatar;
+            const avatarClass = role === 'user' ? '' : info.theme;
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar ${avatarClass}">${avatar}</div>
+                <div class="message-bubble">${formatText(text)}</div>
+            `;
+            
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        // 格式化文字（處理換行）
+        function formatText(text) {
+            return text.replace(/\n/g, '<br>');
+        }
+
+        // 顯示打字中
+        function showTyping() {
+            const messagesDiv = document.getElementById('messages');
+            const info = characters[currentCharacter];
+            
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message assistant';
+            typingDiv.id = 'typingIndicator';
+            
+            typingDiv.innerHTML = `
+                <div class="message-avatar ${info.theme}">${info.avatar}</div>
+                <div class="message-bubble">
+                    <div class="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            `;
+            
+            messagesDiv.appendChild(typingDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        // 隱藏打字中
+        function hideTyping() {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+        }
+
+        // 顯示錯誤
+        function showError(message) {
+            const toast = document.getElementById('errorToast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Enter 發送
+        function handleKeyDown(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
