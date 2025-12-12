@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>療癒日記 | Space Between Art</title>
+    <meta name="description" content="來自《逐光的藥師》與《違章靈魂改建事務所》角色的每日療癒語錄">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+            
+            --forest: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --gold: #D4A84B;
+            
+            --steel: #2C3E50;
+            --steel-dark: #1A252F;
+            --copper: #B87333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Grain */
+        .grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .header-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .header-back:hover { color: var(--forest); }
+
+        .header h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Daily Quote Hero */
+        .daily-hero {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .daily-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--forest), var(--gold), var(--copper), var(--steel));
+        }
+
+        .daily-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .daily-content {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            line-height: 2;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .daily-content::before {
+            content: '「';
+            position: absolute;
+            left: -1.5rem;
+            top: -0.5rem;
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .daily-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .author-avatar.pharmacist { background: linear-gradient(135deg, var(--forest), var(--gold)); }
+        .author-avatar.renovator { background: linear-gradient(135deg, var(--steel), var(--copper)); }
+
+        .author-info h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .daily-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .action-btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .action-btn.primary {
+            background: var(--forest);
+            color: white;
+        }
+
+        .action-btn.primary:hover {
+            background: var(--forest-dark);
+            transform: translateY(-2px);
+        }
+
+        .action-btn.secondary {
+            background: var(--cream-dark);
+            color: var(--text-dark);
+        }
+
+        .action-btn.secondary:hover {
+            background: var(--cream);
+        }
+
+        /* Character Tabs */
+        .character-section {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .series-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .series-tab {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background: white;
+            border-radius: 30px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .series-tab:hover { transform: translateY(-2px); }
+
+        .series-tab.active.pharmacist {
+            background: var(--forest);
+            color: white;
+        }
+
+        .series-tab.active.renovator {
+            background: var(--steel);
+            color: white;
+        }
+
+        /* Character Grid */
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .character-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .character-card.pharmacist:hover { border-left: 4px solid var(--forest); }
+        .character-card.renovator:hover { border-left: 4px solid var(--steel); }
+
+        .char-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .char-emoji {
+            font-size: 2rem;
+        }
+
+        .char-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .char-role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .char-preview {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            border-left: 3px solid var(--gold);
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .char-count {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Diary Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-content {
+            background: var(--cream);
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 1;
+        }
+
+        .modal-header h2 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: white;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--cream-dark);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .diary-entry {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .diary-entry.diary { border-left: 3px solid var(--gold); }
+        .diary-entry.monologue { border-left: 3px solid var(--copper); }
+
+        .entry-type {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        .entry-type.diary {
+            background: rgba(212, 168, 75, 0.15);
+            color: var(--gold);
+        }
+
+        .entry-type.monologue {
+            background: rgba(184, 115, 51, 0.15);
+            color: var(--copper);
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .entry-content {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .entry-mood {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.8rem;
+            font-style: italic;
+        }
+
+        /* Embeddable Widget */
+        .widget-section {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, rgba(44,95,45,0.03) 0%, rgba(44,62,80,0.03) 100%);
+            border-radius: 20px;
+        }
+
+        .widget-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .widget-code {
+            background: var(--text-dark);
+            color: #a8d4a8;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover { background: rgba(255,255,255,0.2); }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            margin-top: 3rem;
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .daily-card { padding: 2rem 1.5rem; }
+            .daily-content::before { display: none; }
+            .daily-actions { flex-direction: column; }
+            .action-btn { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="../" class="header-back">← 返回首頁</a>
+        <h1>✦ 療癒日記 ✦</h1>
+        <p>來自故事角色的每日一句，陪你度過今天</p>
+    </header>
+
+    <!-- Daily Quote Hero -->
+    <section class="daily-hero">
+        <div class="daily-card" id="dailyCard">
+            <div class="daily-date" id="dailyDate"></div>
+            <div class="daily-content" id="dailyContent"></div>
+            <div class="daily-author">
+                <div class="author-avatar" id="authorAvatar"></div>
+                <div class="author-info">
+                    <h3 id="authorName"></h3>
+                    <p id="authorRole"></p>
+                </div>
+            </div>
+            <div class="daily-actions">
+                <button class="action-btn primary" onclick="shareQuote()">
+                    📤 分享這句話
+                </button>
+                <button class="action-btn secondary" onclick="nextQuote()">
+                    🔄 換一句
+                </button>
+                <button class="action-btn secondary" onclick="copyQuote()">
+                    📋 複製文字
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Section -->
+    <section class="character-section">
+        <h2 class="section-title">📖 角色日記集</h2>
+        
+        <div class="series-tabs">
+            <button class="series-tab active pharmacist" data-series="pharmacist" onclick="switchSeries('pharmacist')">
+                🌿 逐光的藥師
+            </button>
+            <button class="series-tab renovator" data-series="renovator" onclick="switchSeries('renovator')">
+                🔧 違章靈魂改建事務所
+            </button>
+        </div>
+
+        <div class="character-grid" id="characterGrid">
+            <!-- Dynamically populated -->
+        </div>
+    </section>
+
+    <!-- Embed Widget Section -->
+    <section class="widget-section">
+        <h3 class="widget-title">🔗 嵌入你的網站</h3>
+        <div class="widget-code">
+            <button class="copy-btn" onclick="copyEmbed()">複製</button>
+            <code>&lt;iframe src="https://space-between.art/daily-quote/widget.html" width="100%" height="300" frameborder="0"&gt;&lt;/iframe&gt;</code>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brand">Space Between Art</div>
+        <p>在光與暗之間，故事發生。</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Diary entries -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Character Data
+        const characterData = {
+            pharmacist: {
+                title: "逐光的藥師",
+                characters: {
+                    yao: {
+                        name: "曜",
+                        role: "逐光藥師",
+                        emoji: "🌿",
+                        entries: [
+                            { type: "diary", date: "三月十五日", content: "今天林伯又來送湯了。他說是雞湯，但我聞得出來，那是他用僅剩的積蓄買的老母雞。我不知道該怎麼回報他，只能假裝很餓地喝完。有些善意，太重了。", mood: "溫暖但沉重" },
+                            { type: "diary", date: "三月二十二日", content: "曦婆婆說，藥師不能只燃燒自己。但如果不燃燒，要怎麼照亮別人？我還不懂這個平衡。也許永遠都學不會。", mood: "困惑" },
+                            { type: "diary", date: "四月三日", content: "第一次成功讓洋甘菊在掌心發光。那種感覺……像是終於找到了自己存在的理由。原來我不只是個躲在書堆裡的膽小鬼。", mood: "希望" },
+                            { type: "monologue", content: "我以為把自己關起來就不會受傷。但孤獨本身，就是一種慢性的傷。" },
+                            { type: "monologue", content: "每個人的心光都不一樣。有的像蠟燭，有的像營火。我的……大概是螢火蟲吧，微弱但還在閃。" },
+                            { type: "monologue", content: "小夏，我終於明白了。你留給我的不是愧疚，是責任。我要替你，好好活著。" },
+                            { type: "monologue", content: "書店的氣味讓我安心。那是時間沉澱下來的味道，告訴我：一切都會過去的。" },
+                            { type: "monologue", content: "今天晴問我為什麼總是低著頭走路。我說，因為這樣比較不容易撞到別人。她笑了，說那你會錯過很多風景。" },
+                            { type: "diary", date: "四月十七日", content: "療癒李哥失敗了。我太急了，以為只要夠努力就能修好所有人。曦婆婆說得對——有些傷口需要的不是縫合，是讓它流出來。", mood: "挫敗但學習" },
+                            { type: "monologue", content: "原來接受幫助，也是一種勇敢。" }
+                        ]
+                    },
+                    qing: {
+                        name: "晴",
+                        role: "社工師",
+                        emoji: "☀️",
+                        entries: [
+                            { type: "diary", date: "三月十八日", content: "新認識了一個奇怪的書店老闆。他說他能看見人心裡的光。我本來以為是精神疾病，但他看我的眼神……好像真的看見了什麼。", mood: "好奇" },
+                            { type: "monologue", content: "我弟弟教會我一件事：你不能替別人活，也不能強迫別人活。你只能陪著他，直到他自己想活。" },
+                            { type: "monologue", content: "社工這份工作最難的不是處理案例，是處理自己的無力感。" },
+                            { type: "monologue", content: "療癒不是「修理」，而是「陪伴」。你不能替別人痛，也不能強行剝奪別人的痛。" },
+                            { type: "diary", date: "四月五日", content: "曜問我為什麼總是這麼樂觀。我沒告訴他，我的樂觀是用眼淚換來的。在沒人看見的地方，我也會崩潰。", mood: "坦誠" },
+                            { type: "monologue", content: "有時候，最需要被照顧的人，是那個一直在照顧別人的人。" },
+                            { type: "monologue", content: "專業是一道護欄，讓我不會掉進別人的深淵。但偶爾，我也想當個普通人，不用那麼堅強。" }
+                        ]
+                    },
+                    xipo: {
+                        name: "曦婆婆",
+                        role: "月亮藥師",
+                        emoji: "🌙",
+                        entries: [
+                            { type: "monologue", content: "真正的藥師不是太陽，而是月亮。我們不產生光，只是溫柔地反射它。" },
+                            { type: "monologue", content: "療癒是蜂蜜的工作。蜜蜂採蜜，從不強迫花朵盛開。" },
+                            { type: "monologue", content: "我等這個孩子等了三十年。終於，有人能繼承這份使命了。" },
+                            { type: "diary", date: "某個春日", content: "今天曜問我，為什麼選擇他。我沒說實話。因為真正的答案是——他讓我想起了年輕時的自己，還有我再也見不到的那個人。", mood: "懷念" },
+                            { type: "monologue", content: "記憶是會發酵的。好的記憶會變成蜂蜜，壞的記憶會變成毒藥。關鍵是，你選擇餵養哪一種。" },
+                            { type: "monologue", content: "有些人注定是月亮，只在夜裡發光。但正因為有夜，月亮才有意義。" }
+                        ]
+                    }
+                }
+            },
+            renovator: {
+                title: "違章靈魂改建事務所",
+                characters: {
+                    luyao: {
+                        name: "路遙",
+                        role: "心靈建築改建師",
+                        emoji: "🔧",
+                        entries: [
+                            { type: "diary", date: "雨天", content: "今天接了一個新案子。她的房子沒有門——任何人都可以進來，包括那些不該進來的。這種案例最棘手，因為她根本不知道自己需要邊界。", mood: "沉思" },
+                            { type: "monologue", content: "每一座違章建築，都是一道沒有被聽見的求救信號。" },
+                            { type: "monologue", content: "我不是來拆除你的房子的，我是來幫你改建的。" },
+                            { type: "monologue", content: "有些人把自己建成碉堡，以為這樣就不會受傷。但碉堡裡面，也沒有陽光。" },
+                            { type: "diary", date: "凌晨三點", content: "又做了那個夢。夢裡我站在自己的廢墟前，想重建卻找不到藍圖。醒來後，我花了很長時間才想起來——我是誰。", mood: "脆弱" },
+                            { type: "monologue", content: "這座城市病了。但在最深的霧裡，總有一盞燈還亮著。" },
+                            { type: "monologue", content: "我不會拆掉你的碉堡。但即使是核掩體，也需要一個觀察孔。" },
+                            { type: "monologue", content: "改建需要時間。羅馬不是一天建成的，你的心靈建築也是。" },
+                            { type: "diary", date: "某個深夜", content: "顧曼說我太投入案例了。她說得對。但如果我不投入，誰來聽見那些敲牆的聲音？", mood: "堅持" },
+                            { type: "monologue", content: "裂縫不是缺陷。那是光進來的地方。" }
+                        ]
+                    },
+                    guman: {
+                        name: "顧曼",
+                        role: "心理諮商師",
+                        emoji: "💜",
+                        entries: [
+                            { type: "monologue", content: "謝謝你願意告訴我這些。光是說出來，就已經很勇敢了。" },
+                            { type: "monologue", content: "你有沒有想過，這個反應其實是在保護你？只是保護的方式，可能需要更新了。" },
+                            { type: "diary", date: "週三下午", content: "今天的個案讓我想起自己剛入行的時候。那時候我以為，只要夠專業就能幫助所有人。現在我知道了——有些時候，陪伴本身就是療癒。", mood: "感慨" },
+                            { type: "monologue", content: "路遙用他的方式看見建築，我用我的方式聽見故事。我們是不同的工具，但目標相同。" },
+                            { type: "monologue", content: "界限不是冷漠。界限是讓我能夠持續幫助你的方式。" },
+                            { type: "monologue", content: "你不需要馬上好起來。療癒不是比賽，沒有人在計時。" },
+                            { type: "diary", date: "深夜", content: "有時候我也會懷疑自己。但每當看到一個人眼裡重新出現光芒，我就知道——這條路是對的。", mood: "堅定" }
+                        ]
+                    },
+                    xiaoan: {
+                        name: "小安",
+                        role: "事務所助理",
+                        emoji: "📋",
+                        entries: [
+                            { type: "monologue", content: "老闆說我是這間事務所唯一正常的人。我不確定這是稱讚還是嘲諷。" },
+                            { type: "diary", date: "又一個加班夜", content: "今天來了一個氣場超強的客人，強到我差點以為事務所要被拆了。老闆卻一臉淡定。我真的很想問他，你的心臟是什麼做的？", mood: "無奈" },
+                            { type: "monologue", content: "在這裡工作久了，我學會一件事：每個看起來可怕的人，可能只是很受傷。" },
+                            { type: "monologue", content: "老闆不是不會笑，只是他的笑都藏在很深的地方。偶爾露出來一點，就像看見彗星一樣稀有。" }
+                        ]
+                    }
+                }
+            }
+        };
+
+        // Get all quotes
+        function getAllQuotes() {
+            const quotes = [];
+            for (const series in characterData) {
+                for (const charId in characterData[series].characters) {
+                    const char = characterData[series].characters[charId];
+                    char.entries.forEach(entry => {
+                        quotes.push({
+                            ...entry,
+                            character: char.name,
+                            role: char.role,
+                            emoji: char.emoji,
+                            series: series
+                        });
+                    });
+                }
+            }
+            return quotes;
+        }
+
+        const allQuotes = getAllQuotes();
+        let currentQuoteIndex = 0;
+
+        // Get daily quote based on date
+        function getDailyQuote() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+            return allQuotes[dayOfYear % allQuotes.length];
+        }
+
+        // Display quote
+        function displayQuote(quote) {
+            const dateEl = document.getElementById('dailyDate');
+            const contentEl = document.getElementById('dailyContent');
+            const avatarEl = document.getElementById('authorAvatar');
+            const nameEl = document.getElementById('authorName');
+            const roleEl = document.getElementById('authorRole');
+
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            dateEl.textContent = today.toLocaleDateString('zh-TW', options);
+
+            contentEl.textContent = quote.content;
+            avatarEl.textContent = quote.emoji;
+            avatarEl.className = `author-avatar ${quote.series}`;
+            nameEl.textContent = quote.character;
+            roleEl.textContent = `${quote.role}｜${characterData[quote.series].title}`;
+        }
+
+        // Next quote
+        function nextQuote() {
+            currentQuoteIndex = (currentQuoteIndex + 1) % allQuotes.length;
+            displayQuote(allQuotes[currentQuoteIndex]);
+        }
+
+        // Copy quote
+        function copyQuote() {
+            const content = document.getElementById('dailyContent').textContent;
+            const name = document.getElementById('authorName').textContent;
+            const role = document.getElementById('authorRole').textContent;
+            const text = `「${content}」\n—— ${name}，${role}\n\n#SpaceBetweenArt #療癒日記`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('已複製到剪貼簿！');
+            });
+        }
+
+        // Share quote
+        function shareQuote() {
+            const content = document.getElementById('dailyContent').textContent;
+            const name = document.getElementById('authorName').textContent;
+            const text = `「${content}」—— ${name}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: '療癒日記 | Space Between Art',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                copyQuote();
+            }
+        }
+
+        // Copy embed code
+        function copyEmbed() {
+            const code = document.querySelector('.widget-code code').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('嵌入代碼已複製！');
+            });
+        }
+
+        // Render character grid
+        let currentSeries = 'pharmacist';
+
+        function renderCharacterGrid() {
+            const grid = document.getElementById('characterGrid');
+            const series = characterData[currentSeries];
+            
+            grid.innerHTML = '';
+            
+            for (const charId in series.characters) {
+                const char = series.characters[charId];
+                const preview = char.entries.find(e => e.type === 'monologue') || char.entries[0];
+                
+                const card = document.createElement('div');
+                card.className = `character-card ${currentSeries}`;
+                card.onclick = () => openModal(charId);
+                card.innerHTML = `
+                    <div class="char-header">
+                        <span class="char-emoji">${char.emoji}</span>
+                        <div>
+                            <div class="char-name">${char.name}</div>
+                            <div class="char-role">${char.role}</div>
+                        </div>
+                    </div>
+                    <p class="char-preview">${preview.content.substring(0, 50)}...</p>
+                    <p class="char-count">📝 ${char.entries.length} 則日記/獨白</p>
+                `;
+                grid.appendChild(card);
+            }
+        }
+
+        // Switch series
+        function switchSeries(series) {
+            currentSeries = series;
+            document.querySelectorAll('.series-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.series === series) {
+                    tab.classList.add('active');
+                }
+            });
+            renderCharacterGrid();
+        }
+
+        // Modal functions
+        function openModal(charId) {
+            const char = characterData[currentSeries].characters[charId];
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            title.innerHTML = `${char.emoji} ${char.name}的日記`;
+            
+            body.innerHTML = char.entries.map(entry => `
+                <div class="diary-entry ${entry.type}">
+                    <span class="entry-type ${entry.type}">${entry.type === 'diary' ? '📖 日記' : '💭 獨白'}</span>
+                    ${entry.date ? `<div class="entry-date">${entry.date}</div>` : ''}
+                    <p class="entry-content">「${entry.content}」</p>
+                    ${entry.mood ? `<p class="entry-mood">— ${entry.mood}</p>` : ''}
+                </div>
+            `).join('');
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            if (!event || event.target === document.getElementById('modal')) {
+                document.getElementById('modal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            const dailyQuote = getDailyQuote();
+            currentQuoteIndex = allQuotes.indexOf(dailyQuote);
+            displayQuote(dailyQuote);
+            renderCharacterGrid();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
