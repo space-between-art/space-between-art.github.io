@@ -726,8 +726,8 @@
             showTyping();
 
             try {
-                // 呼叫本地 API（同域名，無 CORS 問題！）
-                const response = await fetch('/api/chat', {
+                // 呼叫 Cloudflare Worker API
+                const response = await fetch('https://healing-ai-editor.winsusa2611.workers.dev/api/chat', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
