@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色測試工具</title>
+    <style>
+        body {
+            font-family: -apple-system, "Noto Sans TC", sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 { color: #5d4e37; text-align: center; }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .char-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #6b5b4f;
+            margin-bottom: 10px;
+        }
+        .response {
+            background: #faf8f5;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #d4a574;
+            margin-top: 10px;
+            min-height: 60px;
+        }
+        .status {
+            font-size: 0.9em;
+            color: #888;
+        }
+        .success { color: #4a9; }
+        .error { color: #c55; }
+        button {
+            background: linear-gradient(135deg, #d4a574, #c49a6c);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 20px auto;
+            display: block;
+        }
+        button:hover { opacity: 0.9; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .highlight { background: #fff3cd; padding: 2px 6px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>🌟 心光療癒室 - 角色測試</h1>
+    <p style="text-align:center;color:#666;">測試訊息：「我最近總覺得很累，好像看不到希望」</p>
+    
+    <button id="runTests" onclick="runAllTests()">🚀 開始測試所有角色</button>
+    
+    <div id="results"></div>
+
+    <script>
+        const API_URL = 'https://healing-ai-editor.winsusa2611.workers.dev';
+        const TEST_MESSAGE = '我最近總覺得很累，好像看不到希望';
+        
+        const characters = [
+            { id: 'yao', name: '🌿 曜', book: '逐光的藥師', check: '植物/光/陪伴' },
+            { id: 'xi', name: '🍵 曦婆婆', book: '逐光的藥師', check: '應該稱呼「孩子」' },
+            { id: 'qing', name: '🌸 晴', book: '逐光的藥師', check: '傾聽/不說振作' },
+            { id: 'luyao', name: '🔧 路遙', book: '違章靈魂改建事務所', check: '建築比喻' },
+            { id: 'guman', name: '🪷 顧曼', book: '違章靈魂改建事務所', check: '專業但溫暖' }
+        ];
+        
+        async function runAllTests() {
+            const btn = document.getElementById('runTests');
+            btn.disabled = true;
+            btn.textContent = '測試中...';
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            
+            for (const char of characters) {
+                const section = document.createElement('div');
+                section.className = 'test-section';
+                section.innerHTML = `
+                    <div class="char-name">${char.name} <span style="font-size:0.8em;color:#999;">(${char.book})</span></div>
+                    <div class="status">檢查重點：<span class="highlight">${char.check}</span></div>
+                    <div class="response" id="response-${char.id}">⏳ 請求中...</div>
+                `;
+                resultsDiv.appendChild(section);
+                
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: TEST_MESSAGE, character: char.id })
+                    });
+                    
+                    const data = await response.json();
+                    const responseDiv = document.getElementById(`response-${char.id}`);
+                    
+                    if (data.reply) {
+                        responseDiv.innerHTML = `<span class="success">✅ 成功</span><br><br>${data.reply}`;
+                    } else {
+                        responseDiv.innerHTML = `<span class="error">❌ 無回應</span><br>${JSON.stringify(data)}`;
+                    }
+                } catch (error) {
+                    document.getElementById(`response-${char.id}`).innerHTML = 
+                        `<span class="error">❌ 錯誤: ${error.message}</span>`;
+                }
+                
+                // 稍微延遲避免請求過快
+                await new Promise(r => setTimeout(r, 500));
+            }
+            
+            btn.disabled = false;
+            btn.textContent = '🔄 重新測試';
+        }
+    </script>
+</body>
+</html>
