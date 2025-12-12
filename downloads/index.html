@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>療癒金句卡片下載 | Space Between Art</title>
+    <meta name="description" content="免費下載《逐光的藥師》與《違章靈魂改建事務所》療癒金句卡片，適合社群分享。">
+    <meta property="og:title" content="療癒金句卡片下載 | Space Between Art">
+    <meta property="og:description" content="免費下載療癒金句卡片，分享給需要的人。">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+            
+            /* 逐光的藥師 */
+            --forest: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --gold: #D4A84B;
+            --gold-light: #E8C97A;
+            
+            /* 違章靈魂改建事務所 */
+            --steel: #2C3E50;
+            --steel-dark: #1A252F;
+            --copper: #B87333;
+            --copper-light: #D4956A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Grain Overlay */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            background: linear-gradient(180deg, rgba(44,95,45,0.03) 0%, transparent 100%);
+        }
+
+        .header-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .header-back:hover {
+            color: var(--forest);
+        }
+
+        .header h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            background: transparent;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-dark);
+        }
+
+        .tab-btn.active {
+            color: var(--text-dark);
+            background: rgba(44, 95, 45, 0.08);
+        }
+
+        .tab-btn.active::after {
+            width: 60%;
+        }
+
+        .tab-btn.pharmacist.active {
+            background: rgba(44, 95, 45, 0.1);
+        }
+
+        .tab-btn.renovator.active {
+            background: rgba(44, 62, 80, 0.1);
+        }
+
+        /* Content Sections */
+        .section {
+            display: none;
+            padding: 0 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header.pharmacist h2 {
+            color: var(--forest);
+        }
+
+        .section-header.renovator h2 {
+            color: var(--steel);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Card Item */
+        .card-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .card-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+
+        .card-image {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card-item:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .card-item:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .preview-btn {
+            background: rgba(255,255,255,0.95);
+            color: var(--text-dark);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .preview-btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .card-info {
+            padding: 1.2rem 1.5rem;
+        }
+
+        .card-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-author {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .download-btn.pharmacist {
+            background: var(--forest);
+            color: white;
+        }
+
+        .download-btn.pharmacist:hover {
+            background: var(--forest-dark);
+        }
+
+        .download-btn.renovator {
+            background: var(--steel);
+            color: white;
+        }
+
+        .download-btn.renovator:hover {
+            background: var(--steel-dark);
+        }
+
+        /* Download All Section */
+        .download-all {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(44,95,45,0.03) 100%);
+            margin-top: 2rem;
+        }
+
+        .download-all h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .download-all p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--forest) 0%, var(--steel) 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .download-all-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(44, 95, 45, 0.25);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
+        }
+
+        /* Usage Tips */
+        .usage-tips {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .usage-tips h3 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tip-item h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .tip-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--forest);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .tabs {
+                padding: 0 1rem;
+            }
+
+            .tab-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .section {
+                padding: 0 1rem 3rem;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="../" class="header-back">← 返回首頁</a>
+        <h1>✦ 療癒金句卡片 ✦</h1>
+        <p>免費下載，分享給需要的人。<br>願這些文字能成為某個人黑暗中的一點光。</p>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tabs">
+        <button class="tab-btn active" data-tab="all">全部</button>
+        <button class="tab-btn pharmacist" data-tab="pharmacist">🌿 逐光的藥師</button>
+        <button class="tab-btn renovator" data-tab="renovator">🔧 違章靈魂改建事務所</button>
+    </nav>
+
+    <!-- All Cards Section -->
+    <section class="section active" id="section-all">
+        <!-- Pharmacist -->
+        <div class="section-header pharmacist">
+            <h2>🌿 逐光的藥師</h2>
+            <p>植物療癒 · 心光共鳴 · 溫柔的力量</p>
+        </div>
+        
+        <div class="card-grid" style="margin-bottom: 4rem;">
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('01_pharmacist_memory.png')">
+                    <img src="01_pharmacist_memory.png" alt="記憶是會發酵的" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「記憶是會發酵的。好的記憶會變成蜂蜜，壞的記憶會變成毒藥。」</p>
+                    <div class="card-meta">
+                        <span class="card-author"></span>
+                        <a href="01_pharmacist_memory.png" download class="download-btn pharmacist">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('02_pharmacist_light.png')">
+                    <img src="02_pharmacist_light.png" alt="光會吸引光" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「光會吸引光。當一個靈魂開始燃燒，其他的靈魂會感應到。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 曦婆婆</span>
+                        <a href="02_pharmacist_light.png" download class="download-btn pharmacist">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('03_pharmacist_balance.png')">
+                    <img src="03_pharmacist_balance.png" alt="為自己積蓄雨水" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「藥師不能只燃燒自己。你要學會像植物一樣，既懂得分享光，也懂得為自己積蓄雨水。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 曦婆婆</span>
+                        <a href="03_pharmacist_balance.png" download class="download-btn pharmacist">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('04_pharmacist_flame.png')">
+                    <img src="04_pharmacist_flame.png" alt="每個人胸口都有一團火焰" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「每個人胸口都有一團火焰。有的人是熊熊烈火，有的人是搖曳燭光。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 曜</span>
+                        <a href="04_pharmacist_flame.png" download class="download-btn pharmacist">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Renovator -->
+        <div class="section-header renovator">
+            <h2>🔧 違章靈魂改建事務所</h2>
+            <p>心靈建築 · 邊界重建 · 在廢墟中找到光</p>
+        </div>
+        
+        <div class="card-grid">
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('05_renovator_window.png')">
+                    <img src="05_renovator_window.png" alt="核掩體也需要一個觀察孔" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「我不會拆掉你的碉堡。但即使是核掩體，也需要一個觀察孔。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 路遙</span>
+                        <a href="05_renovator_window.png" download class="download-btn renovator">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('06_renovator_city.png')">
+                    <img src="06_renovator_city.png" alt="總有一盞燈還亮著" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「這座城市病了。但在最深的霧裡，總有一盞燈還亮著。」</p>
+                    <div class="card-meta">
+                        <span class="card-author"></span>
+                        <a href="06_renovator_city.png" download class="download-btn renovator">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('07_renovator_kintsugi.png')">
+                    <img src="07_renovator_kintsugi.png" alt="房子可以改建，靈魂也是" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「房子可以改建，靈魂也是。只要你願意開門，光就會進來。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 路遙</span>
+                        <a href="07_renovator_kintsugi.png" download class="download-btn renovator">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('08_renovator_signal.png')">
+                    <img src="08_renovator_signal.png" alt="每一座違章建築" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「每一座違章建築，都是一道沒有被聽見的求救信號。」</p>
+                    <div class="card-meta">
+                        <span class="card-author"></span>
+                        <a href="08_renovator_signal.png" download class="download-btn renovator">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('09_renovator_glasshouse.png')">
+                    <img src="09_renovator_glasshouse.png" alt="有些人的房子沒有門" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「有些人的房子沒有門。任何人都可以進來，包括那些不該進來的。」</p>
+                    <div class="card-meta">
+                        <span class="card-author"></span>
+                        <a href="09_renovator_glasshouse.png" download class="download-btn renovator">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('10_renovator_rain.png')">
+                    <img src="10_renovator_rain.png" alt="S市永遠在下雨" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「S市永遠在下雨。這裡的人都有病——藏在骨頭裡的那種。」</p>
+                    <div class="card-meta">
+                        <span class="card-author"></span>
+                        <a href="10_renovator_rain.png" download class="download-btn renovator">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('11_renovator_crack.png')">
+                    <img src="11_renovator_crack.png" alt="裂縫不是缺陷" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「裂縫不是缺陷。那是光進來的地方。」</p>
+                    <div class="card-meta">
+                        <span class="card-author"></span>
+                        <a href="11_renovator_crack.png" download class="download-btn renovator">
+                            ↓ 下載
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pharmacist Only Section -->
+    <section class="section" id="section-pharmacist">
+        <div class="section-header pharmacist">
+            <h2>🌿 逐光的藥師</h2>
+            <p>植物療癒 · 心光共鳴 · 溫柔的力量</p>
+        </div>
+        
+        <div class="card-grid">
+            <!-- Cards will be cloned via JS -->
+        </div>
+    </section>
+
+    <!-- Renovator Only Section -->
+    <section class="section" id="section-renovator">
+        <div class="section-header renovator">
+            <h2>🔧 違章靈魂改建事務所</h2>
+            <p>心靈建築 · 邊界重建 · 在廢墟中找到光</p>
+        </div>
+        
+        <div class="card-grid">
+            <!-- Cards will be cloned via JS -->
+        </div>
+    </section>
+
+    <!-- Usage Tips -->
+    <section class="usage-tips">
+        <h3>📱 使用指南</h3>
+        <div class="tips-grid">
+            <div class="tip-item">
+                <div class="tip-icon">📲</div>
+                <h4>社群分享</h4>
+                <p>尺寸為 1080×1350，完美適配 IG、FB、小紅書貼文</p>
+            </div>
+            <div class="tip-item">
+                <div class="tip-icon">💬</div>
+                <h4>私訊傳遞</h4>
+                <p>傳給需要這些文字的朋友，讓療癒流動</p>
+            </div>
+            <div class="tip-item">
+                <div class="tip-icon">🖼️</div>
+                <h4>手機桌布</h4>
+                <p>設為桌布，每次解鎖都能看見溫暖的提醒</p>
+            </div>
+            <div class="tip-item">
+                <div class="tip-icon">✨</div>
+                <h4>標記來源</h4>
+                <p>分享時歡迎標記 @spacebetween.art</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brand">Space Between Art</div>
+        <p>在光與暗之間，故事發生。</p>
+        <div class="footer-links">
+            <a href="../">首頁</a>
+            <a href="../pharmacist/">逐光的藥師</a>
+            <a href="../renovator/">違章靈魂改建事務所</a>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <img src="" alt="Preview" id="lightbox-img">
+    </div>
+
+    <script>
+        // Tab Navigation
+        const tabs = document.querySelectorAll('.tab-btn');
+        const sections = document.querySelectorAll('.section');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding section
+                const targetTab = tab.dataset.tab;
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                    if (section.id === `section-${targetTab}`) {
+                        section.classList.add('active');
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close lightbox on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Prevent lightbox close when clicking image
+        document.getElementById('lightbox-img').addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>
