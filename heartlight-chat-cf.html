@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心光對話室 | Space Between Art</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+            background: linear-gradient(135deg, #1a3a1b 0%, #2C5F2D 50%, #234A24 100%);
+            min-height: 100vh;
+            color: #E8DFD5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 頂部導航 */
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 168, 75, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #D4A84B;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #B8C9D9;
+            font-size: 0.95rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #D4A84B;
+            text-decoration: none;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 角色選擇 */
+        .character-selector {
+            margin-bottom: 20px;
+        }
+
+        /* 角色分類標籤 */
+        .character-group {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .character-group-label {
+            font-size: 0.75rem;
+            color: #B8C9D9;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .character-group-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .character-btn {
+            padding: 12px 18px;
+            border: 2px solid rgba(212, 168, 75, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            color: #E8DFD5;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .character-btn:hover {
+            background: rgba(212, 168, 75, 0.2);
+            border-color: #D4A84B;
+        }
+
+        .character-btn.active {
+            background: rgba(212, 168, 75, 0.3);
+            border-color: #D4A84B;
+            color: #D4A84B;
+        }
+
+        .character-btn .emoji {
+            margin-right: 5px;
+        }
+
+        /* 聊天區域 */
+        .chat-container {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+            max-height: 55vh;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 15px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.user {
+            text-align: right;
+        }
+
+        .message-bubble {
+            display: inline-block;
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            line-height: 1.5;
+        }
+
+        .message.user .message-bubble {
+            background: rgba(212, 168, 75, 0.3);
+            color: #F5D998;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message.assistant .message-bubble {
+            background: rgba(255, 255, 255, 0.1);
+            color: #E8DFD5;
+            border-bottom-left-radius: 5px;
+        }
+
+        .message-sender {
+            font-size: 0.8rem;
+            color: #B8C9D9;
+            margin-bottom: 4px;
+        }
+
+        .message.user .message-sender {
+            color: #D4A84B;
+        }
+
+        /* 輸入區域 */
+        .input-area {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .message-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid rgba(212, 168, 75, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            color: #E8DFD5;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .message-input:focus {
+            border-color: #D4A84B;
+        }
+
+        .message-input::placeholder {
+            color: rgba(232, 223, 213, 0.5);
+        }
+
+        .send-btn {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #D4A84B, #B8943F);
+            border: none;
+            border-radius: 25px;
+            color: #1a3a1b;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 168, 75, 0.3);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* 載入動畫 */
+        .typing-indicator {
+            display: flex;
+            gap: 5px;
+            padding: 15px 20px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #D4A84B;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-8px); opacity: 1; }
+        }
+
+        /* 歡迎訊息 */
+        .welcome-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #B8C9D9;
+        }
+
+        .welcome-message h2 {
+            color: #D4A84B;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .welcome-message p {
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* 滾動條樣式 */
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(212, 168, 75, 0.3);
+            border-radius: 3px;
+        }
+
+        /* 響應式 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .character-btn {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
+
+            .message-bubble {
+                max-width: 90%;
+            }
+
+            .input-area {
+                flex-direction: column;
+            }
+
+            .send-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="back-link">← 返回首頁</a>
+            <h1>✨ 心光對話室</h1>
+            <p>選擇一位療癒角色，開始你的心靈對話</p>
+        </header>
+
+        <div class="character-selector">
+            <!-- 逐光的藥師 角色 -->
+            <div class="character-group">
+                <span class="character-group-label">🌿 逐光的藥師</span>
+                <div class="character-group-buttons">
+                    <button class="character-btn active" data-character="yao">
+                        <span class="emoji">🌿</span>曜
+                    </button>
+                    <button class="character-btn" data-character="xi">
+                        <span class="emoji">🍵</span>曦婆婆
+                    </button>
+                    <button class="character-btn" data-character="qing">
+                        <span class="emoji">🌸</span>晴
+                    </button>
+                </div>
+            </div>
+
+            <!-- 違章靈魂改建事務所 角色 -->
+            <div class="character-group">
+                <span class="character-group-label">🏠 違章靈魂改建事務所</span>
+                <div class="character-group-buttons">
+                    <button class="character-btn" data-character="luyao">
+                        <span class="emoji">🔧</span>路遙
+                    </button>
+                    <button class="character-btn" data-character="guman">
+                        <span class="emoji">🪷</span>顧曼
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-message" id="welcomeMessage">
+                    <h2>🌿 曜在這裡等你</h2>
+                    <p>
+                        「你好，我是曜。<br>
+                        我相信每個人心中都有一道光，<br>
+                        有時只是被暫時遮住了。<br><br>
+                        想聊聊嗎？我在這裡。」
+                    </p>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input 
+                    type="text" 
+                    class="message-input" 
+                    id="messageInput" 
+                    placeholder="說說你的心情..."
+                    autocomplete="off"
+                >
+                <button class="send-btn" id="sendBtn">發送</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API 設定
+        const API_URL = 'https://healing-ai-editor.winsusa2611.workers.dev';
+
+        // 角色資料
+        const characters = {
+            yao: {
+                name: '曜',
+                emoji: '🌿',
+                welcome: '「你好，我是曜。<br>我相信每個人心中都有一道光，<br>有時只是被暫時遮住了。<br><br>想聊聊嗎？我在這裡。」'
+            },
+            xi: {
+                name: '曦婆婆',
+                emoji: '🍵',
+                welcome: '「來，坐下喝杯茶。<br>年輕人，不用急，慢慢說。<br>婆婆什麼風浪沒見過？<br><br>有什麼煩心事嗎？」'
+            },
+            qing: {
+                name: '晴',
+                emoji: '🌸',
+                welcome: '「嗨，我是晴。<br>我也曾經歷過很黑暗的時候，<br>所以我懂那種感覺。<br><br>要不要聊聊？我會陪著你。」'
+            },
+            luyao: {
+                name: '路遙',
+                emoji: '🔧',
+                welcome: '「......你好。<br>我是路遙，違章靈魂改建事務所的。<br>專門處理心靈建築的問題。<br><br>你的心，需要改建嗎？」'
+            },
+            guman: {
+                name: '顧曼',
+                emoji: '🪷',
+                welcome: '「你好，我是顧曼。<br>我是心理諮詢師，也是路遙的搭檔。<br>不急，我們可以慢慢聊。<br><br>你今天想談些什麼？」'
+            }
+        };
+
+        let currentCharacter = 'yao';
+        let isLoading = false;
+
+        // DOM 元素
+        const chatMessages = document.getElementById('chatMessages');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const characterBtns = document.querySelectorAll('.character-btn');
+
+        // 切換角色
+        characterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (isLoading) return;
+                
+                characterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCharacter = btn.dataset.character;
+                
+                // 更新歡迎訊息
+                const char = characters[currentCharacter];
+                welcomeMessage.innerHTML = `
+                    <h2>${char.emoji} ${char.name}在這裡等你</h2>
+                    <p>${char.welcome}</p>
+                `;
+                
+                // 清空聊天記錄
+                chatMessages.innerHTML = '';
+                chatMessages.appendChild(welcomeMessage);
+                welcomeMessage.style.display = 'block';
+            });
+        });
+
+        // 發送訊息
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message || isLoading) return;
+
+            // 隱藏歡迎訊息
+            welcomeMessage.style.display = 'none';
+
+            // 顯示用戶訊息
+            addMessage(message, 'user');
+            messageInput.value = '';
+
+            // 顯示載入動畫
+            isLoading = true;
+            sendBtn.disabled = true;
+            const loadingEl = showTypingIndicator();
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        character: currentCharacter
+                    })
+                });
+
+                const data = await response.json();
+
+                // 移除載入動畫
+                loadingEl.remove();
+
+                if (data.success) {
+                    addMessage(data.reply, 'assistant', data.character);
+                } else {
+                    addMessage('抱歉，我現在有點累了，請稍後再試...', 'assistant', characters[currentCharacter].name);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                loadingEl.remove();
+                addMessage('連線似乎出了點問題，請檢查網路後再試...', 'assistant', characters[currentCharacter].name);
+            }
+
+            isLoading = false;
+            sendBtn.disabled = false;
+            messageInput.focus();
+        }
+
+        // 添加訊息到聊天區
+        function addMessage(text, type, senderName = null) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+
+            const sender = type === 'user' ? '你' : (senderName || characters[currentCharacter].name);
+            
+            messageDiv.innerHTML = `
+                <div class="message-sender">${sender}</div>
+                <div class="message-bubble">${text}</div>
+            `;
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // 顯示輸入中動畫
+        function showTypingIndicator() {
+            const div = document.createElement('div');
+            div.className = 'message assistant';
+            div.innerHTML = `
+                <div class="message-sender">${characters[currentCharacter].name}</div>
+                <div class="message-bubble">
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return div;
+        }
+
+        // 事件監聯
+        sendBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // 初始焦點
+        messageInput.focus();
+    </script>
+</body>
+</html>
