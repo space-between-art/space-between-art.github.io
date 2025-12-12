@@ -3,7 +3,7 @@
     <!-- 首頁 -->
     <url>
         <loc>https://space-between.art/</loc>
-        <lastmod>2024-12-11</lastmod>
+        <lastmod>2025-12-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -11,78 +11,40 @@
     <!-- 療癒宇宙 -->
     <url>
         <loc>https://space-between.art/healing-universe.html</loc>
-        <lastmod>2024-12-11</lastmod>
+        <lastmod>2025-12-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     
-    <!-- AI 療癒小編 -->
+    <!-- AI 療癒對話 -->
     <url>
-        <loc>https://space-between.art/ai-chat.html</loc>
-        <lastmod>2024-12-11</lastmod>
+        <loc>https://space-between.art/heartlight-chat-v3.html</loc>
+        <lastmod>2025-12-12</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- 角色介紹 -->
+    <url>
+        <loc>https://space-between.art/characters.html</loc>
+        <lastmod>2025-12-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
-    <!-- 心靈建築測驗 -->
+    <!-- 社區 -->
     <url>
-        <loc>https://space-between.art/healing-universe/quiz.html</loc>
-        <lastmod>2024-12-11</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- 療癒植物卡 -->
-    <url>
-        <loc>https://space-between.art/healing-universe/plant-cards.html</loc>
-        <lastmod>2024-12-11</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    
-    <!-- 逐光的藥師 -->
-    <url>
-        <loc>https://space-between.art/pharmacist/</loc>
-        <lastmod>2024-12-11</lastmod>
+        <loc>https://space-between.art/community.html</loc>
+        <lastmod>2025-12-12</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <url>
-        <loc>https://space-between.art/pharmacist/characters.html</loc>
-        <lastmod>2024-12-11</lastmod>
-        <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-    </url>
-    
-    <url>
-        <loc>https://space-between.art/pharmacist/botanical-grimoire.html</loc>
-        <lastmod>2024-12-11</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    
-    <!-- 違章靈魂改建事務所 -->
-    <url>
-        <loc>https://space-between.art/renovator/</loc>
-        <lastmod>2024-12-11</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
     </url>
     
     <!-- 畫廊 -->
     <url>
         <loc>https://space-between.art/gallery.html</loc>
-        <lastmod>2024-12-11</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2025-12-12</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-    </url>
-    
-    <!-- 社群 -->
-    <url>
-        <loc>https://space-between.art/community.html</loc>
-        <lastmod>2024-12-11</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
     </url>
 </urlset>

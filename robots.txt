@@ -4,11 +4,24 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemap location
 Sitemap: https://space-between.art/sitemap.xml
 
-# 禁止爬取 API 端點
-Disallow: /api/
+# Disallow admin or private directories (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
 
-# 禁止爬取文件資料夾
-Disallow: /docs/
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Crawl-delay for polite crawling
+User-agent: *
+Crawl-delay: 1
