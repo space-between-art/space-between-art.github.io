@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心光療癒室 | Heart Light Healing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .chat-container {
+            width: 100%;
+            max-width: 480px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            max-height: 700px;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, #e8d5b7 0%, #f5e6d3 100%);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(139, 119, 101, 0.2);
+        }
+        
+        .chat-header h1 {
+            font-size: 1.4em;
+            color: #5d4e37;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .chat-header p {
+            font-size: 0.85em;
+            color: #8b7765;
+        }
+        
+        /* Character Selection */
+        .character-select {
+            padding: 15px 20px;
+            background: #faf8f5;
+            border-bottom: 1px solid #e8e0d5;
+        }
+        
+        .novel-group {
+            margin-bottom: 12px;
+        }
+        
+        .novel-group:last-child {
+            margin-bottom: 0;
+        }
+        
+        .novel-title {
+            font-size: 0.75em;
+            color: #9a8b7a;
+            margin-bottom: 8px;
+            padding-left: 4px;
+            letter-spacing: 0.5px;
+        }
+        
+        .character-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .char-btn {
+            padding: 8px 14px;
+            border: 2px solid #d4c4b0;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            color: #6b5b4f;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .char-btn:hover {
+            border-color: #b8a082;
+            background: #fdf9f3;
+        }
+        
+        .char-btn.active {
+            background: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
+            border-color: #c49a6c;
+            color: white;
+        }
+        
+        .char-icon {
+            font-size: 1.1em;
+        }
+        
+        /* Messages Area */
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: linear-gradient(180deg, #fdfcfa 0%, #f8f5f0 100%);
+        }
+        
+        .message {
+            margin-bottom: 16px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .message-content {
+            max-width: 85%;
+            padding: 14px 18px;
+            border-radius: 18px;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        
+        .user-message {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .user-message .message-content {
+            background: linear-gradient(135deg, #6b8e7a 0%, #5a7d69 100%);
+            color: white;
+            border-bottom-right-radius: 6px;
+        }
+        
+        .ai-message {
+            display: flex;
+            justify-content: flex-start;
+        }
+        
+        .ai-message .message-content {
+            background: white;
+            color: #4a4a4a;
+            border: 1px solid #e8e0d5;
+            border-bottom-left-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 14px 18px;
+            background: white;
+            border-radius: 18px;
+            border: 1px solid #e8e0d5;
+            max-width: 80px;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #c4b5a5;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Input Area */
+        .input-area {
+            padding: 16px 20px;
+            background: white;
+            border-top: 1px solid #e8e0d5;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .message-input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid #e8e0d5;
+            border-radius: 24px;
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        
+        .message-input:focus {
+            border-color: #c49a6c;
+        }
+        
+        .message-input::placeholder {
+            color: #b8a99a;
+        }
+        
+        .send-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            background: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(196, 154, 108, 0.4);
+        }
+        
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Welcome message styling */
+        .welcome-note {
+            font-size: 0.85em;
+            color: #8b7765;
+            font-style: italic;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #e0d5c8;
+        }
+
+        /* Scrollbar */
+        .messages::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .messages::-webkit-scrollbar-thumb {
+            background: #d4c4b0;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>✨ 心光療癒室</h1>
+            <p>在這裡，你的故事會被溫柔地聽見</p>
+        </div>
+        
+        <div class="character-select">
+            <div class="novel-group">
+                <div class="novel-title">📖 逐光的藥師</div>
+                <div class="character-buttons">
+                    <button class="char-btn active" data-char="yao">
+                        <span class="char-icon">🌿</span>
+                        <span>曜</span>
+                    </button>
+                    <button class="char-btn" data-char="xi">
+                        <span class="char-icon">🍵</span>
+                        <span>曦婆婆</span>
+                    </button>
+                    <button class="char-btn" data-char="qing">
+                        <span class="char-icon">🌸</span>
+                        <span>晴</span>
+                    </button>
+                </div>
+            </div>
+            <div class="novel-group">
+                <div class="novel-title">📖 違章靈魂改建事務所</div>
+                <div class="character-buttons">
+                    <button class="char-btn" data-char="luyao">
+                        <span class="char-icon">🔧</span>
+                        <span>路遙</span>
+                    </button>
+                    <button class="char-btn" data-char="guman">
+                        <span class="char-icon">🪷</span>
+                        <span>顧曼</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="messages" id="messages">
+            <!-- Messages appear here -->
+        </div>
+        
+        <div class="input-area">
+            <input type="text" class="message-input" id="messageInput" 
+                   placeholder="說說你的心情..." 
+                   autocomplete="off">
+            <button class="send-btn" id="sendBtn">➤</button>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'https://healing-ai-editor.winsusa2611.workers.dev';
+        let currentCharacter = 'yao';
+        
+        // Enhanced welcome messages based on novel content
+        const welcomeMessages = {
+            yao: {
+                main: '你好，我是曜。這裡很安靜，有舊書的香草味，還有一點點陽光。如果你願意，可以告訴我——今天的光，是什麼顏色的？',
+                note: '「每個人胸口都有一團火焰。有的是熊熊烈火，有的是搖曳燭光。而我的工作，是陪伴它。」'
+            },
+            xi: {
+                main: '孩子，歡迎來到向陽廬。這裡的空氣有泥土和薄荷的香氣，是暴雨過後森林的味道。坐下來吧，讓我為你泡一杯洋甘菊茶。',
+                note: '「真正的藥師不是太陽，而是月亮。我們不產生光，我們只是溫柔地反射它。」'
+            },
+            qing: {
+                main: '嗨，我是晴。我不是什麼專家，只是一個學會了「真正傾聽」的人。如果你的世界最近有點灰，我想讓你知道——你不需要「振作」，你只需要被聽見。',
+                note: '「有些痛苦，不是振作就能解決的。它需要被看見，被承認，被溫柔地處理。」'
+            },
+            luyao: {
+                main: '喲，進來了？別在意這地方亂，違章建築嘛，本來就不講究。說吧，你心裡那棟房子，是哪面牆出了問題？',
+                note: '「每個人的心都是一棟建築。牆壁是你的界線，地下室藏著你不想面對的東西。」'
+            },
+            guman: {
+                main: '你好，我是顧曼。在開始之前，我想讓你知道：來到這裡本身，就已經是一種勇氣。現在，讓我們一起整理一下你的想法。',
+                note: '「情緒不是敵人，它們是信使。我們的工作是學會讀懂它們的語言。」'
+            }
+        };
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            showWelcomeMessage('yao');
+            
+            // Character selection
+            document.querySelectorAll('.char-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.char-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCharacter = btn.dataset.char;
+                    
+                    // Clear and show new welcome
+                    document.getElementById('messages').innerHTML = '';
+                    showWelcomeMessage(currentCharacter);
+                });
+            });
+            
+            // Send message handlers
+            document.getElementById('sendBtn').addEventListener('click', sendMessage);
+            document.getElementById('messageInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+        });
+        
+        function showWelcomeMessage(character) {
+            const welcome = welcomeMessages[character];
+            const messagesDiv = document.getElementById('messages');
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ai-message';
+            messageDiv.innerHTML = `
+                <div class="message-content">
+                    ${welcome.main}
+                    <div class="welcome-note">${welcome.note}</div>
+                </div>
+            `;
+            messagesDiv.appendChild(messageDiv);
+        }
+        
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Show typing indicator
+            const typingDiv = showTyping();
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        message: message,
+                        character: currentCharacter 
+                    })
+                });
+                
+                const data = await response.json();
+                typingDiv.remove();
+                
+                if (data.reply) {
+                    addMessage(data.reply, 'ai');
+                } else {
+                    addMessage('抱歉，我現在有些疲憊...請稍後再試。', 'ai');
+                }
+            } catch (error) {
+                typingDiv.remove();
+                addMessage('連線似乎斷了...就像有時候我們與世界的連結也會斷開。請稍後再試。', 'ai');
+            }
+        }
+        
+        function addMessage(text, type) {
+            const messagesDiv = document.getElementById('messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}-message`;
+            messageDiv.innerHTML = `<div class="message-content">${text}</div>`;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        function showTyping() {
+            const messagesDiv = document.getElementById('messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message ai-message';
+            typingDiv.innerHTML = `
+                <div class="typing-indicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            messagesDiv.appendChild(typingDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            return typingDiv;
+        }
+    </script>
+</body>
+</html>
