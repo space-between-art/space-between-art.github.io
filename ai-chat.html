@@ -727,15 +727,14 @@
 
             try {
                 // 呼叫 Cloudflare Worker API
-                const response = await fetch('https://healing-ai-editor.winsusa2611.workers.dev/api/chat', {
+                const response = await fetch('https://healing-ai-editor.winsusa2611.workers.dev', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
                         message: message,
-                        character: currentCharacter,
-                        conversationHistory: conversationHistory.slice(-10) // 只保留最近 10 則
+                        character: currentCharacter
                     })
                 });
 
@@ -743,7 +742,7 @@
 
                 hideTyping();
 
-                if (data.success) {
+                if (data.reply) {
                     addMessage(data.reply, 'assistant');
                     
                     // 更新對話歷史
@@ -751,8 +750,10 @@
                         { role: 'user', content: message },
                         { role: 'assistant', content: data.reply }
                     );
+                } else if (data.error) {
+                    showError(data.error);
                 } else {
-                    showError(data.error || '發生錯誤，請稍後再試');
+                    showError('發生錯誤，請稍後再試');
                 }
 
             } catch (error) {
