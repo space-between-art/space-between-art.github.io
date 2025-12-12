@@ -10,14 +10,12 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://space-between.art/">
     
-    <!-- Open Graph / Facebook / LINE -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://space-between.art/">
     <meta property="og:title" content="Space Between Art | 療癒系奇幻小說創作空間">
     <meta property="og:description" content="在光與暗之間，故事發生。連載都市奇幻療癒小說《逐光的藥師》與《違章靈魂改建事務所》">
     <meta property="og:image" content="https://space-between.art/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="zh_TW">
     <meta property="og:site_name" content="Space Between Art">
     
@@ -25,57 +23,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Space Between Art | 療癒系奇幻小說">
     <meta name="twitter:description" content="在光與暗之間，故事發生。療癒系都市奇幻小說創作空間。">
-    <meta name="twitter:image" content="https://space-between.art/og-image.jpg">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
     <!-- Theme Color -->
     <meta name="theme-color" content="#2C5F2D">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Space Between Art",
-      "alternateName": "間隙藝術",
-      "url": "https://space-between.art/",
-      "description": "療癒系都市奇幻小說創作空間",
-      "inLanguage": "zh-Hant"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Book",
-      "name": "逐光的藥師",
-      "alternateName": "The Light Chaser",
-      "author": {
-        "@type": "Organization",
-        "name": "Space Between Art"
-      },
-      "genre": ["都市奇幻", "療癒小說", "心理"],
-      "inLanguage": "zh-Hant",
-      "description": "二手書店店主曜擁有看見「心光」的能力，映照出每個人的情緒與傷痛。"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Book",
-      "name": "違章靈魂改建事務所",
-      "author": {
-        "@type": "Organization",
-        "name": "Space Between Art"
-      },
-      "genre": ["都市奇幻", "療癒小說", "心理"],
-      "inLanguage": "zh-Hant",
-      "description": "靈魂改建師路遙能看見每個人心中的建築結構，用獨特的方式修復心靈的違章建築。"
-    }
-    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1110,7 +1060,7 @@
             <div class="footer-links">
                 <h4>聯絡</h4>
                 <ul>
-                    <li><a href="/cdn-cgi/l/email-protection#ea828f868685aa999a8b898fc7888f9e9d8f8f84c48b989e">Email</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#e189848d8d8ea19291808284cc8384959684848fcf809395">Email</a></li>
                     <li><a href="#">Instagram</a></li>
                     <li><a href="#">Substack</a></li>
                 </ul>
@@ -1149,5 +1099,11 @@
 
         fadeElements.forEach(el => observer.observe(el));
 
+
         // Particle animation timing
-        document.querySelecto
+        document.querySelectorAll('.particle').forEach((particle, index) => {
+            particle.style.animationDelay = `${index * 0.5}s`;
+        });
+    </script>
+</body>
+</html>

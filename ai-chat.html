@@ -734,7 +734,8 @@
                     },
                     body: JSON.stringify({
                         message: message,
-                        character: currentCharacter
+                        character: currentCharacter,
+                        conversationHistory: conversationHistory.slice(-6) // 傳送最近6則對話
                     })
                 });
 
