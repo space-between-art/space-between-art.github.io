@@ -3,790 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Between Art | 在光與暗之間，故事發生</title>
-    <meta name="description" content="Space Between Art 創作工作室 - 療癒系都市奇幻小說《逐光的藥師》《違章靈魂改建事務所》">
     
+    <!-- Primary Meta Tags -->
+    <title>Space Between Art 間隙藝術 | 療癒系奇幻小說《逐光的藥師》《違章靈魂改建事務所》</title>
+    <meta name="title" content="Space Between Art 間隙藝術 | 療癒系奇幻小說">
+    <meta name="description" content="在光與暗之間，故事發生。Space Between Art 療癒系創作空間，連載都市奇幻療癒小說《逐光的藥師》與《違章靈魂改建事務所》，並提供 AI 療癒對話體驗。">
+    <meta name="keywords" content="療癒小說, 都市奇幻, 逐光的藥師, 違章靈魂改建事務所, 心理療癒, 繁體中文小說, 華文創作, AI療癒, 植物魔法, Space Between Art, 間隙藝術">
+    <meta name="author" content="Space Between Art">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="zh-Hant">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://space-between.art/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://space-between.art/">
+    <meta property="og:title" content="Space Between Art 間隙藝術 | 療癒系奇幻小說">
+    <meta property="og:description" content="在光與暗之間，故事發生。療癒系創作空間，連載《逐光的藥師》與《違章靈魂改建事務所》，並提供 AI 療癒對話體驗。">
+    <meta property="og:image" content="https://space-between.art/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="Space Between Art">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://space-between.art/">
+    <meta name="twitter:title" content="Space Between Art 間隙藝術 | 療癒系奇幻小說">
+    <meta name="twitter:description" content="在光與暗之間，故事發生。療癒系創作空間，連載《逐光的藥師》與《違章靈魂改建事務所》。">
+    <meta name="twitter:image" content="https://space-between.art/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Space Between Art",
+        "alternateName": "間隙藝術",
+        "url": "https://space-between.art",
+        "logo": "https://space-between.art/logo.png",
+        "description": "療癒系創作空間，專注於都市奇幻療癒小說創作",
+        "sameAs": [
+            "https://instagram.com/spacebetweenart",
+            "https://facebook.com/spacebetweenart",
+            "https://substack.com/@spacebetweenart"
+        ]
+    }
+    </script>
+    
+    <!-- Structured Data - WebSite (for search box) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Space Between Art",
+        "alternateName": "間隙藝術",
+        "url": "https://space-between.art"
+    }
+    </script>
+    
+    <!-- Structured Data - Creative Work (Novel) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Book",
+        "name": "逐光的藥師",
+        "alternateName": "The Light Chaser",
+        "author": {
+            "@type": "Organization",
+            "name": "Space Between Art"
+        },
+        "genre": ["都市奇幻", "療癒小說", "華文文學"],
+        "inLanguage": "zh-Hant",
+        "description": "能看見「心光」的藥師曜，在舊書店閣樓裡療癒每一個破碎的靈魂。都市奇幻療癒小說。",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Space Between Art"
+        }
+    }
+    </script>
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <style>
-        :root {
-            /* 共用色彩 */
-            --cream: #FDF8F3;
-            --cream-dark: #F5EDE4;
-            --text-dark: #2A2A2A;
-            --text-muted: #6B6B6B;
-            
-            /* 逐光的藥師 - 森林綠金系 */
-            --pharmacist-green: #2C5F2D;
-            --pharmacist-dark: #1A3A1B;
-            --pharmacist-light: #4A7C4B;
-            --pharmacist-gold: #D4A84B;
-            --pharmacist-gold-light: #E8C97A;
-            
-            /* 違章靈魂改建事務所 - 工業藍灰系 */
-            --renovator-blue: #2C3E50;
-            --renovator-dark: #1A252F;
-            --renovator-steel: #5D6D7E;
-            --renovator-copper: #B87333;
-            --renovator-copper-light: #D4956A;
-            
-            --shadow-soft: rgba(0,0,0,0.08);
-            --shadow-medium: rgba(0,0,0,0.15);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background: var(--cream);
-            color: var(--text-dark);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* ==================== Navigation ==================== */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 1rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(253, 248, 243, 0.95);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 2px 30px var(--shadow-soft);
-            transition: all 0.4s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.8rem 3rem;
-            background: rgba(253, 248, 243, 0.98);
-        }
-
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-logo:hover { transform: scale(1.02); }
-
-        .nav-logo svg { transition: transform 0.5s ease; }
-        .nav-logo:hover svg { transform: rotate(10deg); }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--pharmacist-green), var(--renovator-blue));
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after { width: 100%; }
-
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-menu-btn span {
-            width: 24px;
-            height: 2px;
-            background: var(--text-dark);
-            transition: all 0.3s ease;
-        }
-
-        /* ==================== Hero Section ==================== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, 
-                var(--pharmacist-dark) 0%, 
-                var(--renovator-dark) 50%,
-                var(--pharmacist-dark) 100%);
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            opacity: 0.15;
-            background-image: 
-                radial-gradient(circle at 20% 30%, var(--pharmacist-gold) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, var(--renovator-copper) 0%, transparent 40%);
-            animation: heroFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes heroFloat {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-        }
-
-        /* Floating particles */
-        .particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--pharmacist-gold);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 15s infinite;
-        }
-
-        .particle:nth-child(odd) {
-            background: var(--renovator-copper);
-        }
-
-        @keyframes particleFloat {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { opacity: 0; transform: translateY(-100vh) scale(1); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 2rem;
-            max-width: 900px;
-        }
-
-        .hero-logo {
-            margin-bottom: 2rem;
-            animation: logoReveal 1.5s ease-out;
-        }
-
-        @keyframes logoReveal {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 400;
-            color: white;
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-            animation: titleFade 1.5s ease-out 0.3s both;
-        }
-
-        .hero-subtitle {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 2.5rem;
-            animation: titleFade 1.5s ease-out 0.6s both;
-        }
-
-        @keyframes titleFade {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-tagline {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            color: rgba(255,255,255,0.6);
-            letter-spacing: 0.3em;
-            margin-bottom: 3rem;
-            animation: titleFade 1.5s ease-out 0.9s both;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: titleFade 1.5s ease-out 1.2s both;
-        }
-
-        .cta-btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.4s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cta-btn.primary {
-            background: linear-gradient(135deg, var(--pharmacist-gold), var(--pharmacist-gold-light));
-            color: var(--pharmacist-dark);
-            box-shadow: 0 10px 40px rgba(212, 168, 75, 0.4);
-        }
-
-        .cta-btn.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(212, 168, 75, 0.5);
-        }
-
-        .cta-btn.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.4);
-        }
-
-        .cta-btn.secondary:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* ==================== Works Section ==================== */
-        .works-section {
-            padding: 6rem 2rem;
-            background: var(--cream);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-        }
-
-        .section-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--text-dark);
-        }
-
-        /* Work Cards - Split Design */
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .work-card {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            min-height: 600px;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .work-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .work-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        /* 逐光的藥師 Card */
-        .work-card.pharmacist {
-            background: linear-gradient(180deg, 
-                var(--pharmacist-dark) 0%, 
-                var(--pharmacist-green) 100%);
-        }
-
-        .work-card.pharmacist::before {
-            background: radial-gradient(circle at 30% 70%, 
-                rgba(212, 168, 75, 0.3) 0%, 
-                transparent 50%);
-        }
-
-        /* 違章靈魂改建事務所 Card */
-        .work-card.renovator {
-            background: linear-gradient(180deg, 
-                var(--renovator-dark) 0%, 
-                var(--renovator-blue) 100%);
-        }
-
-        .work-card.renovator::before {
-            background: radial-gradient(circle at 70% 30%, 
-                rgba(184, 115, 51, 0.3) 0%, 
-                transparent 50%);
-        }
-
-        .work-card-content {
-            position: relative;
-            z-index: 10;
-            padding: 3rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            color: white;
-        }
-
-        .work-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 1rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            width: fit-content;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .work-card.pharmacist .work-badge {
-            background: rgba(212, 168, 75, 0.3);
-            color: var(--pharmacist-gold-light);
-        }
-
-        .work-card.renovator .work-badge {
-            background: rgba(184, 115, 51, 0.3);
-            color: var(--renovator-copper-light);
-        }
-
-        .work-title-zh {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .work-title-en {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            opacity: 0.7;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .work-genre {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        .genre-tag {
-            padding: 0.3rem 0.8rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            font-size: 0.75rem;
-        }
-
-        .work-description {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-
-        .work-highlight {
-            padding: 1.5rem;
-            background: rgba(0,0,0,0.2);
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            border-left: 3px solid;
-        }
-
-        .work-card.pharmacist .work-highlight {
-            border-color: var(--pharmacist-gold);
-        }
-
-        .work-card.renovator .work-highlight {
-            border-color: var(--renovator-copper);
-        }
-
-        .highlight-quote {
-            font-family: 'Noto Serif TC', serif;
-            font-style: italic;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .work-stats {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-
-        .work-card.pharmacist .stat-value {
-            color: var(--pharmacist-gold-light);
-        }
-
-        .work-card.renovator .stat-value {
-            color: var(--renovator-copper-light);
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            opacity: 0.7;
-        }
-
-        .work-cta {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .work-btn {
-            flex: 1;
-            padding: 1rem;
-            border-radius: 12px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .work-btn.primary {
-            color: var(--pharmacist-dark);
-        }
-
-        .work-card.pharmacist .work-btn.primary {
-            background: var(--pharmacist-gold);
-        }
-
-        .work-card.renovator .work-btn.primary {
-            background: var(--renovator-copper);
-            color: white;
-        }
-
-        .work-btn.secondary {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .work-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Decorative Elements */
-        .work-deco {
-            position: absolute;
-            right: 2rem;
-            top: 2rem;
-            font-size: 8rem;
-            opacity: 0.08;
-            font-family: 'Cormorant Garamond', serif;
-            line-height: 1;
-        }
-
-        /* ==================== About Section ==================== */
-        .about-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--pharmacist-dark) 0%, var(--renovator-dark) 100%);
-            color: white;
-        }
-
-        .about-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .about-title span {
-            background: linear-gradient(90deg, var(--pharmacist-gold), var(--renovator-copper));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 2;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .feature-item {
-            padding: 2rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-desc {
-            font-size: 0.85rem;
-            opacity: 0.7;
-        }
-
-        /* ==================== Newsletter Section ==================== */
-        .newsletter-section {
-            padding: 5rem 2rem;
-            background: var(--cream-dark);
-            text-align: center;
-        }
-
-        .newsletter-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .newsletter-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .newsletter-desc {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .newsletter-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--pharmacist-green), var(--renovator-blue));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(44, 95, 45, 0.3);
-        }
-
-        /* ==================== Footer ==================== */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-brand p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            line-height: 1.6;
-        }
-
-        .footer-links h4 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--pharmacist-gold-light);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
-
-        /* ==================== Mobile Responsive ==================== */
-        @media (max-width: 1024px) {
-            .works-grid {
-                grid-template-columns: 1fr;
-                max-width: 600px;
-            }
-            
-            .work-card {
-                min-height: 550px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--cream);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 1rem;
-                box-shadow: 0 10px 30px var(--shadow-medium);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        /* ==================== Animations ==================== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2C5F2D">
+    <meta name="msapplication-TileColor" content="#2C5F2D">
 </head>
 <body>
     <!-- Navigation -->
