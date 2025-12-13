@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>每日一句 Widget</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #FDF8F3 0%, #F5EDE4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .widget {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .widget::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2C5F2D, #D4A84B, #B87333, #2C3E50);
+        }
+
+        .widget-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .widget-title {
+            font-size: 0.75rem;
+            color: #6B6B6B;
+            letter-spacing: 0.1em;
+        }
+
+        .widget-date {
+            font-size: 0.7rem;
+            color: #6B6B6B;
+        }
+
+        .widget-content {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #2A2A2A;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid #D4A84B;
+        }
+
+        .widget-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .author-emoji {
+            font-size: 1.5rem;
+        }
+
+        .author-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #2A2A2A;
+        }
+
+        .author-role {
+            font-size: 0.75rem;
+            color: #6B6B6B;
+        }
+
+        .widget-footer {
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .widget-brand {
+            font-size: 0.7rem;
+            color: #6B6B6B;
+        }
+
+        .widget-brand a {
+            color: #2C5F2D;
+            text-decoration: none;
+        }
+
+        .refresh-btn {
+            background: none;
+            border: none;
+            font-size: 0.8rem;
+            color: #6B6B6B;
+            cursor: pointer;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .refresh-btn:hover {
+            background: #F5EDE4;
+            color: #2A2A2A;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget">
+        <div class="widget-header">
+            <span class="widget-title">✦ 療癒日記・每日一句</span>
+            <span class="widget-date" id="date"></span>
+        </div>
+        <p class="widget-content" id="content"></p>
+        <div class="widget-author">
+            <span class="author-emoji" id="emoji"></span>
+            <div>
+                <div class="author-name" id="name"></div>
+                <div class="author-role" id="role"></div>
+            </div>
+        </div>
+        <div class="widget-footer">
+            <span class="widget-brand">
+                <a href="https://space-between.art" target="_blank">Space Between Art</a>
+            </span>
+            <button class="refresh-btn" onclick="nextQuote()">🔄 換一句</button>
+        </div>
+    </div>
+
+    <script>
+        const quotes = [
+            { content: "我以為把自己關起來就不會受傷。但孤獨本身，就是一種慢性的傷。", name: "曜", role: "逐光藥師", emoji: "🌿" },
+            { content: "真正的藥師不是太陽，而是月亮。我們不產生光，只是溫柔地反射它。", name: "曦婆婆", role: "月亮藥師", emoji: "🌙" },
+            { content: "療癒不是「修理」，而是「陪伴」。你不能替別人痛，也不能強行剝奪別人的痛。", name: "晴", role: "社工師", emoji: "☀️" },
+            { content: "每一座違章建築，都是一道沒有被聽見的求救信號。", name: "路遙", role: "心靈建築改建師", emoji: "🔧" },
+            { content: "裂縫不是缺陷。那是光進來的地方。", name: "路遙", role: "心靈建築改建師", emoji: "🔧" },
+            { content: "你不需要馬上好起來。療癒不是比賽，沒有人在計時。", name: "顧曼", role: "心理諮商師", emoji: "💜" },
+            { content: "記憶是會發酵的。好的記憶會變成蜂蜜，壞的記憶會變成毒藥。關鍵是，你選擇餵養哪一種。", name: "曦婆婆", role: "月亮藥師", emoji: "🌙" },
+            { content: "有時候，最需要被照顧的人，是那個一直在照顧別人的人。", name: "晴", role: "社工師", emoji: "☀️" },
+            { content: "我不會拆掉你的碉堡。但即使是核掩體，也需要一個觀察孔。", name: "路遙", role: "心靈建築改建師", emoji: "🔧" },
+            { content: "原來接受幫助，也是一種勇敢。", name: "曜", role: "逐光藥師", emoji: "🌿" },
+            { content: "這座城市病了。但在最深的霧裡，總有一盞燈還亮著。", name: "路遙", role: "心靈建築改建師", emoji: "🔧" },
+            { content: "界限不是冷漠。界限是讓我能夠持續幫助你的方式。", name: "顧曼", role: "心理諮商師", emoji: "💜" },
+            { content: "每個人的心光都不一樣。有的像蠟燭，有的像營火。我的……大概是螢火蟲吧，微弱但還在閃。", name: "曜", role: "逐光藥師", emoji: "🌿" },
+            { content: "改建需要時間。羅馬不是一天建成的，你的心靈建築也是。", name: "路遙", role: "心靈建築改建師", emoji: "🔧" },
+            { content: "療癒是蜂蜜的工作。蜜蜂採蜜，從不強迫花朵盛開。", name: "曦婆婆", role: "月亮藥師", emoji: "🌙" }
+        ];
+
+        let currentIndex = 0;
+
+        function getDailyQuote() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+            return quotes[dayOfYear % quotes.length];
+        }
+
+        function displayQuote(quote) {
+            document.getElementById('content').textContent = `「${quote.content}」`;
+            document.getElementById('name').textContent = quote.name;
+            document.getElementById('role').textContent = quote.role;
+            document.getElementById('emoji').textContent = quote.emoji;
+            
+            const today = new Date();
+            document.getElementById('date').textContent = `${today.getMonth() + 1}/${today.getDate()}`;
+        }
+
+        function nextQuote() {
+            currentIndex = (currentIndex + 1) % quotes.length;
+            displayQuote(quotes[currentIndex]);
+        }
+
+        // Initialize
+        const dailyQuote = getDailyQuote();
+        currentIndex = quotes.findIndex(q => q.content === dailyQuote.content);
+        displayQuote(dailyQuote);
+    </script>
+</body>
+</html>

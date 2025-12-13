@@ -2,137 +2,105 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="m-_7tvD9WUP35wJfONJGC6c9rafLXlAhbZVMNETmxuY" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Between Art 間隙藝術 | 療癒系奇幻小說《逐光的藥師》《違章靈魂改建事務所》</title>
-    <meta name="description" content="在光與暗之間，故事發生。療癒系創作空間，連載都市奇幻療癒小說《逐光的藥師》與《違章靈魂改建事務所》。探索心光、植物魔法與心靈建築的療癒世界。">
-    <meta name="keywords" content="療癒小說, 都市奇幻, 逐光的藥師, 違章靈魂改建事務所, 心理療癒, 繁體中文小說, 華文創作, AI療癒, 植物魔法, 心靈建築">
-    <meta name="author" content="Space Between Art">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://space-between.art/">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://space-between.art/">
-    <meta property="og:title" content="Space Between Art | 療癒系奇幻小說創作空間">
-    <meta property="og:description" content="在光與暗之間，故事發生。連載都市奇幻療癒小說《逐光的藥師》與《違章靈魂改建事務所》">
-    <meta property="og:image" content="https://space-between.art/og-image.jpg">
-    <meta property="og:locale" content="zh_TW">
-    <meta property="og:site_name" content="Space Between Art">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Space Between Art | 療癒系奇幻小說">
-    <meta name="twitter:description" content="在光與暗之間，故事發生。療癒系都市奇幻小說創作空間。">
-    
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#2C5F2D">
+    <title>心靈療癒學院 | Space Between Art</title>
+    <meta name="description" content="由AI角色導師帶領的心理健康科普培訓">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* 共用色彩 */
             --cream: #FDF8F3;
             --cream-dark: #F5EDE4;
             --text-dark: #2A2A2A;
             --text-muted: #6B6B6B;
             
-            /* 逐光的藥師 - 森林綠金系 */
-            --pharmacist-green: #2C5F2D;
-            --pharmacist-dark: #1A3A1B;
-            --pharmacist-light: #4A7C4B;
-            --pharmacist-gold: #D4A84B;
-            --pharmacist-gold-light: #E8C97A;
+            --forest: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --gold: #D4A84B;
+            --gold-light: #F5D998;
             
-            /* 違章靈魂改建事務所 - 工業藍灰系 */
-            --renovator-blue: #2C3E50;
-            --renovator-dark: #1A252F;
-            --renovator-steel: #5D6D7E;
-            --renovator-copper: #B87333;
-            --renovator-copper-light: #D4956A;
+            --steel: #2C3E50;
+            --steel-dark: #1A252F;
+            --copper: #B87333;
             
-            --shadow-soft: rgba(0,0,0,0.08);
-            --shadow-medium: rgba(0,0,0,0.15);
+            --purple: #6B5B95;
+            --orange: #E67E22;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        
+
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background: var(--cream);
             color: var(--text-dark);
             line-height: 1.8;
-            overflow-x: hidden;
         }
 
-        /* ==================== Navigation ==================== */
-        nav {
+        /* Grain */
+        .grain {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            padding: 1rem 3rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: rgba(253, 248, 243, 0.95);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 2px 30px var(--shadow-soft);
-            transition: all 0.4s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.8rem 3rem;
-            background: rgba(253, 248, 243, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
         .nav-logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
+            font-size: 1.2rem;
             color: var(--text-dark);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            transition: transform 0.3s ease;
+            gap: 0.5rem;
         }
 
-        .nav-logo:hover { transform: scale(1.02); }
-
-        .nav-logo svg { transition: transform 0.5s ease; }
-        .nav-logo:hover svg { transform: rotate(10deg); }
+        .nav-logo span {
+            color: var(--forest);
+        }
 
         .nav-links {
             display: flex;
+            gap: 2rem;
             list-style: none;
-            gap: 2.5rem;
-            align-items: center;
         }
 
         .nav-links a {
-            font-size: 0.9rem;
             color: var(--text-dark);
             text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            transition: color 0.3s;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--pharmacist-green), var(--renovator-blue));
-            transition: width 0.3s ease;
+        .nav-links a:hover {
+            color: var(--forest);
         }
 
-        .nav-links a:hover::after { width: 100%; }
+        .nav-links a.active {
+            color: var(--forest);
+            font-weight: 500;
+        }
 
         .mobile-menu-btn {
             display: none;
@@ -148,1264 +116,1017 @@
             width: 24px;
             height: 2px;
             background: var(--text-dark);
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
-        /* ==================== Hero Section ==================== */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%);
             position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, 
-                var(--pharmacist-dark) 0%, 
-                var(--renovator-dark) 50%,
-                var(--pharmacist-dark) 100%);
+            padding: 6rem 2rem 2rem;
+            text-align: center;
+            color: white;
         }
 
-        .hero-bg {
+        .hero::before {
+            content: '';
             position: absolute;
             inset: 0;
-            opacity: 0.15;
-            background-image: 
-                radial-gradient(circle at 20% 30%, var(--pharmacist-gold) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, var(--renovator-copper) 0%, transparent 40%);
-            animation: heroFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes heroFloat {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-        }
-
-        /* Floating particles */
-        .particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--pharmacist-gold);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 15s infinite;
-        }
-
-        .particle:nth-child(odd) {
-            background: var(--renovator-copper);
-        }
-
-        @keyframes particleFloat {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { opacity: 0; transform: translateY(-100vh) scale(1); }
+            background: radial-gradient(circle at 30% 40%, rgba(212,168,75,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(184,115,51,0.1) 0%, transparent 50%);
         }
 
         .hero-content {
             position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 2rem;
-            max-width: 900px;
+            z-index: 1;
+            max-width: 700px;
         }
 
-        .hero-logo {
-            margin-bottom: 2rem;
-            animation: logoReveal 1.5s ease-out;
-        }
-
-        @keyframes logoReveal {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
         }
 
         .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 400;
-            color: white;
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-            animation: titleFade 1.5s ease-out 0.3s both;
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
         .hero-subtitle {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 2.5rem;
-            animation: titleFade 1.5s ease-out 0.6s both;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--gold-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
         }
 
-        @keyframes titleFade {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-tagline {
-            font-family: 'Noto Serif TC', serif;
+        .hero-desc {
             font-size: 1rem;
-            color: rgba(255,255,255,0.6);
-            letter-spacing: 0.3em;
-            margin-bottom: 3rem;
-            animation: titleFade 1.5s ease-out 0.9s both;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.9;
         }
 
         .hero-cta {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: titleFade 1.5s ease-out 1.2s both;
         }
 
-        .cta-btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            font-family: 'Noto Sans TC', sans-serif;
             font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.4s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
 
-        .cta-btn.primary {
-            background: linear-gradient(135deg, var(--pharmacist-gold), var(--pharmacist-gold-light));
-            color: var(--pharmacist-dark);
-            box-shadow: 0 10px 40px rgba(212, 168, 75, 0.4);
+        .btn-primary {
+            background: var(--gold);
+            color: var(--forest-dark);
         }
 
-        .cta-btn.primary:hover {
+        .btn-primary:hover {
+            background: var(--gold-light);
             transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(212, 168, 75, 0.5);
         }
 
-        .cta-btn.secondary {
+        .btn-secondary {
             background: transparent;
             color: white;
-            border: 2px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        .cta-btn.secondary:hover {
+        .btn-secondary:hover {
             background: rgba(255,255,255,0.1);
-            border-color: white;
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* ==================== Works Section ==================== */
-        .works-section {
-            padding: 6rem 2rem;
+        /* Mentors Section */
+        .mentors {
+            padding: 5rem 2rem;
             background: var(--cream);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-        }
-
-        .section-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--text-dark);
-        }
-
-        /* Work Cards - Split Design */
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .work-card {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            min-height: 600px;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .work-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .work-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        /* 逐光的藥師 Card */
-        .work-card.pharmacist {
-            background: linear-gradient(180deg, 
-                var(--pharmacist-dark) 0%, 
-                var(--pharmacist-green) 100%);
-        }
-
-        .work-card.pharmacist::before {
-            background: radial-gradient(circle at 30% 70%, 
-                rgba(212, 168, 75, 0.3) 0%, 
-                transparent 50%);
-        }
-
-        /* 違章靈魂改建事務所 Card */
-        .work-card.renovator {
-            background: linear-gradient(180deg, 
-                var(--renovator-dark) 0%, 
-                var(--renovator-blue) 100%);
-        }
-
-        .work-card.renovator::before {
-            background: radial-gradient(circle at 70% 30%, 
-                rgba(184, 115, 51, 0.3) 0%, 
-                transparent 50%);
-        }
-
-        .work-card-content {
-            position: relative;
-            z-index: 10;
-            padding: 3rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            color: white;
-        }
-
-        .work-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 1rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            width: fit-content;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .work-card.pharmacist .work-badge {
-            background: rgba(212, 168, 75, 0.3);
-            color: var(--pharmacist-gold-light);
-        }
-
-        .work-card.renovator .work-badge {
-            background: rgba(184, 115, 51, 0.3);
-            color: var(--renovator-copper-light);
-        }
-
-        .work-title-zh {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .work-title-en {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            opacity: 0.7;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .work-genre {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        .genre-tag {
-            padding: 0.3rem 0.8rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            font-size: 0.75rem;
-        }
-
-        .work-description {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-
-        .work-highlight {
-            padding: 1.5rem;
-            background: rgba(0,0,0,0.2);
-            border-radius: 16px;
-            margin-bottom: 2rem;
-            border-left: 3px solid;
-        }
-
-        .work-card.pharmacist .work-highlight {
-            border-color: var(--pharmacist-gold);
-        }
-
-        .work-card.renovator .work-highlight {
-            border-color: var(--renovator-copper);
-        }
-
-        .highlight-quote {
-            font-family: 'Noto Serif TC', serif;
-            font-style: italic;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .work-stats {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-
-        .work-card.pharmacist .stat-value {
-            color: var(--pharmacist-gold-light);
-        }
-
-        .work-card.renovator .stat-value {
-            color: var(--renovator-copper-light);
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            opacity: 0.7;
-        }
-
-        .work-cta {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .work-btn {
-            flex: 1;
-            padding: 1rem;
-            border-radius: 12px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .work-btn.primary {
-            color: var(--pharmacist-dark);
-        }
-
-        .work-card.pharmacist .work-btn.primary {
-            background: var(--pharmacist-gold);
-        }
-
-        .work-card.renovator .work-btn.primary {
-            background: var(--renovator-copper);
-            color: white;
-        }
-
-        .work-btn.secondary {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .work-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Decorative Elements */
-        .work-deco {
-            position: absolute;
-            right: 2rem;
-            top: 2rem;
-            font-size: 8rem;
-            opacity: 0.08;
-            font-family: 'Cormorant Garamond', serif;
-            line-height: 1;
-        }
-
-        /* ==================== About Section ==================== */
-        .about-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--pharmacist-dark) 0%, var(--renovator-dark) 100%);
-            color: white;
-        }
-
-        .about-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .about-title span {
-            background: linear-gradient(90deg, var(--pharmacist-gold), var(--renovator-copper));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 2;
-            opacity: 0.9;
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto 3rem;
         }
 
-        .about-features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .feature-item {
-            padding: 2rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .feature-desc {
+        .section-label {
             font-size: 0.85rem;
-            opacity: 0.7;
-        }
-
-        /* ==================== Newsletter Section ==================== */
-        .newsletter-section {
-            padding: 5rem 2rem;
-            background: var(--cream-dark);
-            text-align: center;
-        }
-
-        .newsletter-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .newsletter-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .newsletter-desc {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .newsletter-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--pharmacist-green), var(--renovator-blue));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(44, 95, 45, 0.3);
-        }
-
-        /* ==================== Footer ==================== */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-brand p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            line-height: 1.6;
-        }
-
-        .footer-links h4 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--pharmacist-gold-light);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
-
-        /* ==================== Mobile Responsive ==================== */
-        @media (max-width: 1024px) {
-            .works-grid {
-                grid-template-columns: 1fr;
-                max-width: 600px;
-            }
-            
-            .work-card {
-                min-height: 550px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--cream);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 1rem;
-                box-shadow: 0 10px 30px var(--shadow-medium);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
-
-        /* ==================== Daily Quote Section ==================== */
-        .daily-quote-section {
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, #2C5F2D 0%, #1A3A1B 100%);
-            position: relative;
-        }
-
-        .daily-quote-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-        }
-
-        .daily-quote-container {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .daily-quote-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .daily-quote-label {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
+            color: var(--forest);
             letter-spacing: 0.15em;
             margin-bottom: 0.5rem;
         }
 
-        .daily-quote-title {
+        .section-title {
             font-family: 'Noto Serif TC', serif;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 500;
-            color: #F5D998;
+            margin-bottom: 1rem;
         }
 
-        .daily-quote-card {
-            background: rgba(253, 248, 243, 0.97);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.25);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .daily-quote-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #D4A84B, #F5D998, #D4A84B);
-        }
-
-        .daily-quote-date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
+        .section-desc {
             color: var(--text-muted);
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-            text-align: center;
+            font-size: 0.95rem;
         }
 
-        .daily-quote-content {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-            line-height: 2;
-            color: var(--text-dark);
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 0 1rem;
+        .mentors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .daily-quote-content::before {
-            content: '「';
-            color: var(--pharmacist-gold);
-            opacity: 0.6;
+        .mentor-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .daily-quote-content::after {
-            content: '」';
-            color: var(--pharmacist-gold);
-            opacity: 0.6;
+        .mentor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
 
-        .daily-quote-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .daily-author-avatar {
-            width: 50px;
-            height: 50px;
+        .mentor-avatar {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .daily-author-avatar.pharmacist {
-            background: linear-gradient(135deg, var(--pharmacist-green), var(--pharmacist-gold));
-        }
+        .mentor-card[data-mentor="xipo"] .mentor-avatar { background: linear-gradient(135deg, #9B8EC4, #D4A84B); }
+        .mentor-card[data-mentor="guman"] .mentor-avatar { background: linear-gradient(135deg, var(--purple), #9B8EC4); }
+        .mentor-card[data-mentor="luyao"] .mentor-avatar { background: linear-gradient(135deg, var(--steel), var(--copper)); }
+        .mentor-card[data-mentor="qing"] .mentor-avatar { background: linear-gradient(135deg, var(--orange), #F5D998); }
 
-        .daily-author-avatar.renovator {
-            background: linear-gradient(135deg, var(--renovator-blue), var(--renovator-copper));
-        }
-
-        .daily-author-info h4 {
+        .mentor-name {
             font-family: 'Noto Serif TC', serif;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 500;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
         }
 
-        .daily-author-info p {
+        .mentor-role {
             font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .mentor-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            padding-left: 1rem;
+            border-left: 3px solid var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .mentor-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .topic-tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--cream-dark);
+            border-radius: 15px;
+            font-size: 0.75rem;
             color: var(--text-muted);
         }
 
-        .daily-quote-actions {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            flex-wrap: wrap;
+        /* Modules Section */
+        .modules {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%);
         }
 
-        .daily-action-btn {
-            padding: 0.6rem 1.2rem;
-            border: none;
-            border-radius: 25px;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 0.85rem;
-            cursor: pointer;
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            text-decoration: none;
         }
 
-        .daily-action-btn.primary {
-            background: var(--pharmacist-green);
+        .module-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .module-header {
+            padding: 1.5rem;
             color: white;
         }
 
-        .daily-action-btn.primary:hover {
-            background: var(--pharmacist-dark);
-            transform: translateY(-2px);
+        .module-card[data-module="1"] .module-header { background: linear-gradient(135deg, var(--purple), #9B8EC4); }
+        .module-card[data-module="2"] .module-header { background: linear-gradient(135deg, var(--steel), var(--copper)); }
+        .module-card[data-module="3"] .module-header { background: linear-gradient(135deg, var(--forest), var(--gold)); }
+        .module-card[data-module="4"] .module-header { background: linear-gradient(135deg, var(--orange), #F5D998); }
+        .module-card[data-module="5"] .module-header { background: linear-gradient(135deg, #9B8EC4, var(--gold)); }
+
+        .module-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 0.3rem;
         }
 
-        .daily-action-btn.secondary {
-            background: rgba(44, 95, 45, 0.1);
-            color: var(--pharmacist-green);
+        .module-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
         }
 
-        .daily-action-btn.secondary:hover {
-            background: rgba(44, 95, 45, 0.2);
+        .module-body {
+            padding: 1.5rem;
         }
 
-        .daily-quote-more {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-
-        .daily-quote-more a {
+        .module-desc {
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
-        .daily-quote-more a:hover {
-            color: #F5D998;
+        .module-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
+        /* Demo Section */
+        .demo {
+            padding: 5rem 2rem;
+            background: var(--forest-dark);
+            color: white;
+        }
+
+        .demo .section-label { color: var(--gold-light); }
+        .demo .section-title { color: white; }
+        .demo .section-desc { color: rgba(255,255,255,0.7); }
+
+        .chat-demo {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .chat-header {
+            padding: 1rem 1.5rem;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chat-mentor-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9B8EC4, var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .chat-mentor-info h4 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .chat-mentor-info p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .chat-messages {
+            padding: 1.5rem;
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.mentor {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .message.mentor .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9B8EC4, var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .message.mentor .bubble {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 0 12px 12px 12px;
+            max-width: 85%;
+        }
+
+        .message.user {
+            text-align: right;
+        }
+
+        .message.user .bubble {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--forest-dark);
+            padding: 0.8rem 1rem;
+            border-radius: 12px 12px 0 12px;
+            max-width: 85%;
+            text-align: left;
+        }
+
+        .message .bubble p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .chat-input {
+            padding: 1rem 1.5rem;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .chat-input input::placeholder { color: rgba(255,255,255,0.4); }
+        .chat-input input:focus { outline: none; border-color: var(--gold); }
+
+        .chat-input button {
+            padding: 0.8rem 1.5rem;
+            background: var(--gold);
+            color: var(--forest-dark);
+            border: none;
+            border-radius: 25px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chat-input button:hover {
+            background: var(--gold-light);
+        }
+
+        .scenario-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .scenario-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .scenario-btn:hover {
+            background: var(--gold);
+            color: var(--forest-dark);
+            border-color: var(--gold);
+        }
+
+        /* Case Study Section */
+        .cases {
+            padding: 5rem 2rem;
+            background: var(--cream);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .case-source {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .case-card[data-source="pharmacist"] .case-source {
+            background: rgba(44,95,45,0.1);
+            color: var(--forest);
+        }
+
+        .case-card[data-source="renovator"] .case-source {
+            background: rgba(44,62,80,0.1);
+            color: var(--steel);
+        }
+
+        .case-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .case-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .case-topic {
+            padding: 0.2rem 0.6rem;
+            background: var(--cream-dark);
+            border-radius: 10px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--steel) 0%, var(--steel-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-resources {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-resources h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold-light);
+        }
+
+        .footer-resources p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .daily-quote-card {
-                padding: 2rem 1.5rem;
-            }
-            
-            .daily-quote-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .daily-action-btn {
-                width: 100%;
-                max-width: 200px;
-                justify-content: center;
-            }
-        }
-
-        /* ==================== Animations ==================== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .hero { padding: 4rem 1.5rem; }
+            .mentors, .modules, .demo, .cases { padding: 3rem 1.5rem; }
+            .chat-demo { margin: 1.5rem -0.5rem 0; border-radius: 16px; }
         }
     </style>
 </head>
 <body>
+    <div class="grain"></div>
+
     <!-- Navigation -->
-    <nav id="navbar">
-        <a href="index.html" class="nav-logo">
-            <svg viewBox="0 0 40 40" width="36" height="36">
-                <defs>
-                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#D4A84B"/>
-                        <stop offset="100%" style="stop-color:#B87333"/>
-                    </linearGradient>
-                </defs>
-                <circle cx="20" cy="20" r="18" fill="none" stroke="#2A2A2A" stroke-width="1.5"/>
-                <text x="20" y="26" font-family="Cormorant Garamond, serif" font-size="18" fill="url(#logoGradient)" text-anchor="middle">S</text>
-            </svg>
-            Space Between Art
-        </a>
+    <nav class="site-nav">
+        <a href="../index.html" class="nav-logo">✦ <span>Space Between Art</span></a>
         <ul class="nav-links">
-            <li><a href="#works">作品</a></li>
-            <li><a href="consultation/">心光咨詢站</a></li>
-            <li><a href="academy/">療癒學院</a></li>
-            <li><a href="downloads/">金句卡片</a></li>
-            <li><a href="#about">關於</a></li>
-            <li><a href="#newsletter">訂閱</a></li>
+            <li><a href="../index.html">首頁</a></li>
+            <li><a href="../index.html#works">作品</a></li>
+            <li><a href="../consultation/">心光咨詢站</a></li>
+            <li><a href="./" class="active">療癒學院</a></li>
+            <li><a href="../downloads/">金句卡片</a></li>
+            <li><a href="../daily-quote/">療癒日記</a></li>
         </ul>
         <button class="mobile-menu-btn" aria-label="選單">
             <span></span><span></span><span></span>
         </button>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="particles">
-            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-            <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
-            <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
-            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
-            <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
-            <div class="particle" style="left: 80%; animation-delay: 0.5s;"></div>
-            <div class="particle" style="left: 90%; animation-delay: 3.5s;"></div>
-        </div>
-        
         <div class="hero-content">
-            <div class="hero-logo">
-                <svg viewBox="0 0 120 120" width="100" height="100">
-                    <defs>
-                        <linearGradient id="heroGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#F5D998"/>
-                            <stop offset="50%" style="stop-color:#D4A84B"/>
-                            <stop offset="100%" style="stop-color:#B87333"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="60" cy="60" r="55" fill="none" stroke="url(#heroGold)" stroke-width="2"/>
-                    <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                    <text x="60" y="75" font-family="Cormorant Garamond, serif" font-size="50" fill="url(#heroGold)" text-anchor="middle">S</text>
-                </svg>
-            </div>
-            <h1 class="hero-title">Space Between Art</h1>
-            <p class="hero-subtitle">在光與暗之間，故事發生</p>
-            <p class="hero-tagline">療癒系都市奇幻創作工作室</p>
+            <span class="hero-badge">✦ AI-POWERED LEARNING ✦</span>
+            <h1 class="hero-title">心靈療癒學院</h1>
+            <p class="hero-subtitle">Soul Healing Academy</p>
+            <p class="hero-desc">
+                由小說角色化身的 AI 導師，帶領你探索心理健康的世界。<br>
+                透過故事案例學習，在安全的虛構情境中理解療癒的藝術。
+            </p>
             <div class="hero-cta">
-                <a href="#works" class="cta-btn primary">
-                    <span>探索作品</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="community.html" class="cta-btn secondary">
-                    <span>心光諮詢室</span>
-                </a>
+                <a href="#demo" class="btn btn-primary">體驗對話</a>
+                <a href="#modules" class="btn btn-secondary">瀏覽課程</a>
             </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
         </div>
     </section>
 
-    <!-- Works Section -->
-    <section class="works-section" id="works">
-        <div class="section-header fade-in">
-            <p class="section-label">Our Stories</p>
-            <h2 class="section-title">作品系列</h2>
+    <!-- Mentors -->
+    <section class="mentors" id="mentors">
+        <div class="section-header">
+            <p class="section-label">✦ AI MENTORS ✦</p>
+            <h2 class="section-title">你的導師團隊</h2>
+            <p class="section-desc">來自《逐光的藥師》與《違章靈魂改建事務所》的角色，將以 AI 導師身份陪伴你的學習旅程。</p>
         </div>
 
-        <div class="works-grid">
-            <!-- 逐光的藥師 -->
-            <div class="work-card pharmacist fade-in">
-                <div class="work-deco">🌿</div>
-                <div class="work-card-content">
-                    <div class="work-badge">
-                        <span>✦</span> 完結・115,000字
-                    </div>
-                    <h3 class="work-title-zh">逐光的藥師</h3>
-                    <p class="work-title-en">The Light-Chasing Pharmacist</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">都市奇幻</span>
-                        <span class="genre-tag">療癒</span>
-                        <span class="genre-tag">植物魔法</span>
-                    </div>
-                    <p class="work-description">
-                        二十三歲的曜經營著「間隙書屋」二手書店，擁有能看見人們「心光」的特殊能力。
-                        在社工師晴的協助下，他用植物的芳香與智慧，療癒社區居民被黑暗侵蝕的靈魂。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">
-                            「每個人的心裡都有光，只是有時候會被遮住。」
-                        </p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">25</div>
-                            <div class="stat-label">章節</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">12</div>
-                            <div class="stat-label">療癒植物</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">∞</div>
-                            <div class="stat-label">心光</div>
-                        </div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="pharmacist/index.html" class="work-btn primary">進入故事</a>
-                        <a href="pharmacist/characters.html" class="work-btn secondary">角色介紹</a>
-                    </div>
+        <div class="mentors-grid">
+            <div class="mentor-card" data-mentor="xipo">
+                <div class="mentor-avatar">🌙</div>
+                <h3 class="mentor-name">曦婆婆</h3>
+                <p class="mentor-role">資深督導 ・ 月亮藥師</p>
+                <p class="mentor-quote">「真正的藥師不是太陽，而是月亮。我們不產生光，只是溫柔地反射它。」</p>
+                <div class="mentor-topics">
+                    <span class="topic-tag">自我照顧</span>
+                    <span class="topic-tag">專業督導</span>
+                    <span class="topic-tag">倫理議題</span>
                 </div>
             </div>
 
-            <!-- 違章靈魂改建事務所 -->
-            <div class="work-card renovator fade-in">
-                <div class="work-deco">🔧</div>
-                <div class="work-card-content">
-                    <div class="work-badge">
-                        <span>◆</span> 優化中・25集
-                    </div>
-                    <h3 class="work-title-zh">違章靈魂改建事務所</h3>
-                    <p class="work-title-en">The Soul Renovator</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">都市奇幻</span>
-                        <span class="genre-tag">心理懸疑</span>
-                        <span class="genre-tag">療癒</span>
-                    </div>
-                    <p class="work-description">
-                        路遙是一名「心靈建築改建師」，能看見每個人心中的「房子」——
-                        沒有門的玻璃屋、銅牆鐵壁的碉堡、無限迴圈的樓梯⋯⋯
-                        他用藍圖之眼和共感錘，改建那些違章的靈魂結構。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">
-                            「每一座違章建築，都是一道沒有被聽見的求救信號。」
-                        </p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">25</div>
-                            <div class="stat-label">集數</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">7</div>
-                            <div class="stat-label">心靈法器</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">∞</div>
-                            <div class="stat-label">建築</div>
-                        </div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="https://www.penana.com/story/199696/%E9%81%95%E7%AB%A0%E9%9D%88%E9%AD%82%E6%94%B9%E5%BB%BA%E4%BA%8B%E5%8B%99%E6%89%80" class="work-btn primary" target="_blank">閱讀全文 ↗</a>
-                        <a href="renovator/index.html" class="work-btn secondary">故事簡介</a>
-                        <a href="renovator/characters.html" class="work-btn secondary">角色介紹</a>
-                    </div>
+            <div class="mentor-card" data-mentor="guman">
+                <div class="mentor-avatar">💜</div>
+                <h3 class="mentor-name">顧曼</h3>
+                <p class="mentor-role">專業諮商師 ・ 理論講師</p>
+                <p class="mentor-quote">「界限不是冷漠。界限是讓我能夠持續幫助你的方式。」</p>
+                <div class="mentor-topics">
+                    <span class="topic-tag">諮商技巧</span>
+                    <span class="topic-tag">心理理論</span>
+                    <span class="topic-tag">個案評估</span>
+                </div>
+            </div>
+
+            <div class="mentor-card" data-mentor="luyao">
+                <div class="mentor-avatar">🔧</div>
+                <h3 class="mentor-name">路遙</h3>
+                <p class="mentor-role">實務專家 ・ 心靈建築師</p>
+                <p class="mentor-quote">「每一座違章建築，都是一道沒有被聽見的求救信號。」</p>
+                <div class="mentor-topics">
+                    <span class="topic-tag">防衛機制</span>
+                    <span class="topic-tag">個案概念化</span>
+                    <span class="topic-tag">創傷照護</span>
+                </div>
+            </div>
+
+            <div class="mentor-card" data-mentor="qing">
+                <div class="mentor-avatar">☀️</div>
+                <h3 class="mentor-name">晴</h3>
+                <p class="mentor-role">社區實務 ・ 社工師</p>
+                <p class="mentor-quote">「有時候，最需要被照顧的人，是那個一直在照顧別人的人。」</p>
+                <div class="mentor-topics">
+                    <span class="topic-tag">社區心理健康</span>
+                    <span class="topic-tag">自殺防治</span>
+                    <span class="topic-tag">資源連結</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Daily Quote Section -->
-    <section class="daily-quote-section" id="daily-quote">
-        <div class="daily-quote-container fade-in">
-            <div class="daily-quote-header">
-                <p class="daily-quote-label">✦ DAILY HEALING ✦</p>
-                <h2 class="daily-quote-title">療癒日記・每日一句</h2>
-            </div>
-            
-            <div class="daily-quote-card">
-                <div class="daily-quote-date" id="quoteDate"></div>
-                <div class="daily-quote-content" id="quoteContent"></div>
-                <div class="daily-quote-author">
-                    <div class="daily-author-avatar" id="quoteAvatar"></div>
-                    <div class="daily-author-info">
-                        <h4 id="quoteName"></h4>
-                        <p id="quoteRole"></p>
+    <!-- Modules -->
+    <section class="modules" id="modules">
+        <div class="section-header">
+            <p class="section-label">✦ LEARNING MODULES ✦</p>
+            <h2 class="section-title">課程模組</h2>
+            <p class="section-desc">從基礎概念到進階實務，循序漸進的學習路徑。</p>
+        </div>
+
+        <div class="modules-grid">
+            <div class="module-card" data-module="1">
+                <div class="module-header">
+                    <p class="module-number">Module 01</p>
+                    <h3 class="module-title">心理健康基礎概念</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">認識什麼是心理健康、常見心理困擾類型、求助的勇氣與去污名化。</p>
+                    <div class="module-meta">
+                        <span>👤 顧曼</span>
+                        <span>4 單元</span>
                     </div>
                 </div>
-                <div class="daily-quote-actions">
-                    <button class="daily-action-btn secondary" onclick="nextDailyQuote()">
-                        🔄 換一句
-                    </button>
-                    <button class="daily-action-btn secondary" onclick="copyDailyQuote()">
-                        📋 複製
-                    </button>
-                    <button class="daily-action-btn primary" onclick="shareDailyQuote()">
-                        📤 分享
-                    </button>
+            </div>
+
+            <div class="module-card" data-module="2">
+                <div class="module-header">
+                    <p class="module-number">Module 02</p>
+                    <h3 class="module-title">認識心理防衛機制</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">用建築隱喻理解否認、壓抑、投射、隔離等防衛機制。</p>
+                    <div class="module-meta">
+                        <span>🔧 路遙</span>
+                        <span>6 單元</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="daily-quote-more">
-                <a href="daily-quote/">探索更多角色日記 →</a>
+
+            <div class="module-card" data-module="3">
+                <div class="module-header">
+                    <p class="module-number">Module 03</p>
+                    <h3 class="module-title">創傷知情照護</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">理解心理創傷、身心反應、二次創傷，以及創傷後成長。</p>
+                    <div class="module-meta">
+                        <span>🔧 路遙 + 💜 顧曼</span>
+                        <span>6 單元</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="4">
+                <div class="module-header">
+                    <p class="module-number">Module 04</p>
+                    <h3 class="module-title">憂鬱與自殺防治</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">認識憂鬱症、風險評估、傾聽陪伴技巧、資源連結與轉介。</p>
+                    <div class="module-meta">
+                        <span>☀️ 晴 + 🌙 曦婆婆</span>
+                        <span>5 單元</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="5">
+                <div class="module-header">
+                    <p class="module-number">Module 05</p>
+                    <h3 class="module-title">助人者的自我照顧</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">辨識耗竭徵兆、建立專業界限、自我照顧策略。</p>
+                    <div class="module-meta">
+                        <span>🌙 曦婆婆</span>
+                        <span>4 單元</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="about-container fade-in">
-            <h2 class="about-title">關於 <span>Space Between Art</span></h2>
-            <p class="about-text">
-                我們相信，最深刻的療癒發生在「之間」——
-                光與暗之間、現實與幻想之間、傷口與痊癒之間。
-                透過都市奇幻的框架，我們探索人心的建築、靈魂的光譜，
-                用故事為每一個需要被看見的人，點亮一盞燈。
+    <!-- Demo -->
+    <section class="demo" id="demo">
+        <div class="section-header">
+            <p class="section-label">✦ INTERACTIVE DEMO ✦</p>
+            <h2 class="section-title">與導師對話</h2>
+            <p class="section-desc">選擇一個情境，體驗 AI 導師的互動教學。</p>
+        </div>
+
+        <div class="chat-demo">
+            <div class="chat-header">
+                <div class="chat-mentor-avatar">🌙</div>
+                <div class="chat-mentor-info">
+                    <h4>曦婆婆</h4>
+                    <p>資深督導</p>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message mentor">
+                    <div class="avatar">🌙</div>
+                    <div class="bubble">
+                        <p>孩子，歡迎來到心靈療癒學院。今天想聊些什麼呢？是學習上的困惑，還是想討論某個案例？</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="輸入你的問題或想法..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">送出</button>
+            </div>
+        </div>
+
+        <div class="scenario-buttons">
+            <button class="scenario-btn" onclick="loadScenario('burnout')">我覺得很疲憊</button>
+            <button class="scenario-btn" onclick="loadScenario('boundary')">如何設定界限？</button>
+            <button class="scenario-btn" onclick="loadScenario('failure')">個案療癒失敗了</button>
+            <button class="scenario-btn" onclick="loadScenario('defense')">什麼是防衛機制？</button>
+        </div>
+    </section>
+
+    <!-- Cases -->
+    <section class="cases" id="cases">
+        <div class="section-header">
+            <p class="section-label">✦ CASE STUDIES ✦</p>
+            <h2 class="section-title">故事案例庫</h2>
+            <p class="section-desc">從小說中精選的案例，作為學習心理健康議題的素材。</p>
+        </div>
+
+        <div class="case-grid">
+            <div class="case-card" data-source="pharmacist">
+                <span class="case-source">🌿 逐光的藥師</span>
+                <h3 class="case-title">曜的創傷後歷程</h3>
+                <p class="case-desc">童年好友小夏的離世，如何影響曜成為療癒者的道路？探討倖存者內疚與過度補償。</p>
+                <div class="case-topics">
+                    <span class="case-topic">創傷</span>
+                    <span class="case-topic">哀傷</span>
+                    <span class="case-topic">助人者動機</span>
+                </div>
+            </div>
+
+            <div class="case-card" data-source="renovator">
+                <span class="case-source">🔧 違章靈魂改建事務所</span>
+                <h3 class="case-title">沒有門的房子</h3>
+                <p class="case-desc">陳太太的心靈建築沒有門，任何人都可以進入。探討界限議題與共依附關係。</p>
+                <div class="case-topics">
+                    <span class="case-topic">界限</span>
+                    <span class="case-topic">共依附</span>
+                    <span class="case-topic">討好型人格</span>
+                </div>
+            </div>
+
+            <div class="case-card" data-source="renovator">
+                <span class="case-source">🔧 違章靈魂改建事務所</span>
+                <h3 class="case-title">碉堡建築</h3>
+                <p class="case-desc">把自己建成碉堡的個案，如何在保護自己的同時，也讓光進來？</p>
+                <div class="case-topics">
+                    <span class="case-topic">迴避型依附</span>
+                    <span class="case-topic">情感隔離</span>
+                    <span class="case-topic">信任議題</span>
+                </div>
+            </div>
+
+            <div class="case-card" data-source="pharmacist">
+                <span class="case-source">🌿 逐光的藥師</span>
+                <h3 class="case-title">林伯的晚年孤寂</h3>
+                <p class="case-desc">獨居長者的心理健康，以及社區支持系統的重要性。</p>
+                <div class="case-topics">
+                    <span class="case-topic">老年心理</span>
+                    <span class="case-topic">孤獨</span>
+                    <span class="case-topic">社區支持</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">準備好開始學習了嗎？</h2>
+            <p class="cta-desc">
+                心靈療癒學院即將開放。留下你的 Email，我們會在正式上線時通知你。
             </p>
-            <div class="about-features">
-                <div class="feature-item">
-                    <div class="feature-icon">🌿</div>
-                    <h3 class="feature-title">植物魔法</h3>
-                    <p class="feature-desc">洋甘菊的安撫、迷迭香的記憶、聖約翰草的光明</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🏠</div>
-                    <h3 class="feature-title">心靈建築</h3>
-                    <p class="feature-desc">每個人心中都有一座房子，等待被看見與改建</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✨</div>
-                    <h3 class="feature-title">療癒故事</h3>
-                    <p class="feature-desc">不說教、不強迫，只是溫柔地陪伴與照亮</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter-section" id="newsletter">
-        <div class="newsletter-container fade-in">
-            <h2 class="newsletter-title">📬 訂閱創作電子報</h2>
-            <p class="newsletter-desc">
-                每週療癒小語、創作幕後、新章節更新通知、獨家番外篇
-            </p>
-            <a href="https://spacebetweenart.substack.com" class="newsletter-btn" target="_blank">
-                <span>免費訂閱</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
+            <a href="#" class="btn btn-primary">加入等候名單</a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="footer-logo">Space Between Art</div>
-                <p>在光與暗之間，故事發生。<br>療癒系都市奇幻創作工作室。</p>
-            </div>
-            <div class="footer-links">
-                <h4>作品</h4>
-                <ul>
-                    <li><a href="pharmacist/index.html">逐光的藥師</a></li>
-                    <li><a href="https://www.penana.com/story/199696/%E9%81%95%E7%AB%A0%E9%9D%88%E9%AD%82%E6%94%B9%E5%BB%BA%E4%BA%8B%E5%8B%99%E6%89%80" target="_blank">違章靈魂改建事務所 ↗</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>探索</h4>
-                <ul>
-                    <li><a href="consultation/">心光咨詢站</a></li>
-                    <li><a href="academy/">療癒學院</a></li>
-                    <li><a href="downloads/">金句卡片</a></li>
-                    <li><a href="daily-quote/">療癒日記</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>聯絡</h4>
-                <ul>
-                    <li><a href="/cdn-cgi/l/email-protection#b7dfd2dbdbd8f7c4c7d6d4d29ad5d2c3c0d2d2d999d6c5c3"><span class="__cf_email__" data-cfemail="96fef3fafaf9d6e5e6f7f5f3bbf4f3e2e1f3f3f8b8f7e4e2">[email&#160;protected]</span></a></li>
-                    <li><a href="https://www.penana.com/user/123456" target="_blank">Penana</a></li>
-                    <li><a href="https://spacebetweenart.substack.com" target="_blank">Substack</a></li>
-                </ul>
-            </div>
+    <footer class="footer">
+        <div class="footer-brand">心靈療癒學院 | Soul Healing Academy</div>
+        <p class="footer-disclaimer">
+            ⚠️ 本平台為心理健康科普教育性質，非專業心理治療訓練。<br>
+            故事案例為虛構創作，僅供學習參考。如有真實心理健康需求，請尋求專業協助。
+        </p>
+        <div class="footer-resources">
+            <h4>心理健康資源</h4>
+            <p>台灣：安心專線 1925 ・ 生命線 1995<br>香港：撒瑪利亞防止自殺會 2389 2222</p>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Space Between Art. All rights reserved.</p>
-        </div>
+        <p class="footer-copyright">© 2025 Space Between Art. All rights reserved.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+    <script>
+        // Demo Chat Functionality
+        const responses = {
+            burnout: {
+                mentor: '🌙',
+                name: '曦婆婆',
+                messages: [
+                    "孩子，你願意說「覺得很疲憊」，這本身就很重要。很多助人者習慣照顧別人，卻忘了自己也需要被照顧。",
+                    "記得我常說的嗎？「真正的藥師不是太陽，而是月亮。」太陽會燃燒殆盡，但月亮只是溫柔地反射光芒。",
+                    "告訴我，最近是什麼讓你感到疲憊？是個案的重量、工作的壓力，還是……你自己內心的聲音？"
+                ]
+            },
+            boundary: {
+                mentor: '💜',
+                name: '顧曼',
+                messages: [
+                    "界限是個很好的問題。很多人誤以為設定界限就是冷漠或不夠有愛心。",
+                    "但其實，界限不是冷漠。界限是讓我能夠持續幫助你的方式。",
+                    "想像一下：如果一個救生員跳進水裡，和溺水的人一起溺水，那誰來救人呢？專業的界限，就是讓我們能持續給予的基礎。",
+                    "你最近是不是遇到了讓你覺得界限模糊的情況？"
+                ]
+            },
+            failure: {
+                mentor: '🌙',
+                name: '曦婆婆',
+                messages: [
+                    "「療癒失敗」……這個詞本身就值得我們好好談談。",
+                    "你知道嗎，曜剛開始學習的時候，也曾經歷過這樣的挫折。他太急了，以為只要夠努力就能修好所有人。",
+                    "但我告訴他：有些傷口需要的不是縫合，是讓它流出來。有些人還沒準備好被療癒，而這不是你的失敗。",
+                    "療癒是蜂蜜的工作。蜜蜂採蜜，從不強迫花朵盛開。你願意說說發生了什麼事嗎？"
+                ]
+            },
+            defense: {
+                mentor: '🔧',
+                name: '路遙',
+                messages: [
+                    "防衛機制？這正是我的專長。讓我用建築來解釋給你聽。",
+                    "每個人的心裡都有一座房子。這座房子的結構——有沒有門、有沒有窗、牆有多厚——就是防衛機制的體現。",
+                    "有些人把自己建成碉堡，以為這樣就不會受傷。但碉堡裡面，也沒有陽光。",
+                    "有些人的房子沒有門，任何人都可以進來，包括那些不該進來的。",
+                    "防衛機制本身不是壞事——它們曾經保護過我們。問題是，當環境改變了，我們的房子是否還適合居住？",
+                    "你想了解哪種「建築風格」呢？"
+                ]
             }
-        });
+        };
 
-        // Fade in on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        function loadScenario(scenario) {
+            const chat = document.getElementById('chatMessages');
+            const data = responses[scenario];
+            
+            // Clear previous messages
+            chat.innerHTML = '';
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            const userTexts = {
+                burnout: '我最近覺得很疲憊，好像快燃燒殆盡了...',
+                boundary: '我不知道該如何設定專業界限，常常把個案的問題帶回家...',
+                failure: '我嘗試幫助一個個案，但失敗了，我不知道哪裡做錯了...',
+                defense: '什麼是防衛機制？我想更了解這個概念。'
+            };
+            userMsg.innerHTML = `<div class="bubble"><p>${userTexts[scenario]}</p></div>`;
+            chat.appendChild(userMsg);
+            
+            // Add mentor responses with delay
+            data.messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    const mentorMsg = document.createElement('div');
+                    mentorMsg.className = 'message mentor';
+                    mentorMsg.innerHTML = `
+                        <div class="avatar">${data.mentor}</div>
+                        <div class="bubble"><p>${msg}</p></div>
+                    `;
+                    chat.appendChild(mentorMsg);
+                    chat.scrollTop = chat.scrollHeight;
+                }, (index + 1) * 1500);
             });
-        }, { threshold: 0.1 });
-
-        fadeElements.forEach(el => observer.observe(el));
-
-
-        // Particle animation timing
-        document.querySelectorAll('.particle').forEach((particle, index) => {
-            particle.style.animationDelay = `${index * 0.5}s`;
-        });
-
-        // ==================== Daily Quote System ====================
-        const dailyQuotes = [
-            { content: "我以為把自己關起來就不會受傷。但孤獨本身，就是一種慢性的傷。", name: "曜", role: "逐光藥師｜逐光的藥師", emoji: "🌿", series: "pharmacist" },
-            { content: "真正的藥師不是太陽，而是月亮。我們不產生光，只是溫柔地反射它。", name: "曦婆婆", role: "月亮藥師｜逐光的藥師", emoji: "🌙", series: "pharmacist" },
-            { content: "療癒不是「修理」，而是「陪伴」。你不能替別人痛，也不能強行剝奪別人的痛。", name: "晴", role: "社工師｜逐光的藥師", emoji: "☀️", series: "pharmacist" },
-            { content: "每一座違章建築，都是一道沒有被聽見的求救信號。", name: "路遙", role: "心靈建築改建師｜違章靈魂改建事務所", emoji: "🔧", series: "renovator" },
-            { content: "裂縫不是缺陷。那是光進來的地方。", name: "路遙", role: "心靈建築改建師｜違章靈魂改建事務所", emoji: "🔧", series: "renovator" },
-            { content: "你不需要馬上好起來。療癒不是比賽，沒有人在計時。", name: "顧曼", role: "心理諮商師｜違章靈魂改建事務所", emoji: "💜", series: "renovator" },
-            { content: "記憶是會發酵的。好的記憶會變成蜂蜜，壞的記憶會變成毒藥。關鍵是，你選擇餵養哪一種。", name: "曦婆婆", role: "月亮藥師｜逐光的藥師", emoji: "🌙", series: "pharmacist" },
-            { content: "有時候，最需要被照顧的人，是那個一直在照顧別人的人。", name: "晴", role: "社工師｜逐光的藥師", emoji: "☀️", series: "pharmacist" },
-            { content: "我不會拆掉你的碉堡。但即使是核掩體，也需要一個觀察孔。", name: "路遙", role: "心靈建築改建師｜違章靈魂改建事務所", emoji: "🔧", series: "renovator" },
-            { content: "原來接受幫助，也是一種勇敢。", name: "曜", role: "逐光藥師｜逐光的藥師", emoji: "🌿", series: "pharmacist" },
-            { content: "這座城市病了。但在最深的霧裡，總有一盞燈還亮著。", name: "路遙", role: "心靈建築改建師｜違章靈魂改建事務所", emoji: "🔧", series: "renovator" },
-            { content: "界限不是冷漠。界限是讓我能夠持續幫助你的方式。", name: "顧曼", role: "心理諮商師｜違章靈魂改建事務所", emoji: "💜", series: "renovator" },
-            { content: "每個人的心光都不一樣。有的像蠟燭，有的像營火。我的……大概是螢火蟲吧，微弱但還在閃。", name: "曜", role: "逐光藥師｜逐光的藥師", emoji: "🌿", series: "pharmacist" },
-            { content: "改建需要時間。羅馬不是一天建成的，你的心靈建築也是。", name: "路遙", role: "心靈建築改建師｜違章靈魂改建事務所", emoji: "🔧", series: "renovator" },
-            { content: "療癒是蜂蜜的工作。蜜蜂採蜜，從不強迫花朵盛開。", name: "曦婆婆", role: "月亮藥師｜逐光的藥師", emoji: "🌙", series: "pharmacist" },
-            { content: "光會吸引光。當一個靈魂開始燃燒，其他的靈魂會感應到。", name: "曦婆婆", role: "月亮藥師｜逐光的藥師", emoji: "🌙", series: "pharmacist" },
-            { content: "房子可以改建，靈魂也是。只要你願意開門，光就會進來。", name: "路遙", role: "心靈建築改建師｜違章靈魂改建事務所", emoji: "🔧", series: "renovator" },
-            { content: "有些人把自己建成碉堡，以為這樣就不會受傷。但碉堡裡面，也沒有陽光。", name: "路遙", role: "心靈建築改建師｜違章靈魂改建事務所", emoji: "🔧", series: "renovator" }
-        ];
-
-        let currentQuoteIndex = 0;
-
-        function getDailyQuote() {
-            const today = new Date();
-            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
-            return dailyQuotes[dayOfYear % dailyQuotes.length];
+            
+            // Update chat header
+            document.querySelector('.chat-mentor-avatar').textContent = data.mentor;
+            document.querySelector('.chat-mentor-info h4').textContent = data.name;
         }
 
-        function displayDailyQuote(quote) {
-            document.getElementById('quoteDate').textContent = new Date().toLocaleDateString('zh-TW', { 
-                year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' 
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const chat = document.getElementById('chatMessages');
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = `<div class="bubble"><p>${message}</p></div>`;
+            chat.appendChild(userMsg);
+            
+            input.value = '';
+            
+            // Simulate mentor response
+            setTimeout(() => {
+                const mentorMsg = document.createElement('div');
+                mentorMsg.className = 'message mentor';
+                mentorMsg.innerHTML = `
+                    <div class="avatar">🌙</div>
+                    <div class="bubble">
+                        <p>謝謝你願意分享這些。在正式版本中，我會根據你的問題給予更完整的回應。現在，你可以試試上方的情境按鈕，體驗不同的對話主題。</p>
+                    </div>
+                `;
+                chat.appendChild(mentorMsg);
+                chat.scrollTop = chat.scrollHeight;
+            }, 1000);
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
-            document.getElementById('quoteContent').textContent = quote.content;
-            document.getElementById('quoteAvatar').textContent = quote.emoji;
-            document.getElementById('quoteAvatar').className = 'daily-author-avatar ' + quote.series;
-            document.getElementById('quoteName').textContent = quote.name;
-            document.getElementById('quoteRole').textContent = quote.role;
-        }
-
-        function nextDailyQuote() {
-            currentQuoteIndex = (currentQuoteIndex + 1) % dailyQuotes.length;
-            displayDailyQuote(dailyQuotes[currentQuoteIndex]);
-        }
-
-        function copyDailyQuote() {
-            const content = document.getElementById('quoteContent').textContent;
-            const name = document.getElementById('quoteName').textContent;
-            const role = document.getElementById('quoteRole').textContent;
-            const text = '「' + content + '」\n—— ' + name + '，' + role + '\n\n#SpaceBetweenArt #療癒日記';
-            navigator.clipboard.writeText(text).then(() => alert('已複製到剪貼簿！'));
-        }
-
-        function shareDailyQuote() {
-            const content = document.getElementById('quoteContent').textContent;
-            const name = document.getElementById('quoteName').textContent;
-            const text = '「' + 
+        });
+    </script>
+</body>
+</html>
