@@ -3,39 +3,47 @@
     <!-- 首頁 -->
     <url>
         <loc>https://space-between.art/</loc>
-        <lastmod>2025-12-12</lastmod>
+        <lastmod>2025-12-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
+    </url>
+    
+    <!-- 心光咨詢站 AI 療癒對話 -->
+    <url>
+        <loc>https://space-between.art/ai-chat.html</loc>
+        <lastmod>2025-12-13</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- 療癒學院 -->
+    <url>
+        <loc>https://space-between.art/academy/</loc>
+        <lastmod>2025-12-13</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
     </url>
     
     <!-- 療癒宇宙 -->
     <url>
         <loc>https://space-between.art/healing-universe.html</loc>
-        <lastmod>2025-12-12</lastmod>
+        <lastmod>2025-12-13</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <!-- AI 療癒對話 -->
-    <url>
-        <loc>https://space-between.art/heartlight-chat-v3.html</loc>
-        <lastmod>2025-12-12</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
     
     <!-- 角色介紹 -->
     <url>
         <loc>https://space-between.art/characters.html</loc>
-        <lastmod>2025-12-12</lastmod>
+        <lastmod>2025-12-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     
-    <!-- 社區 -->
+    <!-- 互動區 -->
     <url>
         <loc>https://space-between.art/community.html</loc>
-        <lastmod>2025-12-12</lastmod>
+        <lastmod>2025-12-13</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -43,8 +51,16 @@
     <!-- 畫廊 -->
     <url>
         <loc>https://space-between.art/gallery.html</loc>
-        <lastmod>2025-12-12</lastmod>
+        <lastmod>2025-12-13</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    
+    <!-- 植物魔典 -->
+    <url>
+        <loc>https://space-between.art/botanical-grimoire.html</loc>
+        <lastmod>2025-12-13</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
     </url>
 </urlset>

@@ -503,6 +503,85 @@
             .section-nav { top: 60px; gap: 0.5rem; }
             .section-nav a { padding: 0.5rem 1rem; font-size: 0.8rem; }
         }
+
+        /* 金句卡片下載區 */
+        .quote-cards-section {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .quote-cards-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .quote-card-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: var(--forest-green);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold-light);
+        }
+
+        .cards-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .quote-card-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow-soft);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .quote-card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-medium);
+        }
+
+        .quote-card-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+        }
+
+        .download-btn {
+            display: block;
+            text-align: center;
+            padding: 0.8rem;
+            background: var(--forest-green);
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--forest-dark);
+        }
+
+        .quote-cards-note {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .cards-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -522,11 +601,11 @@
         </a>
         <ul class="nav-links">
             <li><a href="index.html">首頁</a></li>
+            <li><a href="index.html#works">作品</a></li>
+            <li><a href="ai-chat.html">心光咨詢站</a></li>
+            <li><a href="academy/">療癒學院</a></li>
             <li><a href="gallery.html" style="color: var(--forest-green); font-weight: 500;">畫廊</a></li>
-            <li><a href="works.html">創作區</a></li>
-            <li><a href="shop.html">商店</a></li>
             <li><a href="community.html">互動區</a></li>
-            <li><a href="index.html#contact">聯絡</a></li>
         </ul>
         <button class="mobile-menu-btn" aria-label="選單">
             <span></span><span></span><span></span>
@@ -543,6 +622,7 @@
         <a href="#characters" class="active">📷 角色寫真</a>
         <a href="#concepts">🎨 概念藝術</a>
         <a href="#botanicals">🌿 植物圖鑑</a>
+        <a href="#quote-cards">💝 金句卡片</a>
     </div>
 
     <!-- Featured Hero -->
@@ -775,6 +855,82 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- 療癒金句卡片下載區 -->
+    <section class="gallery-section quote-cards-section" id="quote-cards">
+        <div class="section-header">
+            <p class="section-label">Healing Quote Cards</p>
+            <h2 class="section-title">💝 療癒金句卡片</h2>
+            <span class="style-badge">📥 免費下載</span>
+            <p class="section-description">
+                來自故事角色的療癒語錄，免費下載分享給需要的人
+            </p>
+        </div>
+        
+        <div class="quote-cards-grid">
+            <!-- 逐光的藥師 -->
+            <div class="quote-card-category">
+                <h3 class="category-title">🌿 逐光的藥師</h3>
+                <div class="cards-row">
+                    <div class="quote-card-item">
+                        <img src="downloads/01_pharmacist_memory.png" alt="記憶是會發酵的" class="quote-card-image">
+                        <a href="downloads/01_pharmacist_memory.png" download class="download-btn">📥 下載</a>
+                    </div>
+                    <div class="quote-card-item">
+                        <img src="downloads/02_pharmacist_light.png" alt="每個人心裡都有光" class="quote-card-image">
+                        <a href="downloads/02_pharmacist_light.png" download class="download-btn">📥 下載</a>
+                    </div>
+                    <div class="quote-card-item">
+                        <img src="downloads/03_pharmacist_balance.png" alt="平衡" class="quote-card-image">
+                        <a href="downloads/03_pharmacist_balance.png" download class="download-btn">📥 下載</a>
+                    </div>
+                    <div class="quote-card-item">
+                        <img src="downloads/04_pharmacist_flame.png" alt="火焰" class="quote-card-image">
+                        <a href="downloads/04_pharmacist_flame.png" download class="download-btn">📥 下載</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 違章靈魂改建事務所 -->
+            <div class="quote-card-category">
+                <h3 class="category-title">🔧 違章靈魂改建事務所</h3>
+                <div class="cards-row">
+                    <div class="quote-card-item">
+                        <img src="downloads/05_renovator_window.png" alt="窗戶" class="quote-card-image">
+                        <a href="downloads/05_renovator_window.png" download class="download-btn">📥 下載</a>
+                    </div>
+                    <div class="quote-card-item">
+                        <img src="downloads/06_renovator_city.png" alt="城市" class="quote-card-image">
+                        <a href="downloads/06_renovator_city.png" download class="download-btn">📥 下載</a>
+                    </div>
+                    <div class="quote-card-item">
+                        <img src="downloads/07_renovator_kintsugi.png" alt="金繕" class="quote-card-image">
+                        <a href="downloads/07_renovator_kintsugi.png" download class="download-btn">📥 下載</a>
+                    </div>
+                    <div class="quote-card-item">
+                        <img src="downloads/08_renovator_signal.png" alt="信號" class="quote-card-image">
+                        <a href="downloads/08_renovator_signal.png" download class="download-btn">📥 下載</a>
+                    </div>
+                    <div class="quote-card-item">
+                        <img src="downloads/09_renovator_glasshouse.png" alt="玻璃屋" class="quote-card-image">
+                        <a href="downloads/09_renovator_glasshouse.png" download class="download-btn">📥 下載</a>
+                    </div>
+                    <div class="quote-card-item">
+                        <img src="downloads/10_renovator_rain.png" alt="雨" class="quote-card-image">
+                        <a href="downloads/10_renovator_rain.png" download class="download-btn">📥 下載</a>
+                    </div>
+                    <div class="quote-card-item">
+                        <img src="downloads/11_renovator_crack.png" alt="裂縫" class="quote-card-image">
+                        <a href="downloads/11_renovator_crack.png" download class="download-btn">📥 下載</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <p class="quote-cards-note">
+            ✨ 願這些文字能成為某個人黑暗中的一點光
+        </p>
     </section>
 
     <!-- CTA -->
