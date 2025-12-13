@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色介紹 | 違章靈魂改建事務所 | Space Between Art</title>
+    <meta name="description" content="認識《違章靈魂改建事務所》的角色：路遙、顧曼等心靈建築師">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --steel: #2C3E50;
+            --steel-dark: #1A252F;
+            --steel-light: #5D6D7E;
+            --copper: #B87333;
+            --copper-light: #D4956A;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--steel);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--copper);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--steel-dark) 0%, var(--steel) 100%);
+            color: white;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: var(--copper-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Characters Section */
+        .characters {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .character-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--copper);
+        }
+
+        .character-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .character-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--steel) 0%, var(--steel-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .character-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            color: var(--steel);
+        }
+
+        .character-title {
+            color: var(--copper);
+            font-size: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .character-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .character-quote {
+            background: var(--cream-dark);
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-style: italic;
+            color: var(--steel);
+            border-left: 3px solid var(--copper);
+        }
+
+        .character-abilities {
+            margin-top: 1.5rem;
+        }
+
+        .ability-tag {
+            display: inline-block;
+            background: var(--steel);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.3rem 0.3rem 0.3rem 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--steel-dark);
+            color: white;
+        }
+
+        footer a {
+            color: var(--copper-light);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 1rem; }
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.8rem; }
+            .character-header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="nav-logo">🔧 Space Between Art</a>
+        <ul class="nav-links">
+            <li><a href="../index.html">首頁</a></li>
+            <li><a href="../index.html#works">作品</a></li>
+            <li><a href="../ai-chat.html">心光咨詢站</a></li>
+            <li><a href="../gallery.html">畫廊</a></li>
+            <li><a href="../community.html">互動區</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>🔧 違章靈魂改建事務所</h1>
+        <p class="hero-subtitle">角色介紹</p>
+        <a href="index.html" class="back-link">← 返回故事簡介</a>
+    </section>
+
+    <section class="characters">
+        <!-- 路遙 -->
+        <div class="character-card">
+            <div class="character-header">
+                <div class="character-icon">🏗️</div>
+                <div>
+                    <h2 class="character-name">路遙</h2>
+                    <p class="character-title">心靈建築改建師</p>
+                </div>
+            </div>
+            <p class="character-desc">
+                二十六歲的路遙，擁有「藍圖之眼」——能看見每個人心中的建築結構。
+                那些建築有的是堅固的城堡，有的是搖搖欲墜的危樓，有的則是沒有門窗的密室。
+                他用「共感錘」和專業的改建技術，幫助人們重建內心的居所。
+            </p>
+            <div class="character-quote">
+                「每一座違章建築，都是一道沒有被聽見的求救信號。」
+            </div>
+            <div class="character-abilities">
+                <span class="ability-tag">藍圖之眼</span>
+                <span class="ability-tag">共感錘</span>
+                <span class="ability-tag">結構分析</span>
+            </div>
+        </div>
+
+        <!-- 顧曼 -->
+        <div class="character-card">
+            <div class="character-header">
+                <div class="character-icon">📋</div>
+                <div>
+                    <h2 class="character-name">顧曼</h2>
+                    <p class="character-title">心理諮商師 / 事務所合夥人</p>
+                </div>
+            </div>
+            <p class="character-desc">
+                三十二歲的顧曼是一位專業心理諮商師，也是路遙的事業夥伴。
+                她負責接案評估、心理支持，以及確保每次改建都符合專業倫理。
+                冷靜理性的外表下，藏著對人深刻的理解與關懷。
+            </p>
+            <div class="character-quote">
+                「建築可以拆除重建，但心靈需要的是修復，而不是否定。」
+            </div>
+            <div class="character-abilities">
+                <span class="ability-tag">心理評估</span>
+                <span class="ability-tag">危機介入</span>
+                <span class="ability-tag">專業督導</span>
+            </div>
+        </div>
+
+        <!-- 小滿 -->
+        <div class="character-card">
+            <div class="character-header">
+                <div class="character-icon">🔍</div>
+                <div>
+                    <h2 class="character-name">小滿</h2>
+                    <p class="character-title">實習改建師</p>
+                </div>
+            </div>
+            <p class="character-desc">
+                二十二歲的小滿是路遙收的第一個徒弟，正在學習如何成為一名改建師。
+                她擁有敏銳的觀察力，但還在學習如何控制自己的能力，不被他人的建築所影響。
+                充滿好奇心，有時候會問出讓路遙難以回答的問題。
+            </p>
+            <div class="character-quote">
+                「為什麼有些人的房子，連窗戶都沒有？」
+            </div>
+            <div class="character-abilities">
+                <span class="ability-tag">結構感知（學習中）</span>
+                <span class="ability-tag">細節觀察</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>違章靈魂改建事務所 © 2025 Space Between Art</p>
+        <p style="margin-top: 1rem;">
+            <a href="https://www.penana.com/story/199696/違章靈魂改建事務所" target="_blank">在 Penana 閱讀全文 ↗</a>
+        </p>
+    </footer>
+</body>
+</html>
