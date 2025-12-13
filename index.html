@@ -1033,10 +1033,9 @@
         </a>
         <ul class="nav-links">
             <li><a href="#works">作品</a></li>
-            <li><a href="gallery.html">畫廊</a></li>
-            <li><a href="community.html">互動區</a></li>
-            <li><a href="downloads/">金句卡片</a></li>
+            <li><a href="consultation/">心光咨詢站</a></li>
             <li><a href="academy/">療癒學院</a></li>
+            <li><a href="downloads/">金句卡片</a></li>
             <li><a href="#about">關於</a></li>
             <li><a href="#newsletter">訂閱</a></li>
         </ul>
@@ -1298,18 +1297,16 @@
             <div class="footer-links">
                 <h4>探索</h4>
                 <ul>
-                    <li><a href="gallery.html">畫廊</a></li>
-                    <li><a href="community.html">互動區</a></li>
+                    <li><a href="consultation/">心光咨詢站</a></li>
+                    <li><a href="academy/">療癒學院</a></li>
                     <li><a href="downloads/">金句卡片</a></li>
                     <li><a href="daily-quote/">療癒日記</a></li>
-                    <li><a href="academy/">療癒學院</a></li>
-                    <li><a href="shop.html">商店</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>聯絡</h4>
                 <ul>
-                    <li><a href="mailto:hello@space-between.art">hello@space-between.art</a></li>
+                    <li><a href="/cdn-cgi/l/email-protection#b7dfd2dbdbd8f7c4c7d6d4d29ad5d2c3c0d2d2d999d6c5c3"><span class="__cf_email__" data-cfemail="96fef3fafaf9d6e5e6f7f5f3bbf4f3e2e1f3f3f8b8f7e4e2">[email&#160;protected]</span></a></li>
                     <li><a href="https://www.penana.com/user/123456" target="_blank">Penana</a></li>
                     <li><a href="https://spacebetweenart.substack.com" target="_blank">Substack</a></li>
                 </ul>
@@ -1411,18 +1408,4 @@
         function shareDailyQuote() {
             const content = document.getElementById('quoteContent').textContent;
             const name = document.getElementById('quoteName').textContent;
-            const text = '「' + content + '」—— ' + name;
-            if (navigator.share) {
-                navigator.share({ title: '療癒日記 | Space Between Art', text: text, url: window.location.href });
-            } else {
-                copyDailyQuote();
-            }
-        }
-
-        // Initialize daily quote
-        const todayQuote = getDailyQuote();
-        currentQuoteIndex = dailyQuotes.findIndex(q => q.content === todayQuote.content);
-        displayDailyQuote(todayQuote);
-    </script>
-</body>
-</html>
+            const text = '「' + 
