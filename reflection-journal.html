@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>療癒反思日記 | 心靈療癒學院 | Space Between Art</title>
+    <meta name="description" content="記錄你的學習心得與自我覺察，由AI導師提供溫柔的回饋">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+            --forest: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --gold: #D4A84B;
+            --gold-light: #F5D998;
+            --steel: #2C3E50;
+            --copper: #B87333;
+            --purple: #6B5B95;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--forest-dark) 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .header-nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .header-nav a:hover { color: white; }
+
+        /* Main Container */
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Date Navigation */
+        .date-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .date-display {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: var(--steel);
+        }
+
+        .date-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--cream-dark);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .date-btn:hover {
+            border-color: var(--forest);
+            background: var(--cream);
+        }
+
+        /* Journal Sections */
+        .journal-section {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-icon {
+            font-size: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            color: var(--steel);
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* Mood Selector */
+        .mood-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .mood-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            border: 2px solid var(--cream-dark);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-width: 80px;
+        }
+
+        .mood-option:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .mood-option.selected {
+            border-color: var(--forest);
+            background: rgba(44, 95, 45, 0.05);
+        }
+
+        .mood-emoji {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mood-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Text Areas */
+        .journal-textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 1rem;
+            border: 1px solid var(--cream-dark);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        .journal-textarea:focus {
+            outline: none;
+            border-color: var(--forest);
+        }
+
+        .journal-textarea::placeholder {
+            color: #aaa;
+        }
+
+        /* Prompts */
+        .prompt-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prompt-btn {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--cream-dark);
+            background: var(--cream);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .prompt-btn:hover {
+            border-color: var(--gold);
+            background: var(--gold-light);
+        }
+
+        /* Gratitude List */
+        .gratitude-list {
+            list-style: none;
+        }
+
+        .gratitude-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .gratitude-number {
+            width: 28px;
+            height: 28px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .gratitude-input {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--cream-dark);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .gratitude-input:focus {
+            outline: none;
+            border-color: var(--forest);
+        }
+
+        /* AI Feedback Section */
+        .ai-feedback {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .ai-feedback.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ai-feedback-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--forest);
+        }
+
+        .ai-feedback-content {
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Action Buttons */
+        .action-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--cream-dark);
+        }
+
+        .save-btn {
+            padding: 0.8rem 2rem;
+            background: var(--forest);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .save-btn:hover {
+            background: var(--forest-dark);
+            transform: translateY(-2px);
+        }
+
+        .get-feedback-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .get-feedback-btn:hover {
+            background: var(--copper);
+        }
+
+        .get-feedback-btn:disabled {
+            background: var(--cream-dark);
+            cursor: not-allowed;
+        }
+
+        /* Past Entries */
+        .past-entries {
+            margin-top: 3rem;
+        }
+
+        .past-entries-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            color: var(--steel);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .entry-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid var(--gold);
+        }
+
+        .entry-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .entry-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .entry-mood {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        .entry-preview {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Loading */
+        .loading {
+            display: inline-flex;
+            gap: 4px;
+        }
+
+        .loading span {
+            width: 6px;
+            height: 6px;
+            background: var(--forest);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out;
+        }
+
+        .loading span:nth-child(1) { animation-delay: -0.32s; }
+        .loading span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--forest);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-container { padding: 1rem; }
+            .journal-section { padding: 1.5rem; }
+            .mood-grid { gap: 0.5rem; }
+            .mood-option { min-width: 60px; padding: 0.8rem; }
+            .mood-emoji { font-size: 1.5rem; }
+            .action-bar { flex-direction: column; gap: 1rem; }
+            .save-btn, .get-feedback-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>📔 療癒反思日記</h1>
+        <nav class="header-nav">
+            <a href="academy.html">返回學院</a>
+            <a href="index.html">首頁</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <!-- Date Navigation -->
+        <div class="date-nav">
+            <button class="date-btn" onclick="changeDate(-1)">← 前一天</button>
+            <div class="date-display" id="current-date"></div>
+            <button class="date-btn" onclick="changeDate(1)">後一天 →</button>
+        </div>
+
+        <!-- Mood Section -->
+        <section class="journal-section">
+            <div class="section-header">
+                <span class="section-icon">🌈</span>
+                <h2 class="section-title">今天的心情</h2>
+            </div>
+            <p class="section-subtitle">選擇最能代表你現在感受的圖示</p>
+            
+            <div class="mood-grid">
+                <div class="mood-option" data-mood="great" onclick="selectMood('great')">
+                    <span class="mood-emoji">😊</span>
+                    <span class="mood-label">很好</span>
+                </div>
+                <div class="mood-option" data-mood="good" onclick="selectMood('good')">
+                    <span class="mood-emoji">🙂</span>
+                    <span class="mood-label">還好</span>
+                </div>
+                <div class="mood-option" data-mood="neutral" onclick="selectMood('neutral')">
+                    <span class="mood-emoji">😐</span>
+                    <span class="mood-label">普通</span>
+                </div>
+                <div class="mood-option" data-mood="tired" onclick="selectMood('tired')">
+                    <span class="mood-emoji">😔</span>
+                    <span class="mood-label">疲憊</span>
+                </div>
+                <div class="mood-option" data-mood="sad" onclick="selectMood('sad')">
+                    <span class="mood-emoji">😢</span>
+                    <span class="mood-label">難過</span>
+                </div>
+                <div class="mood-option" data-mood="anxious" onclick="selectMood('anxious')">
+                    <span class="mood-emoji">😰</span>
+                    <span class="mood-label">焦慮</span>
+                </div>
+                <div class="mood-option" data-mood="angry" onclick="selectMood('angry')">
+                    <span class="mood-emoji">😤</span>
+                    <span class="mood-label">煩躁</span>
+                </div>
+                <div class="mood-option" data-mood="peaceful" onclick="selectMood('peaceful')">
+                    <span class="mood-emoji">😌</span>
+                    <span class="mood-label">平靜</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reflection Section -->
+        <section class="journal-section">
+            <div class="section-header">
+                <span class="section-icon">✍️</span>
+                <h2 class="section-title">今日反思</h2>
+            </div>
+            <p class="section-subtitle">可以點擊提示，或自由書寫你的想法</p>
+            
+            <div class="prompt-buttons">
+                <button class="prompt-btn" onclick="insertPrompt('今天讓我印象最深的是...')">印象深刻的事</button>
+                <button class="prompt-btn" onclick="insertPrompt('我注意到自己有這樣的感受：...')">情緒覺察</button>
+                <button class="prompt-btn" onclick="insertPrompt('今天的學習讓我想到...')">學習連結</button>
+                <button class="prompt-btn" onclick="insertPrompt('如果可以重來，我會...')">反思行動</button>
+                <button class="prompt-btn" onclick="insertPrompt('我想對自己說...')">自我對話</button>
+            </div>
+            
+            <textarea 
+                class="journal-textarea" 
+                id="reflection-text"
+                placeholder="今天有什麼想記錄的嗎？可以是學習心得、情緒覺察、或任何想法..."
+            ></textarea>
+        </section>
+
+        <!-- Learning Section -->
+        <section class="journal-section">
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h2 class="section-title">今日學習</h2>
+            </div>
+            <p class="section-subtitle">記錄你在學院或個案督導中學到的東西</p>
+            
+            <textarea 
+                class="journal-textarea" 
+                id="learning-text"
+                placeholder="今天學到了什麼新概念？有什麼洞察或發現？"
+                style="min-height: 100px;"
+            ></textarea>
+        </section>
+
+        <!-- Gratitude Section -->
+        <section class="journal-section">
+            <div class="section-header">
+                <span class="section-icon">🙏</span>
+                <h2 class="section-title">感恩練習</h2>
+            </div>
+            <p class="section-subtitle">寫下三件今天讓你感謝的事，無論大小</p>
+            
+            <ul class="gratitude-list">
+                <li class="gratitude-item">
+                    <span class="gratitude-number">1</span>
+                    <input type="text" class="gratitude-input" id="gratitude-1" placeholder="我感謝...">
+                </li>
+                <li class="gratitude-item">
+                    <span class="gratitude-number">2</span>
+                    <input type="text" class="gratitude-input" id="gratitude-2" placeholder="我感謝...">
+                </li>
+                <li class="gratitude-item">
+                    <span class="gratitude-number">3</span>
+                    <input type="text" class="gratitude-input" id="gratitude-3" placeholder="我感謝...">
+                </li>
+            </ul>
+        </section>
+
+        <!-- AI Feedback -->
+        <section class="journal-section">
+            <div class="section-header">
+                <span class="section-icon">🌙</span>
+                <h2 class="section-title">曦婆婆的回饋</h2>
+            </div>
+            <p class="section-subtitle">讓曦婆婆閱讀你的日記，給你溫柔的回饋</p>
+            
+            <div class="ai-feedback" id="ai-feedback">
+                <div class="ai-feedback-header">
+                    <span>🌙</span>
+                    <span>曦婆婆說：</span>
+                </div>
+                <div class="ai-feedback-content" id="ai-feedback-content">
+                </div>
+            </div>
+
+            <button class="get-feedback-btn" id="feedback-btn" onclick="getAIFeedback()">
+                ✨ 獲取曦婆婆的回饋
+            </button>
+        </section>
+
+        <!-- Action Bar -->
+        <div class="action-bar">
+            <button class="save-btn" onclick="saveJournal()">
+                💾 儲存日記
+            </button>
+            <span style="color: var(--text-muted); font-size: 0.85rem;" id="save-status"></span>
+        </div>
+
+        <!-- Past Entries -->
+        <section class="past-entries">
+            <h3 class="past-entries-title">📚 過去的日記</h3>
+            <div id="past-entries-list">
+                <!-- 動態生成 -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ========== 狀態管理 ==========
+        let currentDate = new Date();
+        let selectedMood = null;
+        let journals = JSON.parse(localStorage.getItem('healingJournals') || '{}');
+
+        const moodEmojis = {
+            great: '😊',
+            good: '🙂',
+            neutral: '😐',
+            tired: '😔',
+            sad: '😢',
+            anxious: '😰',
+            angry: '😤',
+            peaceful: '😌'
+        };
+
+        // ========== 初始化 ==========
+        function init() {
+            updateDateDisplay();
+            loadJournal();
+            renderPastEntries();
+        }
+
+        // ========== 日期功能 ==========
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
+            const weekday = weekdays[date.getDay()];
+            return `${year}年${month}月${day}日 星期${weekday}`;
+        }
+
+        function getDateKey(date) {
+            return date.toISOString().split('T')[0];
+        }
+
+        function updateDateDisplay() {
+            document.getElementById('current-date').textContent = formatDate(currentDate);
+        }
+
+        function changeDate(delta) {
+            // 先儲存當前日記
+            saveJournal(true);
+            
+            // 改變日期
+            currentDate.setDate(currentDate.getDate() + delta);
+            
+            // 不能超過今天
+            if (currentDate > new Date()) {
+                currentDate = new Date();
+            }
+            
+            updateDateDisplay();
+            loadJournal();
+        }
+
+        // ========== 日記功能 ==========
+        function loadJournal() {
+            const dateKey = getDateKey(currentDate);
+            const journal = journals[dateKey];
+            
+            // 重置表單
+            document.querySelectorAll('.mood-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            document.getElementById('reflection-text').value = '';
+            document.getElementById('learning-text').value = '';
+            document.getElementById('gratitude-1').value = '';
+            document.getElementById('gratitude-2').value = '';
+            document.getElementById('gratitude-3').value = '';
+            document.getElementById('ai-feedback').classList.remove('visible');
+            selectedMood = null;
+            
+            if (journal) {
+                // 載入心情
+                if (journal.mood) {
+                    selectedMood = journal.mood;
+                    const moodEl = document.querySelector(`[data-mood="${journal.mood}"]`);
+                    if (moodEl) moodEl.classList.add('selected');
+                }
+                
+                // 載入文字
+                document.getElementById('reflection-text').value = journal.reflection || '';
+                document.getElementById('learning-text').value = journal.learning || '';
+                document.getElementById('gratitude-1').value = journal.gratitude?.[0] || '';
+                document.getElementById('gratitude-2').value = journal.gratitude?.[1] || '';
+                document.getElementById('gratitude-3').value = journal.gratitude?.[2] || '';
+                
+                // 載入 AI 回饋
+                if (journal.aiFeedback) {
+                    document.getElementById('ai-feedback-content').textContent = journal.aiFeedback;
+                    document.getElementById('ai-feedback').classList.add('visible');
+                }
+            }
+        }
+
+        function saveJournal(silent = false) {
+            const dateKey = getDateKey(currentDate);
+            
+            const journal = {
+                date: dateKey,
+                mood: selectedMood,
+                reflection: document.getElementById('reflection-text').value,
+                learning: document.getElementById('learning-text').value,
+                gratitude: [
+                    document.getElementById('gratitude-1').value,
+                    document.getElementById('gratitude-2').value,
+                    document.getElementById('gratitude-3').value
+                ],
+                aiFeedback: document.getElementById('ai-feedback-content').textContent || null,
+                updatedAt: new Date().toISOString()
+            };
+            
+            // 只有有內容才儲存
+            if (journal.mood || journal.reflection || journal.learning || 
+                journal.gratitude.some(g => g)) {
+                journals[dateKey] = journal;
+                localStorage.setItem('healingJournals', JSON.stringify(journals));
+                
+                if (!silent) {
+                    showToast('✅ 日記已儲存');
+                    document.getElementById('save-status').textContent = 
+                        `上次儲存：${new Date().toLocaleTimeString()}`;
+                    renderPastEntries();
+                }
+            }
+        }
+
+        // ========== 互動功能 ==========
+        function selectMood(mood) {
+            document.querySelectorAll('.mood-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            document.querySelector(`[data-mood="${mood}"]`).classList.add('selected');
+            selectedMood = mood;
+        }
+
+        function insertPrompt(prompt) {
+            const textarea = document.getElementById('reflection-text');
+            const currentText = textarea.value;
+            if (currentText) {
+                textarea.value = currentText + '\n\n' + prompt;
+            } else {
+                textarea.value = prompt;
+            }
+            textarea.focus();
+        }
+
+        // ========== AI 回饋 ==========
+        async function getAIFeedback() {
+            const reflection = document.getElementById('reflection-text').value;
+            const learning = document.getElementById('learning-text').value;
+            const gratitude = [
+                document.getElementById('gratitude-1').value,
+                document.getElementById('gratitude-2').value,
+                document.getElementById('gratitude-3').value
+            ].filter(g => g);
+            
+            if (!reflection && !learning && gratitude.length === 0) {
+                showToast('請先寫一些內容再獲取回饋 📝');
+                return;
+            }
+
+            const btn = document.getElementById('feedback-btn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"><span></span><span></span><span></span></span> 曦婆婆正在閱讀...';
+
+            const journalContent = `
+今日心情：${selectedMood ? moodEmojis[selectedMood] : '未選擇'}
+
+今日反思：
+${reflection || '（未填寫）'}
+
+今日學習：
+${learning || '（未填寫）'}
+
+感恩練習：
+${gratitude.length > 0 ? gratitude.map((g, i) => `${i+1}. ${g}`).join('\n') : '（未填寫）'}
+            `.trim();
+
+            try {
+                const response = await fetch('https://healing-ai-editor.winsusa2611.workers.dev', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        message: `請閱讀這位學員的療癒日記，給予溫暖、有洞察力的回饋。注意他們的情緒狀態，肯定他們的努力，並提供一個小小的建議或祝福。
+
+學員的日記內容：
+${journalContent}
+
+請用80-120字回應，像慈祥的長輩一樣溫柔。`,
+                        character: 'xi',
+                        conversationHistory: []
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.reply) {
+                    document.getElementById('ai-feedback-content').textContent = data.reply;
+                    document.getElementById('ai-feedback').classList.add('visible');
+                    
+                    // 儲存回饋
+                    const dateKey = getDateKey(currentDate);
+                    if (journals[dateKey]) {
+                        journals[dateKey].aiFeedback = data.reply;
+                        localStorage.setItem('healingJournals', JSON.stringify(journals));
+                    }
+                }
+
+            } catch (error) {
+                showToast('連線發生問題，請稍後再試');
+            }
+
+            btn.disabled = false;
+            btn.innerHTML = '✨ 獲取曦婆婆的回饋';
+        }
+
+        // ========== 過去日記 ==========
+        function renderPastEntries() {
+            const container = document.getElementById('past-entries-list');
+            const sortedDates = Object.keys(journals)
+                .sort((a, b) => new Date(b) - new Date(a))
+                .slice(0, 7); // 只顯示最近7篇
+            
+            if (sortedDates.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-muted); font-size: 0.9rem;">還沒有日記記錄，今天開始寫第一篇吧！</p>';
+                return;
+            }
+
+            container.innerHTML = sortedDates.map(dateKey => {
+                const journal = journals[dateKey];
+                const date = new Date(dateKey);
+                const preview = journal.reflection || journal.learning || '（空白日記）';
+                const moodEmoji = journal.mood ? moodEmojis[journal.mood] : '';
+                
+                return `
+                    <div class="entry-card" onclick="goToDate('${dateKey}')">
+                        <div class="entry-date">
+                            <span class="entry-mood">${moodEmoji}</span>
+                            ${formatDate(date)}
+                        </div>
+                        <div class="entry-preview">${preview}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function goToDate(dateKey) {
+            saveJournal(true);
+            currentDate = new Date(dateKey);
+            updateDateDisplay();
+            loadJournal();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ========== Toast ==========
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ========== 自動儲存 ==========
+        let autoSaveTimer;
+        document.querySelectorAll('textarea, input').forEach(el => {
+            el.addEventListener('input', () => {
+                clearTimeout(autoSaveTimer);
+                autoSaveTimer = setTimeout(() => saveJournal(true), 5000);
+            });
+        });
+
+        // 離開頁面前儲存
+        window.addEventListener('beforeunload', () => saveJournal(true));
+
+        // 初始化
+        init();
+    </script>
+</body>
+</html>
