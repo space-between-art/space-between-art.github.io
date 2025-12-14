@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拾味小館 | 隙光 | Space Between Art</title>
+    <meta name="description" content="她能嚐到別人的情緒，卻嚐不到那個失去味覺的男人——直到他走進她的小餐館。療癒美食愛情小說《拾味小館》">
+    <meta name="keywords" content="拾味小館, 療癒小說, 美食文學, 治愈系, 都市愛情, 隙光">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --amber: #D4A84B;
+            --amber-light: #E8C97D;
+            --amber-dark: #B8943F;
+            --warm-brown: #8B6914;
+            --cream: #FDF8F0;
+            --cream-dark: #F5EBD8;
+            --charcoal: #2A2420;
+            --text-dark: #3D3530;
+            --text-muted: #7A6F65;
+            --rust: #C4754B;
+            --sage: #7A8B6F;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Header Navigation */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            background: linear-gradient(180deg, rgba(42, 36, 32, 0.9) 0%, transparent 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .nav-header.scrolled {
+            background: rgba(42, 36, 32, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            color: var(--amber);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--amber);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(180deg, 
+                    rgba(42, 36, 32, 0.3) 0%, 
+                    rgba(42, 36, 32, 0.6) 50%,
+                    rgba(42, 36, 32, 0.95) 100%
+                ),
+                url('拾味小館_封面A_雙人剪影版.png') center center / cover no-repeat;
+            filter: blur(2px);
+            transform: scale(1.1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--amber);
+            color: var(--charcoal);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--amber-light);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-tagline {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            line-height: 2;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn-primary {
+            padding: 1rem 2.5rem;
+            background: var(--amber);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--amber-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 168, 75, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--amber);
+            color: var(--amber);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Synopsis Section */
+        .synopsis {
+            padding: 6rem 2rem;
+            background: var(--cream);
+            position: relative;
+        }
+
+        .synopsis::before {
+            content: '"';
+            position: absolute;
+            top: 3rem;
+            left: 5%;
+            font-family: 'Noto Serif TC', serif;
+            font-size: 15rem;
+            color: var(--cream-dark);
+            line-height: 1;
+            z-index: 0;
+        }
+
+        .synopsis-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--amber-dark);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .synopsis-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+        }
+
+        .synopsis-text {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 2.2;
+        }
+
+        .synopsis-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .synopsis-highlight {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: var(--rust);
+            border-left: 3px solid var(--amber);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        /* Book Info Cards */
+        .book-info {
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+        }
+
+        .info-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        /* Characters Section */
+        .characters {
+            padding: 6rem 2rem;
+            background: var(--charcoal);
+            color: white;
+        }
+
+        .characters-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .characters-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .characters-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.5rem;
+            color: var(--amber);
+            margin-bottom: 1rem;
+        }
+
+        .characters-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .character-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .character-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(212, 168, 75, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .character-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--amber);
+            transform: translateY(-5px);
+        }
+
+        .character-emoji {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .character-role {
+            font-size: 0.8rem;
+            color: var(--amber);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-title {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .character-desc {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .character-ability {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(212, 168, 75, 0.1);
+            border-radius: 10px;
+            border-left: 3px solid var(--amber);
+        }
+
+        .character-ability-label {
+            font-size: 0.75rem;
+            color: var(--amber);
+            margin-bottom: 0.3rem;
+        }
+
+        .character-ability-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Episodes Section */
+        .episodes {
+            padding: 6rem 2rem;
+            background: var(--cream);
+        }
+
+        .episodes-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .episodes-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .episodes-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.5rem;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .arc-section {
+            margin-bottom: 3rem;
+        }
+
+        .arc-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .arc-number {
+            width: 40px;
+            height: 40px;
+            background: var(--amber);
+            color: var(--charcoal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .arc-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: var(--charcoal);
+        }
+
+        .arc-episodes {
+            display: grid;
+            gap: 0.8rem;
+            padding-left: 56px;
+        }
+
+        .episode-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .episode-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .episode-num {
+            font-size: 0.85rem;
+            color: var(--amber-dark);
+            font-weight: 500;
+            min-width: 50px;
+        }
+
+        .episode-title {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .episode-summary {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        /* Tags Section */
+        .tags-section {
+            padding: 4rem 2rem;
+            background: var(--cream-dark);
+        }
+
+        .tags-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tags-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .tag {
+            padding: 0.6rem 1.2rem;
+            background: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: var(--amber);
+            color: var(--charcoal);
+        }
+
+        .tag.featured {
+            background: var(--amber);
+            color: var(--charcoal);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--charcoal) 0%, #3D3530 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 168, 75, 0.1) 0%, transparent 50%);
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2.5rem;
+            color: var(--amber);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+            line-height: 1.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .platform-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .platform-btn:hover {
+            background: var(--amber);
+            color: var(--charcoal);
+            border-color: var(--amber);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--charcoal);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            color: var(--amber);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--amber);
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .synopsis::before {
+                font-size: 8rem;
+                left: 2%;
+            }
+
+            .character-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .arc-episodes {
+                padding-left: 0;
+            }
+
+            .episode-summary {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-header" id="navbar">
+        <a href="index.html" class="nav-logo">間隙藝術</a>
+        <div class="nav-links">
+            <a href="index.html">首頁</a>
+            <a href="index.html#works">全部作品</a>
+            <a href="academy.html">療癒學院</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="hero-badge">✨ 療癒美食愛情 · 全22集完結</span>
+            <h1 class="hero-title">拾味小館</h1>
+            <p class="hero-subtitle">人間滋味，皆可下嚥</p>
+            <p class="hero-tagline">
+                她能嚐到別人的情緒，卻嚐不到那個失去味覺的男人——<br>
+                直到他走進她的小餐館。
+            </p>
+            <div class="hero-cta">
+                <a href="#read" class="btn-primary">開始閱讀</a>
+                <a href="#synopsis" class="btn-secondary">了解更多</a>
+            </div>
+        </div>
+        <div class="scroll-hint">向下滾動 ↓</div>
+    </section>
+
+    <!-- Synopsis Section -->
+    <section class="synopsis" id="synopsis">
+        <div class="synopsis-container">
+            <span class="section-label">故事簡介</span>
+            <h2 class="synopsis-title">每一道菜，都是一個故事</h2>
+            
+            <div class="synopsis-text">
+                <p>
+                    渡口區，S市最老舊的街區。都更的消息傳了好幾年，這裡只剩下不肯搬走的老人，和幾間苟延殘喘的小店。
+                </p>
+                <p>
+                    沈若就在這樣的地方，開了一間餐館——拾味小館。
+                </p>
+                <p>
+                    她擁有一種從母親那裡繼承的能力：能「嚐」到別人的情緒。快樂的人嚐起來是甜的，悲傷的人是鹹的，憤怒是辣的，恐懼是苦的。她用這個能力，透過食物療癒每一個走進店裡的人。
+                </p>
+
+                <div class="synopsis-highlight">
+                    直到那天晚上，一個男人走進來。
+                </div>
+
+                <p>
+                    賀淮，三十歲，攝影師，五年前失去了味覺。他吃東西像完成任務，眼神空洞得像一口古井。沈若試著去嚐他的味道，卻什麼都嚐不到——他是她三十年來唯一嚐不到的人。
+                </p>
+                <p>
+                    他把自己封起來了。連情緒都被封在裡面，出不來。
+                </p>
+                <p>
+                    在一次次的相處中，沈若漸漸拼湊出賀淮的過去：失蹤的漁民父親、來不及說出口的道歉、那鍋再也嚐不到的魚湯。她想幫助他，卻發現自己也有無法面對的傷——逃離的家鄉、早逝的母親、疏離的父親。
+                </p>
+
+                <div class="synopsis-highlight">
+                    療癒別人的人，也需要被療癒。<br>
+                    當兩個受傷的人相遇，他們能否一起找到那個出口？
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Info -->
+    <section class="book-info">
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">📚</div>
+                <div class="info-label">總字數</div>
+                <div class="info-value">約13萬字</div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">📖</div>
+                <div class="info-label">章節數</div>
+                <div class="info-value">全22集</div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">💕</div>
+                <div class="info-label">故事類型</div>
+                <div class="info-value">療癒愛情</div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">✅</div>
+                <div class="info-label">連載狀態</div>
+                <div class="info-value">已完結 HE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Characters Section -->
+    <section class="characters">
+        <div class="characters-container">
+            <div class="characters-header">
+                <span class="section-label" style="color: var(--amber);">角色介紹</span>
+                <h2 class="characters-title">兩個受傷的靈魂</h2>
+                <p class="characters-subtitle">在這間小小的餐館裡相遇</p>
+            </div>
+
+            <div class="character-cards">
+                <div class="character-card">
+                    <div class="character-emoji">🍳</div>
+                    <div class="character-role">女主角</div>
+                    <h3 class="character-name">沈若</h3>
+                    <div class="character-title">拾味小館老闆娘</div>
+                    <p class="character-desc">
+                        三十歲，在渡口區經營一間小餐館。外表溫柔堅定，用食物療癒每一個走進店裡的人。但她自己也有無法面對的過去——早逝的母親、疏離的父親、逃離的家鄉。
+                    </p>
+                    <div class="character-ability">
+                        <div class="character-ability-label">✨ 特殊能力</div>
+                        <div class="character-ability-text">能「嚐」到別人的情緒。快樂是甜的，悲傷是鹹的，憤怒是辣的，恐懼是苦的。</div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-emoji">📷</div>
+                    <div class="character-role">男主角</div>
+                    <h3 class="character-name">賀淮</h3>
+                    <div class="character-title">攝影師</div>
+                    <p class="character-desc">
+                        三十歲，曾經是知名的紀實攝影師。五年前失去味覺後，把自己封閉起來。眼神空洞得像一口古井，吃東西像完成任務。他是沈若三十年來唯一嚐不到的人。
+                    </p>
+                    <div class="character-ability">
+                        <div class="character-ability-label">💔 內心創傷</div>
+                        <div class="character-ability-text">失蹤的漁民父親、來不及說出口的道歉、那鍋再也嚐不到的魚湯。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Episodes Section -->
+    <section class="episodes">
+        <div class="episodes-container">
+            <div class="episodes-header">
+                <span class="section-label">章節目錄</span>
+                <h2 class="episodes-title">故事篇章</h2>
+            </div>
+
+            <!-- Arc 1 -->
+            <div class="arc-section">
+                <div class="arc-header">
+                    <span class="arc-number">一</span>
+                    <h3 class="arc-title">相遇與療癒</h3>
+                </div>
+                <div class="arc-episodes">
+                    <div class="episode-item">
+                        <span class="episode-num">第1集</span>
+                        <span class="episode-title">嚐味者</span>
+                        <span class="episode-summary">沈若的能力介紹，賀淮首次出現</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第2集</span>
+                        <span class="episode-title">魚湯的記憶</span>
+                        <span class="episode-summary">賀淮透露父親失蹤的往事</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第3集</span>
+                        <span class="episode-title">調味</span>
+                        <span class="episode-summary">沈若嘗試各種料理喚醒賀淮味覺</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第4集</span>
+                        <span class="episode-title">第一滴味道</span>
+                        <span class="episode-summary">賀淮首次嚐到一點點辣味</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第5集</span>
+                        <span class="episode-title">記憶的味道</span>
+                        <span class="episode-summary">沈若首次對賀淮說出自己的能力</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arc 2 -->
+            <div class="arc-section">
+                <div class="arc-header">
+                    <span class="arc-number">二</span>
+                    <h3 class="arc-title">療癒他人</h3>
+                </div>
+                <div class="arc-episodes">
+                    <div class="episode-item">
+                        <span class="episode-num">第6集</span>
+                        <span class="episode-title">方家姊妹（上）</span>
+                        <span class="episode-summary">決裂三年的姊妹走進餐館</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第7集</span>
+                        <span class="episode-title">方家姊妹（下）</span>
+                        <span class="episode-summary">酸甜排骨讓姊妹重新和解</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第8集</span>
+                        <span class="episode-title">雨夜</span>
+                        <span class="episode-summary">賀淮在父親忌日醉酒，首次流淚</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第9集</span>
+                        <span class="episode-title">母親的遺物</span>
+                        <span class="episode-summary">沈若收到母親的食譜和未寄出的信</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第10集</span>
+                        <span class="episode-title">告白</span>
+                        <span class="episode-summary">賀淮學做魚湯，終於嚐到父親的味道</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arc 3 -->
+            <div class="arc-section">
+                <div class="arc-header">
+                    <span class="arc-number">三</span>
+                    <h3 class="arc-title">面對過去</h3>
+                </div>
+                <div class="arc-episodes">
+                    <div class="episode-item">
+                        <span class="episode-num">第11集</span>
+                        <span class="episode-title">弟弟</span>
+                        <span class="episode-summary">沈晨來訪，帶來父親病重的消息</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第12集</span>
+                        <span class="episode-title">回家</span>
+                        <span class="episode-summary">沈若與賀淮回老家</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第13集</span>
+                        <span class="episode-title">味道</span>
+                        <span class="episode-summary">沈若終於嚐到父親的味道——愛的味道</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第14集</span>
+                        <span class="episode-title">最後的話</span>
+                        <span class="episode-summary">父親臨終前與沈若和解</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arc 4 -->
+            <div class="arc-section">
+                <div class="arc-header">
+                    <span class="arc-number">四</span>
+                    <h3 class="arc-title">新的療癒</h3>
+                </div>
+                <div class="arc-episodes">
+                    <div class="episode-item">
+                        <span class="episode-num">第15集</span>
+                        <span class="episode-title">回來</span>
+                        <span class="episode-summary">沈若重返S市，重新開店</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第16集</span>
+                        <span class="episode-title">不會哭的男人（上）</span>
+                        <span class="episode-summary">陳志遠出現，五十年沒哭過</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第17集</span>
+                        <span class="episode-title">不會哭的男人（下）</span>
+                        <span class="episode-summary">陳志遠終於對妻子說出「我愛妳」</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第18集</span>
+                        <span class="episode-title">賀淮的魚湯</span>
+                        <span class="episode-summary">賀淮在河邊煮魚湯，向父親告別</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arc 5 -->
+            <div class="arc-section">
+                <div class="arc-header">
+                    <span class="arc-number">五</span>
+                    <h3 class="arc-title">幸福結局</h3>
+                </div>
+                <div class="arc-episodes">
+                    <div class="episode-item">
+                        <span class="episode-num">第19集</span>
+                        <span class="episode-title">小年夜</span>
+                        <span class="episode-summary">團圓飯，賀淮向沈若求婚</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第20集</span>
+                        <span class="episode-title">來不及的那碗麵</span>
+                        <span class="episode-summary">沈若在母親墳前煮麵</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第21集</span>
+                        <span class="episode-title">重新開始</span>
+                        <span class="episode-summary">王秀芬離世，陳志遠繼續學做菜</span>
+                    </div>
+                    <div class="episode-item">
+                        <span class="episode-num">第22集</span>
+                        <span class="episode-title">婚禮（最終集）</span>
+                        <span class="episode-summary">拾味小館的婚禮，人間滋味湯</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tags Section -->
+    <section class="tags-section">
+        <div class="tags-container">
+            <h3 class="tags-title">📌 故事標籤</h3>
+            <div class="tags-cloud">
+                <span class="tag featured">#療癒</span>
+                <span class="tag featured">#美食</span>
+                <span class="tag featured">#雙向救贖</span>
+                <span class="tag">#都市愛情</span>
+                <span class="tag">#治愈系</span>
+                <span class="tag">#HE</span>
+                <span class="tag">#細水長流</span>
+                <span class="tag">#家庭和解</span>
+                <span class="tag">#輕奇幻</span>
+                <span class="tag">#超能力</span>
+                <span class="tag">#小餐館</span>
+                <span class="tag">#溫暖日常</span>
+                <span class="tag">#已完結</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="read">
+        <div class="cta-container">
+            <h2 class="cta-title">開始閱讀</h2>
+            <p class="cta-text">
+                「人間滋味，皆可下嚥。唯有情之所繫，方能入心。」<br>
+                選擇你喜歡的平台，開始這段療癒的旅程。
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="platform-btn">
+                    📱 Penana
+                </a>
+                <a href="#" class="platform-btn">
+                    📖 鏡文學
+                </a>
+                <a href="#" class="platform-btn">
+                    ✍️ 方格子
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">間隙藝術 Space Between Art</div>
+        <div class="footer-links">
+            <a href="index.html">首頁</a>
+            <a href="pharmacist.html">逐光的藥師</a>
+            <a href="renovator.html">違章靈魂改建事務所</a>
+            <a href="bistro.html">拾味小館</a>
+            <a href="academy.html">療癒學院</a>
+        </div>
+        <p class="footer-copyright">
+            © 2024 隙光 | 間隙藝術 Space Between Art
+        </p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
