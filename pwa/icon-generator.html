@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>療癒學院 App 圖標生成器</title>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: #1a1a2e;
+            color: white;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #D4956A;
+        }
+        
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .icon-item {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .icon-item h3 {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        canvas {
+            border-radius: 20%;
+            margin-bottom: 1rem;
+        }
+        
+        button {
+            background: #B87333;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        
+        button:hover {
+            background: #D4956A;
+        }
+        
+        .instructions {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        
+        .instructions h2 {
+            color: #D4956A;
+            margin-bottom: 1rem;
+        }
+        
+        .instructions ol {
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌙 療癒學院 App 圖標生成器</h1>
+    
+    <div class="instructions">
+        <h2>使用說明</h2>
+        <ol>
+            <li>點擊各尺寸下方的「下載」按鈕</li>
+            <li>將下載的圖標放入網站的 <code>/icons/</code> 資料夾</li>
+            <li>檔案命名為 <code>icon-{尺寸}x{尺寸}.png</code></li>
+        </ol>
+    </div>
+    
+    <div class="icon-grid" id="iconGrid"></div>
+
+    <script>
+        const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
+        
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            canvas.width = size;
+            canvas.height = size;
+            
+            // 背景漸變
+            const bgGradient = ctx.createLinearGradient(0, 0, size, size);
+            bgGradient.addColorStop(0, '#0d1117');
+            bgGradient.addColorStop(1, '#1a1f2e');
+            ctx.fillStyle = bgGradient;
+            
+            // 圓角矩形背景
+            const radius = size * 0.2;
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, radius);
+            ctx.fill();
+            
+            // 裝飾光暈
+            const glowGradient = ctx.createRadialGradient(
+                size * 0.3, size * 0.3, 0,
+                size * 0.3, size * 0.3, size * 0.6
+            );
+            glowGradient.addColorStop(0, 'rgba(184, 115, 51, 0.3)');
+            glowGradient.addColorStop(1, 'rgba(184, 115, 51, 0)');
+            ctx.fillStyle = glowGradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // 月亮 emoji
+            ctx.font = `${size * 0.5}px "Segoe UI Emoji", "Apple Color Emoji", sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('🌙', size * 0.5, size * 0.45);
+            
+            // 品牌文字（僅大尺寸顯示）
+            if (size >= 192) {
+                ctx.font = `bold ${size * 0.08}px "Noto Sans TC", sans-serif`;
+                ctx.fillStyle = '#D4956A';
+                ctx.fillText('療癒學院', size * 0.5, size * 0.78);
+            }
+            
+            // 底部裝飾線
+            const lineGradient = ctx.createLinearGradient(size * 0.2, 0, size * 0.8, 0);
+            lineGradient.addColorStop(0, 'rgba(184, 115, 51, 0)');
+            lineGradient.addColorStop(0.5, 'rgba(184, 115, 51, 0.8)');
+            lineGradient.addColorStop(1, 'rgba(184, 115, 51, 0)');
+            ctx.strokeStyle = lineGradient;
+            ctx.lineWidth = size * 0.01;
+            ctx.beginPath();
+            ctx.moveTo(size * 0.2, size * 0.88);
+            ctx.lineTo(size * 0.8, size * 0.88);
+            ctx.stroke();
+        }
+        
+        function downloadIcon(canvas, size) {
+            const link = document.createElement('a');
+            link.download = `icon-${size}x${size}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // 生成所有尺寸的圖標
+        const grid = document.getElementById('iconGrid');
+        
+        sizes.forEach(size => {
+            const item = document.createElement('div');
+            item.className = 'icon-item';
+            
+            const title = document.createElement('h3');
+            title.textContent = `${size} × ${size}`;
+            
+            const canvas = document.createElement('canvas');
+            canvas.style.width = `${Math.min(size, 150)}px`;
+            canvas.style.height = `${Math.min(size, 150)}px`;
+            drawIcon(canvas, size);
+            
+            const btn = document.createElement('button');
+            btn.textContent = '下載 PNG';
+            btn.onclick = () => downloadIcon(canvas, size);
+            
+            item.appendChild(title);
+            item.appendChild(canvas);
+            item.appendChild(btn);
+            grid.appendChild(item);
+        });
+        
+        // 生成快捷方式圖標
+        const shortcuts = ['chat', 'supervision', 'journal'];
+        const shortcutEmojis = { chat: '💬', supervision: '🎓', journal: '📔' };
+        const shortcutNames = { chat: '咨詢站', supervision: '督導室', journal: '日記' };
+        
+        shortcuts.forEach(type => {
+            const item = document.createElement('div');
+            item.className = 'icon-item';
+            
+            const title = document.createElement('h3');
+            title.textContent = `快捷方式: ${shortcutNames[type]}`;
+            
+            const canvas = document.createElement('canvas');
+            canvas.style.width = '96px';
+            canvas.style.height = '96px';
+            
+            // 繪製快捷方式圖標
+            const ctx = canvas.getContext('2d');
+            canvas.width = 96;
+            canvas.height = 96;
+            
+            const bgGradient = ctx.createLinearGradient(0, 0, 96, 96);
+            bgGradient.addColorStop(0, '#1a1f2e');
+            bgGradient.addColorStop(1, '#2a2f3e');
+            ctx.fillStyle = bgGradient;
+            ctx.beginPath();
+            ctx.roundRect(0, 0, 96, 96, 19);
+            ctx.fill();
+            
+            ctx.font = '48px "Segoe UI Emoji", "Apple Color Emoji", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(shortcutEmojis[type], 48, 48);
+            
+            const btn = document.createElement('button');
+            btn.textContent = '下載 PNG';
+            btn.onclick = () => {
+                const link = document.createElement('a');
+                link.download = `shortcut-${type}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            };
+            
+            item.appendChild(title);
+            item.appendChild(canvas);
+            item.appendChild(btn);
+            grid.appendChild(item);
+        });
+    </script>
+</body>
+</html>

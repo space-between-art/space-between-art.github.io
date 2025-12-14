@@ -1,0 +1,44 @@
+{
+  "appId": "art.spacebetween.healingacademy",
+  "appName": "心靈療癒學院",
+  "webDir": "www",
+  "server": {
+    "url": "https://space-between.art",
+    "cleartext": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#0d1117",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false,
+      "splashFullScreen": true,
+      "splashImmersive": true
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0d1117"
+    },
+    "Keyboard": {
+      "resize": "body",
+      "style": "dark",
+      "resizeOnFullScreen": true
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_icon",
+      "iconColor": "#B87333"
+    }
+  },
+  "ios": {
+    "contentInset": "automatic",
+    "scheme": "Healing Academy",
+    "backgroundColor": "#0d1117"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false,
+    "backgroundColor": "#0d1117"
+  }
+}

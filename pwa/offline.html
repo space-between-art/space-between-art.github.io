@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>離線中 - 心靈療癒學院</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 2rem;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 400px;
+        }
+        
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #B87333, #D4956A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .retry-btn {
+            background: linear-gradient(135deg, #B87333, #D4956A);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .retry-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(184, 115, 51, 0.3);
+        }
+        
+        .tips {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            text-align: left;
+        }
+        
+        .tips h3 {
+            font-size: 0.9rem;
+            color: #D4956A;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tips ul {
+            list-style: none;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .tips li {
+            padding: 0.3rem 0;
+        }
+        
+        .tips li::before {
+            content: "💡 ";
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🌙</div>
+        <h1>目前處於離線狀態</h1>
+        <p>
+            看來網絡連線暫時中斷了。<br>
+            別擔心，這只是暫時的休息。
+        </p>
+        
+        <button class="retry-btn" onclick="location.reload()">
+            重新連線
+        </button>
+        
+        <div class="tips">
+            <h3>離線時你可以：</h3>
+            <ul>
+                <li>深呼吸，感受當下</li>
+                <li>閉上眼睛，回想今天的一個美好時刻</li>
+                <li>給自己一個微笑</li>
+                <li>喝杯水，照顧好自己</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // 網絡恢復時自動重新加載
+        window.addEventListener('online', () => {
+            location.reload();
+        });
+    </script>
+</body>
+</html>

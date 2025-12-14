@@ -1,0 +1,304 @@
+<!--
+========================================
+心靈療癒學院 - PWA 代碼片段
+將以下代碼加入所有 HTML 頁面的 <head> 區域
+========================================
+-->
+
+<!-- PWA Meta 標籤 -->
+<meta name="theme-color" content="#B87333">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="療癒學院">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="療癒學院">
+<meta name="msapplication-TileColor" content="#0d1117">
+<meta name="msapplication-config" content="/browserconfig.xml">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="/manifest.json">
+
+<!-- App Icons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#B87333">
+
+<!-- iOS Splash Screens (可選，提升啟動體驗) -->
+<link rel="apple-touch-startup-image" href="/splash/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px)">
+<link rel="apple-touch-startup-image" href="/splash/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px)">
+<link rel="apple-touch-startup-image" href="/splash/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px)">
+<link rel="apple-touch-startup-image" href="/splash/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px)">
+<link rel="apple-touch-startup-image" href="/splash/splash-1242x2688.png" media="(device-width: 414px) and (device-height: 896px)">
+
+<!--
+========================================
+將以下 JavaScript 加入 </body> 之前
+========================================
+-->
+
+<script>
+// ========== Service Worker 註冊 ==========
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
+        try {
+            const registration = await navigator.serviceWorker.register('/service-worker.js');
+            console.log('✅ Service Worker 註冊成功:', registration.scope);
+        } catch (error) {
+            console.error('❌ Service Worker 註冊失敗:', error);
+        }
+    });
+}
+
+// ========== PWA 安裝提示 ==========
+let deferredPrompt;
+const installBanner = document.getElementById('pwa-install-banner');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // 阻止瀏覽器預設的安裝提示
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // 顯示自定義安裝橫幅
+    if (installBanner) {
+        installBanner.style.display = 'flex';
+    }
+    
+    console.log('📱 PWA 可安裝');
+});
+
+// 安裝按鈕點擊處理
+function installPWA() {
+    if (!deferredPrompt) return;
+    
+    // 顯示安裝提示
+    deferredPrompt.prompt();
+    
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+            console.log('✅ 用戶接受安裝');
+            if (installBanner) {
+                installBanner.style.display = 'none';
+            }
+        } else {
+            console.log('❌ 用戶拒絕安裝');
+        }
+        deferredPrompt = null;
+    });
+}
+
+// 關閉安裝橫幅
+function dismissInstallBanner() {
+    if (installBanner) {
+        installBanner.style.display = 'none';
+    }
+    // 記住用戶選擇，24小時內不再顯示
+    localStorage.setItem('pwa-install-dismissed', Date.now());
+}
+
+// 監聽安裝完成
+window.addEventListener('appinstalled', () => {
+    console.log('🎉 PWA 安裝完成');
+    if (installBanner) {
+        installBanner.style.display = 'none';
+    }
+    deferredPrompt = null;
+});
+
+// ========== iOS 安裝指南（iOS 不支援 beforeinstallprompt）==========
+function isIOS() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
+function isInStandaloneMode() {
+    return window.matchMedia('(display-mode: standalone)').matches || 
+           window.navigator.standalone === true;
+}
+
+// 如果是 iOS 且不在 standalone 模式，顯示安裝指南
+if (isIOS() && !isInStandaloneMode()) {
+    const iosGuide = document.getElementById('ios-install-guide');
+    const dismissed = localStorage.getItem('ios-guide-dismissed');
+    
+    if (iosGuide && (!dismissed || Date.now() - parseInt(dismissed) > 86400000)) {
+        iosGuide.style.display = 'flex';
+    }
+}
+
+function dismissIOSGuide() {
+    const iosGuide = document.getElementById('ios-install-guide');
+    if (iosGuide) {
+        iosGuide.style.display = 'none';
+    }
+    localStorage.setItem('ios-guide-dismissed', Date.now());
+}
+</script>
+
+<!--
+========================================
+安裝提示橫幅 HTML（加入頁面適當位置）
+========================================
+-->
+
+<style>
+/* PWA 安裝橫幅樣式 */
+.pwa-install-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    z-index: 9999;
+    border-top: 1px solid rgba(184, 115, 51, 0.3);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+}
+
+.pwa-install-banner .content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pwa-install-banner .icon {
+    font-size: 2rem;
+}
+
+.pwa-install-banner .text h4 {
+    color: #D4956A;
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+}
+
+.pwa-install-banner .text p {
+    color: rgba(255,255,255,0.7);
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.pwa-install-banner .actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pwa-install-banner .install-btn {
+    background: linear-gradient(135deg, #B87333, #D4956A);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.pwa-install-banner .dismiss-btn {
+    background: transparent;
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* iOS 安裝指南 */
+.ios-install-guide {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
+    padding: 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 9999;
+    border-top: 1px solid rgba(184, 115, 51, 0.3);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+}
+
+.ios-install-guide h4 {
+    color: #D4956A;
+    margin: 0;
+    text-align: center;
+}
+
+.ios-install-guide .steps {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+}
+
+.ios-install-guide .step {
+    text-align: center;
+}
+
+.ios-install-guide .step-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.ios-install-guide .close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .pwa-install-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .pwa-install-banner .content {
+        flex-direction: column;
+    }
+}
+</style>
+
+<!-- PWA 安裝橫幅（Android / Desktop）-->
+<div id="pwa-install-banner" class="pwa-install-banner">
+    <div class="content">
+        <span class="icon">🌙</span>
+        <div class="text">
+            <h4>安裝療癒學院 App</h4>
+            <p>隨時隨地進行心靈療癒</p>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="install-btn" onclick="installPWA()">安裝</button>
+        <button class="dismiss-btn" onclick="dismissInstallBanner()">稍後</button>
+    </div>
+</div>
+
+<!-- iOS 安裝指南 -->
+<div id="ios-install-guide" class="ios-install-guide">
+    <button class="close-btn" onclick="dismissIOSGuide()">×</button>
+    <h4>將療癒學院加入主畫面</h4>
+    <div class="steps">
+        <div class="step">
+            <div class="step-icon">📤</div>
+            <div>點擊「分享」</div>
+        </div>
+        <div class="step">
+            <div class="step-icon">➕</div>
+            <div>加入主畫面</div>
+        </div>
+        <div class="step">
+            <div class="step-icon">✅</div>
+            <div>完成！</div>
+        </div>
+    </div>
+</div>

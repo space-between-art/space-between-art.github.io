@@ -1,0 +1,46 @@
+{
+  "name": "healing-academy-app",
+  "version": "1.0.0",
+  "description": "心靈療癒學院 - AI 療癒角色陪伴 | 個案督導學習 | 心理健康普及教育",
+  "author": "Space Between Art <contact@space-between.art>",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "npx serve www",
+    "build": "echo 'Copy your website files to www/ folder'",
+    "cap:init": "npx cap init '心靈療癒學院' art.spacebetween.healingacademy --web-dir www",
+    "cap:add:ios": "npx cap add ios",
+    "cap:add:android": "npx cap add android",
+    "cap:sync": "npx cap sync",
+    "cap:copy": "npx cap copy",
+    "cap:open:ios": "npx cap open ios",
+    "cap:open:android": "npx cap open android",
+    "ios:build": "npm run cap:sync && npx cap open ios",
+    "android:build": "npm run cap:sync && npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/ios": "^6.0.0",
+    "@capacitor/keyboard": "^6.0.0",
+    "@capacitor/local-notifications": "^6.0.0",
+    "@capacitor/splash-screen": "^6.0.0",
+    "@capacitor/status-bar": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0",
+    "serve": "^14.2.0"
+  },
+  "keywords": [
+    "healing",
+    "mental-health",
+    "therapy",
+    "ai",
+    "chinese",
+    "traditional-chinese"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/space-between-art/healing-academy-app"
+  }
+}
