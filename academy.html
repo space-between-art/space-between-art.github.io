@@ -885,46 +885,59 @@
     <!-- Demo -->
     <section class="demo" id="demo">
         <div class="section-header">
-            <p class="section-label">✦ INTERACTIVE DEMO ✦</p>
-            <h2 class="section-title">體驗導師對話</h2>
-            <p class="section-desc">點擊情境按鈕，預覽不同導師的回應風格。</p>
+            <p class="section-label">✦ START HERE ✦</p>
+            <h2 class="section-title">選擇你的學習方式</h2>
+            <p class="section-desc">學院小助手帶你找到最適合的入口</p>
         </div>
 
         <div class="chat-demo">
             <div class="chat-header">
                 <div class="chat-mentor-avatar">✨</div>
                 <div class="chat-mentor-info">
-                    <h4>學院導覽員</h4>
-                    <p>帶你認識各位導師</p>
+                    <h4>學院小助手</h4>
+                    <p>隨時為你引路</p>
                 </div>
             </div>
             <div class="chat-messages" id="chatMessages">
                 <div class="message mentor">
                     <div class="avatar">✨</div>
                     <div class="bubble">
-                        <p>歡迎來到心靈療癒學院！👋</p>
-                        <p style="margin-top: 0.5rem;">這裡有四位 AI 導師，各有專長：</p>
-                        <p style="margin-top: 0.5rem;">
-                            🌙 <strong>曦婆婆</strong> — 溫暖智慧的資深督導<br>
-                            💜 <strong>顧曼</strong> — 專業細膩的心理師<br>
-                            🔧 <strong>路遙</strong> — 犀利實務的建築師<br>
-                            ☀️ <strong>晴</strong> — 務實接地的社工師
+                        <p>嗨！歡迎來到心靈療癒學院 👋</p>
+                        <p style="margin-top: 0.8rem;">這裡有四位 AI 導師陪你學習：</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9em; line-height: 1.8;">
+                            🌙 曦婆婆 — 溫暖智慧的資深督導<br>
+                            💜 顧曼 — 專業細膩的心理師<br>
+                            🔧 路遙 — 犀利洞察的建築師<br>
+                            ☀️ 晴 — 務實接地的社工師
                         </p>
-                        <p style="margin-top: 0.5rem;">點擊下方按鈕，預覽他們的回應風格！</p>
+                        <p style="margin-top: 1rem;">你今天想做什麼呢？點擊下方按鈕開始吧！</p>
                     </div>
                 </div>
             </div>
-            <div class="chat-input">
-                <input type="text" id="userInput" placeholder="輸入任何內容，我會引導你..." onkeypress="handleKeyPress(event)">
-                <button onclick="sendMessage()">送出</button>
-            </div>
         </div>
 
-        <div class="scenario-buttons">
-            <button class="scenario-btn" onclick="loadScenario('burnout')">🌙 我覺得很疲憊</button>
-            <button class="scenario-btn" onclick="loadScenario('boundary')">💜 如何設定界限？</button>
-            <button class="scenario-btn" onclick="loadScenario('failure')">🔧 療癒失敗了</button>
-            <button class="scenario-btn" onclick="loadScenario('defense')">☀️ 什麼是防衛機制？</button>
+        <div class="scenario-buttons" style="flex-direction: column; gap: 1rem; max-width: 500px; margin: 0 auto;">
+            <a href="case-supervision.html" class="scenario-btn" style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; text-decoration: none; width: 100%; justify-content: flex-start;">
+                <span style="font-size: 1.5rem;">🎓</span>
+                <span style="text-align: left;">
+                    <strong style="display: block;">個案督導室</strong>
+                    <small style="opacity: 0.8;">專業學習・案例研討・四種互動模式</small>
+                </span>
+            </a>
+            <a href="ai-chat.html" class="scenario-btn" style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; text-decoration: none; width: 100%; justify-content: flex-start;">
+                <span style="font-size: 1.5rem;">💬</span>
+                <span style="text-align: left;">
+                    <strong style="display: block;">心光咨詢站</strong>
+                    <small style="opacity: 0.8;">情緒陪伴・輕鬆對話・五位療癒角色</small>
+                </span>
+            </a>
+            <a href="reflection-journal.html" class="scenario-btn" style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; text-decoration: none; width: 100%; justify-content: flex-start;">
+                <span style="font-size: 1.5rem;">📔</span>
+                <span style="text-align: left;">
+                    <strong style="display: block;">療癒反思日記</strong>
+                    <small style="opacity: 0.8;">記錄心得・感恩練習・曦婆婆回饋</small>
+                </span>
+            </a>
         </div>
     </section>
 
@@ -1064,139 +1077,7 @@
     </footer>
 
     <script>
-        // Demo Chat Functionality
-        const responses = {
-            burnout: {
-                mentor: '🌙',
-                name: '曦婆婆',
-                title: '資深督導',
-                messages: [
-                    "孩子，你願意說「覺得很疲憊」，這本身就很重要。很多助人者習慣照顧別人，卻忘了自己也需要被照顧。",
-                    "記得我常說的嗎？「真正的藥師不是太陽，而是月亮。」太陽會燃燒殆盡，但月亮只是溫柔地反射光芒。",
-                    "告訴我，最近是什麼讓你感到疲憊？是個案的重量、工作的壓力，還是……你自己內心的聲音？"
-                ]
-            },
-            boundary: {
-                mentor: '💜',
-                name: '顧曼',
-                title: '臨床心理師',
-                messages: [
-                    "界限是個很好的問題。很多人誤以為設定界限就是冷漠或不夠有愛心。",
-                    "但其實，健康的界限不是冷漠——它是讓我們能夠持續給予的基礎。",
-                    "想像一下：如果一個救生員跳進水裡，和溺水的人一起溺水，那誰來救人呢？",
-                    "你最近是不是遇到了讓你覺得界限模糊的情況？我們可以一起來看看。"
-                ]
-            },
-            failure: {
-                mentor: '🔧',
-                name: '路遙',
-                title: '心靈建築師',
-                messages: [
-                    "嘖，「失敗」這詞我有意見。",
-                    "你知道蓋房子的時候，有些牆面你怎麼敲都敲不動嗎？那不是你錘子的問題，是那面牆的結構還沒準備好被改變。",
-                    "有些人的心靈建築，承重牆太脆弱了，你一碰它就會塌。這時候不是硬敲，是先幫他搭鷹架、做支撐。",
-                    "說說看，那個「失敗」的個案，他的房子是什麼結構？"
-                ]
-            },
-            defense: {
-                mentor: '☀️',
-                name: '晴',
-                title: '社工師',
-                messages: [
-                    "防衛機制啊，這個概念很實用！簡單來說，就是我們的心理自動保護自己的方式。",
-                    "比如說，有人被批評的時候會說「我才不在乎」——這叫否認。有人會把自己的不安投射到別人身上，覺得是別人在針對他。",
-                    "這些機制本身沒有好壞，它們在某些時候確實保護了我們。",
-                    "但問題是，如果一直用同一種方式，可能會卡住。就像一直穿同一件外套，夏天就會很熱。",
-                    "你是對哪種防衛機制特別好奇呢？"
-                ]
-            }
-        };
-
-        function loadScenario(scenario) {
-            const chat = document.getElementById('chatMessages');
-            const data = responses[scenario];
-            
-            // Clear previous messages
-            chat.innerHTML = '';
-            
-            // Add user message
-            const userMsg = document.createElement('div');
-            userMsg.className = 'message user';
-            const userTexts = {
-                burnout: '我最近覺得很疲憊，好像快燃燒殆盡了...',
-                boundary: '我不知道該如何設定專業界限，常常把個案的問題帶回家...',
-                failure: '我嘗試幫助一個個案，但失敗了，我不知道哪裡做錯了...',
-                defense: '什麼是防衛機制？我想更了解這個概念。'
-            };
-            userMsg.innerHTML = `<div class="bubble"><p>${userTexts[scenario]}</p></div>`;
-            chat.appendChild(userMsg);
-            
-            // Add mentor responses with delay
-            data.messages.forEach((msg, index) => {
-                setTimeout(() => {
-                    const mentorMsg = document.createElement('div');
-                    mentorMsg.className = 'message mentor';
-                    mentorMsg.innerHTML = `
-                        <div class="avatar">${data.mentor}</div>
-                        <div class="bubble"><p>${msg}</p></div>
-                    `;
-                    chat.appendChild(mentorMsg);
-                    chat.scrollTop = chat.scrollHeight;
-                }, (index + 1) * 1500);
-            });
-            
-            // Update chat header
-            document.querySelector('.chat-mentor-avatar').textContent = data.mentor;
-            document.querySelector('.chat-mentor-info h4').textContent = data.name;
-            document.querySelector('.chat-mentor-info p').textContent = data.title;
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('userInput');
-            const message = input.value.trim();
-            if (!message) return;
-            
-            const chat = document.getElementById('chatMessages');
-            
-            // Add user message
-            const userMsg = document.createElement('div');
-            userMsg.className = 'message user';
-            userMsg.innerHTML = `<div class="bubble"><p>${message}</p></div>`;
-            chat.appendChild(userMsg);
-            
-            input.value = '';
-            
-            // Guide user to actual features
-            setTimeout(() => {
-                const mentorMsg = document.createElement('div');
-                mentorMsg.className = 'message mentor';
-                mentorMsg.innerHTML = `
-                    <div class="avatar">✨</div>
-                    <div class="bubble">
-                        <p>這裡是展示區，讓我帶你去真正能深入對話的地方吧！</p>
-                        <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
-                            <a href="case-supervision.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: rgba(255,255,255,0.15); border-radius: 8px; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
-                                🎓 <span><strong>個案督導室</strong><br><small style="opacity: 0.8;">專業學習・案例研討・四位導師</small></span>
-                            </a>
-                            <a href="ai-chat.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: rgba(255,255,255,0.15); border-radius: 8px; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
-                                💬 <span><strong>心光咨詢站</strong><br><small style="opacity: 0.8;">情緒陪伴・輕鬆對話・五位角色</small></span>
-                            </a>
-                            <a href="reflection-journal.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: rgba(255,255,255,0.15); border-radius: 8px; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
-                                📔 <span><strong>療癒反思日記</strong><br><small style="opacity: 0.8;">記錄心得・曦婆婆回饋</small></span>
-                            </a>
-                        </div>
-                    </div>
-                `;
-                chat.appendChild(mentorMsg);
-                chat.scrollTop = chat.scrollHeight;
-            }, 800);
-        }
-
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') sendMessage();
-        }
-
-        // Smooth scroll
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
