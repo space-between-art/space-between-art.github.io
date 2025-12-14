@@ -1154,19 +1154,27 @@
             
             input.value = '';
             
-            // Simulate mentor response
+            // Guide user to actual features
             setTimeout(() => {
                 const mentorMsg = document.createElement('div');
                 mentorMsg.className = 'message mentor';
                 mentorMsg.innerHTML = `
                     <div class="avatar">🌙</div>
                     <div class="bubble">
-                        <p>謝謝你願意分享這些。在正式版本中，我會根據你的問題給予更完整的回應。現在，你可以試試上方的情境按鈕，體驗不同的對話主題。</p>
+                        <p>孩子，謝謝你願意分享。這裡是展示區，讓我帶你去更適合深入對話的地方：</p>
+                        <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <a href="case-supervision.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: rgba(255,255,255,0.15); border-radius: 8px; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                                🎓 <span><strong>個案督導室</strong><br><small style="opacity: 0.8;">專業學習・案例研討</small></span>
+                            </a>
+                            <a href="ai-chat.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: rgba(255,255,255,0.15); border-radius: 8px; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                                💬 <span><strong>心光咨詢站</strong><br><small style="opacity: 0.8;">情緒陪伴・輕鬆對話</small></span>
+                            </a>
+                        </div>
                     </div>
                 `;
                 chat.appendChild(mentorMsg);
                 chat.scrollTop = chat.scrollHeight;
-            }, 1000);
+            }, 800);
         }
 
         function handleKeyPress(e) {
