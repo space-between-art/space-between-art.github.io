@@ -6,6 +6,21 @@
     <title>心靈療癒學院 | Space Between Art</title>
     <meta name="description" content="由AI角色導師帶領的心理健康科普培訓">
     
+    <!-- PWA Meta 標籤 -->
+    <meta name="theme-color" content="#B87333">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="療癒學院">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="療癒學院">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- App Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -1086,6 +1101,115 @@
                 });
             });
         });
+
+        // ========== PWA Service Worker 註冊 ==========
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    const registration = await navigator.serviceWorker.register('/service-worker.js');
+                    console.log('✅ Service Worker 註冊成功:', registration.scope);
+                } catch (error) {
+                    console.error('❌ Service Worker 註冊失敗:', error);
+                }
+            });
+        }
+
+        // ========== PWA 安裝提示 ==========
+        let deferredPrompt;
+        const installBanner = document.getElementById('pwa-install-banner');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            const dismissed = localStorage.getItem('pwa-install-dismissed');
+            if (dismissed && Date.now() - parseInt(dismissed) < 86400000) return;
+            
+            if (installBanner) installBanner.style.display = 'flex';
+            console.log('📱 PWA 可安裝');
+        });
+
+        function installPWA() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('✅ 用戶接受安裝');
+                    if (installBanner) installBanner.style.display = 'none';
+                }
+                deferredPrompt = null;
+            });
+        }
+
+        function dismissInstallBanner() {
+            if (installBanner) installBanner.style.display = 'none';
+            localStorage.setItem('pwa-install-dismissed', Date.now());
+        }
+
+        window.addEventListener('appinstalled', () => {
+            console.log('🎉 PWA 安裝完成');
+            if (installBanner) installBanner.style.display = 'none';
+            deferredPrompt = null;
+        });
+
+        // iOS 安裝指南
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+
+        function isInStandaloneMode() {
+            return window.matchMedia('(display-mode: standalone)').matches || 
+                   window.navigator.standalone === true;
+        }
+
+        if (isIOS() && !isInStandaloneMode()) {
+            const iosGuide = document.getElementById('ios-install-guide');
+            const dismissed = localStorage.getItem('ios-guide-dismissed');
+            if (iosGuide && (!dismissed || Date.now() - parseInt(dismissed) > 86400000)) {
+                setTimeout(() => { iosGuide.style.display = 'flex'; }, 3000);
+            }
+        }
+
+        function dismissIOSGuide() {
+            const iosGuide = document.getElementById('ios-install-guide');
+            if (iosGuide) iosGuide.style.display = 'none';
+            localStorage.setItem('ios-guide-dismissed', Date.now());
+        }
     </script>
+
+    <!-- PWA 安裝橫幅 (Android / Desktop) -->
+    <div id="pwa-install-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%); padding: 1rem; align-items: center; justify-content: space-between; gap: 1rem; z-index: 9999; border-top: 1px solid rgba(184, 115, 51, 0.3); box-shadow: 0 -4px 20px rgba(0,0,0,0.3); flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <span style="font-size: 2rem;">🌙</span>
+            <div>
+                <h4 style="color: #D4956A; margin: 0 0 0.25rem 0; font-size: 1rem;">安裝療癒學院 App</h4>
+                <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.85rem;">隨時隨地進行心靈療癒</p>
+            </div>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+            <button onclick="installPWA()" style="background: linear-gradient(135deg, #B87333, #D4956A); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 20px; cursor: pointer; font-size: 0.9rem;">安裝</button>
+            <button onclick="dismissInstallBanner()" style="background: transparent; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.6rem 1rem; border-radius: 20px; cursor: pointer; font-size: 0.9rem;">稍後</button>
+        </div>
+    </div>
+
+    <!-- iOS 安裝指南 -->
+    <div id="ios-install-guide" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%); padding: 1.5rem; flex-direction: column; gap: 1rem; z-index: 9999; border-top: 1px solid rgba(184, 115, 51, 0.3); box-shadow: 0 -4px 20px rgba(0,0,0,0.3);">
+        <button onclick="dismissIOSGuide()" style="position: absolute; top: 0.5rem; right: 0.5rem; background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 1.5rem; cursor: pointer;">×</button>
+        <h4 style="color: #D4956A; margin: 0; text-align: center;">將療癒學院加入主畫面</h4>
+        <div style="display: flex; justify-content: center; gap: 2rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+            <div style="text-align: center;">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📤</div>
+                <div>點擊「分享」</div>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">➕</div>
+                <div>加入主畫面</div>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✅</div>
+                <div>完成！</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
