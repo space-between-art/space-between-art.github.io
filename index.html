@@ -1065,7 +1065,7 @@
             <div class="footer-links">
                 <h4>聯絡</h4>
                 <ul>
-                    <li><a href="/cdn-cgi/l/email-protection#6008050c0c0f2013100103054d0205141705050e4e011214"><span class="__cf_email__" data-cfemail="f79f929b9b98b78487969492da95928380929299d9968583">[email&#160;protected]</span></a></li>
+                    <li><a href="mailto:hello@space-between.art">hello@space-between.art</a></li>
                     <li><a href="https://www.penana.com/user/123456" target="_blank">Penana</a></li>
                     <li><a href="https://spacebetweenart.substack.com" target="_blank">Substack</a></li>
                 </ul>
@@ -1076,7 +1076,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Mobile menu toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
@@ -1102,4 +1102,13 @@
             });
         }, { threshold: 0.1 });
 
-        fadeElements.forEach(
+        fadeElements.forEach(el => observer.observe(el));
+
+
+        // Particle animation timing
+        document.querySelectorAll('.particle').forEach((particle, index) => {
+            particle.style.animationDelay = `${index * 0.5}s`;
+        });
+    </script>
+</body>
+</html>
