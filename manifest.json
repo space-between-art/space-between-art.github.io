@@ -1,0 +1,104 @@
+{
+  "name": "心靈療癒學院 - Space Between Art",
+  "short_name": "療癒學院",
+  "description": "AI 療癒角色陪伴 | 個案督導學習 | 心理健康普及教育",
+  "start_url": "/academy.html",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#B87333",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "zh-Hant",
+  "categories": ["education", "health", "lifestyle"],
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "療癒學院首頁"
+    },
+    {
+      "src": "/screenshots/screenshot-narrow.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "心光咨詢站"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "心光咨詢站",
+      "short_name": "咨詢站",
+      "description": "與 AI 療癒角色對話",
+      "url": "/ai-chat.html",
+      "icons": [{ "src": "/icons/shortcut-chat.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "個案督導室",
+      "short_name": "督導室",
+      "description": "專業個案學習",
+      "url": "/case-supervision.html",
+      "icons": [{ "src": "/icons/shortcut-supervision.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "療癒反思日記",
+      "short_name": "日記",
+      "description": "記錄療癒心得",
+      "url": "/reflection-journal.html",
+      "icons": [{ "src": "/icons/shortcut-journal.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
