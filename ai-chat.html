@@ -106,41 +106,35 @@
             color: #D4A84B;
         }
 
-        .character-btn .emoji {
-            margin-right: 5px;
-        }
-
         /* 聊天區域 */
         .chat-container {
             flex: 1;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            padding: 20px;
             display: flex;
             flex-direction: column;
-            min-height: 400px;
-            max-height: 55vh;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
         }
 
         .chat-messages {
             flex: 1;
+            padding: 20px;
             overflow-y: auto;
-            padding-right: 10px;
-            margin-bottom: 15px;
+            min-height: 300px;
         }
 
         .message {
-            margin-bottom: 15px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            margin-bottom: 20px;
         }
 
         .message.user {
             text-align: right;
+        }
+
+        .message-sender {
+            font-size: 0.8rem;
+            color: #B8C9D9;
+            margin-bottom: 5px;
         }
 
         .message-bubble {
@@ -148,36 +142,27 @@
             max-width: 80%;
             padding: 12px 18px;
             border-radius: 18px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .message.user .message-bubble {
             background: rgba(212, 168, 75, 0.3);
-            color: #F5D998;
+            color: #E8DFD5;
             border-bottom-right-radius: 5px;
         }
 
         .message.assistant .message-bubble {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(46, 79, 47, 0.8);
             color: #E8DFD5;
             border-bottom-left-radius: 5px;
         }
 
-        .message-sender {
-            font-size: 0.8rem;
-            color: #B8C9D9;
-            margin-bottom: 4px;
-        }
-
-        .message.user .message-sender {
-            color: #D4A84B;
-        }
-
         /* 輸入區域 */
         .input-area {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(212, 168, 75, 0.2);
             display: flex;
             gap: 10px;
-            margin-top: auto;
         }
 
         .message-input {
@@ -249,7 +234,7 @@
         /* 歡迎訊息 */
         .welcome-message {
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 20px;
             color: #B8C9D9;
         }
 
@@ -262,6 +247,44 @@
         .welcome-message p {
             line-height: 1.8;
             font-size: 0.95rem;
+        }
+
+        /* 引導問題區域 */
+        .prompt-suggestions {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 168, 75, 0.2);
+        }
+
+        .prompt-suggestions-title {
+            font-size: 0.85rem;
+            color: #B8C9D9;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .prompt-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .prompt-btn {
+            padding: 10px 16px;
+            border: 1px solid rgba(212, 168, 75, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+            color: #E8DFD5;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .prompt-btn:hover {
+            background: rgba(212, 168, 75, 0.2);
+            border-color: #D4A84B;
+            transform: translateY(-2px);
         }
 
         /* 滾動條樣式 */
@@ -304,6 +327,11 @@
 
             .send-btn {
                 width: 100%;
+            }
+
+            .prompt-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -357,6 +385,20 @@
                         有時只是被暫時遮住了。<br><br>
                         想聊聊嗎？我在這裡。」
                     </p>
+                    
+                    <!-- 引導問題 -->
+                    <div class="prompt-suggestions" id="promptSuggestions">
+                        <div class="prompt-suggestions-title">💭 不知道從何說起？試試這些：</div>
+                        <div class="prompt-buttons">
+                            <button class="prompt-btn" data-prompt="我最近感到很焦慮，不知道該怎麼辦">😟 感到焦慮</button>
+                            <button class="prompt-btn" data-prompt="我心情很低落，提不起勁做任何事">😔 心情低落</button>
+                            <button class="prompt-btn" data-prompt="我和家人最近有些矛盾，不知如何相處">👨‍👩‍👧 家庭矛盾</button>
+                            <button class="prompt-btn" data-prompt="我在工作上遇到很大的壓力">💼 工作壓力</button>
+                            <button class="prompt-btn" data-prompt="我對未來感到很迷茫，不知道該怎麼走">🤷 迷茫困惑</button>
+                            <button class="prompt-btn" data-prompt="我最近睡眠不好，經常失眠">😴 睡眠問題</button>
+                            <button class="prompt-btn" data-prompt="我想找人聊聊，但不知道說什麼">💬 只想聊天</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -382,31 +424,73 @@
             yao: {
                 name: '曜',
                 emoji: '🌿',
-                welcome: '「你好，我是曜。<br>我相信每個人心中都有一道光，<br>有時只是被暫時遮住了。<br><br>想聊聊嗎？我在這裡。」'
+                welcome: '「你好，我是曜。<br>我相信每個人心中都有一道光，<br>有時只是被暫時遮住了。<br><br>想聊聊嗎？我在這裡。」',
+                prompts: [
+                    { text: '😟 感到焦慮', prompt: '我最近感到很焦慮，不知道該怎麼辦' },
+                    { text: '😔 心情低落', prompt: '我心情很低落，提不起勁做任何事' },
+                    { text: '👨‍👩‍👧 家庭矛盾', prompt: '我和家人最近有些矛盾，不知如何相處' },
+                    { text: '💼 工作壓力', prompt: '我在工作上遇到很大的壓力' },
+                    { text: '🤷 迷茫困惑', prompt: '我對未來感到很迷茫，不知道該怎麼走' },
+                    { text: '😴 睡眠問題', prompt: '我最近睡眠不好，經常失眠' },
+                    { text: '💬 只想聊天', prompt: '我想找人聊聊，但不知道說什麼' }
+                ]
             },
             xi: {
                 name: '曦婆婆',
                 emoji: '🍵',
-                welcome: '「來，坐下喝杯茶。<br>年輕人，不用急，慢慢說。<br>婆婆什麼風浪沒見過？<br><br>有什麼煩心事嗎？」'
+                welcome: '「來，坐下喝杯茶。<br>年輕人，不用急，慢慢說。<br>婆婆什麼風浪沒見過？<br><br>有什麼煩心事嗎？」',
+                prompts: [
+                    { text: '😟 心裡煩悶', prompt: '婆婆，我心裡很煩悶，不知道該怎麼辦' },
+                    { text: '😢 想念親人', prompt: '我很想念我的家人' },
+                    { text: '💔 感情困擾', prompt: '我的感情出了問題' },
+                    { text: '🏠 生活迷茫', prompt: '我對生活感到很迷茫' },
+                    { text: '👵 想聽故事', prompt: '婆婆，可以跟我說說你的故事嗎' },
+                    { text: '🍵 陪我喝茶', prompt: '我只是想找人陪我聊聊天' }
+                ]
             },
             qing: {
                 name: '晴',
                 emoji: '🌸',
-                welcome: '「嗨，我是晴。<br>我也曾經歷過很黑暗的時候，<br>所以我懂那種感覺。<br><br>要不要聊聊？我會陪著你。」'
+                welcome: '「嗨，我是晴。<br>我也曾經歷過很黑暗的時候，<br>所以我懂那種感覺。<br><br>要不要聊聊？我會陪著你。」',
+                prompts: [
+                    { text: '😔 感覺很累', prompt: '我最近感覺很累，身心俱疲' },
+                    { text: '😢 想哭', prompt: '我很想哭，但又哭不出來' },
+                    { text: '🖤 心裡很黑暗', prompt: '我的心裡有時候很黑暗' },
+                    { text: '👥 人際困擾', prompt: '我在人際關係上遇到困難' },
+                    { text: '💪 想變得更好', prompt: '我想變得更好，但不知道從何開始' },
+                    { text: '🌸 陪伴我', prompt: '我只是需要有人陪伴' }
+                ]
             },
             luyao: {
                 name: '路遙',
                 emoji: '🔧',
-                welcome: '「......你好。<br>我是路遙，違章靈魂改建事務所的。<br>專門處理心靈建築的問題。<br><br>你的心，需要改建嗎？」'
+                welcome: '「......你好。<br>我是路遙，違章靈魂改建事務所的。<br>專門處理心靈建築的問題。<br><br>你的心，需要改建嗎？」',
+                prompts: [
+                    { text: '🏚️ 心很亂', prompt: '我的心很亂，像一間破舊的房子' },
+                    { text: '🔧 需要修理', prompt: '我覺得我的心靈需要修理' },
+                    { text: '🚪 想打開心門', prompt: '我想打開心門，但不知道怎麼做' },
+                    { text: '🧱 心裡有牆', prompt: '我心裡好像有一道牆' },
+                    { text: '🏗️ 重建自己', prompt: '我想重新建構自己' },
+                    { text: '🔍 找到問題', prompt: '幫我找出我的問題在哪裡' }
+                ]
             },
             guman: {
                 name: '顧曼',
                 emoji: '🪷',
-                welcome: '「你好，我是顧曼。<br>我是心理諮詢師，也是路遙的搭檔。<br>不急，我們可以慢慢聊。<br><br>你今天想談些什麼？」'
+                welcome: '「你好，我是顧曼。<br>我是心理諮詢師，也是路遙的搭檔。<br>不急，我們可以慢慢聊。<br><br>你今天想談些什麼？」',
+                prompts: [
+                    { text: '😟 情緒困擾', prompt: '我最近情緒起伏很大' },
+                    { text: '🧠 想了解自己', prompt: '我想更了解自己' },
+                    { text: '💭 反覆想事情', prompt: '我總是反覆想同一件事情' },
+                    { text: '😰 無法放鬆', prompt: '我沒辦法讓自己放鬆下來' },
+                    { text: '🗣️ 不會表達', prompt: '我不知道怎麼表達自己的感受' },
+                    { text: '🪷 尋求指引', prompt: '我想得到一些心理上的指引' }
+                ]
             }
         };
 
         let currentCharacter = 'yao';
+        let conversationHistory = [];
         let isLoading = false;
 
         // DOM 元素
@@ -414,7 +498,15 @@
         const messageInput = document.getElementById('messageInput');
         const sendBtn = document.getElementById('sendBtn');
         const welcomeMessage = document.getElementById('welcomeMessage');
+        const promptSuggestions = document.getElementById('promptSuggestions');
         const characterBtns = document.querySelectorAll('.character-btn');
+
+        // 生成引導問題 HTML
+        function generatePromptButtons(prompts) {
+            return prompts.map(p => 
+                `<button class="prompt-btn" data-prompt="${p.prompt}">${p.text}</button>`
+            ).join('');
+        }
 
         // 切換角色
         characterBtns.forEach(btn => {
@@ -425,19 +517,43 @@
                 btn.classList.add('active');
                 currentCharacter = btn.dataset.character;
                 
-                // 更新歡迎訊息
+                // 更新歡迎訊息和引導問題
                 const char = characters[currentCharacter];
                 welcomeMessage.innerHTML = `
                     <h2>${char.emoji} ${char.name}在這裡等你</h2>
                     <p>${char.welcome}</p>
+                    <div class="prompt-suggestions" id="promptSuggestions">
+                        <div class="prompt-suggestions-title">💭 不知道從何說起？試試這些：</div>
+                        <div class="prompt-buttons">
+                            ${generatePromptButtons(char.prompts)}
+                        </div>
+                    </div>
                 `;
                 
+                // 重新綁定引導問題按鈕事件
+                bindPromptButtons();
+                
                 // 清空聊天記錄
+                conversationHistory = [];
                 chatMessages.innerHTML = '';
                 chatMessages.appendChild(welcomeMessage);
                 welcomeMessage.style.display = 'block';
             });
         });
+
+        // 綁定引導問題按鈕
+        function bindPromptButtons() {
+            document.querySelectorAll('.prompt-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const prompt = btn.dataset.prompt;
+                    messageInput.value = prompt;
+                    sendMessage();
+                });
+            });
+        }
+
+        // 初始綁定
+        bindPromptButtons();
 
         // 發送訊息
         async function sendMessage() {
@@ -450,6 +566,9 @@
             // 顯示用戶訊息
             addMessage(message, 'user');
             messageInput.value = '';
+
+            // 添加到歷史記錄
+            conversationHistory.push({ role: 'user', content: message });
 
             // 顯示載入動畫
             isLoading = true;
@@ -464,7 +583,8 @@
                     },
                     body: JSON.stringify({
                         message: message,
-                        character: currentCharacter
+                        character: currentCharacter,
+                        conversationHistory: conversationHistory.slice(-6)
                     })
                 });
 
@@ -473,8 +593,12 @@
                 // 移除載入動畫
                 loadingEl.remove();
 
-                if (data.success) {
-                    addMessage(data.reply, 'assistant', data.character);
+                // 修復：檢查 data.reply 而不是 data.success
+                if (data.reply) {
+                    addMessage(data.reply, 'assistant', characters[currentCharacter].name);
+                    conversationHistory.push({ role: 'assistant', content: data.reply });
+                } else if (data.error) {
+                    addMessage(`抱歉，出了點問題：${data.error}`, 'assistant', characters[currentCharacter].name);
                 } else {
                     addMessage('抱歉，我現在有點累了，請稍後再試...', 'assistant', characters[currentCharacter].name);
                 }
