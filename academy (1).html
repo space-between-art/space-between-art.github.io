@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心靈療癒學院 | Space Between Art</title>
+    <meta name="description" content="由AI角色導師帶領的心理健康科普培訓">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+            
+            --forest: #2C5F2D;
+            --forest-dark: #1A3A1B;
+            --gold: #D4A84B;
+            --gold-light: #F5D998;
+            
+            --steel: #2C3E50;
+            --steel-dark: #1A252F;
+            --copper: #B87333;
+            
+            --purple: #6B5B95;
+            --orange: #E67E22;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Grain */
+        .grain {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Navigation */
+        .site-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo span {
+            color: var(--forest);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--forest);
+        }
+
+        .nav-links a.active {
+            color: var(--forest);
+            font-weight: 500;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: all 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%);
+            position: relative;
+            padding: 6rem 2rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(212,168,75,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(184,115,51,0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--gold-light);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--forest-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Mentors Section */
+        .mentors {
+            padding: 5rem 2rem;
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            color: var(--forest);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .mentors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mentor-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .mentor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .mentor-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .mentor-card[data-mentor="xipo"] .mentor-avatar { background: linear-gradient(135deg, #9B8EC4, #D4A84B); }
+        .mentor-card[data-mentor="guman"] .mentor-avatar { background: linear-gradient(135deg, var(--purple), #9B8EC4); }
+        .mentor-card[data-mentor="luyao"] .mentor-avatar { background: linear-gradient(135deg, var(--steel), var(--copper)); }
+        .mentor-card[data-mentor="qing"] .mentor-avatar { background: linear-gradient(135deg, var(--orange), #F5D998); }
+
+        .mentor-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+
+        .mentor-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .mentor-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            padding-left: 1rem;
+            border-left: 3px solid var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .mentor-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .topic-tag {
+            padding: 0.3rem 0.8rem;
+            background: var(--cream-dark);
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Modules Section */
+        .modules {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
+
+        .module-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .module-header {
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .module-card[data-module="1"] .module-header { background: linear-gradient(135deg, var(--purple), #9B8EC4); }
+        .module-card[data-module="2"] .module-header { background: linear-gradient(135deg, var(--steel), var(--copper)); }
+        .module-card[data-module="3"] .module-header { background: linear-gradient(135deg, var(--forest), var(--gold)); }
+        .module-card[data-module="4"] .module-header { background: linear-gradient(135deg, var(--orange), #F5D998); }
+        .module-card[data-module="5"] .module-header { background: linear-gradient(135deg, #9B8EC4, var(--gold)); }
+
+        .module-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-bottom: 0.3rem;
+        }
+
+        .module-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .module-body {
+            padding: 1.5rem;
+        }
+
+        .module-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .module-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Demo Section */
+        .demo {
+            padding: 5rem 2rem;
+            background: var(--forest-dark);
+            color: white;
+        }
+
+        .demo .section-label { color: var(--gold-light); }
+        .demo .section-title { color: white; }
+        .demo .section-desc { color: rgba(255,255,255,0.7); }
+
+        .chat-demo {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .chat-header {
+            padding: 1rem 1.5rem;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chat-mentor-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9B8EC4, var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .chat-mentor-info h4 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .chat-mentor-info p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .chat-messages {
+            padding: 1.5rem;
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.mentor {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .message.mentor .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9B8EC4, var(--gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .message.mentor .bubble {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 0 12px 12px 12px;
+            max-width: 85%;
+        }
+
+        .message.user {
+            text-align: right;
+        }
+
+        .message.user .bubble {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--forest-dark);
+            padding: 0.8rem 1rem;
+            border-radius: 12px 12px 0 12px;
+            max-width: 85%;
+            text-align: left;
+        }
+
+        .message .bubble p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .chat-input {
+            padding: 1rem 1.5rem;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 25px;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .chat-input input::placeholder { color: rgba(255,255,255,0.4); }
+        .chat-input input:focus { outline: none; border-color: var(--gold); }
+
+        .chat-input button {
+            padding: 0.8rem 1.5rem;
+            background: var(--gold);
+            color: var(--forest-dark);
+            border: none;
+            border-radius: 25px;
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chat-input button:hover {
+            background: var(--gold-light);
+        }
+
+        .scenario-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .scenario-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .scenario-btn:hover {
+            background: var(--gold);
+            color: var(--forest-dark);
+            border-color: var(--gold);
+        }
+
+        /* Case Study Section */
+        .cases {
+            padding: 5rem 2rem;
+            background: var(--cream);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .case-source {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .case-card[data-source="pharmacist"] .case-source {
+            background: rgba(44,95,45,0.1);
+            color: var(--forest);
+        }
+
+        .case-card[data-source="renovator"] .case-source {
+            background: rgba(44,62,80,0.1);
+            color: var(--steel);
+        }
+
+        .case-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .case-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .case-topic {
+            padding: 0.2rem 0.6rem;
+            background: var(--cream-dark);
+            border-radius: 10px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--steel) 0%, var(--steel-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 2rem;
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-resources {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-resources h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold-light);
+        }
+
+        .footer-resources p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 4rem 1.5rem; }
+            .mentors, .modules, .demo, .cases { padding: 3rem 1.5rem; }
+            .chat-demo { margin: 1.5rem -0.5rem 0; border-radius: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <a href="index.html" class="nav-logo">✦ <span>Space Between Art</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="index.html#works">作品</a></li>
+            <li><a href="ai-chat.html">心光咨詢站</a></li>
+            <li><a href="academy.html" class="active">療癒學院</a></li>
+            <li><a href="gallery.html">畫廊</a></li>
+            <li><a href="community.html">互動區</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="選單">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">✦ AI-POWERED LEARNING ✦</span>
+            <h1 class="hero-title">心靈療癒學院</h1>
+            <p class="hero-subtitle">Soul Healing Academy</p>
+            <p class="hero-desc">
+                由小說角色化身的 AI 導師，帶領你探索心理健康的世界。<br>
+                透過故事案例學習，在安全的虛構情境中理解療癒的藝術。
+            </p>
+            <div class="hero-cta">
+                <a href="#demo" class="btn btn-primary">體驗對話</a>
+                <a href="#modules" class="btn btn-secondary">瀏覽課程</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentors -->
+    <section class="mentors" id="mentors">
+        <div class="section-header">
+            <p class="section-label">✦ AI MENTORS ✦</p>
+            <h2 class="section-title">你的導師團隊</h2>
+            <p class="section-desc">來自《逐光的藥師》與《違章靈魂改建事務所》的角色，將以 AI 導師身份陪伴你的學習旅程。</p>
+        </div>
+
+        <div class="mentors-grid">
+            <div class="mentor-card" data-mentor="xipo">
+                <div class="mentor-avatar">🌙</div>
+                <h3 class="mentor-name">曦婆婆</h3>
+                <p class="mentor-role">資深督導 ・ 月亮藥師</p>
+                <p class="mentor-quote">「真正的藥師不是太陽，而是月亮。我們不產生光，只是溫柔地反射它。」</p>
+                <div class="mentor-topics">
+                    <span class="topic-tag">自我照顧</span>
+                    <span class="topic-tag">專業督導</span>
+                    <span class="topic-tag">倫理議題</span>
+                </div>
+            </div>
+
+            <div class="mentor-card" data-mentor="guman">
+                <div class="mentor-avatar">💜</div>
+                <h3 class="mentor-name">顧曼</h3>
+                <p class="mentor-role">專業諮商師 ・ 理論講師</p>
+                <p class="mentor-quote">「界限不是冷漠。界限是讓我能夠持續幫助你的方式。」</p>
+                <div class="mentor-topics">
+                    <span class="topic-tag">諮商技巧</span>
+                    <span class="topic-tag">心理理論</span>
+                    <span class="topic-tag">個案評估</span>
+                </div>
+            </div>
+
+            <div class="mentor-card" data-mentor="luyao">
+                <div class="mentor-avatar">🔧</div>
+                <h3 class="mentor-name">路遙</h3>
+                <p class="mentor-role">實務專家 ・ 心靈建築師</p>
+                <p class="mentor-quote">「每一座違章建築，都是一道沒有被聽見的求救信號。」</p>
+                <div class="mentor-topics">
+                    <span class="topic-tag">防衛機制</span>
+                    <span class="topic-tag">個案概念化</span>
+                    <span class="topic-tag">創傷照護</span>
+                </div>
+            </div>
+
+            <div class="mentor-card" data-mentor="qing">
+                <div class="mentor-avatar">☀️</div>
+                <h3 class="mentor-name">晴</h3>
+                <p class="mentor-role">社區實務 ・ 社工師</p>
+                <p class="mentor-quote">「有時候，最需要被照顧的人，是那個一直在照顧別人的人。」</p>
+                <div class="mentor-topics">
+                    <span class="topic-tag">社區心理健康</span>
+                    <span class="topic-tag">自殺防治</span>
+                    <span class="topic-tag">資源連結</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules -->
+    <section class="modules" id="modules">
+        <div class="section-header">
+            <p class="section-label">✦ LEARNING MODULES ✦</p>
+            <h2 class="section-title">課程模組</h2>
+            <p class="section-desc">從基礎概念到進階實務，循序漸進的學習路徑。</p>
+        </div>
+
+        <div class="modules-grid">
+            <div class="module-card" data-module="1">
+                <div class="module-header">
+                    <p class="module-number">Module 01</p>
+                    <h3 class="module-title">心理健康基礎概念</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">認識什麼是心理健康、常見心理困擾類型、求助的勇氣與去污名化。</p>
+                    <div class="module-meta">
+                        <span>👤 顧曼</span>
+                        <span>4 單元</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="2">
+                <div class="module-header">
+                    <p class="module-number">Module 02</p>
+                    <h3 class="module-title">認識心理防衛機制</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">用建築隱喻理解否認、壓抑、投射、隔離等防衛機制。</p>
+                    <div class="module-meta">
+                        <span>🔧 路遙</span>
+                        <span>6 單元</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="3">
+                <div class="module-header">
+                    <p class="module-number">Module 03</p>
+                    <h3 class="module-title">創傷知情照護</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">理解心理創傷、身心反應、二次創傷，以及創傷後成長。</p>
+                    <div class="module-meta">
+                        <span>🔧 路遙 + 💜 顧曼</span>
+                        <span>6 單元</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="4">
+                <div class="module-header">
+                    <p class="module-number">Module 04</p>
+                    <h3 class="module-title">憂鬱與自殺防治</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">認識憂鬱症、風險評估、傾聽陪伴技巧、資源連結與轉介。</p>
+                    <div class="module-meta">
+                        <span>☀️ 晴 + 🌙 曦婆婆</span>
+                        <span>5 單元</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card" data-module="5">
+                <div class="module-header">
+                    <p class="module-number">Module 05</p>
+                    <h3 class="module-title">助人者的自我照顧</h3>
+                </div>
+                <div class="module-body">
+                    <p class="module-desc">辨識耗竭徵兆、建立專業界限、自我照顧策略。</p>
+                    <div class="module-meta">
+                        <span>🌙 曦婆婆</span>
+                        <span>4 單元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo -->
+    <section class="demo" id="demo">
+        <div class="section-header">
+            <p class="section-label">✦ INTERACTIVE DEMO ✦</p>
+            <h2 class="section-title">體驗導師對話</h2>
+            <p class="section-desc">點擊情境按鈕，預覽不同導師的回應風格。</p>
+        </div>
+
+        <div class="chat-demo">
+            <div class="chat-header">
+                <div class="chat-mentor-avatar">✨</div>
+                <div class="chat-mentor-info">
+                    <h4>學院導覽員</h4>
+                    <p>帶你認識各位導師</p>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message mentor">
+                    <div class="avatar">✨</div>
+                    <div class="bubble">
+                        <p>歡迎來到心靈療癒學院！👋</p>
+                        <p style="margin-top: 0.5rem;">這裡有四位 AI 導師，各有專長：</p>
+                        <p style="margin-top: 0.5rem;">
+                            🌙 <strong>曦婆婆</strong> — 溫暖智慧的資深督導<br>
+                            💜 <strong>顧曼</strong> — 專業細膩的心理師<br>
+                            🔧 <strong>路遙</strong> — 犀利實務的建築師<br>
+                            ☀️ <strong>晴</strong> — 務實接地的社工師
+                        </p>
+                        <p style="margin-top: 0.5rem;">點擊下方按鈕，預覽他們的回應風格！</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="輸入任何內容，我會引導你..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">送出</button>
+            </div>
+        </div>
+
+        <div class="scenario-buttons">
+            <button class="scenario-btn" onclick="loadScenario('burnout')">🌙 我覺得很疲憊</button>
+            <button class="scenario-btn" onclick="loadScenario('boundary')">💜 如何設定界限？</button>
+            <button class="scenario-btn" onclick="loadScenario('failure')">🔧 療癒失敗了</button>
+            <button class="scenario-btn" onclick="loadScenario('defense')">☀️ 什麼是防衛機制？</button>
+        </div>
+    </section>
+
+    <!-- Cases -->
+    <section class="cases" id="cases">
+        <div class="section-header">
+            <p class="section-label">✦ CASE STUDIES ✦</p>
+            <h2 class="section-title">故事案例庫</h2>
+            <p class="section-desc">從小說中精選的案例，作為學習心理健康議題的素材。</p>
+        </div>
+
+        <div class="case-grid">
+            <div class="case-card" data-source="pharmacist">
+                <span class="case-source">🌿 逐光的藥師</span>
+                <h3 class="case-title">曜的創傷後歷程</h3>
+                <p class="case-desc">童年好友小夏的離世，如何影響曜成為療癒者的道路？探討倖存者內疚與過度補償。</p>
+                <div class="case-topics">
+                    <span class="case-topic">創傷</span>
+                    <span class="case-topic">哀傷</span>
+                    <span class="case-topic">助人者動機</span>
+                </div>
+            </div>
+
+            <div class="case-card" data-source="renovator">
+                <span class="case-source">🔧 違章靈魂改建事務所</span>
+                <h3 class="case-title">沒有門的房子</h3>
+                <p class="case-desc">陳太太的心靈建築沒有門，任何人都可以進入。探討界限議題與共依附關係。</p>
+                <div class="case-topics">
+                    <span class="case-topic">界限</span>
+                    <span class="case-topic">共依附</span>
+                    <span class="case-topic">討好型人格</span>
+                </div>
+            </div>
+
+            <div class="case-card" data-source="renovator">
+                <span class="case-source">🔧 違章靈魂改建事務所</span>
+                <h3 class="case-title">碉堡建築</h3>
+                <p class="case-desc">把自己建成碉堡的個案，如何在保護自己的同時，也讓光進來？</p>
+                <div class="case-topics">
+                    <span class="case-topic">迴避型依附</span>
+                    <span class="case-topic">情感隔離</span>
+                    <span class="case-topic">信任議題</span>
+                </div>
+            </div>
+
+            <div class="case-card" data-source="pharmacist">
+                <span class="case-source">🌿 逐光的藥師</span>
+                <h3 class="case-title">林伯的晚年孤寂</h3>
+                <p class="case-desc">獨居長者的心理健康，以及社區支持系統的重要性。</p>
+                <div class="case-topics">
+                    <span class="case-topic">老年心理</span>
+                    <span class="case-topic">孤獨</span>
+                    <span class="case-topic">社區支持</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <!-- Feature Links Section -->
+    <section class="feature-links" style="padding: 4rem 2rem; background: linear-gradient(135deg, var(--forest-dark) 0%, var(--steel-dark) 100%);">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <h2 style="font-family: 'Noto Serif TC', serif; font-size: 2rem; color: white; margin-bottom: 1rem;">
+                開始你的療癒學習之旅
+            </h2>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 2.5rem; font-size: 1.1rem;">
+                選擇適合你的學習方式
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                <!-- 個案督導室 -->
+                <a href="case-supervision.html" style="text-decoration: none;">
+                    <div style="background: white; border-radius: 16px; padding: 2rem; transition: all 0.3s; cursor: pointer;" 
+                         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)';"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎓</div>
+                        <h3 style="font-family: 'Noto Serif TC', serif; color: var(--steel); font-size: 1.3rem; margin-bottom: 0.5rem;">個案督導室</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                            與 AI 導師進行專業個案研討<br>
+                            四種互動模式・七個教學案例
+                        </p>
+                        <span style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--forest); color: white; border-radius: 20px; font-size: 0.9rem;">
+                            進入督導室 →
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 反思日記 -->
+                <a href="reflection-journal.html" style="text-decoration: none;">
+                    <div style="background: white; border-radius: 16px; padding: 2rem; transition: all 0.3s; cursor: pointer;"
+                         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)';"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📔</div>
+                        <h3 style="font-family: 'Noto Serif TC', serif; color: var(--steel); font-size: 1.3rem; margin-bottom: 0.5rem;">療癒反思日記</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                            記錄學習心得與情緒覺察<br>
+                            獲得曦婆婆的溫柔回饋
+                        </p>
+                        <span style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--gold); color: white; border-radius: 20px; font-size: 0.9rem;">
+                            開始寫日記 →
+                        </span>
+                    </div>
+                </a>
+
+                <!-- 心光咨詢站 -->
+                <a href="ai-chat.html" style="text-decoration: none;">
+                    <div style="background: white; border-radius: 16px; padding: 2rem; transition: all 0.3s; cursor: pointer;"
+                         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)';"
+                         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
+                        <h3 style="font-family: 'Noto Serif TC', serif; color: var(--steel); font-size: 1.3rem; margin-bottom: 0.5rem;">心光咨詢站</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                            與小說角色輕鬆對話<br>
+                            五位療癒者陪伴你
+                        </p>
+                        <span style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--purple); color: white; border-radius: 20px; font-size: 0.9rem;">
+                            開始對話 →
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brand">心靈療癒學院 | Soul Healing Academy</div>
+        <p class="footer-disclaimer">
+            ⚠️ 本平台為心理健康科普教育性質，非專業心理治療訓練。<br>
+            故事案例為虛構創作，僅供學習參考。如有真實心理健康需求，請尋求專業協助。
+        </p>
+        <div class="footer-resources">
+            <h4>心理健康資源</h4>
+            <p>台灣：安心專線 1925 ・ 生命線 1995<br>香港：撒瑪利亞防止自殺會 2389 2222</p>
+        </div>
+        <p class="footer-copyright">© 2025 Space Between Art. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Demo Chat Functionality
+        const responses = {
+            burnout: {
+                mentor: '🌙',
+                name: '曦婆婆',
+                title: '資深督導',
+                messages: [
+                    "孩子，你願意說「覺得很疲憊」，這本身就很重要。很多助人者習慣照顧別人，卻忘了自己也需要被照顧。",
+                    "記得我常說的嗎？「真正的藥師不是太陽，而是月亮。」太陽會燃燒殆盡，但月亮只是溫柔地反射光芒。",
+                    "告訴我，最近是什麼讓你感到疲憊？是個案的重量、工作的壓力，還是……你自己內心的聲音？"
+                ]
+            },
+            boundary: {
+                mentor: '💜',
+                name: '顧曼',
+                title: '臨床心理師',
+                messages: [
+                    "界限是個很好的問題。很多人誤以為設定界限就是冷漠或不夠有愛心。",
+                    "但其實，健康的界限不是冷漠——它是讓我們能夠持續給予的基礎。",
+                    "想像一下：如果一個救生員跳進水裡，和溺水的人一起溺水，那誰來救人呢？",
+                    "你最近是不是遇到了讓你覺得界限模糊的情況？我們可以一起來看看。"
+                ]
+            },
+            failure: {
+                mentor: '🔧',
+                name: '路遙',
+                title: '心靈建築師',
+                messages: [
+                    "嘖，「失敗」這詞我有意見。",
+                    "你知道蓋房子的時候，有些牆面你怎麼敲都敲不動嗎？那不是你錘子的問題，是那面牆的結構還沒準備好被改變。",
+                    "有些人的心靈建築，承重牆太脆弱了，你一碰它就會塌。這時候不是硬敲，是先幫他搭鷹架、做支撐。",
+                    "說說看，那個「失敗」的個案，他的房子是什麼結構？"
+                ]
+            },
+            defense: {
+                mentor: '☀️',
+                name: '晴',
+                title: '社工師',
+                messages: [
+                    "防衛機制啊，這個概念很實用！簡單來說，就是我們的心理自動保護自己的方式。",
+                    "比如說，有人被批評的時候會說「我才不在乎」——這叫否認。有人會把自己的不安投射到別人身上，覺得是別人在針對他。",
+                    "這些機制本身沒有好壞，它們在某些時候確實保護了我們。",
+                    "但問題是，如果一直用同一種方式，可能會卡住。就像一直穿同一件外套，夏天就會很熱。",
+                    "你是對哪種防衛機制特別好奇呢？"
+                ]
+            }
+        };
+
+        function loadScenario(scenario) {
+            const chat = document.getElementById('chatMessages');
+            const data = responses[scenario];
+            
+            // Clear previous messages
+            chat.innerHTML = '';
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            const userTexts = {
+                burnout: '我最近覺得很疲憊，好像快燃燒殆盡了...',
+                boundary: '我不知道該如何設定專業界限，常常把個案的問題帶回家...',
+                failure: '我嘗試幫助一個個案，但失敗了，我不知道哪裡做錯了...',
+                defense: '什麼是防衛機制？我想更了解這個概念。'
+            };
+            userMsg.innerHTML = `<div class="bubble"><p>${userTexts[scenario]}</p></div>`;
+            chat.appendChild(userMsg);
+            
+            // Add mentor responses with delay
+            data.messages.forEach((msg, index) => {
+                setTimeout(() => {
+                    const mentorMsg = document.createElement('div');
+                    mentorMsg.className = 'message mentor';
+                    mentorMsg.innerHTML = `
+                        <div class="avatar">${data.mentor}</div>
+                        <div class="bubble"><p>${msg}</p></div>
+                    `;
+                    chat.appendChild(mentorMsg);
+                    chat.scrollTop = chat.scrollHeight;
+                }, (index + 1) * 1500);
+            });
+            
+            // Update chat header
+            document.querySelector('.chat-mentor-avatar').textContent = data.mentor;
+            document.querySelector('.chat-mentor-info h4').textContent = data.name;
+            document.querySelector('.chat-mentor-info p').textContent = data.title;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const chat = document.getElementById('chatMessages');
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = `<div class="bubble"><p>${message}</p></div>`;
+            chat.appendChild(userMsg);
+            
+            input.value = '';
+            
+            // Guide user to actual features
+            setTimeout(() => {
+                const mentorMsg = document.createElement('div');
+                mentorMsg.className = 'message mentor';
+                mentorMsg.innerHTML = `
+                    <div class="avatar">✨</div>
+                    <div class="bubble">
+                        <p>這裡是展示區，讓我帶你去真正能深入對話的地方吧！</p>
+                        <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                            <a href="case-supervision.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: rgba(255,255,255,0.15); border-radius: 8px; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                                🎓 <span><strong>個案督導室</strong><br><small style="opacity: 0.8;">專業學習・案例研討・四位導師</small></span>
+                            </a>
+                            <a href="ai-chat.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: rgba(255,255,255,0.15); border-radius: 8px; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                                💬 <span><strong>心光咨詢站</strong><br><small style="opacity: 0.8;">情緒陪伴・輕鬆對話・五位角色</small></span>
+                            </a>
+                            <a href="reflection-journal.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1rem; background: rgba(255,255,255,0.15); border-radius: 8px; color: white; text-decoration: none; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">
+                                📔 <span><strong>療癒反思日記</strong><br><small style="opacity: 0.8;">記錄心得・曦婆婆回饋</small></span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                chat.appendChild(mentorMsg);
+                chat.scrollTop = chat.scrollHeight;
+            }, 800);
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
