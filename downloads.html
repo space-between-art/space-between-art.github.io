@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>療癒金句卡片下載 | Space Between Art</title>
-    <meta name="description" content="免費下載《逐光的藥師》與《違章靈魂改建事務所》療癒金句卡片，適合社群分享。">
+    <meta name="description" content="免費下載《逐光的藥師》《違章靈魂改建事務所》《拾味小館》療癒金句卡片，適合社群分享。">
     <meta property="og:title" content="療癒金句卡片下載 | Space Between Art">
     <meta property="og:description" content="免費下載療癒金句卡片，分享給需要的人。">
     <meta property="og:type" content="website">
@@ -31,6 +31,12 @@
             --steel-dark: #1A252F;
             --copper: #B87333;
             --copper-light: #D4956A;
+            
+            /* 拾味小館 */
+            --amber: #8B5A2B;
+            --amber-dark: #5C3D1E;
+            --bistro-gold: #DAA520;
+            --bistro-gold-light: #F4D03F;
         }
 
         * {
@@ -158,6 +164,10 @@
             background: rgba(44, 62, 80, 0.1);
         }
 
+        .tab-btn.bistro.active {
+            background: rgba(139, 90, 43, 0.1);
+        }
+
         /* Content Sections */
         .section {
             display: none;
@@ -194,6 +204,10 @@
 
         .section-header.renovator h2 {
             color: var(--steel);
+        }
+
+        .section-header.bistro h2 {
+            color: var(--amber);
         }
 
         .section-header p {
@@ -333,92 +347,13 @@
             background: var(--steel-dark);
         }
 
-        /* Download All Section */
-        .download-all {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(180deg, transparent 0%, rgba(44,95,45,0.03) 100%);
-            margin-top: 2rem;
-        }
-
-        .download-all h3 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .download-all p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .download-all-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 2rem;
-            background: linear-gradient(135deg, var(--forest) 0%, var(--steel) 100%);
+        .download-btn.bistro {
+            background: var(--amber);
             color: white;
-            border: none;
-            border-radius: 30px;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
         }
 
-        .download-all-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(44, 95, 45, 0.25);
-        }
-
-        /* Lightbox */
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 10000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            cursor: zoom-out;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90vh;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            cursor: default;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: rgba(255,255,255,0.1);
-            border: none;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(255,255,255,0.2);
-            transform: rotate(90deg);
+        .download-btn.bistro:hover {
+            background: var(--amber-dark);
         }
 
         /* Usage Tips */
@@ -493,6 +428,7 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .footer-links a {
@@ -504,6 +440,51 @@
 
         .footer-links a:hover {
             color: var(--forest);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.2);
+            transform: rotate(90deg);
         }
 
         /* Responsive */
@@ -537,7 +518,7 @@
 
     <!-- Header -->
     <header class="header">
-        <a href="index.html" class="header-back">← 返回首頁</a>
+        <a href="gallery.html" class="header-back">← 返回畫廊</a>
         <h1>✦ 療癒金句卡片 ✦</h1>
         <p>免費下載，分享給需要的人。<br>願這些文字能成為某個人黑暗中的一點光。</p>
     </header>
@@ -547,6 +528,7 @@
         <button class="tab-btn active" data-tab="all">全部</button>
         <button class="tab-btn pharmacist" data-tab="pharmacist">🌿 逐光的藥師</button>
         <button class="tab-btn renovator" data-tab="renovator">🔧 違章靈魂改建事務所</button>
+        <button class="tab-btn bistro" data-tab="bistro">🍜 拾味小館</button>
     </nav>
 
     <!-- All Cards Section -->
@@ -569,9 +551,7 @@
                     <p class="card-quote">「記憶是會發酵的。好的記憶會變成蜂蜜，壞的記憶會變成毒藥。」</p>
                     <div class="card-meta">
                         <span class="card-author"></span>
-                        <a href="01_pharmacist_memory.png" download class="download-btn pharmacist">
-                            ↓ 下載
-                        </a>
+                        <a href="01_pharmacist_memory.png" download class="download-btn pharmacist">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -587,9 +567,7 @@
                     <p class="card-quote">「光會吸引光。當一個靈魂開始燃燒，其他的靈魂會感應到。」</p>
                     <div class="card-meta">
                         <span class="card-author">—— 曦婆婆</span>
-                        <a href="02_pharmacist_light.png" download class="download-btn pharmacist">
-                            ↓ 下載
-                        </a>
+                        <a href="02_pharmacist_light.png" download class="download-btn pharmacist">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -605,9 +583,7 @@
                     <p class="card-quote">「藥師不能只燃燒自己。你要學會像植物一樣，既懂得分享光，也懂得為自己積蓄雨水。」</p>
                     <div class="card-meta">
                         <span class="card-author">—— 曦婆婆</span>
-                        <a href="03_pharmacist_balance.png" download class="download-btn pharmacist">
-                            ↓ 下載
-                        </a>
+                        <a href="03_pharmacist_balance.png" download class="download-btn pharmacist">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -623,9 +599,7 @@
                     <p class="card-quote">「每個人胸口都有一團火焰。有的人是熊熊烈火，有的人是搖曳燭光。」</p>
                     <div class="card-meta">
                         <span class="card-author">—— 曜</span>
-                        <a href="04_pharmacist_flame.png" download class="download-btn pharmacist">
-                            ↓ 下載
-                        </a>
+                        <a href="04_pharmacist_flame.png" download class="download-btn pharmacist">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -637,7 +611,7 @@
             <p>心靈建築 · 邊界重建 · 在廢墟中找到光</p>
         </div>
         
-        <div class="card-grid">
+        <div class="card-grid" style="margin-bottom: 4rem;">
             <div class="card-item">
                 <div class="card-image" onclick="openLightbox('05_renovator_window.png')">
                     <img src="05_renovator_window.png" alt="核掩體也需要一個觀察孔" loading="lazy">
@@ -649,9 +623,7 @@
                     <p class="card-quote">「我不會拆掉你的碉堡。但即使是核掩體，也需要一個觀察孔。」</p>
                     <div class="card-meta">
                         <span class="card-author">—— 路遙</span>
-                        <a href="05_renovator_window.png" download class="download-btn renovator">
-                            ↓ 下載
-                        </a>
+                        <a href="05_renovator_window.png" download class="download-btn renovator">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -667,9 +639,7 @@
                     <p class="card-quote">「這座城市病了。但在最深的霧裡，總有一盞燈還亮著。」</p>
                     <div class="card-meta">
                         <span class="card-author"></span>
-                        <a href="06_renovator_city.png" download class="download-btn renovator">
-                            ↓ 下載
-                        </a>
+                        <a href="06_renovator_city.png" download class="download-btn renovator">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -685,9 +655,7 @@
                     <p class="card-quote">「房子可以改建，靈魂也是。只要你願意開門，光就會進來。」</p>
                     <div class="card-meta">
                         <span class="card-author">—— 路遙</span>
-                        <a href="07_renovator_kintsugi.png" download class="download-btn renovator">
-                            ↓ 下載
-                        </a>
+                        <a href="07_renovator_kintsugi.png" download class="download-btn renovator">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -703,9 +671,7 @@
                     <p class="card-quote">「每一座違章建築，都是一道沒有被聽見的求救信號。」</p>
                     <div class="card-meta">
                         <span class="card-author"></span>
-                        <a href="08_renovator_signal.png" download class="download-btn renovator">
-                            ↓ 下載
-                        </a>
+                        <a href="08_renovator_signal.png" download class="download-btn renovator">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -721,9 +687,7 @@
                     <p class="card-quote">「有些人的房子沒有門。任何人都可以進來，包括那些不該進來的。」</p>
                     <div class="card-meta">
                         <span class="card-author"></span>
-                        <a href="09_renovator_glasshouse.png" download class="download-btn renovator">
-                            ↓ 下載
-                        </a>
+                        <a href="09_renovator_glasshouse.png" download class="download-btn renovator">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -739,9 +703,7 @@
                     <p class="card-quote">「S市永遠在下雨。這裡的人都有病——藏在骨頭裡的那種。」</p>
                     <div class="card-meta">
                         <span class="card-author"></span>
-                        <a href="10_renovator_rain.png" download class="download-btn renovator">
-                            ↓ 下載
-                        </a>
+                        <a href="10_renovator_rain.png" download class="download-btn renovator">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -757,9 +719,191 @@
                     <p class="card-quote">「裂縫不是缺陷。那是光進來的地方。」</p>
                     <div class="card-meta">
                         <span class="card-author"></span>
-                        <a href="11_renovator_crack.png" download class="download-btn renovator">
-                            ↓ 下載
-                        </a>
+                        <a href="11_renovator_crack.png" download class="download-btn renovator">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bistro -->
+        <div class="section-header bistro">
+            <h2>🍜 拾味小館</h2>
+            <p>味覺療癒 · 美食情緒 · 人間滋味皆可下嚥</p>
+        </div>
+        
+        <div class="card-grid">
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('12_bistro_taste.png')">
+                    <img src="12_bistro_taste.png" alt="人間滋味" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「人間滋味，皆可下嚥。唯有情之所繫，方能入心。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 沈若</span>
+                        <a href="12_bistro_taste.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('13_bistro_healing.png')">
+                    <img src="13_bistro_healing.png" alt="食物療癒" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「有些傷，不是時間能治癒的。但也許，食物可以。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 沈若</span>
+                        <a href="13_bistro_healing.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('14_bistro_together.png')">
+                    <img src="14_bistro_together.png" alt="一起走" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「療癒不只是治好傷口，是找到願意一起走的人。然後一起開始新的故事。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 沈若</span>
+                        <a href="14_bistro_together.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('15_bistro_newstart.png')">
+                    <img src="15_bistro_newstart.png" alt="新的起點" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「療癒不是終點，是新的起點。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 沈若</span>
+                        <a href="15_bistro_newstart.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('16_bistro_emotion.png')">
+                    <img src="16_bistro_emotion.png" alt="情緒的味道" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「每個人的情緒都有味道。快樂是甜的，悲傷是鹹的，憤怒是辣的，恐懼是苦的。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 沈若</span>
+                        <a href="16_bistro_emotion.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('17_bistro_heart.png')">
+                    <img src="17_bistro_heart.png" alt="用心做" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「雖然嚐不到味道，但我能感覺到——妳在用心做。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 賀淮</span>
+                        <a href="17_bistro_heart.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('18_bistro_accompany.png')">
+                    <img src="18_bistro_accompany.png" alt="陪伴" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「不是把你扛在肩上，是跟你一起走。你累的時候，我陪你休息。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 賀淮</span>
+                        <a href="18_bistro_accompany.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('19_bistro_speak.png')">
+                    <img src="19_bistro_speak.png" alt="說出口" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「說出口，永遠不會太晚。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 陳志遠</span>
+                        <a href="19_bistro_speak.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('20_bistro_soup.png')">
+                    <img src="20_bistro_soup.png" alt="人間滋味湯" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「這就是人間滋味。有鹹、有甜、有鮮、有一點點苦。全部混在一起，但很好喝。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 沈若</span>
+                        <a href="20_bistro_soup.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('21_bistro_story.png')">
+                    <img src="21_bistro_story.png" alt="故事與記憶" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「每一道菜，都是一個故事。每一種味道，都是一段記憶。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 沈若</span>
+                        <a href="21_bistro_story.png" download class="download-btn bistro">↓ 下載</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-item">
+                <div class="card-image" onclick="openLightbox('22_bistro_notalone.png')">
+                    <img src="22_bistro_notalone.png" alt="不讓你一個人" loading="lazy">
+                    <div class="card-overlay">
+                        <button class="preview-btn">🔍 預覽大圖</button>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <p class="card-quote">「我不會讓你一個人。我會煮飯給你吃，會陪你嚐這世界上所有的味道。」</p>
+                    <div class="card-meta">
+                        <span class="card-author">—— 沈若</span>
+                        <a href="22_bistro_notalone.png" download class="download-btn bistro">↓ 下載</a>
                     </div>
                 </div>
             </div>
@@ -772,10 +916,7 @@
             <h2>🌿 逐光的藥師</h2>
             <p>植物療癒 · 心光共鳴 · 溫柔的力量</p>
         </div>
-        
-        <div class="card-grid">
-            <!-- Cards will be cloned via JS -->
-        </div>
+        <div class="card-grid" id="pharmacist-cards"></div>
     </section>
 
     <!-- Renovator Only Section -->
@@ -784,10 +925,16 @@
             <h2>🔧 違章靈魂改建事務所</h2>
             <p>心靈建築 · 邊界重建 · 在廢墟中找到光</p>
         </div>
-        
-        <div class="card-grid">
-            <!-- Cards will be cloned via JS -->
+        <div class="card-grid" id="renovator-cards"></div>
+    </section>
+
+    <!-- Bistro Only Section -->
+    <section class="section" id="section-bistro">
+        <div class="section-header bistro">
+            <h2>🍜 拾味小館</h2>
+            <p>味覺療癒 · 美食情緒 · 人間滋味皆可下嚥</p>
         </div>
+        <div class="card-grid" id="bistro-cards"></div>
     </section>
 
     <!-- Usage Tips -->
@@ -823,8 +970,9 @@
         <p>在光與暗之間，故事發生。</p>
         <div class="footer-links">
             <a href="index.html">首頁</a>
-            <a href="pharmacist.html">逐光的藥師</a>
-            <a href="renovator.html">違章靈魂改建事務所</a>
+            <a href="pharmacist/index.html">逐光的藥師</a>
+            <a href="renovator/index.html">違章靈魂改建事務所</a>
+            <a href="bistro/index.html">拾味小館</a>
         </div>
     </footer>
 
@@ -841,12 +989,9 @@
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                // Remove active from all tabs
                 tabs.forEach(t => t.classList.remove('active'));
-                // Add active to clicked tab
                 tab.classList.add('active');
                 
-                // Show corresponding section
                 const targetTab = tab.dataset.tab;
                 sections.forEach(section => {
                     section.classList.remove('active');
@@ -872,12 +1017,10 @@
             document.body.style.overflow = '';
         }
 
-        // Close lightbox on escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeLightbox();
         });
 
-        // Prevent lightbox close when clicking image
         document.getElementById('lightbox-img').addEventListener('click', (e) => {
             e.stopPropagation();
         });
