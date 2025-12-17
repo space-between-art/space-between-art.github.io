@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯繫我們 | 隙光工作室</title>
+    <meta name="description" content="預約免費諮詢，讓我們聽聽你的品牌故事。隙光工作室期待與你合作。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">隙光工作室</span>
+                <span class="logo-subtext">Space Between Healing</span>
+            </a>
+            <button class="nav-toggle" aria-label="開啟選單"><span></span><span></span><span></span></button>
+            <ul class="nav-menu">
+                <li><a href="index.html">首頁</a></li>
+                <li><a href="about.html">關於</a></li>
+                <li><a href="services.html">服務</a></li>
+                <li><a href="portfolio.html">作品</a></li>
+                <li><a href="contact.html" class="active">聯繫</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header contact-header">
+        <div class="page-header-bg"></div>
+        <div class="container">
+            <h1>預約諮詢</h1>
+            <p>讓我們聽聽你的品牌故事</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <div class="contact-info">
+                    <div class="contact-highlight">
+                        <h3>🎁 免費 30 分鐘諮詢</h3>
+                        <p>我們提供免費的初次諮詢，沒有任何壓力。</p>
+                        <ul class="contact-benefits">
+                            <li>✓ 了解你的品牌現況與目標</li>
+                            <li>✓ 評估需要什麼服務</li>
+                            <li>✓ 提供初步建議與方向</li>
+                            <li>✓ 解答你的疑問</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 style="margin-top: var(--spacing-xl);">諮詢流程</h3>
+                    <div class="contact-steps">
+                        <div class="contact-step"><span class="step-num">1</span><span>填寫右側表單</span></div>
+                        <div class="contact-step"><span class="step-num">2</span><span>2 個工作天內收到回覆</span></div>
+                        <div class="contact-step"><span class="step-num">3</span><span>安排 30 分鐘視訊諮詢</span></div>
+                        <div class="contact-step"><span class="step-num">4</span><span>諮詢後 48 小時內收到報價</span></div>
+                    </div>
+                    
+                    <h3 style="margin-top: var(--spacing-xl);">其他聯繫方式</h3>
+                    <p>
+                        <strong>Email:</strong><br>
+                        <a href="mailto:hello@spacebetweenhealing.com" style="color: var(--color-accent-dark);">hello@spacebetweenhealing.com</a>
+                    </p>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">你的名字 *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">WhatsApp / 電話</label>
+                            <input type="tel" id="phone" name="phone" placeholder="方便我們聯繫你">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">公司/品牌名稱</label>
+                            <input type="text" id="company" name="company" placeholder="如有的話">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">想了解哪項服務？</label>
+                            <select id="service" name="service">
+                                <option value="">請選擇...</option>
+                                <option value="website">品牌網站設計 (HK$ 8,000 起)</option>
+                                <option value="visual-identity">視覺識別設計 (HK$ 4,500 起)</option>
+                                <option value="rebrand">品牌形象重塑 (HK$ 12,000 起)</option>
+                                <option value="full-package">品牌全方位方案 (HK$ 15,000 起)</option>
+                                <option value="other">其他 / 尚未確定</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">預算範圍</label>
+                            <select id="budget" name="budget">
+                                <option value="">請選擇...</option>
+                                <option value="under-5k">HK$ 5,000 以下</option>
+                                <option value="5k-10k">HK$ 5,000 - 10,000</option>
+                                <option value="10k-20k">HK$ 10,000 - 20,000</option>
+                                <option value="over-20k">HK$ 20,000 以上</option>
+                                <option value="not-sure">尚未確定</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">請簡單描述你的需求 *</label>
+                            <textarea id="message" name="message" placeholder="例如：你的品牌是做什麼的？目前遇到什麼問題？希望達成什麼目標？" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline">希望什麼時候完成？</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">請選擇...</option>
+                                <option value="urgent">越快越好（1-2 週內）</option>
+                                <option value="1month">1 個月內</option>
+                                <option value="2-3months">2-3 個月內</option>
+                                <option value="flexible">時間彈性</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-glow" style="width: 100%;">送出預約</button>
+                        
+                        <p class="form-note">🔒 你的資料絕對保密，只用於回覆諮詢。</p>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">隙光工作室</span>
+                    <p>讓你的品牌，一眼被記住</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>導覽</h4>
+                        <ul>
+                            <li><a href="about.html">關於我們</a></li>
+                            <li><a href="services.html">服務項目</a></li>
+                            <li><a href="portfolio.html">作品集</a></li>
+                            <li><a href="contact.html">聯繫我們</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>聯繫</h4>
+                        <ul>
+                            <li><a href="mailto:hello@spacebetweenhealing.com">hello@spacebetweenhealing.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 隙光工作室 Space Between Healing. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
