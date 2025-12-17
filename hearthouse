@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心宅：禁室 | Space Between Art</title>
+    <meta name="description" content="每個人的心靈都是一座宅邸，創傷是裂縫，記憶是房間，療癒是重建。心宅系列第一冊，六位心理學專家解開梧桐街47號的秘密。">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --hearthouse-violet: #4A3658;
+            --hearthouse-dark: #2D1B3D;
+            --hearthouse-deeper: #1A0F24;
+            --hearthouse-lavender: #9B8AA8;
+            --hearthouse-lavender-light: #C4B8D0;
+            --hearthouse-gold: #D4A84B;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(45, 27, 61, 0.95);
+            backdrop-filter: blur(15px);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--hearthouse-lavender-light);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .nav-links a:hover { color: var(--hearthouse-lavender-light); }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: white;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(180deg, var(--hearthouse-deeper) 0%, var(--hearthouse-dark) 50%, var(--hearthouse-violet) 100%);
+            overflow: hidden;
+        }
+
+        .hero-cracks {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .crack {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(180deg, var(--hearthouse-gold) 0%, transparent 100%);
+            opacity: 0.3;
+            animation: crackGlow 4s ease-in-out infinite;
+        }
+
+        .crack:nth-child(1) { left: 10%; height: 40%; top: 10%; }
+        .crack:nth-child(2) { left: 25%; height: 30%; top: 20%; animation-delay: 1s; }
+        .crack:nth-child(3) { right: 20%; height: 35%; top: 15%; animation-delay: 2s; }
+
+        @keyframes crackGlow {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+        }
+
+        .lavender-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(155, 138, 168, 0.2) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: lavenderPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes lavenderPulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .series-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(155, 138, 168, 0.3);
+            border-radius: 25px;
+            font-size: 0.85rem;
+            color: var(--hearthouse-lavender-light);
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--hearthouse-lavender-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .hero-genre {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .genre-tag {
+            padding: 0.4rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        .hero-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            color: var(--hearthouse-gold);
+            padding: 1.5rem 2rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            border-left: 4px solid var(--hearthouse-gold);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item { text-align: center; color: white; }
+
+        .meta-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--hearthouse-lavender-light);
+        }
+
+        .meta-label { font-size: 0.8rem; opacity: 0.7; }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn.primary {
+            background: var(--hearthouse-lavender);
+            color: var(--hearthouse-dark);
+        }
+
+        .cta-btn.primary:hover { background: var(--hearthouse-lavender-light); transform: translateY(-2px); }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-btn.secondary:hover { border-color: white; }
+
+        /* Synopsis */
+        .synopsis-section {
+            padding: 5rem 2rem;
+            background: var(--cream);
+        }
+
+        .synopsis-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--hearthouse-violet);
+        }
+
+        .synopsis-text {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--text-dark);
+        }
+
+        .synopsis-text p { margin-bottom: 1.5rem; }
+
+        .synopsis-highlight {
+            background: var(--hearthouse-dark);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        .synopsis-highlight h3 {
+            font-family: 'Noto Serif TC', serif;
+            color: var(--hearthouse-lavender-light);
+            margin-bottom: 1rem;
+        }
+
+        .synopsis-highlight ul {
+            list-style: none;
+        }
+
+        .synopsis-highlight li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .synopsis-highlight li::before {
+            content: '◈';
+            position: absolute;
+            left: 0;
+            color: var(--hearthouse-gold);
+        }
+
+        /* Experts Grid */
+        .experts-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--hearthouse-dark) 0%, var(--hearthouse-violet) 100%);
+            color: white;
+        }
+
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .expert-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .expert-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .expert-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .expert-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(155, 138, 168, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .expert-info h4 {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            color: var(--hearthouse-lavender-light);
+        }
+
+        .expert-info p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .expert-tag {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: rgba(212, 168, 75, 0.3);
+            border-radius: 12px;
+            font-size: 0.75rem;
+            color: var(--hearthouse-gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .expert-desc {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Characters */
+        .characters-section {
+            padding: 5rem 2rem;
+            background: var(--cream-dark);
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .character-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .character-header {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .character-card.protagonist .character-header {
+            background: linear-gradient(135deg, var(--hearthouse-dark) 0%, var(--hearthouse-violet) 100%);
+            color: white;
+        }
+
+        .character-card.architect .character-header {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+            color: white;
+        }
+
+        .character-card.memory .character-header {
+            background: linear-gradient(135deg, #5D4E6D 0%, #8B7BA8 100%);
+            color: white;
+        }
+
+        .character-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .character-name {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+        }
+
+        .character-title {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .character-body {
+            padding: 1.5rem;
+        }
+
+        .character-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--hearthouse-lavender);
+        }
+
+        .character-desc {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Chapters */
+        .chapters-section {
+            padding: 5rem 2rem;
+            background: var(--cream);
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .chapter-item {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--hearthouse-violet);
+            transition: all 0.3s ease;
+        }
+
+        .chapter-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(74, 54, 88, 0.15);
+        }
+
+        .chapter-item.special {
+            border-left-color: var(--hearthouse-gold);
+            background: linear-gradient(135deg, rgba(212, 168, 75, 0.1) 0%, white 100%);
+        }
+
+        .chapter-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.8rem;
+            color: var(--hearthouse-lavender);
+            margin-bottom: 0.3rem;
+        }
+
+        .chapter-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            color: var(--hearthouse-violet);
+            margin-bottom: 0.3rem;
+        }
+
+        .chapter-theme {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: var(--hearthouse-dark);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            color: var(--hearthouse-lavender-light);
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc { opacity: 0.8; margin-bottom: 2rem; }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: var(--hearthouse-dark);
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: flex; }
+            .hero-meta { gap: 1.5rem; }
+            .experts-grid, .characters-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="nav-logo">← Space Between Art</a>
+        <ul class="nav-links">
+            <li><a href="#synopsis">故事簡介</a></li>
+            <li><a href="#experts">六位專家</a></li>
+            <li><a href="#characters">角色</a></li>
+            <li><a href="#chapters">章節</a></li>
+            <li><a href="series.html">系列總覽</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="選單">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-cracks">
+            <div class="crack"></div>
+            <div class="crack"></div>
+            <div class="crack"></div>
+        </div>
+        <div class="lavender-glow"></div>
+        <div class="hero-content">
+            <span class="series-badge">心宅系列・第一冊</span>
+            <div class="hero-icon">🚪</div>
+            <h1 class="hero-title">心宅：禁室</h1>
+            <p class="hero-subtitle">THE FORBIDDEN ROOM</p>
+            <div class="hero-genre">
+                <span class="genre-tag">心理驚悚</span>
+                <span class="genre-tag">創傷療癒</span>
+                <span class="genre-tag">懸疑</span>
+            </div>
+            <div class="hero-quote">
+                「每個人的心靈都是一座宅邸，創傷是裂縫，記憶是房間，療癒是重建。」
+            </div>
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <div class="meta-value">11</div>
+                    <div class="meta-label">章節</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-value">6</div>
+                    <div class="meta-label">心理學派</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-value">8</div>
+                    <div class="meta-label">專業附錄</div>
+                </div>
+            </div>
+            <div class="hero-cta">
+                <a href="#synopsis" class="cta-btn primary">了解故事</a>
+                <a href="series.html" class="cta-btn secondary">系列總覽</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="synopsis-section" id="synopsis">
+        <div class="synopsis-container">
+            <h2 class="section-title">📖 故事簡介</h2>
+            <div class="synopsis-text">
+                <p>
+                    梧桐街47號，一棟維多利亞式老宅，二十年來只有一個住戶——蘇雨。
+                    社區稱它為「悲傷之屋」，而蘇雨是「守墓人」。
+                </p>
+                <p>
+                    心理建築師林默受社區之託調查這棟「生病」的房子。
+                    他發現，那些詭異的現象——會呼吸的牆壁、不存在的地下室、每月一次的迷宮儀式——
+                    都是巨大到足以扭曲現實的心理能量，被這棟老屋吸收、放大、並以物理方式顯現。
+                </p>
+                <p>
+                    「要幫助它——幫助她——我一個人做不到。」
+                    林默召集了六位頂尖的心理學專家，每個人看待問題的方式完全不同，甚至彼此衝突。
+                    他們用六把不同的手術刀，同時下刀。
+                </p>
+            </div>
+
+            <div class="synopsis-highlight">
+                <h3>🔑 六把手術刀——六種心理學視角</h3>
+                <ul>
+                    <li><strong>精神分析</strong>——挖掘潛意識，面對被壓抑的記憶</li>
+                    <li><strong>行為主義</strong>——測量可觀察的行為，找出儀式的功能</li>
+                    <li><strong>人本主義</strong>——無條件積極關注，用藝術療癒心靈</li>
+                    <li><strong>認知心理</strong>——重構思維模式，改寫核心信念</li>
+                    <li><strong>生物心理</strong>——探索基因與神經，藥物輔助治療</li>
+                    <li><strong>社會心理</strong>——解開社區的沉默共謀，修復社會連結</li>
+                </ul>
+            </div>
+
+            <div class="synopsis-text">
+                <p>
+                    二十年前，這棟房子裡發生了什麼？
+                    那個被命令遺忘的妹妹，那個被封死的地下室，那個紫色緞帶綁著的寶箱——
+                    當禁室之門終於打開，流出來的不是恐懼，而是一封用二十年等待的信。
+                </p>
+                <p>
+                    「妳可以自由了。」
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="experts-section" id="experts">
+        <h2 class="section-title" style="color: var(--hearthouse-lavender-light);">🧠 六位專家</h2>
+        <div class="experts-grid">
+            <div class="expert-card">
+                <div class="expert-header">
+                    <div class="expert-avatar">🔍</div>
+                    <div class="expert-info">
+                        <h4>陳深</h4>
+                        <p>精神分析師</p>
+                    </div>
+                </div>
+                <span class="expert-tag">挖掘者</span>
+                <p class="expert-desc">
+                    年過六十的老派分析師，用催眠與自由聯想探入潛意識。
+                    「潛意識是冰山水下的部分，我們要找到那個被埋葬的房間。」
+                </p>
+            </div>
+
+            <div class="expert-card">
+                <div class="expert-header">
+                    <div class="expert-avatar">📊</div>
+                    <div class="expert-info">
+                        <h4>李維</h4>
+                        <p>行為主義專家</p>
+                    </div>
+                </div>
+                <span class="expert-tag">工程師</span>
+                <p class="expert-desc">
+                    數據狂人，用感測器和圖表測量一切可觀察的行為。
+                    「每週三下午三點，她在禁室門前靜止17分鐘。這個數字是關鍵。」
+                </p>
+            </div>
+
+            <div class="expert-card">
+                <div class="expert-header">
+                    <div class="expert-avatar">🌸</div>
+                    <div class="expert-info">
+                        <h4>羅晴</h4>
+                        <p>人本主義治療師</p>
+                    </div>
+                </div>
+                <span class="expert-tag">園丁</span>
+                <p class="expert-desc">
+                    溫暖如春風，用色彩與植物療癒心靈。
+                    「不是我在治療她，是我在陪伴她找回自己療癒的力量。」
+                </p>
+            </div>
+
+            <div class="expert-card">
+                <div class="expert-header">
+                    <div class="expert-avatar">🧩</div>
+                    <div class="expert-info">
+                        <h4>劉思遠</h4>
+                        <p>認知心理學家</p>
+                    </div>
+                </div>
+                <span class="expert-tag">解碼者</span>
+                <p class="expert-desc">
+                    專攻認知地圖與信念系統，擅長找出思維的bug。
+                    「她的核心信念是『我=危險』。我們要重寫這個程式碼。」
+                </p>
+            </div>
+
+            <div class="expert-card">
+                <div class="expert-header">
+                    <div class="expert-avatar">🧬</div>
+                    <div class="expert-info">
+                        <h4>趙明</h4>
+                        <p>生物心理學家</p>
+                    </div>
+                </div>
+                <span class="expert-tag">電匠</span>
+                <p class="expert-desc">
+                    研究基因與神經遞質，相信大腦是一切的基礎。
+                    「她和姐姐共享一個基因變異——這不是巧合，這是線索。」
+                </p>
+            </div>
+
+            <div class="expert-card">
+                <div class="expert-header">
+                    <div class="expert-avatar">🕸️</div>
+                    <div class="expert-info">
+                        <h4>吳曉薇</h4>
+                        <p>社會心理學家</p>
+                    </div>
+                </div>
+                <span class="expert-tag">織網者</span>
+                <p class="expert-desc">
+                    專注於社會脈絡與群體動力，擅長田野調查。
+                    「整個社區都在沉默。這是協議性遺忘——大家同意不去談論。」
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="characters-section" id="characters">
+        <h2 class="section-title">👥 主要角色</h2>
+        <div class="characters-grid">
+            <div class="character-card protagonist">
+                <div class="character-header">
+                    <div class="character-avatar">🌙</div>
+                    <h3 class="character-name">蘇雨</h3>
+                    <p class="character-title">守墓人</p>
+                </div>
+                <div class="character-body">
+                    <p class="character-quote">
+                        「不是我住在房子裡面，是房子住在我裡面。」
+                    </p>
+                    <p class="character-desc">
+                        28歲，梧桐街47號唯一的住戶。二十年來，她用沉默餵養房子，用儀式安撫它，
+                        用自己的生命作為抵押，換取它替她保守那個秘密。
+                        她的眼神有一種磨砂玻璃的質地——你看得見後面有東西，卻無法辨識那是什麼。
+                    </p>
+                </div>
+            </div>
+
+            <div class="character-card architect">
+                <div class="character-header">
+                    <div class="character-avatar">📐</div>
+                    <h3 class="character-name">林默</h3>
+                    <p class="character-title">心理建築師</p>
+                </div>
+                <div class="character-body">
+                    <p class="character-quote">
+                        「房子不是鬧鬼，是生病了。病源可能很深，牽涉到很久以前的事情。」
+                    </p>
+                    <p class="character-desc">
+                        整合者，六位專家的召集人。他的專業是閱讀空間的情緒，閱讀建築承載的記憶。
+                        他相信，房子會吸收居住者的生命，也會顯現他們的傷口。
+                    </p>
+                </div>
+            </div>
+
+            <div class="character-card memory">
+                <div class="character-header">
+                    <div class="character-avatar">💜</div>
+                    <h3 class="character-name">蘇雲</h3>
+                    <p class="character-title">被遺忘的姐姐</p>
+                </div>
+                <div class="character-body">
+                    <p class="character-quote">
+                        「如果妳正在讀這封信，表示妳終於準備好了。」
+                    </p>
+                    <p class="character-desc">
+                        蘇雨的姐姐，二十年前離開。整個社區都記得有這個人，卻沒人記得她的名字和樣貌。
+                        她留下的紫色盒子裡，藏著一封等待了二十年的信。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="chapters-section" id="chapters">
+        <h2 class="section-title">📚 章節導覽</h2>
+        <div class="chapters-grid">
+            <div class="chapter-item special">
+                <div class="chapter-number">序幕</div>
+                <div class="chapter-title">悲傷之屋</div>
+                <div class="chapter-theme">林默初遇蘇雨與梧桐街47號</div>
+            </div>
+            <div class="chapter-item special">
+                <div class="chapter-number">間章</div>
+                <div class="chapter-title">蘇雨的夜</div>
+                <div class="chapter-theme">守墓人的獨白</div>
+            </div>
+            <div class="chapter-item">
+                <div class="chapter-number">第一章</div>
+                <div class="chapter-title">地基的幽靈</div>
+                <div class="chapter-theme">精神分析・潛意識探索</div>
+            </div>
+            <div class="chapter-item">
+                <div class="chapter-number">第二章</div>
+                <div class="chapter-title">精準的牢籠</div>
+                <div class="chapter-theme">行為主義・儀式測量</div>
+            </div>
+            <div class="chapter-item">
+                <div class="chapter-number">第三章</div>
+                <div class="chapter-title">向光的囚徒</div>
+                <div class="chapter-theme">人本主義・藝術療癒</div>
+            </div>
+            <div class="chapter-item">
+                <div class="chapter-number">第四章</div>
+                <div class="chapter-title">被刪除的藍圖</div>
+                <div class="chapter-theme">認知心理・信念重構</div>
+            </div>
+            <div class="chapter-item">
+                <div class="chapter-number">第五章</div>
+                <div class="chapter-title">血脈中的密碼</div>
+                <div class="chapter-theme">生物心理・基因與藥物</div>
+            </div>
+            <div class="chapter-item">
+                <div class="chapter-number">第六章</div>
+                <div class="chapter-title">沉默的共謀</div>
+                <div class="chapter-theme">社會心理・群體動力</div>
+            </div>
+            <div class="chapter-item">
+                <div class="chapter-number">第七章</div>
+                <div class="chapter-title">整合的藍圖</div>
+                <div class="chapter-theme">六位專家的最終會議</div>
+            </div>
+            <div class="chapter-item special">
+                <div class="chapter-number">第八章</div>
+                <div class="chapter-title">禁室之門</div>
+                <div class="chapter-theme">真相揭曉</div>
+            </div>
+            <div class="chapter-item special">
+                <div class="chapter-number">第九章</div>
+                <div class="chapter-title">重建的曙光</div>
+                <div class="chapter-theme">一年後・新的開始</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 class="cta-title">📖 開始閱讀</h2>
+        <p class="cta-desc">準備好打開那扇門了嗎？</p>
+        <div class="cta-buttons">
+            <a href="#" class="cta-btn primary">線上閱讀</a>
+            <a href="series.html" class="cta-btn secondary">探索系列</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">首頁</a>
+            <a href="series.html">心宅系列</a>
+            <a href="../pharmacist/index.html">逐光的藥師</a>
+            <a href="../renovator/index.html">違章靈魂改建事務所</a>
+            <a href="../gallery.html">畫廊</a>
+        </div>
+        <p style="opacity: 0.6; font-size: 0.85rem; margin-top: 1rem;">© 2025 Space Between Art</p>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
