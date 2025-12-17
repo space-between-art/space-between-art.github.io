@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心宅系列 | Space Between Art</title>
+    <meta name="description" content="每個人的心靈都是一座宅邸，創傷是裂縫，記憶是房間，療癒是重建。心宅系列五部曲，探索創傷、依附、認同、代際與連結。">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --hearthouse-violet: #4A3658;
+            --hearthouse-dark: #2D1B3D;
+            --hearthouse-deeper: #1A0F24;
+            --hearthouse-lavender: #9B8AA8;
+            --hearthouse-lavender-light: #C4B8D0;
+            --hearthouse-gold: #D4A84B;
+            --cream: #FDF8F3;
+            --cream-dark: #F5EDE4;
+            --text-dark: #2A2A2A;
+            --text-muted: #6B6B6B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(45, 27, 61, 0.95);
+            backdrop-filter: blur(15px);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--hearthouse-lavender-light);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--hearthouse-lavender-light); }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: white;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(180deg, var(--hearthouse-deeper) 0%, var(--hearthouse-dark) 50%, var(--hearthouse-violet) 100%);
+            overflow: hidden;
+        }
+
+        .hero-cracks {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .crack {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(180deg, var(--hearthouse-gold) 0%, transparent 100%);
+            opacity: 0.3;
+            animation: crackGlow 4s ease-in-out infinite;
+        }
+
+        .crack:nth-child(1) { left: 15%; height: 30%; top: 20%; animation-delay: 0s; }
+        .crack:nth-child(2) { left: 35%; height: 45%; top: 10%; animation-delay: 1s; }
+        .crack:nth-child(3) { right: 25%; height: 35%; top: 30%; animation-delay: 2s; }
+        .crack:nth-child(4) { right: 10%; height: 25%; top: 15%; animation-delay: 0.5s; }
+
+        @keyframes crackGlow {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .series-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: doorPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes doorPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--hearthouse-lavender-light);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .hero-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            color: var(--hearthouse-gold);
+            padding: 1.5rem 2rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            border-left: 4px solid var(--hearthouse-gold);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Series Overview */
+        .series-overview {
+            padding: 5rem 2rem;
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--hearthouse-lavender);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 2rem;
+            color: var(--hearthouse-violet);
+        }
+
+        .section-desc {
+            max-width: 600px;
+            margin: 1rem auto 0;
+            color: var(--text-muted);
+        }
+
+        /* Book Grid */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(74, 54, 88, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(74, 54, 88, 0.2);
+        }
+
+        .book-card.available {
+            border: 2px solid var(--hearthouse-gold);
+        }
+
+        .book-card.coming-soon {
+            opacity: 0.85;
+        }
+
+        .book-header {
+            background: linear-gradient(135deg, var(--hearthouse-dark) 0%, var(--hearthouse-violet) 100%);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .book-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            background: rgba(212, 168, 75, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--hearthouse-gold);
+        }
+
+        .book-status {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .book-status.available {
+            background: var(--hearthouse-gold);
+            color: var(--hearthouse-dark);
+        }
+
+        .book-status.coming {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .book-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .book-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 0.3rem;
+        }
+
+        .book-english {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--hearthouse-lavender-light);
+            font-style: italic;
+        }
+
+        .book-body {
+            padding: 1.5rem;
+        }
+
+        .book-theme {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--cream-dark);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--hearthouse-violet);
+            margin-bottom: 1rem;
+        }
+
+        .book-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .book-keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .keyword {
+            padding: 0.2rem 0.6rem;
+            background: rgba(74, 54, 88, 0.1);
+            border-radius: 10px;
+            font-size: 0.75rem;
+            color: var(--hearthouse-violet);
+        }
+
+        .book-cta {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .book-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .book-btn.primary {
+            background: var(--hearthouse-violet);
+            color: white;
+        }
+
+        .book-btn.primary:hover {
+            background: var(--hearthouse-dark);
+        }
+
+        .book-btn.secondary {
+            background: var(--cream-dark);
+            color: var(--hearthouse-violet);
+        }
+
+        .book-btn.disabled {
+            background: var(--cream-dark);
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        /* Concept Section */
+        .concept-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, var(--hearthouse-dark) 0%, var(--hearthouse-violet) 100%);
+            color: white;
+        }
+
+        .concept-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .concept-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.8rem;
+            color: var(--hearthouse-lavender-light);
+            margin-bottom: 2rem;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .concept-item {
+            padding: 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .concept-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-5px);
+        }
+
+        .concept-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .concept-label { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .concept-meaning { font-size: 0.85rem; opacity: 0.8; }
+
+        .concept-quote {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            color: var(--hearthouse-gold);
+            padding: 2rem;
+            background: rgba(0,0,0,0.2);
+            border-radius: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: var(--hearthouse-dark);
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: flex; }
+            .books-grid { grid-template-columns: 1fr; }
+            .concept-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="nav-logo">← Space Between Art</a>
+        <ul class="nav-links">
+            <li><a href="index.html">第一冊：禁室</a></li>
+            <li><a href="#books">全系列</a></li>
+            <li><a href="../index.html">返回首頁</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="選單">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-cracks">
+            <div class="crack"></div>
+            <div class="crack"></div>
+            <div class="crack"></div>
+            <div class="crack"></div>
+        </div>
+        <div class="hero-content">
+            <div class="series-icon">🏚️</div>
+            <h1 class="hero-title">心宅系列</h1>
+            <p class="hero-subtitle">THE HEARTHOUSE SERIES</p>
+            <div class="hero-quote">
+                「每個人的心靈都是一座宅邸，<br>創傷是裂縫，記憶是房間，療癒是重建。」
+            </div>
+        </div>
+    </section>
+
+    <section class="series-overview" id="books">
+        <div class="section-header">
+            <p class="section-label">Five Volumes</p>
+            <h2 class="section-title">📚 系列全覽</h2>
+            <p class="section-desc">
+                五部曲深入探索人類心靈的建築學——從創傷記憶到代際傳承，從自我認同到社會連結。
+            </p>
+        </div>
+
+        <div class="books-grid">
+            <!-- 第一冊 -->
+            <div class="book-card available">
+                <div class="book-header">
+                    <span class="book-status available">已出版</span>
+                    <span class="book-number">1</span>
+                    <div class="book-icon">🚪</div>
+                    <h3 class="book-title">心宅：禁室</h3>
+                    <p class="book-english">The Forbidden Room</p>
+                </div>
+                <div class="book-body">
+                    <span class="book-theme">創傷記憶・壓抑與整合治療</span>
+                    <p class="book-desc">
+                        梧桐街47號的「悲傷之屋」，守墓人蘇雨與二十年的沉默。
+                        心理建築師林默召集六位專家——精神分析師、行為主義者、人本治療師、認知心理學家、生物心理學家、社會心理學家——用六把不同的手術刀，打開那扇從未開啟的禁室之門。
+                    </p>
+                    <div class="book-keywords">
+                        <span class="keyword">精神分析</span>
+                        <span class="keyword">行為主義</span>
+                        <span class="keyword">人本主義</span>
+                        <span class="keyword">認知心理</span>
+                        <span class="keyword">生物心理</span>
+                        <span class="keyword">社會心理</span>
+                    </div>
+                    <div class="book-cta">
+                        <a href="index.html" class="book-btn primary">閱讀詳情</a>
+                        <a href="#" class="book-btn secondary">線上閱讀</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二冊 -->
+            <div class="book-card coming-soon">
+                <div class="book-header">
+                    <span class="book-status coming">即將推出</span>
+                    <span class="book-number">2</span>
+                    <div class="book-icon">🔊</div>
+                    <h3 class="book-title">心宅：迴聲</h3>
+                    <p class="book-english">The Echo</p>
+                </div>
+                <div class="book-body">
+                    <span class="book-theme">依附理論・複雜性創傷</span>
+                    <p class="book-desc">
+                        一座海邊燈塔，一個失語的守燈人。
+                        他的心宅裡迴盪著母親的聲音——有時是搖籃曲，有時是尖叫。
+                        依附的斷裂如何在成年後持續迴響？
+                    </p>
+                    <div class="book-keywords">
+                        <span class="keyword">依附理論</span>
+                        <span class="keyword">早期創傷</span>
+                        <span class="keyword">複雜性PTSD</span>
+                        <span class="keyword">情感調節</span>
+                    </div>
+                    <div class="book-cta">
+                        <span class="book-btn disabled">敬請期待</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三冊 -->
+            <div class="book-card coming-soon">
+                <div class="book-header">
+                    <span class="book-status coming">即將推出</span>
+                    <span class="book-number">3</span>
+                    <div class="book-icon">🪞</div>
+                    <h3 class="book-title">心宅：倒影</h3>
+                    <p class="book-english">The Reflection</p>
+                </div>
+                <div class="book-body">
+                    <span class="book-theme">自我認同・解離性身份</span>
+                    <p class="book-desc">
+                        她的心宅有無數個房間，每個房間住著不同的「她」。
+                        鏡子裡的倒影不是一個，而是許多個。
+                        當界限模糊，誰才是真正的主人？
+                    </p>
+                    <div class="book-keywords">
+                        <span class="keyword">解離</span>
+                        <span class="keyword">身份認同</span>
+                        <span class="keyword">多重人格</span>
+                        <span class="keyword">整合治療</span>
+                    </div>
+                    <div class="book-cta">
+                        <span class="book-btn disabled">敬請期待</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第四冊 -->
+            <div class="book-card coming-soon">
+                <div class="book-header">
+                    <span class="book-status coming">即將推出</span>
+                    <span class="book-number">4</span>
+                    <div class="book-icon">🏛️</div>
+                    <h3 class="book-title">心宅：地基</h3>
+                    <p class="book-english">The Foundation</p>
+                </div>
+                <div class="book-body">
+                    <span class="book-theme">代際創傷・家族秘密</span>
+                    <p class="book-desc">
+                        三代人住在同一座心宅，地基裡埋著祖母從未說出口的秘密。
+                        創傷如何穿越時間，在血脈中流淌？
+                        挖掘地基，是為了重建，還是為了崩塌？
+                    </p>
+                    <div class="book-keywords">
+                        <span class="keyword">代際創傷</span>
+                        <span class="keyword">家族治療</span>
+                        <span class="keyword">集體記憶</span>
+                        <span class="keyword">歷史創傷</span>
+                    </div>
+                    <div class="book-cta">
+                        <span class="book-btn disabled">敬請期待</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第五冊 -->
+            <div class="book-card coming-soon">
+                <div class="book-header">
+                    <span class="book-status coming">即將推出</span>
+                    <span class="book-number">5</span>
+                    <div class="book-icon">🪟</div>
+                    <h3 class="book-title">心宅：窗</h3>
+                    <p class="book-english">The Window</p>
+                </div>
+                <div class="book-body">
+                    <span class="book-theme">社交焦慮・孤立與連結</span>
+                    <p class="book-desc">
+                        他的心宅只有一扇小窗，他透過窗戶看世界，卻不敢打開門。
+                        社交焦慮築起的高牆，如何一磚一瓦地拆除？
+                        連結的勇氣，從打開一扇窗開始。
+                    </p>
+                    <div class="book-keywords">
+                        <span class="keyword">社交焦慮</span>
+                        <span class="keyword">孤立</span>
+                        <span class="keyword">人際連結</span>
+                        <span class="keyword">暴露療法</span>
+                    </div>
+                    <div class="book-cta">
+                        <span class="book-btn disabled">敬請期待</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="concept-section">
+        <div class="concept-container">
+            <h2 class="concept-title">🏠 心宅的隱喻</h2>
+            <div class="concept-grid">
+                <div class="concept-item">
+                    <div class="concept-icon">🏚️</div>
+                    <div class="concept-label">宅邸</div>
+                    <div class="concept-meaning">心靈的整體架構<br>——我們是誰</div>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">⚡</div>
+                    <div class="concept-label">裂縫</div>
+                    <div class="concept-meaning">創傷的痕跡<br>——我們受過的傷</div>
+                </div>
+                <div class="concept-item">
+                    <div class="concept-icon">🚪</div>
+                    <div class="concept-label">房間</div>
+                    <div class="concept-meaning">記憶的儲存<br>——我們經歷的事</div>
+                </div>
+            </div>
+            <div class="concept-quote">
+                「療癒不是拆除舊屋，而是學會與裂縫共處，<br>在廢墟上重建一個更堅固、更通透的家。」
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../index.html">首頁</a>
+            <a href="index.html">心宅：禁室</a>
+            <a href="../pharmacist/index.html">逐光的藥師</a>
+            <a href="../renovator/index.html">違章靈魂改建事務所</a>
+            <a href="../gallery.html">畫廊</a>
+        </div>
+        <p style="opacity: 0.6; font-size: 0.85rem; margin-top: 1rem;">© 2025 Space Between Art</p>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
