@@ -1,27 +1,14 @@
-# Space Between Art - Robots.txt
-# https://space-between.art
+# robots.txt for spacebetweenhealing.com
+# 隙光設計 Space Between Healing
 
 User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://space-between.art/sitemap.xml
-
-# Disallow admin or private directories (if any)
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
-
-# Allow all major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
+Sitemap: https://spacebetweenhealing.com/sitemap.xml
 
 # Crawl-delay for polite crawling
-User-agent: *
 Crawl-delay: 1
+
+# Disallow admin or private areas (none currently)
+# Disallow: /admin/

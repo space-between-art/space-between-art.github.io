@@ -1,0 +1,25 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="512" height="512" rx="64" fill="#FAF9F7"/>
+  
+  <!-- 左側形狀 -->
+  <path d="M120 400 L120 112 L200 112 L200 400 Z" fill="#2C2826"/>
+  
+  <!-- 右側形狀 -->
+  <path d="M312 400 L312 112 L392 112 L392 400 Z" fill="#2C2826"/>
+  
+  <!-- 中間光芒 -->
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4B17A;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#B8935A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D4B17A;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 光束 -->
+  <path d="M200 80 L256 256 L200 432 L312 432 L256 256 L312 80 Z" fill="url(#goldGradient)"/>
+  
+  <!-- 中心光點 -->
+  <circle cx="256" cy="256" r="24" fill="#B8935A"/>
+</svg>
