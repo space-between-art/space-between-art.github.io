@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>心靈療癒學院 | Space Between Art</title>
+    <title>心靈療癒學院 | 隙光創作 Space Between Art</title>
     <meta name="description" content="由AI角色導師帶領的心理健康科普培訓">
     
     <!-- PWA Meta 標籤 -->
@@ -91,8 +91,23 @@
             gap: 0.5rem;
         }
 
-        .nav-logo span {
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .nav-logo-zh {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            font-weight: 600;
             color: var(--forest);
+        }
+
+        .nav-logo-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.7rem;
+            color: var(--text-muted);
         }
 
         .nav-links {
@@ -680,16 +695,26 @@
         }
 
         .footer-brand {
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-brand-zh {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.2rem;
+            color: var(--gold-light);
+        }
+
+        .footer-brand-en {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
         }
 
         .footer-disclaimer {
             font-size: 0.8rem;
             opacity: 0.6;
             max-width: 600px;
-            margin: 0 auto 1.5rem;
+            margin: 1rem auto 1.5rem;
             line-height: 1.7;
         }
 
@@ -708,9 +733,44 @@
             opacity: 0.7;
         }
 
+        .footer-studio {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-studio h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold-light);
+        }
+
+        .footer-studio a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .footer-studio a:hover {
+            color: white;
+        }
+
         .footer-copyright {
             font-size: 0.8rem;
             opacity: 0.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-studio-note {
+            font-size: 0.7rem;
+            opacity: 0.4;
+        }
+
+        .footer-studio-note a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        .footer-studio-note a:hover {
+            text-decoration: underline;
         }
 
         /* Responsive */
@@ -718,6 +778,19 @@
             .hero { padding: 4rem 1.5rem; }
             .mentors, .modules, .demo, .cases { padding: 3rem 1.5rem; }
             .chat-demo { margin: 1.5rem -0.5rem 0; border-radius: 16px; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: flex; }
         }
     </style>
 </head>
@@ -726,7 +799,13 @@
 
     <!-- Navigation -->
     <nav class="site-nav">
-        <a href="index.html" class="nav-logo">✦ <span>Space Between Art</span></a>
+        <a href="index.html" class="nav-logo">
+            ✦ 
+            <span class="nav-logo-text">
+                <span class="nav-logo-zh">隙光創作</span>
+                <span class="nav-logo-en">Space Between Art</span>
+            </span>
+        </a>
         <ul class="nav-links">
             <li><a href="index.html">首頁</a></li>
             <li><a href="index.html#works">作品</a></li>
@@ -1011,7 +1090,6 @@
         </div>
     </section>
 
-    <!-- CTA -->
     <!-- Feature Links Section -->
     <section class="feature-links" style="padding: 4rem 2rem; background: linear-gradient(135deg, var(--forest-dark) 0%, var(--steel-dark) 100%);">
         <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
@@ -1079,7 +1157,10 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-brand">心靈療癒學院 | Soul Healing Academy</div>
+        <div class="footer-brand">
+            <span class="footer-brand-zh">心靈療癒學院</span>
+            <span class="footer-brand-en"> | Soul Healing Academy</span>
+        </div>
         <p class="footer-disclaimer">
             ⚠️ 本平台為心理健康科普教育性質，非專業心理治療訓練。<br>
             故事案例為虛構創作，僅供學習參考。如有真實心理健康需求，請尋求專業協助。
@@ -1088,7 +1169,12 @@
             <h4>心理健康資源</h4>
             <p>台灣：安心專線 1925 ・ 生命線 1995<br>香港：撒瑪利亞防止自殺會 2389 2222</p>
         </div>
-        <p class="footer-copyright">© 2025 Space Between Art. All rights reserved.</p>
+        <div class="footer-studio">
+            <h4>工作室</h4>
+            <a href="https://spacebetweenhealing.com" target="_blank">隙光設計｜品牌設計服務</a>
+        </div>
+        <p class="footer-copyright">© 2025 隙光創作 Space Between Art. All rights reserved.</p>
+        <p class="footer-studio-note">隙光創作為 <a href="https://spacebetweenhealing.com" target="_blank">隙光 Space Between Studio</a> 旗下文學品牌。</p>
     </footer>
 
     <script>
@@ -1100,6 +1186,11 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
         });
 
         // ========== PWA Service Worker 註冊 ==========

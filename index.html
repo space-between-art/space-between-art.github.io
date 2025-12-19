@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Between Art 間隙藝術 | 療癒系奇幻小說《逐光的藥師》《違章靈魂改建事務所》《拾味小館》《心宅：禁室》</title>
-    <meta name="description" content="在光與暗之間，故事發生。療癒系創作空間，連載都市奇幻療癒小說《逐光的藥師》《違章靈魂改建事務所》《拾味小館》與心理驚悚療癒《心宅：禁室》。">
-    <meta name="keywords" content="療癒小說, 都市奇幻, 逐光的藥師, 違章靈魂改建事務所, 拾味小館, 心宅禁室, 心理療癒, 繁體中文小說, 華文創作">
-    <meta name="author" content="Space Between Art">
+    <title>隙光創作 Space Between Art | 療癒系奇幻小說《逐光的藥師》《違章靈魂改建事務所》《拾味小館》《心宅：禁室》</title>
+    <meta name="description" content="在光與暗之間，故事發生。隙光創作——隙光 Space Between Studio 旗下文學品牌，連載都市奇幻療癒小說《逐光的藥師》《違章靈魂改建事務所》《拾味小館》與心理驚悚療癒《心宅：禁室》。">
+    <meta name="keywords" content="療癒小說, 都市奇幻, 逐光的藥師, 違章靈魂改建事務所, 拾味小館, 心宅禁室, 心理療癒, 繁體中文小說, 華文創作, 隙光創作, Space Between Art">
+    <meta name="author" content="隙光創作 Space Between Art">
     <link rel="canonical" href="https://space-between.art/">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://space-between.art/">
-    <meta property="og:title" content="Space Between Art | 療癒系奇幻小說創作空間">
+    <meta property="og:title" content="隙光創作 Space Between Art | 療癒系奇幻小說創作空間">
     <meta property="og:description" content="在光與暗之間，故事發生。連載都市奇幻療癒小說與心理驚悚療癒《心宅》系列">
     <meta property="og:image" content="https://space-between.art/og-image.jpg">
     <meta property="og:locale" content="zh_TW">
@@ -94,6 +94,26 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .nav-logo-zh {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--pharmacist-green);
+        }
+
+        .nav-logo-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
         }
 
         .nav-links {
@@ -216,9 +236,17 @@
             font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 400;
             color: white;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 0.1em;
             animation: titleFade 1.5s ease-out 0.3s both;
+        }
+
+        .hero-title-zh {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--pharmacist-gold-light);
+            margin-bottom: 1rem;
+            animation: titleFade 1.5s ease-out 0.4s both;
         }
 
         .hero-subtitle {
@@ -571,7 +599,29 @@
             line-height: 2;
             opacity: 0.9;
             max-width: 700px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 2rem;
+        }
+
+        .about-studio {
+            padding: 1.5rem 2rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            border-left: 3px solid var(--pharmacist-gold);
+        }
+
+        .about-studio p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .about-studio a {
+            color: var(--pharmacist-gold-light);
+            text-decoration: none;
+        }
+
+        .about-studio a:hover {
+            text-decoration: underline;
         }
 
         .about-features {
@@ -643,15 +693,24 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
 
         .footer-brand .footer-logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            color: var(--pharmacist-gold-light);
+        }
+
+        .footer-brand .footer-logo-en {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
             margin-bottom: 1rem;
+            display: block;
         }
 
         .footer-brand p { font-size: 0.9rem; opacity: 0.7; line-height: 1.6; }
@@ -679,14 +738,33 @@
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
             font-size: 0.85rem;
             opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom .footer-studio-note {
+            font-size: 0.75rem;
+            opacity: 0.4;
+        }
+
+        .footer-bottom .footer-studio-note a {
+            color: var(--pharmacist-gold-light);
+            text-decoration: none;
+        }
+
+        .footer-bottom .footer-studio-note a:hover {
+            text-decoration: underline;
         }
 
         /* Responsive */
         @media (max-width: 1200px) {
             .works-grid { grid-template-columns: repeat(2, 1fr); }
             .about-features { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -736,7 +814,10 @@
                 <circle cx="20" cy="20" r="18" fill="none" stroke="#2A2A2A" stroke-width="1.5"/>
                 <text x="20" y="26" font-family="Cormorant Garamond, serif" font-size="18" fill="url(#logoGradient)" text-anchor="middle">S</text>
             </svg>
-            Space Between Art
+            <span class="nav-logo-text">
+                <span class="nav-logo-zh">隙光創作</span>
+                <span class="nav-logo-en">Space Between Art</span>
+            </span>
         </a>
         <ul class="nav-links">
             <li><a href="#works">作品</a></li>
@@ -781,8 +862,9 @@
                 </svg>
             </div>
             <h1 class="hero-title">Space Between Art</h1>
+            <p class="hero-title-zh">隙光創作</p>
             <p class="hero-subtitle">在光與暗之間，故事發生</p>
-            <p class="hero-tagline">療癒系都市奇幻創作工作室</p>
+            <p class="hero-tagline">療癒系都市奇幻文學平台</p>
             <div class="hero-cta">
                 <a href="#works" class="cta-btn primary">
                     <span>探索作品</span>
@@ -945,13 +1027,16 @@
 
     <section class="about-section" id="about">
         <div class="about-container fade-in">
-            <h2 class="about-title">關於 <span>Space Between Art</span></h2>
+            <h2 class="about-title">關於 <span>隙光創作</span></h2>
             <p class="about-text">
                 我們相信，最深刻的療癒發生在「之間」——
                 光與暗之間、現實與幻想之間、傷口與痊癒之間。
                 透過都市奇幻的框架，我們探索人心的建築、靈魂的光譜，
                 用故事為每一個需要被看見的人，點亮一盞燈。
             </p>
+            <div class="about-studio">
+                <p>隙光創作是 <a href="https://spacebetweenhealing.com" target="_blank">隙光 Space Between Studio</a> 的文學品牌，由作者「隙光」主理，專注療癒系都市奇幻創作。</p>
+            </div>
             <div class="about-features">
                 <div class="feature-item">
                     <div class="feature-icon">🌿</div>
@@ -993,8 +1078,9 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <div class="footer-logo">Space Between Art</div>
-                <p>在光與暗之間，故事發生。<br>療癒系都市奇幻創作工作室。</p>
+                <div class="footer-logo">隙光創作</div>
+                <span class="footer-logo-en">Space Between Art</span>
+                <p>在光與暗之間，故事發生。<br>療癒系都市奇幻文學平台。</p>
             </div>
             <div class="footer-links">
                 <h4>作品</h4>
@@ -1015,6 +1101,12 @@
                 </ul>
             </div>
             <div class="footer-links">
+                <h4>工作室</h4>
+                <ul>
+                    <li><a href="https://spacebetweenhealing.com" target="_blank">隙光設計｜品牌設計服務</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
                 <h4>聯絡</h4>
                 <ul>
                     <li><a href="mailto:hello@space-between.art">hello@space-between.art</a></li>
@@ -1024,7 +1116,8 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Space Between Art. All rights reserved.</p>
+            <p>© 2025 隙光創作 Space Between Art. All rights reserved.</p>
+            <p class="footer-studio-note">隙光創作為 <a href="https://spacebetweenhealing.com" target="_blank">隙光 Space Between Studio</a> 旗下文學品牌。</p>
         </div>
     </footer>
 

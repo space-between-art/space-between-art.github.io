@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>讀者互動區 | Space Between Art</title>
-    <meta name="description" content="Space Between Art 讀者互動區 - 討論、投稿、問答、社群連結">
+    <title>讀者互動區 | 隙光創作 Space Between Art</title>
+    <meta name="description" content="隙光創作讀者互動區 - 討論、投稿、問答、社群連結">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +57,25 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+
+        .nav-logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .nav-logo-zh {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--forest-green);
+        }
+
+        .nav-logo-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.7rem;
+            color: var(--text-muted);
         }
 
         .nav-links {
@@ -517,10 +536,67 @@
             padding: 3rem 2rem;
         }
 
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+        .footer-brand {
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-brand-zh {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1.3rem;
             color: var(--gold-light);
+        }
+
+        .footer-brand-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .footer-tagline {
+            opacity: 0.8;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-studio {
+            margin: 1.5rem 0;
+        }
+
+        .footer-studio h4 {
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-studio a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .footer-studio a:hover {
+            color: white;
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 1.5rem;
+        }
+
+        .footer-studio-note {
+            font-size: 0.7rem;
+            opacity: 0.4;
+            margin-top: 0.5rem;
+        }
+
+        .footer-studio-note a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        .footer-studio-note a:hover {
+            text-decoration: underline;
         }
 
         /* Mobile */
@@ -558,7 +634,10 @@
                 <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F2D" stroke-width="1.5"/>
                 <text x="20" y="26" font-family="Georgia, serif" font-size="18" fill="url(#navGold)" text-anchor="middle">S</text>
             </svg>
-            Space Between Art
+            <span class="nav-logo-text">
+                <span class="nav-logo-zh">隙光創作</span>
+                <span class="nav-logo-en">Space Between Art</span>
+            </span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">首頁</a></li>
@@ -801,5 +880,23 @@
     </section>
 
     <footer>
-        <p class="footer-logo">Space Between Art</p>
-        <p style="opacity: 0.8; margin-top: 0.5rem;">在光與暗之間，故事發生<
+        <div class="footer-brand">
+            <span class="footer-brand-zh">隙光創作</span>
+            <span class="footer-brand-en"> Space Between Art</span>
+        </div>
+        <p class="footer-tagline">在光與暗之間，故事發生。</p>
+        <div class="footer-studio">
+            <h4>工作室</h4>
+            <a href="https://spacebetweenhealing.com" target="_blank">隙光設計｜品牌設計服務</a>
+        </div>
+        <p class="footer-copyright">© 2025 隙光創作 Space Between Art. All rights reserved.</p>
+        <p class="footer-studio-note">隙光創作為 <a href="https://spacebetweenhealing.com" target="_blank">隙光 Space Between Studio</a> 旗下文學品牌。</p>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
