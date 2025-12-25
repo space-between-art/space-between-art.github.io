@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服務項目 | Space Between Healing</title>
+    <meta name="description" content="Space Between Healing 提供一對一顧問式服務：身心靈療癒引導、品牌定位顧問、服務產品化建議、網站內容諮詢。">
+    <link rel="canonical" href="https://spacebetweenhealing.com/services">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Outfit:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0a0a0a;
+            --bg-dark: #111;
+            --bg-card: #161616;
+            --gold: #d4a574;
+            --gold-light: #e8c9a0;
+            --sage: #a0b89c;
+            --cream: #f5efe6;
+            --glow-gold: rgba(212,165,116,0.35);
+            --glow-sage: rgba(160,184,156,0.25);
+            --text-primary: #f5efe6;
+            --text-secondary: rgba(245,239,230,0.7);
+            --text-muted: rgba(245,239,230,0.45);
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Outfit', sans-serif;
+            --font-zh: 'Noto Serif TC', serif;
+            --ease: cubic-bezier(0.16,1,0.3,1);
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:var(--font-body); background:var(--bg-deep); color:var(--text-primary); line-height:1.7; overflow-x:hidden; }
+        .zh { font-family:var(--font-zh); }
+        .lang-content { display:none; }
+        .lang-content.active { display:block; }
+
+        /* Ambient */
+        .ambient { position:fixed; inset:0; z-index:-1; pointer-events:none; }
+        .orb { position:absolute; border-radius:50%; filter:blur(100px); opacity:0.4; }
+        .orb-1 { width:500px; height:500px; background:radial-gradient(circle,var(--glow-gold) 0%,transparent 70%); top:-15%; left:-10%; animation:float 25s ease-in-out infinite; }
+        .orb-2 { width:400px; height:400px; background:radial-gradient(circle,var(--glow-sage) 0%,transparent 70%); bottom:-10%; right:-5%; animation:float 30s ease-in-out infinite reverse; }
+        @keyframes float { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-20px)} }
+
+        /* Nav */
+        .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1rem 4vw; display:flex; justify-content:space-between; align-items:center; background:rgba(10,10,10,0.95); backdrop-filter:blur(20px); border-bottom:1px solid rgba(212,165,116,0.1); }
+        .nav-logo { font-family:var(--font-display); font-size:1.1rem; letter-spacing:0.2em; color:var(--gold); text-decoration:none; font-weight:500; }
+        .nav-right { display:flex; align-items:center; gap:2rem; }
+        .nav-links { display:flex; gap:0.5rem; list-style:none; }
+        .nav-links li a { display:block; font-size:0.85rem; color:var(--text-secondary); text-decoration:none; transition:all 0.3s; padding:0.6rem 1rem; border-radius:8px; }
+        .nav-links li a:hover { color:var(--gold); background:rgba(212,165,116,0.1); }
+        .nav-links li a.active { color:var(--gold); background:rgba(212,165,116,0.15); }
+        .lang-selector { position:relative; }
+        .lang-btn { display:flex; align-items:center; gap:0.4rem; padding:0.5rem 1rem; background:rgba(212,165,116,0.1); border:1px solid rgba(212,165,116,0.25); border-radius:100px; color:var(--gold); font-size:0.8rem; cursor:pointer; transition:all 0.3s; font-weight:500; }
+        .lang-btn:hover { background:rgba(212,165,116,0.2); border-color:var(--gold); }
+        .lang-btn svg { width:12px; height:12px; transition:transform 0.3s; }
+        .lang-selector.open .lang-btn svg { transform:rotate(180deg); }
+        .lang-dropdown { position:absolute; top:calc(100% + 8px); right:0; min-width:140px; background:var(--bg-card); border:1px solid rgba(212,165,116,0.2); border-radius:12px; overflow:hidden; opacity:0; visibility:hidden; transform:translateY(-10px); transition:all 0.3s var(--ease); z-index:100; box-shadow:0 10px 40px rgba(0,0,0,0.4); }
+        .lang-selector.open .lang-dropdown { opacity:1; visibility:visible; transform:translateY(0); }
+        .lang-option { display:flex; align-items:center; gap:0.5rem; width:100%; padding:0.75rem 1rem; background:none; border:none; color:var(--text-secondary); font-size:0.85rem; text-align:left; cursor:pointer; transition:all 0.2s; }
+        .lang-option:hover { background:rgba(212,165,116,0.1); color:var(--gold); }
+        .lang-option.active { color:var(--gold); }
+
+        /* Page Header */
+        .page-header { padding:10rem 4vw 5rem; text-align:center; position:relative; }
+        .page-header::after { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:60px; height:1px; background:var(--gold); opacity:0.3; }
+        .page-title { font-family:var(--font-display); font-size:clamp(2.5rem,6vw,4rem); font-weight:300; margin-bottom:1rem; }
+        .page-title .highlight { color:var(--gold); font-style:italic; }
+        .page-subtitle { font-size:1.1rem; color:var(--text-secondary); max-width:600px; margin:0 auto; }
+
+        /* Section */
+        .section { padding:5rem 4vw; position:relative; }
+        .container { max-width:1000px; margin:0 auto; }
+        .section-tag { display:inline-flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
+        .section-tag-line { width:30px; height:1px; background:var(--gold); }
+        .section-tag-text { font-size:0.65rem; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); }
+
+        /* Intro */
+        .intro-text { text-align:center; max-width:700px; margin:0 auto 4rem; }
+        .intro-text p { color:var(--text-secondary); font-size:1.1rem; line-height:1.9; }
+
+        /* Service Cards */
+        .service-detail { margin-bottom:4rem; }
+        .service-detail-card { background:var(--bg-card); border:1px solid rgba(212,165,116,0.1); border-radius:24px; padding:3rem; position:relative; overflow:hidden; transition:all 0.4s var(--ease); }
+        .service-detail-card:hover { border-color:rgba(212,165,116,0.25); transform:translateY(-5px); }
+        .service-detail-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gold),var(--sage)); }
+        .service-num { font-family:var(--font-display); font-size:5rem; font-weight:300; color:rgba(212,165,116,0.08); position:absolute; top:1rem; right:2rem; line-height:1; }
+        .service-icon { width:60px; height:60px; background:rgba(212,165,116,0.1); border-radius:16px; display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem; color:var(--gold); }
+        .service-icon svg { width:30px; height:30px; }
+        .service-detail h2 { font-family:var(--font-display); font-size:1.8rem; font-weight:400; margin-bottom:0.5rem; color:var(--cream); }
+        .service-detail h3 { font-size:1rem; color:var(--text-muted); margin-bottom:1.5rem; }
+        .service-detail p { color:var(--text-secondary); line-height:1.9; margin-bottom:1rem; }
+        .service-features { margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(212,165,116,0.1); }
+        .feature-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; list-style:none; }
+        .feature-list li { display:flex; align-items:flex-start; gap:0.75rem; font-size:0.9rem; color:var(--text-secondary); }
+        .feature-list li::before { content:'✓'; color:var(--sage); font-weight:600; margin-top:0.1rem; }
+
+        /* Note Box */
+        .note-box { background:rgba(160,184,156,0.05); border:1px solid rgba(160,184,156,0.15); border-left:3px solid var(--sage); border-radius:0 16px 16px 0; padding:1.5rem 2rem; margin:3rem 0; }
+        .note-box p { color:var(--text-secondary); font-size:0.95rem; margin:0; }
+        .note-box strong { color:var(--sage); }
+
+        /* Buttons */
+        .btn { display:inline-flex; align-items:center; gap:0.6rem; padding:1rem 2rem; font-family:var(--font-body); font-size:0.85rem; font-weight:500; text-decoration:none; border-radius:100px; cursor:pointer; transition:all 0.4s var(--ease); border:none; }
+        .btn svg { width:16px; height:16px; }
+        .btn-primary { background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%); color:var(--bg-deep); }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 15px 35px var(--glow-gold); }
+
+        /* CTA */
+        .cta-section { text-align:center; background:var(--bg-dark); padding:5rem 4vw; }
+        .cta-section h2 { font-family:var(--font-display); font-size:2rem; margin-bottom:1rem; }
+        .cta-section p { color:var(--text-secondary); max-width:500px; margin:0 auto 2rem; }
+
+        /* Footer */
+        .footer { padding:3rem 4vw; background:var(--bg-dark); border-top:1px solid rgba(212,165,116,0.08); }
+        .footer-content { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.5rem; }
+        .footer-logo { font-family:var(--font-display); font-size:0.95rem; letter-spacing:0.15em; color:var(--gold); }
+        .footer-links { display:flex; gap:1.5rem; flex-wrap:wrap; }
+        .footer-links a { font-size:0.8rem; color:var(--text-muted); text-decoration:none; transition:color 0.3s; }
+        .footer-links a:hover { color:var(--gold); }
+        .footer-copy { font-size:0.75rem; color:var(--text-muted); }
+
+        @media (max-width:768px) {
+            .nav-links { display:none; }
+            .page-header { padding:8rem 1.5rem 3rem; }
+            .section { padding:3rem 1.5rem; }
+            .service-detail-card { padding:2rem 1.5rem; }
+            .service-num { font-size:3rem; }
+            .footer-content { flex-direction:column; text-align:center; }
+        }
+    </style>
+</head>
+<body data-lang="zh-TW">
+    <div class="ambient"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+
+    <!-- Nav -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">Space Between</a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="about.html"><span class="lang-content active" data-lang-content="zh-TW">關於</span><span class="lang-content" data-lang-content="zh-CN">关于</span><span class="lang-content" data-lang-content="en">About</span></a></li>
+                <li><a href="services.html" class="active"><span class="lang-content active" data-lang-content="zh-TW">服務</span><span class="lang-content" data-lang-content="zh-CN">服务</span><span class="lang-content" data-lang-content="en">Services</span></a></li>
+                <li><a href="portfolio.html"><span class="lang-content active" data-lang-content="zh-TW">作品</span><span class="lang-content" data-lang-content="zh-CN">作品</span><span class="lang-content" data-lang-content="en">Works</span></a></li>
+                <li><a href="lounge.html"><span class="lang-content active" data-lang-content="zh-TW">療癒實驗室</span><span class="lang-content" data-lang-content="zh-CN">疗愈实验室</span><span class="lang-content" data-lang-content="en">Healing Lab</span></a></li>
+                <li><a href="ai-assistant.html"><span class="lang-content active" data-lang-content="zh-TW">AI 智能分析助理</span><span class="lang-content" data-lang-content="zh-CN">AI 智能分析助理</span><span class="lang-content" data-lang-content="en">AI Assistant</span></a></li>
+                <li><a href="contact.html"><span class="lang-content active" data-lang-content="zh-TW">聯絡</span><span class="lang-content" data-lang-content="zh-CN">联络</span><span class="lang-content" data-lang-content="en">Contact</span></a></li>
+            </ul>
+            <div class="lang-selector">
+                <button class="lang-btn"><span class="current-lang">繁中</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="lang-dropdown">
+                    <button class="lang-option active" data-lang="zh-TW">🇭🇰 繁體中文</button>
+                    <button class="lang-option" data-lang="zh-CN">🇨🇳 简体中文</button>
+                    <button class="lang-option" data-lang="en">🌍 English</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 class="page-title">Our <span class="highlight">Services</span></h1>
+        <div class="lang-content active" data-lang-content="zh-TW">
+            <p class="page-subtitle zh">一對一顧問式服務，為你的成長提供溫和而有系統的支援</p>
+        </div>
+        <div class="lang-content" data-lang-content="zh-CN">
+            <p class="page-subtitle zh">一对一顾问式服务，为你的成长提供温和而有系统的支援</p>
+        </div>
+        <div class="lang-content" data-lang-content="en">
+            <p class="page-subtitle">One-on-one consulting services for gentle, systematic growth support</p>
+        </div>
+    </header>
+
+    <!-- Services -->
+    <section class="section">
+        <div class="container">
+            <div class="intro-text">
+                <div class="lang-content active" data-lang-content="zh-TW">
+                    <p class="zh">我們提供的所有服務均以「一對一顧問方式」進行，確保每位客戶都能獲得專注而個人化的支援。</p>
+                </div>
+                <div class="lang-content" data-lang-content="zh-CN">
+                    <p class="zh">我们提供的所有服务均以「一对一顾问方式」进行，确保每位客户都能获得专注而个人化的支援。</p>
+                </div>
+                <div class="lang-content" data-lang-content="en">
+                    <p>All our services are conducted one-on-one, ensuring each client receives focused and personalized support.</p>
+                </div>
+            </div>
+
+            <!-- Service 1 -->
+            <div class="service-detail">
+                <div class="service-detail-card">
+                    <span class="service-num">01</span>
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M12 6v6l4 2"/></svg></div>
+                    <div class="lang-content active" data-lang-content="zh-TW">
+                        <h2 class="zh">身心靈療癒與內在整理引導</h2>
+                        <h3 class="zh">Holistic Healing & Inner Organization</h3>
+                        <p class="zh">透過敘事式引導，協助你整理內在思緒，找回清晰與平靜。這不是心理治療，而是一種溫和的陪伴與整理過程。</p>
+                        <p class="zh">適合正在經歷轉變期、感到迷惘或需要釐清方向的人。</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>一對一敘事引導對話</li>
+                                <li>內在思緒梳理與記錄</li>
+                                <li>目標與方向釐清</li>
+                                <li>持續的陪伴與支援</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lang-content" data-lang-content="zh-CN">
+                        <h2 class="zh">身心灵疗愈与内在整理引导</h2>
+                        <h3 class="zh">Holistic Healing & Inner Organization</h3>
+                        <p class="zh">通过叙事式引导，协助你整理内在思绪，找回清晰与平静。这不是心理治疗，而是一种温和的陪伴与整理过程。</p>
+                        <p class="zh">适合正在经历转变期、感到迷惘或需要厘清方向的人。</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>一对一叙事引导对话</li>
+                                <li>内在思绪梳理与记录</li>
+                                <li>目标与方向厘清</li>
+                                <li>持续的陪伴与支援</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lang-content" data-lang-content="en">
+                        <h2>Holistic Healing & Inner Organization</h2>
+                        <h3>身心靈療癒與內在整理引導</h3>
+                        <p>Through narrative guidance, we help you organize your inner thoughts and find clarity and peace. This is not psychotherapy, but a gentle process of companionship and organization.</p>
+                        <p>Ideal for those going through transitions, feeling lost, or needing to clarify direction.</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>One-on-one narrative guidance</li>
+                                <li>Inner thought organization & documentation</li>
+                                <li>Goal & direction clarification</li>
+                                <li>Ongoing support & companionship</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-detail">
+                <div class="service-detail-card">
+                    <span class="service-num">02</span>
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+                    <div class="lang-content active" data-lang-content="zh-TW">
+                        <h2 class="zh">品牌定位與敘事策略顧問</h2>
+                        <h3 class="zh">Brand Positioning & Narrative Strategy</h3>
+                        <p class="zh">協助你釐清品牌核心價值，建立一致且有溫度的敘事。當你清楚知道自己是誰、為誰服務，客戶自然會找到你。</p>
+                        <p class="zh">適合正在建立或重塑品牌的療癒工作者、教練導師及服務型創業者。</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>品牌核心價值挖掘</li>
+                                <li>目標受眾定義</li>
+                                <li>品牌敘事框架建立</li>
+                                <li>一致性溝通策略</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lang-content" data-lang-content="zh-CN">
+                        <h2 class="zh">品牌定位与叙事策略顾问</h2>
+                        <h3 class="zh">Brand Positioning & Narrative Strategy</h3>
+                        <p class="zh">协助你厘清品牌核心价值，建立一致且有温度的叙事。当你清楚知道自己是谁、为谁服务，客户自然会找到你。</p>
+                        <p class="zh">适合正在建立或重塑品牌的疗愈工作者、教练导师及服务型创业者。</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>品牌核心价值挖掘</li>
+                                <li>目标受众定义</li>
+                                <li>品牌叙事框架建立</li>
+                                <li>一致性沟通策略</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lang-content" data-lang-content="en">
+                        <h2>Brand Positioning & Narrative Strategy</h2>
+                        <h3>品牌定位與敘事策略顧問</h3>
+                        <p>We help clarify your brand's core values and build consistent, warm narratives. When you clearly know who you are and who you serve, clients naturally find you.</p>
+                        <p>Ideal for healers, coaches, mentors, and service-based entrepreneurs building or reshaping their brand.</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>Brand core value discovery</li>
+                                <li>Target audience definition</li>
+                                <li>Brand narrative framework</li>
+                                <li>Consistent communication strategy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-detail">
+                <div class="service-detail-card">
+                    <span class="service-num">03</span>
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+                    <div class="lang-content active" data-lang-content="zh-TW">
+                        <h2 class="zh">服務內容整理與產品化建議</h2>
+                        <h3 class="zh">Service Packaging & Productization</h3>
+                        <p class="zh">將你的專業轉化為清晰的服務方案，讓客戶更容易理解與選擇。從服務架構到定價策略，協助你建立可持續的商業模式。</p>
+                        <p class="zh">適合有專業能力但不知道如何包裝成服務的創業者。</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>服務內容梳理與分類</li>
+                                <li>服務方案設計</li>
+                                <li>定價策略建議</li>
+                                <li>銷售流程優化</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lang-content" data-lang-content="zh-CN">
+                        <h2 class="zh">服务内容整理与产品化建议</h2>
+                        <h3 class="zh">Service Packaging & Productization</h3>
+                        <p class="zh">将你的专业转化为清晰的服务方案，让客户更容易理解与选择。从服务架构到定价策略，协助你建立可持续的商业模式。</p>
+                        <p class="zh">适合有专业能力但不知道如何包装成服务的创业者。</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>服务内容梳理与分类</li>
+                                <li>服务方案设计</li>
+                                <li>定价策略建议</li>
+                                <li>销售流程优化</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lang-content" data-lang-content="en">
+                        <h2>Service Packaging & Productization</h2>
+                        <h3>服務內容整理與產品化建議</h3>
+                        <p>Transform your expertise into clear service offerings that clients can easily understand and choose. From service structure to pricing strategy, we help build sustainable business models.</p>
+                        <p>Ideal for entrepreneurs with professional skills but unsure how to package them as services.</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>Service content organization</li>
+                                <li>Service package design</li>
+                                <li>Pricing strategy advice</li>
+                                <li>Sales process optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-detail">
+                <div class="service-detail-card">
+                    <span class="service-num">04</span>
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
+                    <div class="lang-content active" data-lang-content="zh-TW">
+                        <h2 class="zh">網站及內容方向諮詢</h2>
+                        <h3 class="zh">Website & Content Direction</h3>
+                        <p class="zh">提供網站架構與內容策略建議，讓你的線上呈現更具吸引力。不只是美觀，更要能有效傳達你的價值並轉化訪客。</p>
+                        <p class="zh">適合需要建立或優化線上形象的服務型品牌。</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>網站架構規劃建議</li>
+                                <li>內容策略方向</li>
+                                <li>用戶體驗優化建議</li>
+                                <li>轉化路徑設計</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lang-content" data-lang-content="zh-CN">
+                        <h2 class="zh">网站及内容方向咨询</h2>
+                        <h3 class="zh">Website & Content Direction</h3>
+                        <p class="zh">提供网站架构与内容策略建议，让你的线上呈现更具吸引力。不只是美观，更要能有效传达你的价值并转化访客。</p>
+                        <p class="zh">适合需要建立或优化线上形象的服务型品牌。</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>网站架构规划建议</li>
+                                <li>内容策略方向</li>
+                                <li>用户体验优化建议</li>
+                                <li>转化路径设计</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lang-content" data-lang-content="en">
+                        <h2>Website & Content Direction</h2>
+                        <h3>網站及內容方向諮詢</h3>
+                        <p>Providing website structure and content strategy advice for a more compelling online presence. Not just aesthetics, but effective communication and visitor conversion.</p>
+                        <p>Ideal for service-based brands needing to establish or optimize their online presence.</p>
+                        <div class="service-features">
+                            <ul class="feature-list">
+                                <li>Website structure planning</li>
+                                <li>Content strategy direction</li>
+                                <li>User experience optimization</li>
+                                <li>Conversion path design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Note -->
+            <div class="note-box">
+                <div class="lang-content active" data-lang-content="zh-TW">
+                    <p class="zh"><strong>※ 現階段以顧問式服務為主</strong><br>我們正逐步建立一套可被複製的療癒服務數碼應用模式，未來將配合研發項目推出更具系統化的支援平台。</p>
+                </div>
+                <div class="lang-content" data-lang-content="zh-CN">
+                    <p class="zh"><strong>※ 现阶段以顾问式服务为主</strong><br>我们正逐步建立一套可被复制的疗愈服务数码应用模式，未来将配合研发项目推出更具系统化的支援平台。</p>
+                </div>
+                <div class="lang-content" data-lang-content="en">
+                    <p><strong>※ Currently focused on consulting services</strong><br>We are gradually building a replicable digital application model for healing services, with plans to launch more systematic support platforms alongside future R&D projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="lang-content active" data-lang-content="zh-TW">
+            <h2 class="zh">想了解更多？</h2>
+            <p class="zh">歡迎與我們聯絡，討論最適合你的顧問方案。</p>
+        </div>
+        <div class="lang-content" data-lang-content="zh-CN">
+            <h2 class="zh">想了解更多？</h2>
+            <p class="zh">欢迎与我们联络，讨论最适合你的顾问方案。</p>
+        </div>
+        <div class="lang-content" data-lang-content="en">
+            <h2>Want to Learn More?</h2>
+            <p>Connect with us to discuss the consulting plan that fits you best.</p>
+        </div>
+        <a href="contact.html" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+            <span class="lang-content active" data-lang-content="zh-TW">聯絡我們</span>
+            <span class="lang-content" data-lang-content="zh-CN">联络我们</span>
+            <span class="lang-content" data-lang-content="en">Contact Us</span>
+        </a>
+    </section>
+
+    <!-- Service Disclaimer -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="disclaimer-box">
+                <div class="lang-content active" data-lang-content="zh-TW">
+                    <p class="zh"><strong>※ 服務說明</strong><br>
+                    本頁為顧問式服務介紹。目前 Space Between Healing 以一對一專業支援為主，未涉及 SaaS 平台或訂閱制系統。未來若根據研發成果導入技術應用，將另行公告。</p>
+                </div>
+                <div class="lang-content" data-lang-content="zh-CN">
+                    <p class="zh"><strong>※ 服务说明</strong><br>
+                    本页为顾问式服务介绍。目前 Space Between Healing 以一对一专业支援为主，未涉及 SaaS 平台或订阅制系统。未来若根据研发成果导入技术应用，将另行公告。</p>
+                </div>
+                <div class="lang-content" data-lang-content="en">
+                    <p><strong>※ Service Notice</strong><br>
+                    This page describes consultancy-based services. Space Between Healing currently focuses on one-on-one professional support and does not involve SaaS platforms or subscription-based systems. Any future technology applications based on R&D outcomes will be announced separately.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <span class="footer-logo">Space Between Healing</span>
+            <div class="footer-links">
+                <a href="about.html"><span class="lang-content active" data-lang-content="zh-TW">關於</span><span class="lang-content" data-lang-content="zh-CN">关于</span><span class="lang-content" data-lang-content="en">About</span></a>
+                <a href="services.html"><span class="lang-content active" data-lang-content="zh-TW">服務</span><span class="lang-content" data-lang-content="zh-CN">服务</span><span class="lang-content" data-lang-content="en">Services</span></a>
+                <a href="lounge.html"><span class="lang-content active" data-lang-content="zh-TW">療癒實驗室</span><span class="lang-content" data-lang-content="zh-CN">疗愈实验室</span><span class="lang-content" data-lang-content="en">Healing Lab</span></a>
+                <a href="contact.html"><span class="lang-content active" data-lang-content="zh-TW">聯絡</span><span class="lang-content" data-lang-content="zh-CN">联络</span><span class="lang-content" data-lang-content="en">Contact</span></a>
+                <a href="privacy.html"><span class="lang-content active" data-lang-content="zh-TW">私隱政策</span><span class="lang-content" data-lang-content="zh-CN">隐私政策</span><span class="lang-content" data-lang-content="en">Privacy</span></a>
+                <a href="terms.html"><span class="lang-content active" data-lang-content="zh-TW">服務條款</span><span class="lang-content" data-lang-content="zh-CN">服务条款</span><span class="lang-content" data-lang-content="en">Terms</span></a>
+            </div>
+            <span class="footer-copy">© 2025 Space Between Healing</span>
+        </div>
+    </footer>
+
+    <script>
+        const langLabels = {'zh-TW':'繁中','zh-CN':'简中','en':'EN'};
+        let currentLang = localStorage.getItem('lang') || 'zh-TW';
+        const langSelector = document.querySelector('.lang-selector');
+        const langBtn = document.querySelector('.lang-btn');
+        const langOptions = document.querySelectorAll('.lang-option');
+        const currentLangEl = document.querySelector('.current-lang');
+
+        langBtn.addEventListener('click', () => langSelector.classList.toggle('open'));
+        document.addEventListener('click', e => { if (!langSelector.contains(e.target)) langSelector.classList.remove('open'); });
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.body.setAttribute('data-lang', lang);
+            currentLangEl.textContent = langLabels[lang];
+            langOptions.forEach(opt => opt.classList.toggle('active', opt.dataset.lang === lang));
+            document.querySelectorAll('.lang-content').forEach(el => el.classList.toggle('active', el.dataset.langContent === lang));
+            localStorage.setItem('lang', lang);
+            langSelector.classList.remove('open');
+        }
+        langOptions.forEach(opt => opt.addEventListener('click', () => setLanguage(opt.dataset.lang)));
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>
