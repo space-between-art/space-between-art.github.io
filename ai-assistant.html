@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 助光光 | Space Between Healing</title>
+    <meta name="description" content="AI 品牌療癒助手。24小時為你解答品牌困惑，提供初步的品牌診斷與建議。">
+    <link rel="canonical" href="https://spacebetweenhealing.com/ai-assistant">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Outfit:wght@300;400;500;600&family=Noto+Serif+TC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0a0a0a;
+            --bg-dark: #111;
+            --bg-card: #161616;
+            --gold: #d4a574;
+            --gold-light: #e8c9a0;
+            --sage: #a0b89c;
+            --cream: #f5efe6;
+            --glow-gold: rgba(212,165,116,0.35);
+            --glow-sage: rgba(160,184,156,0.25);
+            --text-primary: #f5efe6;
+            --text-secondary: rgba(245,239,230,0.7);
+            --text-muted: rgba(245,239,230,0.45);
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Outfit', sans-serif;
+            --font-zh: 'Noto Serif TC', serif;
+            --font-zh-sc: 'Noto Serif SC', serif;
+            --ease: cubic-bezier(0.16,1,0.3,1);
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:var(--font-body); background:var(--bg-deep); color:var(--text-primary); line-height:1.7; overflow-x:hidden; min-height:100vh; }
+        [data-lang="zh-TW"] .zh { font-family:var(--font-zh); }
+        [data-lang="zh-CN"] .zh { font-family:var(--font-zh-sc); }
+        .lang-content { display:none; }
+        .lang-content.active { display:block; }
+        span.lang-content { display:none; }
+        span.lang-content.active { display:inline; }
+
+        .ambient { position:fixed; inset:0; z-index:-1; pointer-events:none; }
+        .orb { position:absolute; border-radius:50%; filter:blur(100px); opacity:0.4; }
+        .orb-1 { width:500px; height:500px; background:radial-gradient(circle,var(--glow-gold) 0%,transparent 70%); top:-15%; left:-10%; animation:float 25s ease-in-out infinite; }
+        .orb-2 { width:400px; height:400px; background:radial-gradient(circle,var(--glow-sage) 0%,transparent 70%); bottom:-10%; right:-5%; animation:float 30s ease-in-out infinite reverse; }
+        @keyframes float { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,-20px)} }
+
+        /* Nav */
+        .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1rem 4vw; display:flex; justify-content:space-between; align-items:center; background:rgba(10,10,10,0.95); backdrop-filter:blur(20px); border-bottom:1px solid rgba(212,165,116,0.1); }
+        .nav-logo { font-family:var(--font-display); font-size:1.1rem; letter-spacing:0.2em; color:var(--gold); text-decoration:none; font-weight:500; }
+        .nav-right { display:flex; align-items:center; gap:1.5rem; }
+        .nav-links { display:flex; gap:0.3rem; list-style:none; }
+        .nav-links li a { display:block; font-size:0.8rem; color:var(--text-secondary); text-decoration:none; transition:all 0.3s; padding:0.5rem 0.8rem; border-radius:8px; }
+        .nav-links li a:hover { color:var(--gold); background:rgba(212,165,116,0.1); }
+        .nav-links li a.active { color:var(--gold); background:rgba(212,165,116,0.15); }
+        .lang-selector { position:relative; }
+        .lang-btn { display:flex; align-items:center; gap:0.4rem; padding:0.5rem 1rem; background:rgba(212,165,116,0.1); border:1px solid rgba(212,165,116,0.25); border-radius:100px; color:var(--gold); font-size:0.8rem; cursor:pointer; transition:all 0.3s; font-weight:500; }
+        .lang-btn:hover { background:rgba(212,165,116,0.2); border-color:var(--gold); }
+        .lang-btn svg { width:12px; height:12px; transition:transform 0.3s; }
+        .lang-selector.open .lang-btn svg { transform:rotate(180deg); }
+        .lang-dropdown { position:absolute; top:calc(100% + 8px); right:0; min-width:140px; background:var(--bg-card); border:1px solid rgba(212,165,116,0.2); border-radius:12px; overflow:hidden; opacity:0; visibility:hidden; transform:translateY(-10px); transition:all 0.3s var(--ease); z-index:100; box-shadow:0 10px 40px rgba(0,0,0,0.4); }
+        .lang-selector.open .lang-dropdown { opacity:1; visibility:visible; transform:translateY(0); }
+        .lang-option { display:flex; align-items:center; gap:0.5rem; width:100%; padding:0.75rem 1rem; background:none; border:none; color:var(--text-secondary); font-size:0.85rem; text-align:left; cursor:pointer; transition:all 0.2s; }
+        .lang-option:hover { background:rgba(212,165,116,0.1); color:var(--gold); }
+        .lang-option.active { color:var(--gold); }
+
+        /* Mobile Nav */
+        .mobile-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:5px; }
+        .mobile-toggle span { display:block; width:22px; height:2px; background:var(--gold); transition:all 0.3s; }
+        @media (max-width:900px) {
+            .nav-links { display:none; }
+            .mobile-toggle { display:flex; }
+        }
+
+        /* Main Container */
+        .main-container { min-height:100vh; display:flex; flex-direction:column; padding-top:80px; }
+        
+        /* Page Header */
+        .page-header { padding:4rem 4vw 2rem; text-align:center; }
+        .assistant-icon { width:80px; height:80px; margin:0 auto 1.5rem; background:linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 40px var(--glow-gold); animation:pulse 3s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{box-shadow:0 10px 40px var(--glow-gold);} 50%{box-shadow:0 15px 60px var(--glow-gold);} }
+        .assistant-icon svg { width:40px; height:40px; color:var(--bg-deep); }
+        .page-title { font-family:var(--font-display); font-size:clamp(2rem,5vw,3rem); font-weight:300; margin-bottom:0.75rem; }
+        .page-title .highlight { color:var(--gold); font-style:italic; }
+        .page-subtitle { font-size:1rem; color:var(--text-secondary); max-width:500px; margin:0 auto; }
+
+        /* Chat Language Selector */
+        .chat-lang-selector { display:flex; justify-content:center; gap:0.75rem; margin:2rem auto; padding:0.5rem; background:rgba(212,165,116,0.05); border:1px solid rgba(212,165,116,0.1); border-radius:100px; max-width:fit-content; }
+        .chat-lang-btn { padding:0.6rem 1.2rem; background:transparent; border:none; color:var(--text-secondary); font-size:0.85rem; border-radius:100px; cursor:pointer; transition:all 0.3s; font-weight:500; }
+        .chat-lang-btn:hover { color:var(--gold); }
+        .chat-lang-btn.active { background:var(--gold); color:var(--bg-deep); }
+
+        /* Chat Container */
+        .chat-container { flex:1; max-width:800px; width:100%; margin:0 auto; padding:0 4vw 2rem; display:flex; flex-direction:column; }
+        
+        .chat-window { flex:1; background:rgba(22,22,22,0.8); border:1px solid rgba(212,165,116,0.1); border-radius:24px; padding:1.5rem; min-height:400px; max-height:60vh; overflow-y:auto; margin-bottom:1.5rem; }
+        
+        .chat-messages { display:flex; flex-direction:column; gap:1rem; }
+        
+        .message { max-width:85%; padding:1rem 1.25rem; border-radius:20px; animation:fadeIn 0.3s ease; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+        
+        .message.assistant { align-self:flex-start; background:rgba(212,165,116,0.1); border:1px solid rgba(212,165,116,0.15); border-radius:20px 20px 20px 4px; }
+        .message.user { align-self:flex-end; background:rgba(160,184,156,0.15); border:1px solid rgba(160,184,156,0.2); border-radius:20px 20px 4px 20px; }
+        
+        .message p { font-size:0.95rem; line-height:1.7; margin:0; }
+        .message.assistant p { color:var(--cream); }
+        .message.user p { color:var(--cream); }
+        
+        .typing-indicator { display:flex; gap:4px; padding:1rem 1.25rem; background:rgba(212,165,116,0.1); border:1px solid rgba(212,165,116,0.15); border-radius:20px 20px 20px 4px; max-width:80px; }
+        .typing-dot { width:8px; height:8px; background:var(--gold); border-radius:50%; animation:typing 1.4s infinite; }
+        .typing-dot:nth-child(2) { animation-delay:0.2s; }
+        .typing-dot:nth-child(3) { animation-delay:0.4s; }
+        @keyframes typing { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+
+        /* Input Area */
+        .chat-input-area { display:flex; gap:1rem; align-items:flex-end; }
+        .chat-input-wrapper { flex:1; position:relative; }
+        .chat-input { width:100%; padding:1rem 1.25rem; background:rgba(22,22,22,0.9); border:1px solid rgba(212,165,116,0.15); border-radius:16px; color:var(--cream); font-family:var(--font-body); font-size:0.95rem; resize:none; min-height:54px; max-height:150px; transition:border-color 0.3s; }
+        .chat-input:focus { outline:none; border-color:var(--gold); }
+        .chat-input::placeholder { color:var(--text-muted); }
+        
+        .send-btn { width:54px; height:54px; background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%); border:none; border-radius:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.3s; flex-shrink:0; }
+        .send-btn:hover { transform:translateY(-2px); box-shadow:0 10px 30px var(--glow-gold); }
+        .send-btn:active { transform:translateY(0); }
+        .send-btn svg { width:24px; height:24px; color:var(--bg-deep); }
+        .send-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; box-shadow:none; }
+
+        /* Suggestions */
+        .suggestions { display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin-top:1.5rem; }
+        .suggestion-btn { padding:0.6rem 1rem; background:rgba(212,165,116,0.08); border:1px solid rgba(212,165,116,0.15); border-radius:100px; color:var(--text-secondary); font-size:0.85rem; cursor:pointer; transition:all 0.3s; }
+        .suggestion-btn:hover { background:rgba(212,165,116,0.15); color:var(--gold); border-color:var(--gold); }
+
+        /* Quick Replies in messages */
+        .quick-replies { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1rem; padding-top:0.875rem; border-top:1px solid rgba(212,165,116,0.1); }
+        .quick-btn { background:rgba(250,248,245,0.9); border:1px solid rgba(212,165,116,0.2); padding:0.5rem 1rem; border-radius:100px; font-size:0.85rem; color:var(--gold); cursor:pointer; transition:all 0.25s; font-family:inherit; }
+        .quick-btn:hover { background:var(--gold); color:var(--bg-deep); transform:translateY(-2px); }
+
+        /* Summary Card */
+        .summary-card { background:linear-gradient(155deg, #2D2A26 0%, #3a3632 50%, #2D2A26 100%); border-radius:16px; padding:1.5rem; margin-top:1rem; color:var(--cream); position:relative; overflow:hidden; }
+        .summary-card::before { content:''; position:absolute; top:0; right:0; width:120px; height:120px; background:radial-gradient(circle, rgba(212,165,116,0.15) 0%, transparent 70%); pointer-events:none; }
+        .summary-header { display:flex; align-items:center; gap:0.5rem; color:var(--gold); font-size:0.95rem; font-weight:500; margin-bottom:1.25rem; }
+        .summary-section { margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.08); }
+        .summary-section:last-of-type { border-bottom:none; margin-bottom:0; }
+        .summary-title { font-size:0.75rem; color:var(--gold-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.5rem; }
+        .summary-row { padding:0.4rem 0; display:flex; flex-direction:column; gap:0.2rem; }
+        .summary-row .label { font-size:0.75rem; color:rgba(255,255,255,0.5); }
+        .summary-row .value { font-size:0.9rem; color:var(--cream); line-height:1.5; }
+
+        /* Contact Form in Summary */
+        .contact-form { margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid rgba(255,255,255,0.1); }
+        .form-label { font-size:0.85rem; color:rgba(255,255,255,0.8); margin-bottom:1rem; }
+        .form-input { width:100%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.875rem 1rem; color:var(--cream); font-family:inherit; font-size:0.9rem; margin-bottom:0.75rem; transition:all 0.2s; }
+        .form-input::placeholder { color:rgba(255,255,255,0.4); }
+        .form-input:focus { outline:none; border-color:var(--gold); background:rgba(255,255,255,0.12); }
+        .submit-btn { width:100%; background:linear-gradient(135deg, var(--gold), var(--gold-light)); color:var(--bg-deep); border:none; border-radius:8px; padding:1rem; font-family:inherit; font-size:0.95rem; font-weight:600; cursor:pointer; transition:all 0.25s; margin-top:0.5rem; }
+        .submit-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(212,165,116,0.3); }
+        .submit-btn:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
+        .privacy-hint { font-size:0.75rem; color:rgba(255,255,255,0.5); text-align:center; margin-top:0.75rem; }
+
+        /* Success State */
+        .success-state { text-align:center; padding:1.5rem 0; }
+        .success-icon { width:56px; height:56px; background:linear-gradient(135deg, #22c55e, #16a34a); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; font-size:1.5rem; color:white; }
+        .success-state h4 { font-size:1.1rem; margin-bottom:0.5rem; color:var(--gold); }
+        .success-state p { font-size:0.9rem; color:rgba(255,255,255,0.8); line-height:1.6; }
+
+        /* Disclaimer */
+        .disclaimer { text-align:center; padding:1.5rem 4vw; margin-top:auto; }
+        .disclaimer p { font-size:0.8rem; color:var(--text-muted); max-width:600px; margin:0 auto; }
+
+        /* Footer */
+        footer { padding:2rem 4vw; border-top:1px solid rgba(212,165,116,0.1); text-align:center; }
+        .footer-links { display:flex; justify-content:center; gap:2rem; margin-bottom:1rem; flex-wrap:wrap; }
+        .footer-links a { color:var(--text-muted); text-decoration:none; font-size:0.85rem; transition:color 0.3s; }
+        .footer-links a:hover { color:var(--gold); }
+        .footer-copy { font-size:0.8rem; color:var(--text-muted); }
+
+        /* Mobile */
+        @media (max-width:600px) {
+            .chat-window { min-height:300px; max-height:50vh; }
+            .chat-lang-selector { flex-wrap:wrap; }
+            .suggestion-btn { font-size:0.8rem; padding:0.5rem 0.8rem; }
+        }
+    </style>
+</head>
+<body data-lang="zh-TW">
+    <div class="ambient">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">SPACE BETWEEN</a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="about.html">
+                    <span class="lang-content active" data-lang-content="zh-TW">關於</span>
+                    <span class="lang-content" data-lang-content="zh-CN">关于</span>
+                    <span class="lang-content" data-lang-content="en">About</span>
+                </a></li>
+                <li><a href="services.html">
+                    <span class="lang-content active" data-lang-content="zh-TW">服務</span>
+                    <span class="lang-content" data-lang-content="zh-CN">服务</span>
+                    <span class="lang-content" data-lang-content="en">Services</span>
+                </a></li>
+                <li><a href="portfolio.html">
+                    <span class="lang-content active" data-lang-content="zh-TW">作品</span>
+                    <span class="lang-content" data-lang-content="zh-CN">作品</span>
+                    <span class="lang-content" data-lang-content="en">Works</span>
+                </a></li>
+                <li><a href="lounge.html">
+                    <span class="lang-content active" data-lang-content="zh-TW">會客室</span>
+                    <span class="lang-content" data-lang-content="zh-CN">会客室</span>
+                    <span class="lang-content" data-lang-content="en">Lounge</span>
+                </a></li>
+                <li><a href="ai-assistant.html" class="active">
+                    <span class="lang-content active" data-lang-content="zh-TW">AI 助光光</span>
+                    <span class="lang-content" data-lang-content="zh-CN">AI 助光光</span>
+                    <span class="lang-content" data-lang-content="en">AI Assistant</span>
+                </a></li>
+                <li><a href="contact.html">
+                    <span class="lang-content active" data-lang-content="zh-TW">聯繫</span>
+                    <span class="lang-content" data-lang-content="zh-CN">联系</span>
+                    <span class="lang-content" data-lang-content="en">Contact</span>
+                </a></li>
+            </ul>
+            <div class="lang-selector">
+                <button class="lang-btn">
+                    <span class="current-lang">繁</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="lang-dropdown">
+                    <button class="lang-option active" data-lang="zh-TW">繁體中文</button>
+                    <button class="lang-option" data-lang="zh-CN">简体中文</button>
+                    <button class="lang-option" data-lang="en">English</button>
+                </div>
+            </div>
+            <button class="mobile-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <header class="page-header">
+            <div class="assistant-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/>
+                </svg>
+            </div>
+            <div class="lang-content active" data-lang-content="zh-TW">
+                <h1 class="page-title zh">AI <span class="highlight">助光光</span></h1>
+                <p class="page-subtitle zh">你的 24 小時品牌療癒夥伴，隨時為你解答品牌困惑。</p>
+            </div>
+            <div class="lang-content" data-lang-content="zh-CN">
+                <h1 class="page-title zh">AI <span class="highlight">助光光</span></h1>
+                <p class="page-subtitle zh">你的 24 小时品牌疗愈伙伴，随时为你解答品牌困惑。</p>
+            </div>
+            <div class="lang-content" data-lang-content="en">
+                <h1 class="page-title">AI <span class="highlight">Light Guide</span></h1>
+                <p class="page-subtitle">Your 24/7 brand healing partner, always here to answer your brand questions.</p>
+            </div>
+        </header>
+
+        <!-- Chat Language Selector -->
+        <div class="chat-lang-selector">
+            <button class="chat-lang-btn active" data-chat-lang="zh-TW">繁體中文</button>
+            <button class="chat-lang-btn" data-chat-lang="zh-CN">简体中文</button>
+            <button class="chat-lang-btn" data-chat-lang="en">English</button>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-window" id="chatWindow">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Welcome message will be inserted here -->
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="chat-input-wrapper">
+                    <textarea class="chat-input" id="chatInput" placeholder="輸入你的品牌問題..." rows="1"></textarea>
+                </div>
+                <button class="send-btn" id="sendBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="suggestions" id="suggestions">
+                <!-- Suggestions will be inserted here -->
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <div class="lang-content active" data-lang-content="zh-TW">
+                <p class="zh">AI 助光光提供的是初步品牌建議，如需深入諮詢請聯繫我們的專業團隊。</p>
+            </div>
+            <div class="lang-content" data-lang-content="zh-CN">
+                <p class="zh">AI 助光光提供的是初步品牌建议，如需深入咨询请联系我们的专业团队。</p>
+            </div>
+            <div class="lang-content" data-lang-content="en">
+                <p>AI Light Guide provides preliminary brand suggestions. For in-depth consultation, please contact our professional team.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <p class="footer-copy">© 2025 Space Between Healing</p>
+    </footer>
+
+    <script>
+        // ========== CONFIG ==========
+        const API_ENDPOINT = 'https://guangguang-ai.winsusa2611.workers.dev';
+
+        // ========== STATE ==========
+        let history = [];
+        let hasSummary = false;
+        let currentChatLang = 'zh-TW';
+
+        // ========== DOM ==========
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatWindow = document.getElementById('chatWindow');
+        const suggestionsContainer = document.getElementById('suggestions');
+        const chatLangBtns = document.querySelectorAll('.chat-lang-btn');
+        const langSelector = document.querySelector('.lang-selector');
+        const langBtn = document.querySelector('.lang-btn');
+        const langOptions = document.querySelectorAll('.lang-option');
+        const currentLangSpan = document.querySelector('.current-lang');
+
+        // ========== LANGUAGE CONTENT ==========
+        const langLabels = { 'zh-TW': '繁', 'zh-CN': '简', 'en': 'EN' };
+        
+        const chatContent = {
+            'zh-TW': {
+                welcome: '你好！我是助光光 ✨\n\n歡迎來到品牌療癒實驗室。我是 AI 驅動的品牌情緒診斷系統，會透過對話幫你釐清品牌狀態。\n\n準備好開始診斷了嗎？',
+                placeholder: '說說你的品牌困擾...',
+                suggestions: ['我的品牌好像有點問題...', '想了解診斷流程', '不確定自己需要什麼'],
+                error: '抱歉，診斷系統暫時無法回應 😔\n請稍後再試，或直接聯繫：hello@spacebetweenhealing.com'
+            },
+            'zh-CN': {
+                welcome: '你好！我是助光光 ✨\n\n欢迎来到品牌疗愈实验室。我是 AI 驱动的品牌情绪诊断系统，会通过对话帮你厘清品牌状态。\n\n准备好开始诊断了吗？',
+                placeholder: '说说你的品牌困扰...',
+                suggestions: ['我的品牌好像有点问题...', '想了解诊断流程', '不确定自己需要什么'],
+                error: '抱歉，诊断系统暂时无法回应 😔\n请稍后再试，或直接联系：hello@spacebetweenhealing.com'
+            },
+            'en': {
+                welcome: 'Hello! I\'m Light Guide ✨\n\nWelcome to the Brand Healing Lab. I\'m an AI-powered brand emotion diagnostic system that helps you understand your brand\'s state through conversation.\n\nReady to start the diagnosis?',
+                placeholder: 'Tell me about your brand concerns...',
+                suggestions: ['My brand seems to have some issues...', 'Want to know the process', 'Not sure what I need'],
+                error: 'Sorry, the system is temporarily unavailable 😔\nPlease try again later or contact: hello@spacebetweenhealing.com'
+            }
+        };
+
+        // ========== HELPERS ==========
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function formatText(text) {
+            return escapeHtml(text)
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+        }
+
+        function parseSummary(text) {
+            const m = text.match(/---SUMMARY_START---([\s\S]*?)---SUMMARY_END---/);
+            if (!m) return null;
+            const content = m[1].trim();
+            const data = {};
+            const patterns = [
+                { key: '產業/服務', regex: /產業\/服務[：:]\s*(.+)/i },
+                { key: '目標客群', regex: /目標客群[：:]\s*(.+)/i },
+                { key: '品牌年齡', regex: /品牌年齡[：:]\s*(.+)/i },
+                { key: '用戶感受', regex: /用戶感受[：:]\s*(.+)/i },
+                { key: '情緒關鍵詞', regex: /情緒關鍵詞[：:]\s*(.+)/i },
+                { key: '主要問題維度', regex: /主要問題維度[：:]\s*(.+)/i },
+                { key: '具體徵兆', regex: /具體徵兆[：:]\s*(.+)/i },
+                { key: '療癒方向', regex: /療癒方向[：:]\s*(.+)/i },
+                { key: '優先處理', regex: /優先處理[：:]\s*(.+)/i },
+                { key: '備註', regex: /備註[：:]\s*(.+)/i },
+                { key: '目前困擾', regex: /目前困擾[：:]\s*(.+)/i },
+                { key: '期望目標', regex: /期望目標[：:]\s*(.+)/i }
+            ];
+            patterns.forEach(p => {
+                const match = content.match(p.regex);
+                if (match) data[p.key] = match[1].trim();
+            });
+            return Object.keys(data).length ? data : null;
+        }
+
+        function scrollDown() {
+            setTimeout(() => chatWindow.scrollTop = chatWindow.scrollHeight, 50);
+        }
+
+        // ========== RENDER ==========
+        function addMessage(content, role, opts = {}) {
+            console.log('Adding message:', role, content.substring(0, 50) + '...');
+            
+            if (!chatMessages) {
+                console.error('chatMessages element not found!');
+                return;
+            }
+            
+            const div = document.createElement('div');
+            div.className = `message ${role}`;
+            
+            const summary = parseSummary(content);
+            let displayText = content.replace(/---SUMMARY_START---[\s\S]*?---SUMMARY_END---/, '').trim();
+            let extra = '';
+
+            // Quick replies
+            if (opts.quickReplies?.length) {
+                extra += '<div class="quick-replies">' + 
+                    opts.quickReplies.map(r => `<button class="quick-btn" onclick="quickSend('${r.replace(/'/g, "\\'")}')">${r}</button>`).join('') + 
+                '</div>';
+            }
+
+            // Summary card
+            if (summary && !hasSummary) {
+                hasSummary = true;
+                extra += renderSummaryCard(summary);
+            }
+
+            div.innerHTML = `<p>${formatText(displayText)}</p>${extra}`;
+            chatMessages.appendChild(div);
+            scrollDown();
+        }
+
+        function renderSummaryCard(summary) {
+            return `
+            <div class="summary-card" id="summaryCard">
+                <div class="summary-header">📋 品牌初步診斷報告</div>
+                ${summary['產業/服務'] || summary['目標客群'] ? `
+                <div class="summary-section">
+                    <div class="summary-title">基本資料</div>
+                    ${summary['產業/服務'] ? `<div class="summary-row"><span class="label">產業/服務</span><span class="value">${summary['產業/服務']}</span></div>` : ''}
+                    ${summary['目標客群'] ? `<div class="summary-row"><span class="label">目標客群</span><span class="value">${summary['目標客群']}</span></div>` : ''}
+                </div>` : ''}
+                ${summary['用戶感受'] || summary['情緒關鍵詞'] ? `
+                <div class="summary-section">
+                    <div class="summary-title">情緒狀態</div>
+                    ${summary['用戶感受'] ? `<div class="summary-row"><span class="label">感受</span><span class="value">${summary['用戶感受']}</span></div>` : ''}
+                    ${summary['情緒關鍵詞'] ? `<div class="summary-row"><span class="label">關鍵詞</span><span class="value">${summary['情緒關鍵詞']}</span></div>` : ''}
+                </div>` : ''}
+                ${summary['主要問題維度'] || summary['具體徵兆'] || summary['目前困擾'] ? `
+                <div class="summary-section">
+                    <div class="summary-title">診斷發現</div>
+                    ${summary['主要問題維度'] ? `<div class="summary-row"><span class="label">問題維度</span><span class="value">${summary['主要問題維度']}</span></div>` : ''}
+                    ${summary['具體徵兆'] || summary['目前困擾'] ? `<div class="summary-row"><span class="label">具體徵兆</span><span class="value">${summary['具體徵兆'] || summary['目前困擾']}</span></div>` : ''}
+                </div>` : ''}
+                ${summary['療癒方向'] || summary['優先處理'] || summary['期望目標'] ? `
+                <div class="summary-section">
+                    <div class="summary-title">初步建議</div>
+                    ${summary['療癒方向'] ? `<div class="summary-row"><span class="label">療癒方向</span><span class="value">${summary['療癒方向']}</span></div>` : ''}
+                    ${summary['優先處理'] || summary['期望目標'] ? `<div class="summary-row"><span class="label">優先處理</span><span class="value">${summary['優先處理'] || summary['期望目標']}</span></div>` : ''}
+                </div>` : ''}
+                <div class="contact-form">
+                    <p class="form-label">留下聯繫方式，設計師會根據診斷結果跟進：</p>
+                    <input type="text" class="form-input" id="userName" placeholder="你的名字">
+                    <input type="email" class="form-input" id="userEmail" placeholder="Email">
+                    <input type="tel" class="form-input" id="userPhone" placeholder="WhatsApp（選填）">
+                    <button class="submit-btn" onclick="submitForm()">送出診斷報告給設計師</button>
+                    <p class="privacy-hint">🔒 資料僅用於設計師聯繫</p>
+                </div>
+            </div>`;
+        }
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.className = 'typing-indicator';
+            div.id = 'typingIndicator';
+            div.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+            chatMessages.appendChild(div);
+            scrollDown();
+        }
+
+        function hideTyping() {
+            const el = document.getElementById('typingIndicator');
+            if (el) el.remove();
+        }
+
+        // ========== API ==========
+        async function callAPI(userMsg) {
+            // Add language instruction for non-Chinese
+            let msgToSend = userMsg;
+            if (currentChatLang === 'en') {
+                msgToSend = `[Please respond in English] ${userMsg}`;
+            } else if (currentChatLang === 'zh-CN') {
+                msgToSend = `[請用簡體中文回覆] ${userMsg}`;
+            }
+            
+            history.push({ role: 'user', content: msgToSend });
+            
+            console.log('Calling API:', API_ENDPOINT);
+            console.log('Messages:', history);
+            
+            try {
+                const res = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ messages: history })
+                });
+                
+                console.log('API Response status:', res.status);
+                
+                if (!res.ok) {
+                    console.error('API error status:', res.status);
+                    throw new Error('API error: ' + res.status);
+                }
+                
+                const data = await res.json();
+                console.log('API Response data:', data);
+                
+                const reply = data.content?.[0]?.text || data.reply || chatContent[currentChatLang].error;
+                history.push({ role: 'assistant', content: reply });
+                return reply;
+            } catch (e) {
+                console.error('API Error:', e);
+                return chatContent[currentChatLang].error;
+            }
+        }
+
+        // ========== ACTIONS ==========
+        async function sendMessage(text = null) {
+            const msg = text || chatInput.value.trim();
+            if (!msg) return;
+            
+            addMessage(msg, 'user');
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
+            sendBtn.disabled = true;
+            suggestionsContainer.style.display = 'none';
+            
+            showTyping();
+            const reply = await callAPI(msg);
+            hideTyping();
+            
+            addMessage(reply, 'assistant');
+            sendBtn.disabled = false;
+        }
+
+        function quickSend(text) {
+            sendMessage(text);
+        }
+
+        async function submitForm() {
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            const phone = document.getElementById('userPhone').value.trim();
+            
+            if (!name || !email) {
+                alert('請填寫名字和 Email');
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('請輸入有效的 Email');
+                return;
+            }
+            
+            const btn = document.querySelector('.submit-btn');
+            btn.disabled = true;
+            btn.textContent = '處理中...';
+            
+            // Build summary
+            const card = document.getElementById('summaryCard');
+            let summary = '【品牌初步診斷報告】\n\n';
+            card.querySelectorAll('.summary-section').forEach(section => {
+                const title = section.querySelector('.summary-title')?.textContent || '';
+                if (title) summary += `━━ ${title} ━━\n`;
+                section.querySelectorAll('.summary-row').forEach(row => {
+                    const label = row.querySelector('.label')?.textContent || '';
+                    const value = row.querySelector('.value')?.textContent || '';
+                    if (label && value) summary += `${label}：${value}\n`;
+                });
+                summary += '\n';
+            });
+            
+            const log = history.map(m => `[${m.role === 'user' ? '訪客' : '光光'}]\n${m.content}`).join('\n\n---\n\n');
+            
+            const subject = encodeURIComponent(`[光光診斷] 品牌健康診斷報告：${name}`);
+            const body = encodeURIComponent(
+                `━━━ 訪客資料 ━━━\n姓名：${name}\nEmail：${email}\n電話：${phone || '未提供'}\n\n` +
+                `━━━ 診斷報告 ━━━\n${summary}` +
+                `━━━ 對話紀錄 ━━━\n${log}\n\n` +
+                `──────────\n由光光 AI 智能品牌情緒診斷系統生成`
+            );
+            
+            window.location.href = `mailto:hello@spacebetweenhealing.com?subject=${subject}&body=${body}`;
+            
+            setTimeout(() => {
+                card.innerHTML = `
+                    <div class="success-state">
+                        <div class="success-icon">✓</div>
+                        <h4>診斷報告準備完成！</h4>
+                        <p>請在 Email 應用程式中點擊送出。<br>設計師會在 1-2 個工作天內回覆 ✨</p>
+                    </div>
+                `;
+                scrollDown();
+            }, 300);
+        }
+
+        // ========== LANGUAGE SWITCHING ==========
+        function setLanguage(lang) {
+            document.body.setAttribute('data-lang', lang);
+            localStorage.setItem('preferred-lang', lang);
+            currentLangSpan.textContent = langLabels[lang];
+            langOptions.forEach(opt => opt.classList.toggle('active', opt.dataset.lang === lang));
+            document.querySelectorAll('.lang-content').forEach(el => {
+                el.classList.toggle('active', el.getAttribute('data-lang-content') === lang);
+            });
+            langSelector.classList.remove('open');
+        }
+
+        function setChatLang(lang) {
+            console.log('Setting chat language to:', lang);
+            currentChatLang = lang;
+            chatLangBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.chatLang === lang));
+            if (chatInput) chatInput.placeholder = chatContent[lang].placeholder;
+            
+            // Reset chat
+            if (chatMessages) chatMessages.innerHTML = '';
+            history = [];
+            hasSummary = false;
+            
+            // Show welcome
+            console.log('Showing welcome message');
+            addMessage(chatContent[lang].welcome, 'assistant', {
+                quickReplies: chatContent[lang].suggestions
+            });
+            
+            // Update suggestions
+            if (suggestionsContainer) {
+                suggestionsContainer.innerHTML = chatContent[lang].suggestions.map(s => 
+                    `<button class="suggestion-btn" onclick="quickSend('${s.replace(/'/g, "\\'")}')">${s}</button>`
+                ).join('');
+                suggestionsContainer.style.display = 'flex';
+            }
+        }
+
+        // ========== EVENT LISTENERS ==========
+        if (langBtn) langBtn.addEventListener('click', () => langSelector.classList.toggle('open'));
+        document.addEventListener('click', e => {
+            if (langSelector && !langSelector.contains(e.target)) langSelector.classList.remove('open');
+        });
+        langOptions.forEach(opt => opt.addEventListener('click', () => setLanguage(opt.dataset.lang)));
+        chatLangBtns.forEach(btn => btn.addEventListener('click', () => setChatLang(btn.dataset.chatLang)));
+
+        if (sendBtn) sendBtn.addEventListener('click', () => sendMessage());
+        if (chatInput) {
+            chatInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    if (chatInput.value.trim()) sendMessage();
+                }
+            });
+            chatInput.addEventListener('input', () => {
+                chatInput.style.height = 'auto';
+                chatInput.style.height = Math.min(chatInput.scrollHeight, 150) + 'px';
+                if (sendBtn) sendBtn.disabled = !chatInput.value.trim();
+            });
+        }
+
+        // ========== INIT ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('AI Assistant initialized');
+            const savedLang = localStorage.getItem('preferred-lang') || 'zh-TW';
+            setLanguage(savedLang);
+            setChatLang(savedLang);
+        });
+
+        // Fallback init if DOMContentLoaded already fired
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            console.log('AI Assistant fallback init');
+            const savedLang = localStorage.getItem('preferred-lang') || 'zh-TW';
+            setLanguage(savedLang);
+            setChatLang(savedLang);
+        }
+    </script>
+</body>
+</html>
