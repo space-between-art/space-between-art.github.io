@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>心靈療癒學院 | 隙光創作 Space Between Art</title>
-    <meta name="description" content="由AI角色導師帶領的心理健康科普培訓">
+    <meta name="description" content="由 AI 角色導師帶領的心理健康科普學習與故事案例課程">
     
     <!-- PWA Meta 標籤 -->
     <meta name="theme-color" content="#B87333">
@@ -63,6 +63,19 @@
             opacity: 0.03;
             z-index: 9999;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* Prototype Notice */
+        .prototype-notice {
+            max-width: 980px;
+            margin: 18px auto;
+            padding: 14px;
+            border: 1px solid rgba(0,0,0,.12);
+            border-radius: 12px;
+            font-size: 13px;
+            line-height: 1.6;
+            background: rgba(255,255,255,0.7);
+            text-align: center;
         }
 
         /* Navigation */
@@ -773,6 +786,33 @@
             text-decoration: underline;
         }
 
+        /* Content Lab Notice */
+        .footer-content-lab {
+            max-width: 700px;
+            margin: 1.5rem auto;
+            padding: 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .footer-content-lab strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold-light);
+        }
+
+        /* PWA Note */
+        .pwa-note {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero { padding: 4rem 1.5rem; }
@@ -791,6 +831,7 @@
             }
             .nav-links.active { display: flex; }
             .mobile-menu-btn { display: flex; }
+            .prototype-notice { margin: 12px 1rem; padding: 12px; font-size: 12px; }
         }
     </style>
     <!-- Favicon -->
@@ -813,7 +854,7 @@
         <ul class="nav-links">
             <li><a href="index.html">首頁</a></li>
             <li><a href="index.html#works">作品</a></li>
-            <li><a href="ai-chat.html">心光咨詢站</a></li>
+            <li><a href="ai-chat.html">心光諮詢站</a></li>
             <li><a href="academy.html" class="active">療癒學院</a></li>
             <li><a href="gallery.html">畫廊</a></li>
             <li><a href="community.html">互動區</a></li>
@@ -826,26 +867,35 @@
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-badge">✦ AI-POWERED LEARNING ✦</span>
+            <span class="hero-badge">✦ NARRATIVE LEARNING ✦</span>
             <h1 class="hero-title">心靈療癒學院</h1>
             <p class="hero-subtitle">Soul Healing Academy</p>
             <p class="hero-desc">
-                由小說角色化身的 AI 導師，帶領你探索心理健康的世界。<br>
+                由小說角色化身的 AI 導師們，帶領你探索心理健康的世界。<br>
                 透過故事案例學習，在安全的虛構情境中理解療癒的藝術。
             </p>
             <div class="hero-cta">
-                <a href="#demo" class="btn btn-primary">體驗對話</a>
+                <a href="#demo" class="btn btn-primary">體驗互動</a>
                 <a href="#modules" class="btn btn-secondary">瀏覽課程</a>
             </div>
         </div>
     </section>
 
+    <!-- Prototype Notice -->
+    <div class="prototype-notice">
+        <strong>重要聲明｜Notice</strong><br>
+        本頁為敘事內容與學習模組之原型展示，旨在呈現教育性探索。<br>
+        本頁不代表任何已上線的 AI 系統、手機應用程式、SaaS 平台、訂閱制服務或商業化產品。<br><br>
+        This page presents narrative learning prototypes and educational exploration only.<br>
+        It does not represent any deployed AI system, mobile app, SaaS platform, subscription service, or launched commercial product.
+    </div>
+
     <!-- Mentors -->
     <section class="mentors" id="mentors">
         <div class="section-header">
-            <p class="section-label">✦ AI MENTORS ✦</p>
+            <p class="section-label">✦ STORY MENTORS ✦</p>
             <h2 class="section-title">你的導師團隊</h2>
-            <p class="section-desc">來自《逐光的藥師》與《違章靈魂改建事務所》的角色，將以 AI 導師身份陪伴你的學習旅程。</p>
+            <p class="section-desc">來自《逐光的藥師》與《違章靈魂改建事務所》的角色，將以敘事導師身份陪伴你的學習旅程。</p>
         </div>
 
         <div class="mentors-grid">
@@ -985,7 +1035,7 @@
         <div class="section-header">
             <p class="section-label">✦ START HERE ✦</p>
             <h2 class="section-title">選擇你的學習方式</h2>
-            <p class="section-desc">學院小助手帶你找到最適合的入口</p>
+            <p class="section-desc">學院小助手帶你找到最適合的起點</p>
         </div>
 
         <div class="chat-demo">
@@ -1001,7 +1051,7 @@
                     <div class="avatar">✨</div>
                     <div class="bubble">
                         <p>嗨！歡迎來到心靈療癒學院 👋</p>
-                        <p style="margin-top: 0.8rem;">這裡有四位 AI 導師陪你學習：</p>
+                        <p style="margin-top: 0.8rem;">這裡有四位敘事導師陪你學習：</p>
                         <p style="margin-top: 0.5rem; font-size: 0.9em; line-height: 1.8;">
                             🌙 曦婆婆 — 溫暖智慧的資深督導<br>
                             💜 顧曼 — 專業細膩的心理師<br>
@@ -1025,7 +1075,7 @@
             <a href="ai-chat.html" class="scenario-btn" style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; text-decoration: none; width: 100%; justify-content: flex-start;">
                 <span style="font-size: 1.5rem;">💬</span>
                 <span style="text-align: left;">
-                    <strong style="display: block;">心光咨詢站</strong>
+                    <strong style="display: block;">心光諮詢站</strong>
                     <small style="opacity: 0.8;">情緒陪伴・輕鬆對話・五位療癒角色</small>
                 </span>
             </a>
@@ -1113,7 +1163,7 @@
                         <div style="font-size: 3rem; margin-bottom: 1rem;">🎓</div>
                         <h3 style="font-family: 'Noto Serif TC', serif; color: var(--steel); font-size: 1.3rem; margin-bottom: 0.5rem;">個案督導室</h3>
                         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
-                            與 AI 導師進行專業個案研討<br>
+                            與敘事導師進行專業個案研討<br>
                             四種互動模式・七個教學案例
                         </p>
                         <span style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--forest); color: white; border-radius: 20px; font-size: 0.9rem;">
@@ -1139,19 +1189,19 @@
                     </div>
                 </a>
 
-                <!-- 心光咨詢站 -->
+                <!-- 心光諮詢站 -->
                 <a href="ai-chat.html" style="text-decoration: none;">
                     <div style="background: white; border-radius: 16px; padding: 2rem; transition: all 0.3s; cursor: pointer;"
                          onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.2)';"
                          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
                         <div style="font-size: 3rem; margin-bottom: 1rem;">💬</div>
-                        <h3 style="font-family: 'Noto Serif TC', serif; color: var(--steel); font-size: 1.3rem; margin-bottom: 0.5rem;">心光咨詢站</h3>
+                        <h3 style="font-family: 'Noto Serif TC', serif; color: var(--steel); font-size: 1.3rem; margin-bottom: 0.5rem;">心光諮詢站</h3>
                         <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
                             與小說角色輕鬆對話<br>
                             五位療癒者陪伴你
                         </p>
                         <span style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--purple); color: white; border-radius: 20px; font-size: 0.9rem;">
-                            開始對話 →
+                            開始敘事互動 →
                         </span>
                     </div>
                 </a>
@@ -1166,13 +1216,21 @@
             <span class="footer-brand-en"> | Soul Healing Academy</span>
         </div>
         <p class="footer-disclaimer">
-            ⚠️ 本平台為心理健康科普教育性質，非專業心理治療訓練。<br>
-            故事案例為虛構創作，僅供學習參考。如有真實心理健康需求，請尋求專業協助。
+            ⚠️ 本平台為心理健康科普與自我照顧教育用途，非心理治療或專業訓練。<br>
+            故事案例為虛構創作，僅供學習參考。如你正面對明顯困擾或危機，請儘快尋求合資格專業人士協助。
         </p>
         <div class="footer-resources">
             <h4>心理健康資源</h4>
             <p>台灣：安心專線 1925 ・ 生命線 1995<br>香港：撒瑪利亞防止自殺會 2389 2222</p>
         </div>
+
+        <!-- Content Lab Notice -->
+        <div class="footer-content-lab">
+            <strong>Content Lab Notice</strong>
+            Space Between Art is an original narrative content laboratory presenting storyworld exploration and creative IP prototypes.
+            This site does not represent any deployed SaaS platform, AI service system, subscription product, or launched commercial software.
+        </div>
+
         <div class="footer-studio">
             <h4>工作室</h4>
             <a href="https://spacebetweenhealing.com" target="_blank">隙光設計｜品牌設計服務</a>
@@ -1208,103 +1266,9 @@
                 }
             });
         }
-
-        // ========== PWA 安裝提示 ==========
-        let deferredPrompt;
-        const installBanner = document.getElementById('pwa-install-banner');
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            
-            const dismissed = localStorage.getItem('pwa-install-dismissed');
-            if (dismissed && Date.now() - parseInt(dismissed) < 86400000) return;
-            
-            if (installBanner) installBanner.style.display = 'flex';
-            console.log('📱 PWA 可安裝');
-        });
-
-        function installPWA() {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('✅ 用戶接受安裝');
-                    if (installBanner) installBanner.style.display = 'none';
-                }
-                deferredPrompt = null;
-            });
-        }
-
-        function dismissInstallBanner() {
-            if (installBanner) installBanner.style.display = 'none';
-            localStorage.setItem('pwa-install-dismissed', Date.now());
-        }
-
-        window.addEventListener('appinstalled', () => {
-            console.log('🎉 PWA 安裝完成');
-            if (installBanner) installBanner.style.display = 'none';
-            deferredPrompt = null;
-        });
-
-        // iOS 安裝指南
-        function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        }
-
-        function isInStandaloneMode() {
-            return window.matchMedia('(display-mode: standalone)').matches || 
-                   window.navigator.standalone === true;
-        }
-
-        if (isIOS() && !isInStandaloneMode()) {
-            const iosGuide = document.getElementById('ios-install-guide');
-            const dismissed = localStorage.getItem('ios-guide-dismissed');
-            if (iosGuide && (!dismissed || Date.now() - parseInt(dismissed) > 86400000)) {
-                setTimeout(() => { iosGuide.style.display = 'flex'; }, 3000);
-            }
-        }
-
-        function dismissIOSGuide() {
-            const iosGuide = document.getElementById('ios-install-guide');
-            if (iosGuide) iosGuide.style.display = 'none';
-            localStorage.setItem('ios-guide-dismissed', Date.now());
-        }
     </script>
 
-    <!-- PWA 安裝橫幅 (Android / Desktop) -->
-    <div id="pwa-install-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%); padding: 1rem; align-items: center; justify-content: space-between; gap: 1rem; z-index: 9999; border-top: 1px solid rgba(184, 115, 51, 0.3); box-shadow: 0 -4px 20px rgba(0,0,0,0.3); flex-wrap: wrap;">
-        <div style="display: flex; align-items: center; gap: 1rem;">
-            <span style="font-size: 2rem;">🌙</span>
-            <div>
-                <h4 style="color: #D4956A; margin: 0 0 0.25rem 0; font-size: 1rem;">安裝療癒學院 App</h4>
-                <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.85rem;">隨時隨地進行心靈療癒</p>
-            </div>
-        </div>
-        <div style="display: flex; gap: 0.5rem;">
-            <button onclick="installPWA()" style="background: linear-gradient(135deg, #B87333, #D4956A); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 20px; cursor: pointer; font-size: 0.9rem;">安裝</button>
-            <button onclick="dismissInstallBanner()" style="background: transparent; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.2); padding: 0.6rem 1rem; border-radius: 20px; cursor: pointer; font-size: 0.9rem;">稍後</button>
-        </div>
-    </div>
-
-    <!-- iOS 安裝指南 -->
-    <div id="ios-install-guide" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%); padding: 1.5rem; flex-direction: column; gap: 1rem; z-index: 9999; border-top: 1px solid rgba(184, 115, 51, 0.3); box-shadow: 0 -4px 20px rgba(0,0,0,0.3);">
-        <button onclick="dismissIOSGuide()" style="position: absolute; top: 0.5rem; right: 0.5rem; background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 1.5rem; cursor: pointer;">×</button>
-        <h4 style="color: #D4956A; margin: 0; text-align: center;">將療癒學院加入主畫面</h4>
-        <div style="display: flex; justify-content: center; gap: 2rem; color: rgba(255,255,255,0.8); font-size: 0.9rem;">
-            <div style="text-align: center;">
-                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📤</div>
-                <div>點擊「分享」</div>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">➕</div>
-                <div>加入主畫面</div>
-            </div>
-            <div style="text-align: center;">
-                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✅</div>
-                <div>完成！</div>
-            </div>
-        </div>
-    </div>
+    <!-- PWA Install Banner Removed for Safety Compliance -->
+    <!-- Original PWA install prompts have been removed as per CreateSmart guidelines -->
 </body>
 </html>

@@ -28,727 +28,162 @@
             --cream-dark: #F5EDE4;
             --text-dark: #2A2A2A;
             --text-muted: #6B6B6B;
-            
-            /* 逐光的藥師 */
             --pharmacist-green: #2C5F2D;
             --pharmacist-dark: #1A3A1B;
             --pharmacist-gold: #D4A84B;
             --pharmacist-gold-light: #E8C97A;
-            
-            /* 違章靈魂改建事務所 */
             --renovator-blue: #2C3E50;
             --renovator-dark: #1A252F;
             --renovator-copper: #B87333;
             --renovator-copper-light: #D4956A;
-            
-            /* 拾味小館 */
             --bistro-amber: #8B5A2B;
             --bistro-dark: #5C3D1E;
             --bistro-gold: #DAA520;
             --bistro-gold-light: #F4D03F;
-            
-            /* 心宅系列 */
             --hearthouse-violet: #4A3658;
             --hearthouse-dark: #2D1B3D;
             --hearthouse-lavender: #9B8AA8;
             --hearthouse-lavender-light: #C4B8D0;
             --hearthouse-gold: #D4A84B;
-            
             --shadow-soft: rgba(0,0,0,0.08);
             --shadow-medium: rgba(0,0,0,0.15);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background: var(--cream);
-            color: var(--text-dark);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 1rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(253, 248, 243, 0.95);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 2px 30px var(--shadow-soft);
-            transition: all 0.4s ease;
-        }
-
+        body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.8; overflow-x: hidden; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(253, 248, 243, 0.95); backdrop-filter: blur(15px); box-shadow: 0 2px 30px var(--shadow-soft); transition: all 0.4s ease; }
         nav.scrolled { padding: 0.8rem 3rem; }
-
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--pharmacist-green), var(--hearthouse-violet));
-            transition: width 0.3s ease;
-        }
-
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--text-dark); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+        .nav-links a { font-size: 0.9rem; color: var(--text-dark); text-decoration: none; position: relative; transition: color 0.3s ease; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--pharmacist-green), var(--hearthouse-violet)); transition: width 0.3s ease; }
         .nav-links a:hover::after { width: 100%; }
-
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .mobile-menu-btn span {
-            width: 24px;
-            height: 2px;
-            background: var(--text-dark);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, 
-                var(--pharmacist-dark) 0%, 
-                var(--renovator-dark) 33%,
-                var(--hearthouse-dark) 66%,
-                var(--pharmacist-dark) 100%);
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            opacity: 0.15;
-            background-image: 
-                radial-gradient(circle at 20% 30%, var(--pharmacist-gold) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, var(--hearthouse-lavender) 0%, transparent 40%);
-            animation: heroFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes heroFloat {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-        }
-
-        .particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--pharmacist-gold);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 15s infinite;
-        }
-
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+        .mobile-menu-btn span { width: 24px; height: 2px; background: var(--text-dark); }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; background: linear-gradient(135deg, var(--pharmacist-dark) 0%, var(--renovator-dark) 33%, var(--hearthouse-dark) 66%, var(--pharmacist-dark) 100%); }
+        .hero-bg { position: absolute; inset: 0; opacity: 0.15; background-image: radial-gradient(circle at 20% 30%, var(--pharmacist-gold) 0%, transparent 40%), radial-gradient(circle at 80% 70%, var(--hearthouse-lavender) 0%, transparent 40%); animation: heroFloat 20s ease-in-out infinite; }
+        @keyframes heroFloat { 0%, 100% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(5deg); } }
+        .particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+        .particle { position: absolute; width: 4px; height: 4px; background: var(--pharmacist-gold); border-radius: 50%; opacity: 0; animation: particleFloat 15s infinite; }
         .particle:nth-child(odd) { background: var(--hearthouse-lavender); }
-
-        @keyframes particleFloat {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { opacity: 0; transform: translateY(-100vh) scale(1); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 2rem;
-            max-width: 900px;
-        }
-
+        @keyframes particleFloat { 0% { opacity: 0; transform: translateY(100vh) scale(0); } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { opacity: 0; transform: translateY(-100vh) scale(1); } }
+        .hero-content { position: relative; z-index: 10; text-align: center; padding: 2rem; max-width: 900px; }
         .hero-logo { margin-bottom: 2rem; animation: logoReveal 1.5s ease-out; }
-
-        @keyframes logoReveal {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 400;
-            color: white;
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-            animation: titleFade 1.5s ease-out 0.3s both;
-        }
-
-        .hero-subtitle {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 2.5rem;
-            animation: titleFade 1.5s ease-out 0.6s both;
-        }
-
-        @keyframes titleFade {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-tagline {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.6);
-            letter-spacing: 0.3em;
-            margin-bottom: 3rem;
-            animation: titleFade 1.5s ease-out 0.9s both;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: titleFade 1.5s ease-out 1.2s both;
-        }
-
-        .cta-btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.4s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cta-btn.primary {
-            background: linear-gradient(135deg, var(--pharmacist-gold), var(--pharmacist-gold-light));
-            color: var(--pharmacist-dark);
-            box-shadow: 0 10px 40px rgba(212, 168, 75, 0.4);
-        }
-
-        .cta-btn.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(212, 168, 75, 0.5);
-        }
-
-        .cta-btn.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.4);
-        }
-
-        .cta-btn.secondary:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* Works Section */
-        .works-section {
-            padding: 6rem 2rem;
-            background: var(--cream);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-        }
-
-        .section-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--text-dark);
-        }
-
-        /* 2x2 Grid */
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .work-card {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            min-height: 520px;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
+        @keyframes logoReveal { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 5rem); font-weight: 400; color: white; margin-bottom: 1rem; letter-spacing: 0.1em; animation: titleFade 1.5s ease-out 0.3s both; }
+        .hero-subtitle { font-family: 'Noto Serif TC', serif; font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: rgba(255,255,255,0.85); margin-bottom: 2.5rem; animation: titleFade 1.5s ease-out 0.6s both; }
+        @keyframes titleFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-tagline { font-size: 1rem; color: rgba(255,255,255,0.6); letter-spacing: 0.3em; margin-bottom: 3rem; animation: titleFade 1.5s ease-out 0.9s both; }
+        .hero-cta { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; animation: titleFade 1.5s ease-out 1.2s both; }
+        .cta-btn { padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: all 0.4s ease; display: flex; align-items: center; gap: 0.5rem; }
+        .cta-btn.primary { background: linear-gradient(135deg, var(--pharmacist-gold), var(--pharmacist-gold-light)); color: var(--pharmacist-dark); box-shadow: 0 10px 40px rgba(212, 168, 75, 0.4); }
+        .cta-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 15px 50px rgba(212, 168, 75, 0.5); }
+        .cta-btn.secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); }
+        .cta-btn.secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
+        .scroll-indicator { position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
+        .works-section { padding: 6rem 2rem; background: var(--cream); }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-label { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: var(--text-muted); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.8rem; }
+        .section-title { font-family: 'Noto Serif TC', serif; font-size: clamp(1.8rem, 4vw, 2.5rem); color: var(--text-dark); }
+        .works-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 1400px; margin: 0 auto; }
+        .work-card { position: relative; border-radius: 24px; overflow: hidden; min-height: 520px; cursor: pointer; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         .work-card:hover { transform: translateY(-10px); }
-
-        .work-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-        }
-
-        .work-card.pharmacist {
-            background: linear-gradient(180deg, var(--pharmacist-dark) 0%, var(--pharmacist-green) 100%);
-        }
-        .work-card.pharmacist::before {
-            background: radial-gradient(circle at 30% 70%, rgba(212, 168, 75, 0.3) 0%, transparent 50%);
-        }
-
-        .work-card.renovator {
-            background: linear-gradient(180deg, var(--renovator-dark) 0%, var(--renovator-blue) 100%);
-        }
-        .work-card.renovator::before {
-            background: radial-gradient(circle at 70% 30%, rgba(184, 115, 51, 0.3) 0%, transparent 50%);
-        }
-
-        .work-card.bistro {
-            background: linear-gradient(180deg, var(--bistro-dark) 0%, var(--bistro-amber) 100%);
-        }
-        .work-card.bistro::before {
-            background: radial-gradient(circle at 50% 60%, rgba(218, 165, 32, 0.3) 0%, transparent 50%);
-        }
-
-        .work-card.hearthouse {
-            background: linear-gradient(180deg, var(--hearthouse-dark) 0%, var(--hearthouse-violet) 100%);
-        }
-        .work-card.hearthouse::before {
-            background: radial-gradient(circle at 40% 50%, rgba(155, 138, 168, 0.3) 0%, transparent 50%);
-        }
-
-        .work-card-content {
-            position: relative;
-            z-index: 10;
-            padding: 2rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            color: white;
-        }
-
-        .work-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 1rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            width: fit-content;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-
+        .work-card::before { content: ''; position: absolute; inset: 0; z-index: 1; }
+        .work-card.pharmacist { background: linear-gradient(180deg, var(--pharmacist-dark) 0%, var(--pharmacist-green) 100%); }
+        .work-card.pharmacist::before { background: radial-gradient(circle at 30% 70%, rgba(212, 168, 75, 0.3) 0%, transparent 50%); }
+        .work-card.renovator { background: linear-gradient(180deg, var(--renovator-dark) 0%, var(--renovator-blue) 100%); }
+        .work-card.renovator::before { background: radial-gradient(circle at 70% 30%, rgba(184, 115, 51, 0.3) 0%, transparent 50%); }
+        .work-card.bistro { background: linear-gradient(180deg, var(--bistro-dark) 0%, var(--bistro-amber) 100%); }
+        .work-card.bistro::before { background: radial-gradient(circle at 50% 60%, rgba(218, 165, 32, 0.3) 0%, transparent 50%); }
+        .work-card.hearthouse { background: linear-gradient(180deg, var(--hearthouse-dark) 0%, var(--hearthouse-violet) 100%); }
+        .work-card.hearthouse::before { background: radial-gradient(circle at 40% 50%, rgba(155, 138, 168, 0.3) 0%, transparent 50%); }
+        .work-card-content { position: relative; z-index: 10; padding: 2rem; height: 100%; display: flex; flex-direction: column; color: white; }
+        .work-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 1rem; background: rgba(255,255,255,0.15); border-radius: 20px; font-size: 0.75rem; width: fit-content; margin-bottom: 1.5rem; backdrop-filter: blur(10px); }
         .work-card.pharmacist .work-badge { background: rgba(212, 168, 75, 0.3); color: var(--pharmacist-gold-light); }
         .work-card.renovator .work-badge { background: rgba(184, 115, 51, 0.3); color: var(--renovator-copper-light); }
         .work-card.bistro .work-badge { background: rgba(218, 165, 32, 0.3); color: var(--bistro-gold-light); }
         .work-card.hearthouse .work-badge { background: rgba(155, 138, 168, 0.3); color: var(--hearthouse-lavender-light); }
-
-        .work-title-zh {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .work-title-en {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
-            opacity: 0.7;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .work-genre {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .genre-tag {
-            padding: 0.25rem 0.7rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            font-size: 0.7rem;
-        }
-
-        .work-description {
-            font-size: 0.85rem;
-            line-height: 1.7;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .work-highlight {
-            padding: 1rem;
-            background: rgba(0,0,0,0.2);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            border-left: 3px solid;
-        }
-
+        .work-title-zh { font-family: 'Noto Serif TC', serif; font-size: 1.6rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .work-title-en { font-family: 'Cormorant Garamond', serif; font-size: 0.85rem; opacity: 0.7; font-style: italic; margin-bottom: 1rem; }
+        .work-genre { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .genre-tag { padding: 0.25rem 0.7rem; background: rgba(255,255,255,0.1); border-radius: 15px; font-size: 0.7rem; }
+        .work-description { font-size: 0.85rem; line-height: 1.7; opacity: 0.9; margin-bottom: 1rem; flex-grow: 1; }
+        .work-highlight { padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 12px; margin-bottom: 1rem; border-left: 3px solid; }
         .work-card.pharmacist .work-highlight { border-color: var(--pharmacist-gold); }
         .work-card.renovator .work-highlight { border-color: var(--renovator-copper); }
         .work-card.bistro .work-highlight { border-color: var(--bistro-gold); }
         .work-card.hearthouse .work-highlight { border-color: var(--hearthouse-gold); }
-
-        .highlight-quote {
-            font-family: 'Noto Serif TC', serif;
-            font-style: italic;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .work-stats {
-            display: flex;
-            gap: 1.2rem;
-            margin-bottom: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
+        .highlight-quote { font-family: 'Noto Serif TC', serif; font-style: italic; font-size: 0.85rem; line-height: 1.5; }
+        .work-stats { display: flex; gap: 1.2rem; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
         .stat-item { text-align: center; }
-
-        .stat-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
+        .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; }
         .work-card.pharmacist .stat-value { color: var(--pharmacist-gold-light); }
         .work-card.renovator .stat-value { color: var(--renovator-copper-light); }
         .work-card.bistro .stat-value { color: var(--bistro-gold-light); }
         .work-card.hearthouse .stat-value { color: var(--hearthouse-lavender-light); }
-
         .stat-label { font-size: 0.65rem; opacity: 0.7; }
-
-        .work-cta {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-
-        .work-btn {
-            flex: 1;
-            min-width: 70px;
-            padding: 0.7rem;
-            border-radius: 10px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
+        .work-cta { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+        .work-btn { flex: 1; min-width: 70px; padding: 0.7rem; border-radius: 10px; text-decoration: none; text-align: center; font-size: 0.75rem; font-weight: 500; transition: all 0.3s ease; }
         .work-btn.primary { color: var(--pharmacist-dark); }
         .work-card.pharmacist .work-btn.primary { background: var(--pharmacist-gold); }
         .work-card.renovator .work-btn.primary { background: var(--renovator-copper); color: white; }
         .work-card.bistro .work-btn.primary { background: var(--bistro-gold); color: var(--bistro-dark); }
         .work-card.hearthouse .work-btn.primary { background: var(--hearthouse-lavender); color: var(--hearthouse-dark); }
-
-        .work-btn.secondary {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
+        .work-btn.secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
         .work-btn:hover { transform: translateY(-2px); }
-
-        .work-deco {
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-            font-size: 4rem;
-            opacity: 0.08;
-        }
-
-        /* Series Badge */
-        .series-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: 0.3rem 0.8rem;
-            background: rgba(155, 138, 168, 0.5);
-            border-radius: 6px;
-            font-size: 0.65rem;
-            color: white;
-            backdrop-filter: blur(5px);
-            z-index: 15;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--pharmacist-dark) 0%, var(--hearthouse-dark) 100%);
-            color: white;
-        }
-
-        .about-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .about-title span {
-            background: linear-gradient(90deg, var(--pharmacist-gold), var(--hearthouse-lavender));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 2;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .feature-item {
-            padding: 2rem 1.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
-        }
-
+        .work-deco { position: absolute; right: 1rem; top: 1rem; font-size: 4rem; opacity: 0.08; }
+        .series-badge { position: absolute; top: 1rem; left: 1rem; padding: 0.3rem 0.8rem; background: rgba(155, 138, 168, 0.5); border-radius: 6px; font-size: 0.65rem; color: white; backdrop-filter: blur(5px); z-index: 15; }
+        .about-section { padding: 6rem 2rem; background: linear-gradient(135deg, var(--pharmacist-dark) 0%, var(--hearthouse-dark) 100%); color: white; }
+        .about-container { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .about-title { font-family: 'Noto Serif TC', serif; font-size: 2rem; margin-bottom: 2rem; }
+        .about-title span { background: linear-gradient(90deg, var(--pharmacist-gold), var(--hearthouse-lavender)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .about-text { font-size: 1.05rem; line-height: 2; opacity: 0.9; max-width: 700px; margin: 0 auto 3rem; }
+        .about-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .feature-item { padding: 2rem 1.5rem; background: rgba(255,255,255,0.05); border-radius: 16px; transition: all 0.3s ease; }
+        .feature-item:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }
         .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
         .feature-title { font-family: 'Noto Serif TC', serif; font-size: 1rem; margin-bottom: 0.5rem; }
         .feature-desc { font-size: 0.8rem; opacity: 0.7; }
-
-        /* Newsletter */
-        .newsletter-section {
-            padding: 5rem 2rem;
-            background: var(--cream-dark);
-            text-align: center;
-        }
-
+        .newsletter-section { padding: 5rem 2rem; background: var(--cream-dark); text-align: center; }
         .newsletter-container { max-width: 600px; margin: 0 auto; }
-
-        .newsletter-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
+        .newsletter-title { font-family: 'Noto Serif TC', serif; font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-dark); }
         .newsletter-desc { color: var(--text-muted); margin-bottom: 2rem; }
-
-        .newsletter-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--pharmacist-green), var(--hearthouse-violet));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(44, 95, 45, 0.3);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
+        .newsletter-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, var(--pharmacist-green), var(--hearthouse-violet)); color: white; text-decoration: none; border-radius: 50px; font-weight: 500; transition: all 0.3s ease; }
+        .newsletter-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(44, 95, 45, 0.3); }
+        footer { background: var(--text-dark); color: white; padding: 4rem 2rem 2rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-brand .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-bottom: 1rem; }
         .footer-brand p { font-size: 0.9rem; opacity: 0.7; line-height: 1.6; }
-
-        .footer-links h4 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--pharmacist-gold-light);
-        }
-
+        .footer-links h4 { font-family: 'Noto Serif TC', serif; font-size: 1rem; margin-bottom: 1rem; color: var(--pharmacist-gold-light); }
         .footer-links ul { list-style: none; }
         .footer-links li { margin-bottom: 0.5rem; }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease; }
         .footer-links a:hover { color: white; }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .works-grid { grid-template-columns: repeat(2, 1fr); }
-            .about-features { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0; right: 0;
-                background: var(--cream);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 1rem;
-                box-shadow: 0 10px 30px var(--shadow-medium);
-            }
-            .nav-links.active { display: flex; }
-            .mobile-menu-btn { display: flex; }
-            .hero-cta { flex-direction: column; align-items: center; }
-            .works-grid { grid-template-columns: 1fr; max-width: 500px; }
-            .work-card { min-height: 480px; }
-            .about-features { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .footer-disclaimer { max-width: 800px; margin: 0 auto 2rem; padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; font-size: 0.75rem; line-height: 1.6; text-align: center; color: rgba(255, 255, 255, 0.6); }
+        .footer-disclaimer strong { color: rgba(255, 255, 255, 0.8); display: block; margin-bottom: 0.5rem; }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; opacity: 0.6; }
+        @media (max-width: 1200px) { .works-grid { grid-template-columns: repeat(2, 1fr); } .about-features { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); flex-direction: column; padding: 1.5rem; gap: 1rem; box-shadow: 0 10px 30px var(--shadow-medium); } .nav-links.active { display: flex; } .mobile-menu-btn { display: flex; } .hero-cta { flex-direction: column; align-items: center; } .works-grid { grid-template-columns: 1fr; max-width: 500px; } .work-card { min-height: 480px; } .about-features { grid-template-columns: 1fr; } .footer-content { grid-template-columns: 1fr; text-align: center; } }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
     <nav id="navbar">
         <a href="index.html" class="nav-logo">
-            <svg viewBox="0 0 40 40" width="36" height="36">
-                <defs>
-                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#D4A84B"/>
-                        <stop offset="100%" style="stop-color:#9B8AA8"/>
-                    </linearGradient>
-                </defs>
-                <circle cx="20" cy="20" r="18" fill="none" stroke="#2A2A2A" stroke-width="1.5"/>
-                <text x="20" y="26" font-family="Cormorant Garamond, serif" font-size="18" fill="url(#logoGradient)" text-anchor="middle">S</text>
-            </svg>
+            <svg viewBox="0 0 40 40" width="36" height="36"><defs><linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#D4A84B"/><stop offset="100%" style="stop-color:#9B8AA8"/></linearGradient></defs><circle cx="20" cy="20" r="18" fill="none" stroke="#2A2A2A" stroke-width="1.5"/><text x="20" y="26" font-family="Cormorant Garamond, serif" font-size="18" fill="url(#logoGradient)" text-anchor="middle">S</text></svg>
             Space Between Art
         </a>
         <ul class="nav-links">
             <li><a href="#works">作品</a></li>
-            <li><a href="ai-chat.html">心光咨詢站</a></li>
+            <li><a href="ai-chat.html">心光諮詢站</a></li>
             <li><a href="academy.html">療癒學院</a></li>
             <li><a href="gallery.html">畫廊</a></li>
             <li><a href="community.html">互動區</a></li>
             <li><a href="#about">關於</a></li>
         </ul>
-        <button class="mobile-menu-btn" aria-label="選單">
-            <span></span><span></span><span></span>
-        </button>
+        <button class="mobile-menu-btn" aria-label="選單"><span></span><span></span><span></span></button>
     </nav>
 
     <section class="hero">
@@ -764,151 +199,63 @@
             <div class="particle" style="left: 80%; animation-delay: 0.5s;"></div>
             <div class="particle" style="left: 90%; animation-delay: 3.5s;"></div>
         </div>
-        
         <div class="hero-content">
             <div class="hero-logo">
-                <svg viewBox="0 0 120 120" width="100" height="100">
-                    <defs>
-                        <linearGradient id="heroGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#F5D998"/>
-                            <stop offset="50%" style="stop-color:#D4A84B"/>
-                            <stop offset="100%" style="stop-color:#9B8AA8"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="60" cy="60" r="55" fill="none" stroke="url(#heroGold)" stroke-width="2"/>
-                    <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                    <text x="60" y="75" font-family="Cormorant Garamond, serif" font-size="50" fill="url(#heroGold)" text-anchor="middle">S</text>
-                </svg>
+                <svg viewBox="0 0 120 120" width="100" height="100"><defs><linearGradient id="heroGold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F5D998"/><stop offset="50%" style="stop-color:#D4A84B"/><stop offset="100%" style="stop-color:#9B8AA8"/></linearGradient></defs><circle cx="60" cy="60" r="55" fill="none" stroke="url(#heroGold)" stroke-width="2"/><circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/><text x="60" y="75" font-family="Cormorant Garamond, serif" font-size="50" fill="url(#heroGold)" text-anchor="middle">S</text></svg>
             </div>
             <h1 class="hero-title">Space Between Art</h1>
             <p class="hero-subtitle">在光與暗之間，故事發生</p>
             <p class="hero-tagline">療癒系都市奇幻創作工作室</p>
             <div class="hero-cta">
-                <a href="#works" class="cta-btn primary">
-                    <span>探索作品</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="ai-chat.html" class="cta-btn secondary">
-                    <span>心光諮詢室</span>
-                </a>
+                <a href="#works" class="cta-btn primary"><span>探索作品</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+                <a href="ai-chat.html" class="cta-btn secondary"><span>心光諮詢室</span></a>
             </div>
         </div>
-
-        <div class="scroll-indicator">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-        </div>
+        <div class="scroll-indicator"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
     </section>
 
     <section class="works-section" id="works">
-        <div class="section-header fade-in">
-            <p class="section-label">Our Stories</p>
-            <h2 class="section-title">作品系列</h2>
-        </div>
-
+        <div class="section-header fade-in"><p class="section-label">Our Stories</p><h2 class="section-title">作品系列</h2></div>
         <div class="works-grid">
-            <!-- 逐光的藥師 -->
             <div class="work-card pharmacist fade-in">
                 <div class="work-deco">🌿</div>
                 <div class="work-card-content">
                     <div class="work-badge"><span>✦</span> 完結・115,000字</div>
                     <h3 class="work-title-zh">逐光的藥師</h3>
                     <p class="work-title-en">The Light-Chasing Pharmacist</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">都市奇幻</span>
-                        <span class="genre-tag">療癒</span>
-                        <span class="genre-tag">植物魔法</span>
-                    </div>
-                    <p class="work-description">
-                        二十三歲的曜經營著「間隙書屋」二手書店，擁有能看見人們「心光」的特殊能力。
-                        在社工師晴的協助下，他用植物的芳香與智慧，療癒社區居民被黑暗侵蝕的靈魂。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">「每個人的心裡都有光，只是有時候會被遮住。」</p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item"><div class="stat-value">25</div><div class="stat-label">章節</div></div>
-                        <div class="stat-item"><div class="stat-value">12</div><div class="stat-label">療癒植物</div></div>
-                        <div class="stat-item"><div class="stat-value">∞</div><div class="stat-label">心光</div></div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="https://www.mirrorfiction.com/book/42470" class="work-btn primary" target="_blank">閱讀 ↗</a>
-                        <a href="pharmacist/index.html" class="work-btn secondary">簡介</a>
-                        <a href="pharmacist/characters.html" class="work-btn secondary">角色</a>
-                    </div>
+                    <div class="work-genre"><span class="genre-tag">都市奇幻</span><span class="genre-tag">療癒</span><span class="genre-tag">植物魔法</span></div>
+                    <p class="work-description">二十三歲的曜經營著「間隙書屋」二手書店，擁有能看見人們「心光」的特殊能力。在社工師晴的協助下，他用植物的芳香與智慧，療癒社區居民被黑暗侵蝕的靈魂。</p>
+                    <div class="work-highlight"><p class="highlight-quote">「每個人的心裡都有光，只是有時候會被遮住。」</p></div>
+                    <div class="work-stats"><div class="stat-item"><div class="stat-value">25</div><div class="stat-label">章節</div></div><div class="stat-item"><div class="stat-value">12</div><div class="stat-label">療癒植物</div></div><div class="stat-item"><div class="stat-value">∞</div><div class="stat-label">心光</div></div></div>
+                    <div class="work-cta"><a href="https://www.mirrorfiction.com/book/42470" class="work-btn primary" target="_blank">閱讀 ↗</a><a href="pharmacist/index.html" class="work-btn secondary">簡介</a><a href="pharmacist/characters.html" class="work-btn secondary">角色</a></div>
                 </div>
             </div>
-
-            <!-- 違章靈魂改建事務所 -->
             <div class="work-card renovator fade-in">
                 <div class="work-deco">🔧</div>
                 <div class="work-card-content">
                     <div class="work-badge"><span>◆</span> 優化中・25集</div>
                     <h3 class="work-title-zh">違章靈魂改建事務所</h3>
                     <p class="work-title-en">The Soul Renovator</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">都市奇幻</span>
-                        <span class="genre-tag">心理懸疑</span>
-                        <span class="genre-tag">療癒</span>
-                    </div>
-                    <p class="work-description">
-                        路遙是一名「心靈建築改建師」，能看見每個人心中的「房子」——
-                        沒有門的玻璃屋、銅牆鐵壁的碉堡、無限迴圈的樓梯⋯⋯
-                        他用藍圖之眼和共感錘，改建那些違章的靈魂結構。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">「每一座違章建築，都是一道沒有被聽見的求救信號。」</p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item"><div class="stat-value">25</div><div class="stat-label">集數</div></div>
-                        <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">心靈法器</div></div>
-                        <div class="stat-item"><div class="stat-value">∞</div><div class="stat-label">建築</div></div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="https://www.penana.com/story/199696/違章靈魂改建事務所" class="work-btn primary" target="_blank">閱讀 ↗</a>
-                        <a href="renovator/index.html" class="work-btn secondary">簡介</a>
-                        <a href="renovator/characters.html" class="work-btn secondary">角色</a>
-                    </div>
+                    <div class="work-genre"><span class="genre-tag">都市奇幻</span><span class="genre-tag">心理懸疑</span><span class="genre-tag">療癒</span></div>
+                    <p class="work-description">路遙是一名「心靈建築改建師」，能看見每個人心中的「房子」——沒有門的玻璃屋、銅牆鐵壁的碉堡、無限迴圈的樓梯⋯⋯他用藍圖之眼和共感錘，改建那些違章的靈魂結構。</p>
+                    <div class="work-highlight"><p class="highlight-quote">「每一座違章建築，都是一道沒有被聽見的求救信號。」</p></div>
+                    <div class="work-stats"><div class="stat-item"><div class="stat-value">25</div><div class="stat-label">集數</div></div><div class="stat-item"><div class="stat-value">7</div><div class="stat-label">心靈法器</div></div><div class="stat-item"><div class="stat-value">∞</div><div class="stat-label">建築</div></div></div>
+                    <div class="work-cta"><a href="https://www.penana.com/story/199696/違章靈魂改建事務所" class="work-btn primary" target="_blank">閱讀 ↗</a><a href="renovator/index.html" class="work-btn secondary">簡介</a><a href="renovator/characters.html" class="work-btn secondary">角色</a></div>
                 </div>
             </div>
-
-            <!-- 拾味小館 -->
             <div class="work-card bistro fade-in">
                 <div class="work-deco">🍳</div>
                 <div class="work-card-content">
                     <div class="work-badge"><span>✦</span> 完結・130,000字</div>
                     <h3 class="work-title-zh">拾味小館</h3>
                     <p class="work-title-en">The Taste Collector</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">都市奇幻</span>
-                        <span class="genre-tag">美食療癒</span>
-                        <span class="genre-tag">愛情</span>
-                    </div>
-                    <p class="work-description">
-                        沈若能「嚐」到別人的情緒——快樂是甜的，悲傷是鹹的。
-                        她在渡口區開了一間小餐館，用食物療癒每個客人。
-                        直到一個失去味覺五年的攝影師走進來——他是她唯一嚐不到的人。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">「人間滋味，皆可下嚥。唯有情之所繫，方能入心。」</p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item"><div class="stat-value">22</div><div class="stat-label">集數</div></div>
-                        <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">味覺情緒</div></div>
-                        <div class="stat-item"><div class="stat-value">∞</div><div class="stat-label">療癒料理</div></div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="#" class="work-btn primary">閱讀 ↗</a>
-                        <a href="bistro/index.html" class="work-btn secondary">簡介</a>
-                        <a href="bistro/characters.html" class="work-btn secondary">角色</a>
-                    </div>
+                    <div class="work-genre"><span class="genre-tag">都市奇幻</span><span class="genre-tag">美食療癒</span><span class="genre-tag">愛情</span></div>
+                    <p class="work-description">沈若能「嚐」到別人的情緒——快樂是甜的，悲傷是鹹的。她在渡口區開了一間小餐館，用食物療癒每個客人。直到一個失去味覺五年的攝影師走進來——他是她唯一嚐不到的人。</p>
+                    <div class="work-highlight"><p class="highlight-quote">「人間滋味，皆可下嚥。唯有情之所繫，方能入心。」</p></div>
+                    <div class="work-stats"><div class="stat-item"><div class="stat-value">22</div><div class="stat-label">集數</div></div><div class="stat-item"><div class="stat-value">5</div><div class="stat-label">味覺情緒</div></div><div class="stat-item"><div class="stat-value">∞</div><div class="stat-label">療癒料理</div></div></div>
+                    <div class="work-cta"><a href="#" class="work-btn primary">閱讀 ↗</a><a href="bistro/index.html" class="work-btn secondary">簡介</a><a href="bistro/characters.html" class="work-btn secondary">角色</a></div>
                 </div>
             </div>
-
-            <!-- 心宅：禁室 -->
             <div class="work-card hearthouse fade-in">
                 <div class="series-badge">心宅系列 1/5</div>
                 <div class="work-deco">🚪</div>
@@ -916,28 +263,11 @@
                     <div class="work-badge"><span>◈</span> 心宅系列・第一冊</div>
                     <h3 class="work-title-zh">心宅：禁室</h3>
                     <p class="work-title-en">The Forbidden Room</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">心理驚悚</span>
-                        <span class="genre-tag">創傷療癒</span>
-                        <span class="genre-tag">整合心理學</span>
-                    </div>
-                    <p class="work-description">
-                        梧桐街47號，一棟維多利亞式老宅，二十年的沉默。
-                        心理建築師林默召集六位心理學專家——精神分析師、行為主義者、人本治療師、認知心理學家、生物心理學家、社會心理學家——用六把不同的手術刀，解開「悲傷之屋」與守墓人蘇雨的禁室之謎。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">「每個人的心靈都是一座宅邸，創傷是裂縫，記憶是房間，療癒是重建。」</p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item"><div class="stat-value">11</div><div class="stat-label">章節</div></div>
-                        <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">心理學派</div></div>
-                        <div class="stat-item"><div class="stat-value">8</div><div class="stat-label">專業附錄</div></div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="#" class="work-btn primary">閱讀 ↗</a>
-                        <a href="hearthouse/index.html" class="work-btn secondary">簡介</a>
-                        <a href="hearthouse/series.html" class="work-btn secondary">系列</a>
-                    </div>
+                    <div class="work-genre"><span class="genre-tag">心理驚悚</span><span class="genre-tag">創傷療癒</span><span class="genre-tag">整合心理學</span></div>
+                    <p class="work-description">梧桐街47號，一棟維多利亞式老宅，二十年的沉默。心理建築師林默召集六位心理學專家——精神分析師、行為主義者、人本治療師、認知心理學家、生物心理學家、社會心理學家——用六把不同的手術刀，解開「悲傷之屋」與守墓人蘇雨的禁室之謎。</p>
+                    <div class="work-highlight"><p class="highlight-quote">「每個人的心靈都是一座宅邸，創傷是裂縫，記憶是房間，療癒是重建。」</p></div>
+                    <div class="work-stats"><div class="stat-item"><div class="stat-value">11</div><div class="stat-label">章節</div></div><div class="stat-item"><div class="stat-value">6</div><div class="stat-label">心理學派</div></div><div class="stat-item"><div class="stat-value">8</div><div class="stat-label">專業附錄</div></div></div>
+                    <div class="work-cta"><a href="#" class="work-btn primary">閱讀 ↗</a><a href="hearthouse/index.html" class="work-btn secondary">簡介</a><a href="hearthouse/series.html" class="work-btn secondary">系列</a></div>
                 </div>
             </div>
         </div>
@@ -946,33 +276,12 @@
     <section class="about-section" id="about">
         <div class="about-container fade-in">
             <h2 class="about-title">關於 <span>Space Between Art</span></h2>
-            <p class="about-text">
-                我們相信，最深刻的療癒發生在「之間」——
-                光與暗之間、現實與幻想之間、傷口與痊癒之間。
-                透過都市奇幻的框架，我們探索人心的建築、靈魂的光譜，
-                用故事為每一個需要被看見的人，點亮一盞燈。
-            </p>
+            <p class="about-text">我們相信，最深刻的療癒發生在「之間」——光與暗之間、現實與幻想之間、傷口與痊癒之間。透過都市奇幻的框架，我們探索人心的建築、靈魂的光譜，用故事為每一個需要被看見的人，點亮一盞燈。</p>
             <div class="about-features">
-                <div class="feature-item">
-                    <div class="feature-icon">🌿</div>
-                    <h3 class="feature-title">植物魔法</h3>
-                    <p class="feature-desc">洋甘菊的安撫、迷迭香的記憶、聖約翰草的光明</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🏠</div>
-                    <h3 class="feature-title">心靈建築</h3>
-                    <p class="feature-desc">每個人心中都有一座房子，等待被看見與改建</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🍜</div>
-                    <h3 class="feature-title">味覺療癒</h3>
-                    <p class="feature-desc">酸甜苦辣鹹，每種滋味都是一種情緒的出口</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🚪</div>
-                    <h3 class="feature-title">心宅探索</h3>
-                    <p class="feature-desc">創傷是裂縫，記憶是房間，療癒是重建</p>
-                </div>
+                <div class="feature-item"><div class="feature-icon">🌿</div><h3 class="feature-title">植物魔法</h3><p class="feature-desc">洋甘菊的安撫、迷迭香的記憶、聖約翰草的光明</p></div>
+                <div class="feature-item"><div class="feature-icon">🏠</div><h3 class="feature-title">心靈建築</h3><p class="feature-desc">每個人心中都有一座房子，等待被看見與改建</p></div>
+                <div class="feature-item"><div class="feature-icon">🍜</div><h3 class="feature-title">味覺療癒</h3><p class="feature-desc">酸甜苦辣鹹，每種滋味都是一種情緒的出口</p></div>
+                <div class="feature-item"><div class="feature-icon">🚪</div><h3 class="feature-title">心宅探索</h3><p class="feature-desc">創傷是裂縫，記憶是房間，療癒是重建</p></div>
             </div>
         </div>
     </section>
@@ -981,71 +290,26 @@
         <div class="newsletter-container fade-in">
             <h2 class="newsletter-title">📬 訂閱創作電子報</h2>
             <p class="newsletter-desc">每週療癒小語、創作幕後、新章節更新通知、獨家番外篇</p>
-            <a href="https://spacebetweenart.substack.com" class="newsletter-btn" target="_blank">
-                <span>免費訂閱</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
+            <a href="https://spacebetweenart.substack.com" class="newsletter-btn" target="_blank"><span>免費訂閱</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
     </section>
 
     <footer>
         <div class="footer-content">
-            <div class="footer-brand">
-                <div class="footer-logo">Space Between Art</div>
-                <p>在光與暗之間，故事發生。<br>療癒系都市奇幻創作工作室。</p>
-            </div>
-            <div class="footer-links">
-                <h4>作品</h4>
-                <ul>
-                    <li><a href="pharmacist/index.html">逐光的藥師</a></li>
-                    <li><a href="renovator/index.html">違章靈魂改建事務所</a></li>
-                    <li><a href="bistro/index.html">拾味小館</a></li>
-                    <li><a href="hearthouse/index.html">心宅：禁室</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>探索</h4>
-                <ul>
-                    <li><a href="ai-chat.html">心光咨詢站</a></li>
-                    <li><a href="academy.html">療癒學院</a></li>
-                    <li><a href="gallery.html">畫廊</a></li>
-                    <li><a href="community.html">互動區</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>聯絡</h4>
-                <ul>
-                    <li><a href="mailto:hello@space-between.art">hello@space-between.art</a></li>
-                    <li><a href="https://www.penana.com/user/123456" target="_blank">Penana</a></li>
-                    <li><a href="https://spacebetweenart.substack.com" target="_blank">Substack</a></li>
-                </ul>
-            </div>
+            <div class="footer-brand"><div class="footer-logo">Space Between Art</div><p>在光與暗之間，故事發生。<br>療癒系都市奇幻創作工作室。</p></div>
+            <div class="footer-links"><h4>作品</h4><ul><li><a href="pharmacist/index.html">逐光的藥師</a></li><li><a href="renovator/index.html">違章靈魂改建事務所</a></li><li><a href="bistro/index.html">拾味小館</a></li><li><a href="hearthouse/index.html">心宅：禁室</a></li></ul></div>
+            <div class="footer-links"><h4>探索</h4><ul><li><a href="ai-chat.html">心光諮詢站</a></li><li><a href="academy.html">療癒學院</a></li><li><a href="gallery.html">畫廊</a></li><li><a href="community.html">互動區</a></li></ul></div>
+            <div class="footer-links"><h4>聯絡</h4><ul><li><a href="mailto:hello@space-between.art">hello@space-between.art</a></li><li><a href="https://www.penana.com/user/123456" target="_blank">Penana</a></li><li><a href="https://spacebetweenart.substack.com" target="_blank">Substack</a></li></ul></div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Space Between Art. All rights reserved.</p>
-        </div>
+        <div class="footer-disclaimer"><strong>Content Lab Notice</strong>Space Between Art is an original narrative content laboratory presenting storyworld exploration and creative IP prototypes. This site does not represent any deployed SaaS platform, AI service system, subscription product, or launched commercial software.</div>
+        <div class="footer-bottom"><p>© 2025 Space Between Art. All rights reserved.</p></div>
     </footer>
 
     <script>
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
-        });
-
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() { document.querySelector('.nav-links').classList.toggle('active'); });
+        window.addEventListener('scroll', function() { const navbar = document.getElementById('navbar'); if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
         const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
         fadeElements.forEach(el => observer.observe(el));
     </script>
 </body>

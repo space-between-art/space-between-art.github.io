@@ -5,622 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>讀者互動區 | 隙光創作 Space Between Art</title>
     <meta name="description" content="隙光創作讀者互動區 - 討論、投稿、問答、社群連結">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
-    
     <style>
-        :root {
-            --forest-green: #2C5F2D;
-            --forest-dark: #1A3A1B;
-            --forest-light: #4A7C4B;
-            --warm-gold: #D4A84B;
-            --gold-light: #E8C97A;
-            --cream: #FDF8F3;
-            --cream-dark: #F5EDE4;
-            --text-dark: #2A2A2A;
-            --text-muted: #6B6B6B;
-            --shadow-soft: rgba(44, 95, 45, 0.08);
-            --shadow-medium: rgba(44, 95, 45, 0.15);
-        }
-
+        :root { --forest-green: #2C5F2D; --forest-dark: #1A3A1B; --forest-light: #4A7C4B; --warm-gold: #D4A84B; --gold-light: #E8C97A; --cream: #FDF8F3; --cream-dark: #F5EDE4; --text-dark: #2A2A2A; --text-muted: #6B6B6B; --shadow-soft: rgba(44, 95, 45, 0.08); --shadow-medium: rgba(44, 95, 45, 0.15); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background: var(--cream);
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 1.2rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(253, 248, 243, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 30px var(--shadow-soft);
-        }
-
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--forest-green);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-
-        .nav-logo-zh {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--forest-green);
-        }
-
-        .nav-logo-en {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active { color: var(--forest-green); font-weight: 500; }
-
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .mobile-menu-btn span {
-            width: 24px;
-            height: 2px;
-            background: var(--forest-green);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--forest-green) 0%, var(--forest-light) 100%);
-            color: white;
-        }
-
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--gold-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-subtitle {
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
-
-        /* Section */
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: var(--warm-gold);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2rem;
-            color: var(--forest-green);
-        }
-
-        /* Interactive Cards Grid */
-        .interact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .interact-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px var(--shadow-soft);
-            transition: all 0.4s ease;
-            text-align: center;
-            border: 2px solid transparent;
-        }
-
-        .interact-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--warm-gold);
-            box-shadow: 0 12px 40px var(--shadow-medium);
-        }
-
-        .interact-card.featured {
-            background: linear-gradient(135deg, var(--forest-green) 0%, var(--forest-dark) 100%);
-            color: white;
-        }
-
-        .interact-card.featured .interact-title {
-            color: var(--gold-light);
-        }
-
-        .interact-card.featured .interact-desc {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .interact-card.featured .interact-btn {
-            background: white;
-            color: var(--forest-green);
-        }
-
-        .interact-card.featured .interact-btn:hover {
-            background: var(--cream);
-        }
-
-        .interact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .interact-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.3rem;
-            color: var(--forest-green);
-            margin-bottom: 0.5rem;
-        }
-
-        .interact-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .interact-btn {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            background: var(--forest-green);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .interact-btn:hover {
-            background: var(--forest-dark);
-            transform: scale(1.05);
-        }
-
-        .interact-btn.secondary {
-            background: transparent;
-            border: 1px solid var(--forest-green);
-            color: var(--forest-green);
-        }
-
-        .interact-btn.secondary:hover {
-            background: var(--forest-green);
-            color: white;
-        }
-
-        /* Discussion Topics */
-        .topics-section {
-            background: var(--cream-dark);
-            padding: 4rem 2rem;
-        }
-
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .topic-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 15px var(--shadow-soft);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .topic-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px var(--shadow-medium);
-        }
-
-        .topic-tag {
-            display: inline-block;
-            padding: 0.2rem 0.8rem;
-            background: var(--cream-dark);
-            color: var(--forest-green);
-            font-size: 0.75rem;
-            border-radius: 12px;
-            margin-bottom: 0.8rem;
-        }
-
-        .topic-tag.hot {
-            background: #FFE4E1;
-            color: #C75050;
-        }
-
-        .topic-tag.new {
-            background: #E8F5E9;
-            color: var(--forest-green);
-        }
-
-        .topic-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .topic-meta {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Fan Art Section */
-        .fanart-section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .fanart-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .fanart-item {
-            aspect-ratio: 1;
-            background: var(--cream-dark);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .fanart-item:hover {
-            transform: scale(1.05);
-        }
-
-        .fanart-item.upload {
-            border: 2px dashed var(--forest-light);
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .fanart-item.upload:hover {
-            background: var(--cream-dark);
-            border-color: var(--warm-gold);
-        }
-
-        .upload-content {
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        .upload-content .icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .upload-content p {
-            font-size: 0.85rem;
-        }
-
-        /* Q&A Section */
-        .qa-section {
-            background: var(--forest-dark);
-            padding: 4rem 2rem;
-            color: white;
-        }
-
-        .qa-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .qa-item {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--warm-gold);
-        }
-
-        .qa-question {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.1rem;
-            color: var(--gold-light);
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        .qa-answer {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            padding-left: 1.5rem;
-        }
-
-        .qa-cta {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .qa-btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--warm-gold);
-            color: var(--forest-dark);
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .qa-btn:hover {
-            background: var(--gold-light);
-            transform: scale(1.05);
-        }
-
-        /* Social Links */
-        .social-section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .social-grid {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .social-card {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            width: 180px;
-            box-shadow: 0 4px 20px var(--shadow-soft);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--text-dark);
-        }
-
-        .social-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px var(--shadow-medium);
-        }
-
-        .social-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-card h4 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.1rem;
-            color: var(--forest-green);
-            margin-bottom: 0.3rem;
-        }
-
-        .social-card p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Reading Challenge */
-        .challenge-section {
-            background: linear-gradient(135deg, var(--cream-dark) 0%, #E8DFD5 100%);
-            padding: 4rem 2rem;
-        }
-
-        .challenge-card {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-            box-shadow: 0 8px 30px var(--shadow-medium);
-            border: 2px solid var(--warm-gold);
-        }
-
-        .challenge-badge {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: var(--warm-gold);
-            color: var(--forest-dark);
-            font-size: 0.85rem;
-            font-weight: 500;
-            border-radius: 20px;
-            margin-bottom: 1.5rem;
-        }
-
-        .challenge-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.8rem;
-            color: var(--forest-green);
-            margin-bottom: 1rem;
-        }
-
-        .challenge-desc {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .challenge-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: var(--warm-gold);
-            font-weight: 600;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--forest-green);
-            color: white;
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        .footer-brand {
-            margin-bottom: 0.3rem;
-        }
-
-        .footer-brand-zh {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.3rem;
-            color: var(--gold-light);
-        }
-
-        .footer-brand-en {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .footer-tagline {
-            opacity: 0.8;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .footer-studio {
-            margin: 1.5rem 0;
-        }
-
-        .footer-studio h4 {
-            font-size: 0.85rem;
-            color: var(--gold-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-studio a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        .footer-studio a:hover {
-            color: white;
-        }
-
-        .footer-copyright {
-            font-size: 0.8rem;
-            opacity: 0.6;
-            margin-top: 1.5rem;
-        }
-
-        .footer-studio-note {
-            font-size: 0.7rem;
-            opacity: 0.4;
-            margin-top: 0.5rem;
-        }
-
-        .footer-studio-note a {
-            color: var(--gold-light);
-            text-decoration: none;
-        }
-
-        .footer-studio-note a:hover {
-            text-decoration: underline;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0; right: 0;
-                background: var(--cream);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 1.25rem;
-            }
-            .nav-links.active { display: flex; }
-            .mobile-menu-btn { display: flex; }
-            .interact-grid { grid-template-columns: 1fr; }
-            .challenge-stats { flex-direction: column; gap: 1.5rem; }
-            .social-grid { gap: 1rem; }
-            .social-card { width: 140px; padding: 1.5rem; }
-        }
+        body { font-family: 'Noto Sans TC', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.8; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: rgba(253, 248, 243, 0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 30px var(--shadow-soft); }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--forest-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+        .nav-logo-zh { font-family: 'Noto Serif TC', serif; font-size: 1rem; font-weight: 600; color: var(--forest-green); }
+        .nav-logo-en { font-family: 'Cormorant Garamond', serif; font-size: 0.7rem; color: var(--text-muted); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { font-size: 0.9rem; color: var(--text-dark); text-decoration: none; transition: color 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--forest-green); font-weight: 500; }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+        .mobile-menu-btn span { width: 24px; height: 2px; background: var(--forest-green); }
+        .hero { padding: 8rem 2rem 4rem; text-align: center; background: linear-gradient(135deg, var(--forest-green) 0%, var(--forest-light) 100%); color: white; }
+        .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); color: var(--gold-light); margin-bottom: 0.5rem; }
+        .hero-subtitle { opacity: 0.9; font-size: 1.1rem; }
+        
+        /* 互動區聲明 - 新增 */
+        .small-note { max-width: 800px; margin: 0 auto 2rem; padding: 12px 16px; background: rgba(44, 95, 45, 0.05); border: 1px solid rgba(44, 95, 45, 0.15); border-radius: 8px; font-size: 0.8rem; line-height: 1.6; text-align: center; color: var(--text-muted); }
+        
+        .section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-label { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: var(--warm-gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .section-title { font-family: 'Noto Serif TC', serif; font-size: 2rem; color: var(--forest-green); }
+        .interact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .interact-card { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px var(--shadow-soft); transition: all 0.4s ease; text-align: center; border: 2px solid transparent; }
+        .interact-card:hover { transform: translateY(-5px); border-color: var(--warm-gold); box-shadow: 0 12px 40px var(--shadow-medium); }
+        .interact-card.featured { background: linear-gradient(135deg, var(--forest-green) 0%, var(--forest-dark) 100%); color: white; }
+        .interact-card.featured .interact-title { color: var(--gold-light); }
+        .interact-card.featured .interact-desc { color: rgba(255, 255, 255, 0.9); }
+        .interact-card.featured .interact-btn { background: white; color: var(--forest-green); }
+        .interact-card.featured .interact-btn:hover { background: var(--cream); }
+        .interact-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .interact-title { font-family: 'Noto Serif TC', serif; font-size: 1.3rem; color: var(--forest-green); margin-bottom: 0.5rem; }
+        .interact-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .interact-btn { display: inline-block; padding: 0.7rem 1.5rem; background: var(--forest-green); color: white; text-decoration: none; border-radius: 25px; font-size: 0.9rem; transition: all 0.3s ease; }
+        .interact-btn:hover { background: var(--forest-dark); transform: scale(1.05); }
+        .interact-btn.secondary { background: transparent; border: 1px solid var(--forest-green); color: var(--forest-green); }
+        .interact-btn.secondary:hover { background: var(--forest-green); color: white; }
+        .topics-section { background: var(--cream-dark); padding: 4rem 2rem; }
+        .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .topic-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 15px var(--shadow-soft); transition: all 0.3s ease; cursor: pointer; }
+        .topic-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px var(--shadow-medium); }
+        .topic-tag { display: inline-block; padding: 0.2rem 0.8rem; background: var(--cream-dark); color: var(--forest-green); font-size: 0.75rem; border-radius: 12px; margin-bottom: 0.8rem; }
+        .topic-tag.hot { background: #FFE4E1; color: #C75050; }
+        .topic-tag.new { background: #E8F5E9; color: var(--forest-green); }
+        .topic-title { font-family: 'Noto Serif TC', serif; font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .topic-meta { font-size: 0.8rem; color: var(--text-muted); }
+        .fanart-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .fanart-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+        .fanart-item { aspect-ratio: 1; background: var(--cream-dark); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; overflow: hidden; transition: all 0.3s ease; }
+        .fanart-item:hover { transform: scale(1.05); }
+        .fanart-item.upload { border: 2px dashed var(--forest-light); background: transparent; cursor: pointer; }
+        .fanart-item.upload:hover { background: var(--cream-dark); border-color: var(--warm-gold); }
+        .upload-content { text-align: center; color: var(--text-muted); }
+        .upload-content .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .upload-content p { font-size: 0.85rem; }
+        .qa-section { background: var(--forest-dark); padding: 4rem 2rem; color: white; }
+        .qa-container { max-width: 800px; margin: 0 auto; }
+        .qa-item { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; border-left: 3px solid var(--warm-gold); }
+        .qa-question { font-family: 'Noto Serif TC', serif; font-size: 1.1rem; color: var(--gold-light); margin-bottom: 0.8rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+        .qa-answer { font-size: 0.95rem; opacity: 0.9; padding-left: 1.5rem; }
+        .qa-cta { text-align: center; margin-top: 2rem; }
+        .qa-btn { display: inline-block; padding: 1rem 2rem; background: var(--warm-gold); color: var(--forest-dark); text-decoration: none; border-radius: 25px; font-weight: 500; transition: all 0.3s ease; }
+        .qa-btn:hover { background: var(--gold-light); transform: scale(1.05); }
+        .social-section { padding: 4rem 2rem; text-align: center; }
+        .social-grid { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; }
+        .social-card { background: white; border-radius: 16px; padding: 2rem; width: 180px; box-shadow: 0 4px 20px var(--shadow-soft); transition: all 0.3s ease; text-decoration: none; color: var(--text-dark); }
+        .social-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px var(--shadow-medium); }
+        .social-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .social-card h4 { font-family: 'Noto Serif TC', serif; font-size: 1.1rem; color: var(--forest-green); margin-bottom: 0.3rem; }
+        .social-card p { font-size: 0.8rem; color: var(--text-muted); }
+        .challenge-section { background: linear-gradient(135deg, var(--cream-dark) 0%, #E8DFD5 100%); padding: 4rem 2rem; }
+        .challenge-card { background: white; border-radius: 20px; padding: 3rem; max-width: 700px; margin: 0 auto; text-align: center; box-shadow: 0 8px 30px var(--shadow-medium); border: 2px solid var(--warm-gold); }
+        .challenge-badge { display: inline-block; padding: 0.5rem 1.5rem; background: var(--warm-gold); color: var(--forest-dark); font-size: 0.85rem; font-weight: 500; border-radius: 20px; margin-bottom: 1.5rem; }
+        .challenge-title { font-family: 'Noto Serif TC', serif; font-size: 1.8rem; color: var(--forest-green); margin-bottom: 1rem; }
+        .challenge-desc { color: var(--text-muted); margin-bottom: 2rem; }
+        .challenge-stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2rem; }
+        .stat-item { text-align: center; }
+        .stat-number { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--warm-gold); font-weight: 600; }
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); }
+        footer { background: var(--forest-green); color: white; text-align: center; padding: 3rem 2rem; }
+        .footer-brand { margin-bottom: 0.3rem; }
+        .footer-brand-zh { font-family: 'Noto Serif TC', serif; font-size: 1.3rem; color: var(--gold-light); }
+        .footer-brand-en { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; opacity: 0.7; }
+        .footer-tagline { opacity: 0.8; margin-top: 0.5rem; font-size: 0.9rem; }
+        .footer-studio { margin: 1.5rem 0; }
+        .footer-studio h4 { font-size: 0.85rem; color: var(--gold-light); margin-bottom: 0.5rem; }
+        .footer-studio a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; }
+        .footer-studio a:hover { color: white; }
+        
+        /* Footer Disclaimer - 新增 */
+        .footer-disclaimer { max-width: 700px; margin: 1.5rem auto; padding: 12px 16px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; font-size: 0.7rem; line-height: 1.5; text-align: center; color: rgba(255, 255, 255, 0.7); }
+        .footer-disclaimer strong { color: var(--gold-light); display: block; margin-bottom: 4px; }
+        
+        .footer-copyright { font-size: 0.8rem; opacity: 0.6; margin-top: 1rem; }
+        .footer-studio-note { font-size: 0.7rem; opacity: 0.4; margin-top: 0.5rem; }
+        .footer-studio-note a { color: var(--gold-light); text-decoration: none; }
+        .footer-studio-note a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); flex-direction: column; padding: 1.5rem; gap: 1.25rem; } .nav-links.active { display: flex; } .mobile-menu-btn { display: flex; } .interact-grid { grid-template-columns: 1fr; } .challenge-stats { flex-direction: column; gap: 1.5rem; } .social-grid { gap: 1rem; } .social-card { width: 140px; padding: 1.5rem; } }
     </style>
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -628,32 +118,18 @@
 <body>
     <nav>
         <a href="index.html" class="nav-logo">
-            <svg viewBox="0 0 40 40" width="32" height="32">
-                <defs>
-                    <linearGradient id="navGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#F5D998"/>
-                        <stop offset="100%" style="stop-color:#D4A84B"/>
-                    </linearGradient>
-                </defs>
-                <circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F2D" stroke-width="1.5"/>
-                <text x="20" y="26" font-family="Georgia, serif" font-size="18" fill="url(#navGold)" text-anchor="middle">S</text>
-            </svg>
-            <span class="nav-logo-text">
-                <span class="nav-logo-zh">隙光創作</span>
-                <span class="nav-logo-en">Space Between Art</span>
-            </span>
+            <svg viewBox="0 0 40 40" width="32" height="32"><defs><linearGradient id="navGold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#F5D998"/><stop offset="100%" style="stop-color:#D4A84B"/></linearGradient></defs><circle cx="20" cy="20" r="18" fill="none" stroke="#2C5F2D" stroke-width="1.5"/><text x="20" y="26" font-family="Georgia, serif" font-size="18" fill="url(#navGold)" text-anchor="middle">S</text></svg>
+            <span class="nav-logo-text"><span class="nav-logo-zh">隙光創作</span><span class="nav-logo-en">Space Between Art</span></span>
         </a>
         <ul class="nav-links">
             <li><a href="index.html">首頁</a></li>
             <li><a href="index.html#works">作品</a></li>
-            <li><a href="ai-chat.html">心光咨詢站</a></li>
+            <li><a href="ai-chat.html">心光諮詢站</a></li>
             <li><a href="academy.html">療癒學院</a></li>
             <li><a href="gallery.html">畫廊</a></li>
             <li><a href="community.html" class="active">互動區</a></li>
         </ul>
-        <button class="mobile-menu-btn" aria-label="選單">
-            <span></span><span></span><span></span>
-        </button>
+        <button class="mobile-menu-btn" aria-label="選單"><span></span><span></span><span></span></button>
     </nav>
 
     <section class="hero">
@@ -661,12 +137,17 @@
         <p class="hero-subtitle">討論 • 投稿 • 問答 • 連結</p>
     </section>
 
-    <!-- 互動入口 -->
     <section class="section">
         <div class="section-header">
             <p class="section-label">Connect</p>
             <h2 class="section-title">與我們互動</h2>
         </div>
+        
+        <!-- 互動區聲明 - 新增 -->
+        <p class="small-note">
+            此頁為社群交流與敘事內容互動體驗，屬內容展示與教育用途；<br>
+            不代表任何已上線的 AI 產品、SaaS 平台或商業化系統。
+        </p>
 
         <div class="interact-grid">
             <div class="interact-card">
@@ -675,232 +156,107 @@
                 <p class="interact-desc">分享你的閱讀感想、理論推測、角色討論。每一個想法都值得被聽見。</p>
                 <a href="https://spacebetweenart.substack.com" class="interact-btn" target="_blank">前往討論</a>
             </div>
-
             <div class="interact-card">
                 <div class="interact-icon">🎨</div>
                 <h3 class="interact-title">同人創作投稿</h3>
                 <p class="interact-desc">畫了同人圖？寫了二創？歡迎投稿，有機會登上官方畫廊！</p>
                 <a href="mailto:hello@space-between.art?subject=同人創作投稿" class="interact-btn">投稿作品</a>
             </div>
-
             <div class="interact-card">
                 <div class="interact-icon">❓</div>
                 <h3 class="interact-title">問答信箱</h3>
                 <p class="interact-desc">對故事有疑問？想問作者創作靈感？歡迎來信，精選問題會在電子報回答。</p>
                 <a href="mailto:hello@space-between.art?subject=讀者問答" class="interact-btn secondary">提出問題</a>
             </div>
-
             <div class="interact-card">
                 <div class="interact-icon">📬</div>
                 <h3 class="interact-title">電子報社群</h3>
                 <p class="interact-desc">訂閱電子報，加入最核心的讀者圈。獨家番外、搶先預告、創作幕後。</p>
                 <a href="https://spacebetweenart.substack.com" class="interact-btn" target="_blank">訂閱電子報</a>
             </div>
-
             <div class="interact-card featured">
                 <div class="interact-icon">💬</div>
-                <h3 class="interact-title">AI 療癒小編</h3>
-                <p class="interact-desc">與曦婆婆、曜、晴、路遙、顧曼對話，獲得專屬的療癒建議與陪伴。</p>
-                <a href="ai-chat.html" class="interact-btn">開始對話</a>
+                <h3 class="interact-title">敘事互動角色</h3>
+                <p class="interact-desc">與曦婆婆、曜、晴、路遙、顧曼對話，體驗故事角色的敘事互動。</p>
+                <a href="ai-chat.html" class="interact-btn">開始互動</a>
             </div>
         </div>
     </section>
 
-    <!-- 熱門話題 -->
     <section class="topics-section">
         <div class="section-header">
             <p class="section-label">Discussions</p>
             <h2 class="section-title">🔥 熱門話題</h2>
         </div>
-
         <div class="topics-grid">
-            <div class="topic-card">
-                <span class="topic-tag hot">🔥 熱議</span>
-                <h4 class="topic-title">曜的心光視覺是天賦還是詛咒？</h4>
-                <p class="topic-meta">32 則討論 • 來自 Substack</p>
-            </div>
-
-            <div class="topic-card">
-                <span class="topic-tag new">✨ 新話題</span>
-                <h4 class="topic-title">你最想看哪個角色的番外篇？</h4>
-                <p class="topic-meta">投票進行中 • 18 人參與</p>
-            </div>
-
-            <div class="topic-card">
-                <span class="topic-tag">💭 討論</span>
-                <h4 class="topic-title">植物魔典中你最喜歡哪種植物？</h4>
-                <p class="topic-meta">25 則討論</p>
-            </div>
-
-            <div class="topic-card">
-                <span class="topic-tag">💭 討論</span>
-                <h4 class="topic-title">曦婆婆的過去有什麼秘密？</h4>
-                <p class="topic-meta">理論推測 • 14 則討論</p>
-            </div>
-
-            <div class="topic-card">
-                <span class="topic-tag new">✨ 新話題</span>
-                <h4 class="topic-title">晴和曜的關係會往哪個方向發展？</h4>
-                <p class="topic-meta">12 則討論</p>
-            </div>
-
-            <div class="topic-card">
-                <span class="topic-tag">💭 討論</span>
-                <h4 class="topic-title">如果你有心光視覺，你會怎麼用？</h4>
-                <p class="topic-meta">開放討論 • 28 則回應</p>
-            </div>
+            <div class="topic-card"><span class="topic-tag hot">🔥 熱議</span><h4 class="topic-title">曜的心光視覺是天賦還是詛咒？</h4><p class="topic-meta">32 則討論 • 來自 Substack</p></div>
+            <div class="topic-card"><span class="topic-tag new">✨ 新話題</span><h4 class="topic-title">你最想看哪個角色的番外篇？</h4><p class="topic-meta">投票進行中 • 18 人參與</p></div>
+            <div class="topic-card"><span class="topic-tag">💭 討論</span><h4 class="topic-title">植物魔典中你最喜歡哪種植物？</h4><p class="topic-meta">25 則討論</p></div>
+            <div class="topic-card"><span class="topic-tag">💭 討論</span><h4 class="topic-title">曦婆婆的過去有什麼秘密？</h4><p class="topic-meta">理論推測 • 14 則討論</p></div>
+            <div class="topic-card"><span class="topic-tag new">✨ 新話題</span><h4 class="topic-title">晴和曜的關係會往哪個方向發展？</h4><p class="topic-meta">12 則討論</p></div>
+            <div class="topic-card"><span class="topic-tag">💭 討論</span><h4 class="topic-title">如果你有心光視覺，你會怎麼用？</h4><p class="topic-meta">開放討論 • 28 則回應</p></div>
         </div>
     </section>
 
-    <!-- 讀者創作 -->
     <section class="fanart-section">
         <div class="section-header">
             <p class="section-label">Fan Art</p>
             <h2 class="section-title">🎨 讀者創作</h2>
         </div>
-
         <div class="fanart-grid">
             <div class="fanart-item">🌿</div>
             <div class="fanart-item">📚</div>
             <div class="fanart-item">🌙</div>
             <div class="fanart-item">✨</div>
             <div class="fanart-item">🌸</div>
-            <div class="fanart-item upload">
-                <div class="upload-content">
-                    <div class="icon">➕</div>
-                    <p>投稿你的創作</p>
-                </div>
-            </div>
+            <div class="fanart-item upload"><div class="upload-content"><div class="icon">➕</div><p>投稿你的創作</p></div></div>
         </div>
-
-        <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);">
-            更多讀者創作即將登場！歡迎投稿至 <a href="mailto:hello@space-between.art" style="color: var(--forest-green);">hello@space-between.art</a>
-        </p>
+        <p style="text-align: center; margin-top: 2rem; color: var(--text-muted);">更多讀者創作即將登場！歡迎投稿至 <a href="mailto:hello@space-between.art" style="color: var(--forest-green);">hello@space-between.art</a></p>
     </section>
 
-    <!-- 讀者問答 -->
     <section class="qa-section">
-        <div class="section-header">
-            <p class="section-label" style="color: var(--gold-light);">Q&A</p>
-            <h2 class="section-title" style="color: white;">❓ 讀者問答精選</h2>
-        </div>
-
+        <div class="section-header"><p class="section-label" style="color: var(--gold-light);">Q&A</p><h2 class="section-title" style="color: white;">❓ 讀者問答精選</h2></div>
         <div class="qa-container">
-            <div class="qa-item">
-                <div class="qa-question">
-                    <span>Q:</span>
-                    <span>曜的名字有什麼特別含義嗎？</span>
-                </div>
-                <p class="qa-answer">「曜」這個字有光輝、照耀的意思，與他能看見心光的能力相呼應。但有趣的是，最初他更像是被光所困擾的人，直到學會如何與這份能力共處。</p>
-            </div>
-
-            <div class="qa-item">
-                <div class="qa-question">
-                    <span>Q:</span>
-                    <span>植物魔典裡的藥理知識是真實的嗎？</span>
-                </div>
-                <p class="qa-answer">大部分是真實的！我在寫作時做了很多草藥研究。當然，故事中的「魔法效果」是虛構的，但植物的基本特性和傳統用途都有據可查。</p>
-            </div>
-
-            <div class="qa-item">
-                <div class="qa-question">
-                    <span>Q:</span>
-                    <span>這個故事的靈感來源是什麼？</span>
-                </div>
-                <p class="qa-answer">靈感來自很多地方——對療癒的思考、對社區關係的觀察、還有一個問題：「如果能看見別人的痛苦，是一種祝福還是負擔？」</p>
-            </div>
-
-            <div class="qa-cta">
-                <a href="mailto:hello@space-between.art?subject=讀者問答" class="qa-btn">📮 提交你的問題</a>
-            </div>
+            <div class="qa-item"><div class="qa-question"><span>Q:</span><span>曜的名字有什麼特別含義嗎？</span></div><p class="qa-answer">「曜」這個字有光輝、照耀的意思，與他能看見心光的能力相呼應。但有趣的是，最初他更像是被光所困擾的人，直到學會如何與這份能力共處。</p></div>
+            <div class="qa-item"><div class="qa-question"><span>Q:</span><span>植物魔典裡的藥理知識是真實的嗎？</span></div><p class="qa-answer">大部分是真實的！我在寫作時做了很多草藥研究。當然，故事中的「魔法效果」是虛構的，但植物的基本特性和傳統用途都有據可查。</p></div>
+            <div class="qa-item"><div class="qa-question"><span>Q:</span><span>這個故事的靈感來源是什麼？</span></div><p class="qa-answer">靈感來自很多地方——對療癒的思考、對社區關係的觀察、還有一個問題：「如果能看見別人的痛苦，是一種祝福還是負擔？」</p></div>
+            <div class="qa-cta"><a href="mailto:hello@space-between.art?subject=讀者問答" class="qa-btn">📮 提交你的問題</a></div>
         </div>
     </section>
 
-    <!-- 閱讀挑戰 -->
     <section class="challenge-section">
         <div class="challenge-card">
             <span class="challenge-badge">🌟 本月活動</span>
             <h2 class="challenge-title">「心光日記」閱讀挑戰</h2>
-            <p class="challenge-desc">
-                連續 7 天閱讀《逐光的藥師》，每天寫下一句閱讀感想。<br>
-                完成後截圖分享，有機會獲得獨家電子書贈品！
-            </p>
-            <div class="challenge-stats">
-                <div class="stat-item">
-                    <div class="stat-number">47</div>
-                    <div class="stat-label">參與人數</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">已完成</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">剩餘天數</div>
-                </div>
-            </div>
+            <p class="challenge-desc">連續 7 天閱讀《逐光的藥師》，每天寫下一句閱讀感想。<br>完成後截圖分享，有機會獲得獨家電子書贈品！</p>
+            <div class="challenge-stats"><div class="stat-item"><div class="stat-number">47</div><div class="stat-label">參與人數</div></div><div class="stat-item"><div class="stat-number">12</div><div class="stat-label">已完成</div></div><div class="stat-item"><div class="stat-number">5</div><div class="stat-label">剩餘天數</div></div></div>
             <a href="https://spacebetweenart.substack.com" class="interact-btn" target="_blank">了解活動詳情</a>
         </div>
     </section>
 
-    <!-- 社群連結 -->
     <section class="social-section">
-        <div class="section-header">
-            <p class="section-label">Social</p>
-            <h2 class="section-title">🔗 社群連結</h2>
-        </div>
-
+        <div class="section-header"><p class="section-label">Social</p><h2 class="section-title">🔗 社群連結</h2></div>
         <div class="social-grid">
-            <a href="https://www.instagram.com/spacebetweenart/" class="social-card" target="_blank">
-                <div class="icon">📷</div>
-                <h4>Instagram</h4>
-                <p>療癒小語・插畫</p>
-            </a>
-
-            <a href="https://www.facebook.com/SpaceBetweenArt" class="social-card" target="_blank">
-                <div class="icon">👥</div>
-                <h4>Facebook</h4>
-                <p>更新・活動</p>
-            </a>
-
-            <a href="https://spacebetweenart.substack.com" class="social-card" target="_blank">
-                <div class="icon">📬</div>
-                <h4>Substack</h4>
-                <p>電子報・番外</p>
-            </a>
-
-            <a href="https://www.mirrorfiction.com/book/42470" class="social-card" target="_blank">
-                <div class="icon">📚</div>
-                <h4>鏡文學</h4>
-                <p>小說連載</p>
-            </a>
-
-            <a href="https://www.penana.com/story/199095" class="social-card" target="_blank">
-                <div class="icon">🌏</div>
-                <h4>Penana</h4>
-                <p>小說連載</p>
-            </a>
+            <a href="https://www.instagram.com/spacebetweenart/" class="social-card" target="_blank"><div class="icon">📷</div><h4>Instagram</h4><p>療癒小語・插畫</p></a>
+            <a href="https://www.facebook.com/SpaceBetweenArt" class="social-card" target="_blank"><div class="icon">👥</div><h4>Facebook</h4><p>更新・活動</p></a>
+            <a href="https://spacebetweenart.substack.com" class="social-card" target="_blank"><div class="icon">📬</div><h4>Substack</h4><p>電子報・番外</p></a>
+            <a href="https://www.mirrorfiction.com/book/42470" class="social-card" target="_blank"><div class="icon">📚</div><h4>鏡文學</h4><p>小說連載</p></a>
+            <a href="https://www.penana.com/story/199095" class="social-card" target="_blank"><div class="icon">🌏</div><h4>Penana</h4><p>小說連載</p></a>
         </div>
     </section>
 
     <footer>
-        <div class="footer-brand">
-            <span class="footer-brand-zh">隙光創作</span>
-            <span class="footer-brand-en"> Space Between Art</span>
-        </div>
+        <div class="footer-brand"><span class="footer-brand-zh">隙光創作</span><span class="footer-brand-en"> Space Between Art</span></div>
         <p class="footer-tagline">在光與暗之間，故事發生。</p>
-        <div class="footer-studio">
-            <h4>工作室</h4>
-            <a href="https://spacebetweenhealing.com" target="_blank">隙光設計｜品牌設計服務</a>
-        </div>
+        <div class="footer-studio"><h4>工作室</h4><a href="https://spacebetweenhealing.com" target="_blank">隙光設計｜品牌設計服務</a></div>
+        
+        <!-- Footer Disclaimer - 新增 -->
+        <div class="footer-disclaimer"><strong>Content Lab Notice</strong>Space Between Art is an original narrative content laboratory presenting storyworld exploration and creative IP prototypes. This site does not represent any deployed SaaS platform, AI service system, subscription product, or launched commercial software.</div>
+        
         <p class="footer-copyright">© 2025 隙光創作 Space Between Art. All rights reserved.</p>
         <p class="footer-studio-note">隙光創作為 <a href="https://spacebetweenhealing.com" target="_blank">隙光 Space Between Studio</a> 旗下文學品牌。</p>
     </footer>
 
-    <script>
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-    </script>
+    <script>document.querySelector('.mobile-menu-btn').addEventListener('click', function() { document.querySelector('.nav-links').classList.toggle('active'); });</script>
 </body>
 </html>

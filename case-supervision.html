@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>個案督導室 | 心靈療癒學院 | Space Between Art</title>
-    <meta name="description" content="AI 導師帶領的專業個案研討，深入學習心理學概念與諮商技巧">
+    <meta name="description" content="敘事導師帶領的專業個案研討原型，深入學習心理學概念與諮商技巧">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,6 +63,22 @@
 
         .header-nav a:hover {
             color: white;
+        }
+
+        /* Safety Notice */
+        .safety-notice {
+            max-width: 100%;
+            margin: 0;
+            padding: 12px 1.5rem;
+            background: rgba(212, 168, 75, 0.15);
+            border-bottom: 1px solid rgba(212, 168, 75, 0.3);
+            font-size: 0.8rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .safety-notice strong {
+            color: var(--steel);
         }
 
         /* Mobile Selection Bar */
@@ -576,6 +592,36 @@
             background: var(--forest-dark);
         }
 
+        /* Footer */
+        .site-footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content-lab {
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            padding: 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .footer-content-lab strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
         /* Responsive - Tablet */
         @media (max-width: 1100px) {
             .main-container {
@@ -630,6 +676,10 @@
                 padding: 0.7rem 1rem;
                 font-size: 0.85rem;
             }
+            .safety-notice {
+                padding: 10px 1rem;
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -641,6 +691,12 @@
             <a href="index.html">首頁</a>
         </nav>
     </header>
+
+    <!-- Safety Notice -->
+    <div class="safety-notice">
+        <strong>重要聲明｜Notice</strong><br>
+        本頁互動屬於小說角色敘事對話原型展示，用於內容實驗與教育體驗。本頁不構成任何已部署的心理諮詢服務、AI 系統、SaaS 平台或商業化產品。
+    </div>
 
     <!-- Mobile Selection Bar -->
     <div class="mobile-selection-bar">
@@ -669,7 +725,7 @@
             </div>
             <div class="mobile-modal-body">
                 <div class="disclaimer">
-                    ⚠️ 本平台使用虛構案例進行教學，不提供真實個案督導服務。
+                    ⚠️ 本頁使用虛構案例進行教學展示，不提供真實個案督導服務，亦非已上線的諮詢系統。
                 </div>
                 <div id="mobile-case-list"></div>
             </div>
@@ -716,7 +772,7 @@
             <h2 class="panel-title">📋 選擇案例</h2>
             
             <div class="disclaimer">
-                ⚠️ 本平台使用虛構案例進行教學，不提供真實個案督導服務。
+                ⚠️ 本頁使用虛構案例進行教學展示，不提供真實個案督導服務，亦非已上線的諮詢系統。
             </div>
 
             <div id="case-list"></div>
@@ -815,6 +871,16 @@
             </div>
         </aside>
     </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content-lab">
+            <strong>Content Lab Notice</strong>
+            Space Between Art is an original narrative content laboratory presenting storyworld exploration and creative IP prototypes.
+            This site does not represent any deployed SaaS platform, AI service system, subscription product, or launched commercial software.
+        </div>
+        <p class="footer-copyright">© 2025 隙光創作 Space Between Art. All rights reserved.</p>
+    </footer>
 
     <script>
         // ========== 案例資料庫 ==========
