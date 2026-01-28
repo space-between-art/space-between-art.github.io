@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Space Between Healing</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html, body {
+            font-family: 'Noto Serif TC', serif;
+            background: #030306;
+            color: #e8e4dc;
+            overflow: hidden;
+            height: 100%;
+            height: -webkit-fill-available;
+        }
+        
+        /* ===== 配置區 ===== */
+        :root {
+            /* 
+             * 🔧 在這裡填入你的 n8n Webhook URL
+             * 例如: https://your-n8n.app.n8n.cloud/webhook/healing-chat
+             */
+            --webhook-url: "YOUR_N8N_WEBHOOK_URL_HERE";
+        }
+        
+        /* ===== 星空背景 ===== */
+        #stars-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
+        }
+        
+        .tunnel-rings {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150vmax; height: 150vmax;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .tunnel-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            border: 1px solid rgba(212, 165, 116, 0.08);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: ringPulse 5s ease-in-out infinite;
+        }
+        
+        .tunnel-ring:nth-child(1) { width: 15%; height: 15%; animation-delay: 0s; }
+        .tunnel-ring:nth-child(2) { width: 30%; height: 30%; animation-delay: 0.8s; }
+        .tunnel-ring:nth-child(3) { width: 45%; height: 45%; animation-delay: 1.6s; }
+        .tunnel-ring:nth-child(4) { width: 60%; height: 60%; animation-delay: 2.4s; }
+        .tunnel-ring:nth-child(5) { width: 75%; height: 75%; animation-delay: 3.2s; }
+        .tunnel-ring:nth-child(6) { width: 90%; height: 90%; animation-delay: 4s; }
+        
+        @keyframes ringPulse {
+            0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.03); }
+        }
+        
+        #warp-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0;
+        }
+        
+        #warp-overlay.warping {
+            animation: warpFlash 1s ease-in-out;
+        }
+        
+        @keyframes warpFlash {
+            0% { opacity: 0; background: radial-gradient(circle, rgba(212,165,116,0) 0%, #030306 100%); }
+            40% { opacity: 1; background: radial-gradient(circle, rgba(212,165,116,0.3) 0%, #030306 50%); }
+            100% { opacity: 0; background: radial-gradient(circle, rgba(212,165,116,0) 0%, #030306 100%); }
+        }
+        
+        /* ===== 層級 ===== */
+        .layer {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            padding: 20px;
+        }
+        
+        .layer.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+        
+        .layer.exiting {
+            opacity: 0;
+            transform: scale(1.3);
+        }
+        
+        /* ===== 光球組件 ===== */
+        .orb-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .orb-outer-aura {
+            position: absolute;
+            width: 180%; height: 180%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, rgba(212, 165, 116, 0.05) 40%, transparent 70%);
+            animation: auraBreath 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes auraBreath {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+        
+        .orb-ring {
+            position: absolute;
+            width: 130%; height: 130%;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 50%;
+            animation: ringRotate 20s linear infinite;
+        }
+        
+        .orb-ring::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: 50%;
+            transform: translateX(-50%);
+            width: 8px; height: 8px;
+            background: #d4a574;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #d4a574, 0 0 30px #d4a574;
+        }
+        
+        .orb-ring.reverse {
+            animation-direction: reverse;
+            animation-duration: 25s;
+            width: 145%; height: 145%;
+            border-color: rgba(125, 184, 168, 0.2);
+        }
+        
+        .orb-ring.reverse::before {
+            background: #7db8a8;
+            box-shadow: 0 0 15px #7db8a8, 0 0 30px #7db8a8;
+        }
+        
+        @keyframes ringRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .orb-image {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: orbFloat 4s ease-in-out infinite;
+            filter: brightness(1.1) contrast(1.05);
+        }
+        
+        @keyframes orbFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.02); }
+        }
+        
+        /* ===== 入口層 ===== */
+        #layer-entrance .orb-container {
+            width: 55vmin; height: 55vmin;
+            max-width: 300px; max-height: 300px;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        
+        #layer-entrance .orb-container:hover { transform: scale(1.05); }
+        
+        .entrance-text {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .entrance-text h1 {
+            font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            color: rgba(232, 228, 220, 0.5);
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+        
+        .entrance-text p {
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            font-weight: 300;
+            color: rgba(232, 228, 220, 0.85);
+            margin-bottom: 35px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+        
+        .enter-btn {
+            padding: 14px 55px;
+            background: transparent;
+            border: 1px solid rgba(212, 165, 116, 0.5);
+            color: #d4a574;
+            font-family: 'Noto Serif TC', serif;
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border-radius: 50px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+        
+        .enter-btn:hover {
+            background: rgba(212, 165, 116, 0.12);
+            box-shadow: 0 0 40px rgba(212, 165, 116, 0.25);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ===== 理念層 ===== */
+        #layer-philosophy {
+            text-align: center;
+            padding: 30px 25px;
+        }
+        
+        #layer-philosophy .orb-container {
+            width: 90px; height: 90px;
+            margin-bottom: 40px;
+        }
+        
+        #layer-philosophy .orb-ring { display: none; }
+        
+        .philosophy-content { max-width: 520px; }
+        
+        .brand-title {
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            letter-spacing: 0.6em;
+            color: rgba(212, 165, 116, 0.6);
+            margin-bottom: 50px;
+        }
+        
+        .philosophy-line {
+            font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+            line-height: 2.4;
+            color: rgba(232, 228, 220, 0.85);
+            font-weight: 300;
+            margin-bottom: 12px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .philosophy-line span { color: #d4a574; font-weight: 400; }
+        
+        #layer-philosophy.active .philosophy-line {
+            animation: lineReveal 0.8s ease forwards;
+        }
+        
+        #layer-philosophy.active .philosophy-line:nth-child(1) { animation-delay: 0.3s; }
+        #layer-philosophy.active .philosophy-line:nth-child(2) { animation-delay: 0.6s; }
+        #layer-philosophy.active .philosophy-line:nth-child(3) { animation-delay: 0.9s; }
+        #layer-philosophy.active .philosophy-line:nth-child(4) { animation-delay: 1.2s; }
+        
+        @keyframes lineReveal { to { opacity: 1; transform: translateY(0); } }
+        
+        .continue-btn {
+            margin-top: 55px;
+            padding: 14px 45px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(232, 228, 220, 0.6);
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        #layer-philosophy.active .continue-btn {
+            animation: fadeInUp 0.8s ease 1.6s forwards;
+        }
+        
+        .continue-btn:hover {
+            border-color: rgba(212, 165, 116, 0.5);
+            color: #d4a574;
+        }
+        
+        /* ===== 引導者選擇 ===== */
+        #layer-guides { padding: 30px 20px; }
+        
+        .guides-title {
+            text-align: center;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: rgba(232, 228, 220, 0.6);
+            margin-bottom: 35px;
+        }
+        
+        .guides-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 100%;
+            max-width: 420px;
+        }
+        
+        .guide-card {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        #layer-guides.active .guide-card { animation: cardReveal 0.6s ease forwards; }
+        #layer-guides.active .guide-card:nth-child(1) { animation-delay: 0.2s; }
+        #layer-guides.active .guide-card:nth-child(2) { animation-delay: 0.4s; }
+        #layer-guides.active .guide-card:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes cardReveal { to { opacity: 1; transform: translateY(0); } }
+        
+        .guide-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(212, 165, 116, 0.3);
+            transform: translateX(5px);
+        }
+        
+        .guide-orb {
+            position: relative;
+            width: 65px; height: 65px;
+            flex-shrink: 0;
+        }
+        
+        .guide-orb img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .guide-card:nth-child(1) .guide-orb img { filter: brightness(1.1) saturate(1.1); }
+        .guide-card:nth-child(2) .guide-orb img { filter: brightness(1.05) saturate(0.9) hue-rotate(120deg); }
+        .guide-card:nth-child(3) .guide-orb img { filter: brightness(1) saturate(0.7) hue-rotate(180deg); }
+        
+        .guide-card .guide-orb::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            animation: orbGlow 3s ease-in-out infinite;
+        }
+        
+        .guide-card:nth-child(1) .guide-orb::after { background: radial-gradient(circle, rgba(212, 165, 116, 0.3) 0%, transparent 70%); }
+        .guide-card:nth-child(2) .guide-orb::after { background: radial-gradient(circle, rgba(125, 184, 168, 0.3) 0%, transparent 70%); animation-duration: 4s; }
+        .guide-card:nth-child(3) .guide-orb::after { background: radial-gradient(circle, rgba(143, 164, 184, 0.3) 0%, transparent 70%); animation-duration: 2.5s; }
+        
+        @keyframes orbGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .guide-info h3 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: rgba(232, 228, 220, 0.9);
+            margin-bottom: 5px;
+        }
+        
+        .guide-info p {
+            font-size: 0.85rem;
+            color: rgba(232, 228, 220, 0.5);
+            line-height: 1.6;
+        }
+        
+        .guide-arrow {
+            margin-left: auto;
+            color: rgba(212, 165, 116, 0.3);
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .guide-card:hover .guide-arrow {
+            color: rgba(212, 165, 116, 0.8);
+            transform: translateX(5px);
+        }
+        
+        /* ===== 對話層 ===== */
+        #layer-dialogue {
+            padding: 20px;
+            justify-content: flex-start;
+            padding-top: 25px;
+        }
+        
+        .dialogue-scene {
+            width: 100%;
+            max-width: 520px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ai-presence {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 0 20px;
+        }
+        
+        .ai-orb-container {
+            position: relative;
+            width: 100px; height: 100px;
+        }
+        
+        .ai-orb-container .orb-outer-aura {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160%; height: 160%;
+        }
+        
+        .ai-orb-container img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-orb-container.speaking img {
+            animation: speakPulse 0.8s ease-in-out infinite;
+        }
+        
+        @keyframes speakPulse {
+            0%, 100% { transform: scale(1); filter: brightness(1.1); }
+            50% { transform: scale(1.06); filter: brightness(1.25); }
+        }
+        
+        .ai-name {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            color: rgba(232, 228, 220, 0.7);
+            letter-spacing: 0.25em;
+        }
+        
+        .dialogue-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .dialogue-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .message {
+            max-width: 88%;
+            padding: 16px 20px;
+            border-radius: 18px;
+            font-size: 0.98rem;
+            line-height: 1.9;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: messageIn 0.4s ease forwards;
+        }
+        
+        @keyframes messageIn { to { opacity: 1; transform: translateY(0); } }
+        
+        .message.ai {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(232, 228, 220, 0.9);
+        }
+        
+        .message.user {
+            align-self: flex-end;
+            background: rgba(212, 165, 116, 0.12);
+            border: 1px solid rgba(212, 165, 116, 0.25);
+            color: rgba(232, 228, 220, 0.9);
+        }
+        
+        .typing-indicator {
+            display: flex;
+            gap: 6px;
+            padding: 8px 0;
+        }
+        
+        .typing-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(212, 165, 116, 0.6);
+            animation: bounce 1.4s ease-in-out infinite;
+        }
+        
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes bounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        
+        /* ===== 輸入區 ===== */
+        .response-area {
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .free-input-area {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        
+        .free-input {
+            flex: 1;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            color: #e8e4dc;
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            resize: none;
+            outline: none;
+            transition: all 0.3s ease;
+            min-height: 50px;
+            max-height: 120px;
+        }
+        
+        .free-input::placeholder { color: rgba(232, 228, 220, 0.3); }
+        
+        .free-input:focus {
+            border-color: rgba(212, 165, 116, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .send-btn {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: rgba(212, 165, 116, 0.15);
+            border: 1px solid rgba(212, 165, 116, 0.4);
+            color: #d4a574;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .send-btn:hover {
+            background: rgba(212, 165, 116, 0.25);
+            transform: scale(1.05);
+        }
+        
+        .send-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .input-hint {
+            text-align: center;
+            font-size: 0.78rem;
+            color: rgba(232, 228, 220, 0.3);
+            margin-top: 12px;
+        }
+        
+        /* ===== 洞察層 ===== */
+        #layer-insight {
+            text-align: center;
+            padding: 30px 25px;
+        }
+        
+        .insight-scene { max-width: 460px; }
+        
+        #layer-insight .orb-container {
+            width: 110px; height: 110px;
+            margin: 0 auto 35px;
+        }
+        
+        #layer-insight .orb-outer-aura {
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.25) 0%, rgba(212, 165, 116, 0.1) 40%, transparent 70%);
+            animation: insightAura 3s ease-in-out infinite;
+        }
+        
+        @keyframes insightAura {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        .insight-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.5em;
+            color: rgba(212, 165, 116, 0.6);
+            margin-bottom: 30px;
+        }
+        
+        .insight-main {
+            font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+            line-height: 2.3;
+            color: rgba(232, 228, 220, 0.9);
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+        
+        .insight-hook {
+            font-size: 0.95rem;
+            color: rgba(232, 228, 220, 0.5);
+            font-style: italic;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 40px;
+        }
+        
+        .cta-btn {
+            padding: 16px 30px;
+            border-radius: 30px;
+            font-family: 'Noto Serif TC', serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-primary {
+            background: rgba(212, 165, 116, 0.18);
+            border: 1px solid rgba(212, 165, 116, 0.5);
+            color: #d4a574;
+        }
+        
+        .cta-primary:hover {
+            background: rgba(212, 165, 116, 0.28);
+            box-shadow: 0 0 35px rgba(212, 165, 116, 0.25);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(232, 228, 220, 0.6);
+        }
+        
+        .cta-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #e8e4dc;
+        }
+        
+        /* ===== 桌面版 ===== */
+        @media (min-width: 768px) {
+            .guides-grid {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                max-width: 750px;
+                gap: 20px;
+            }
+            
+            .guide-card {
+                flex-direction: column;
+                text-align: center;
+                width: 200px;
+                padding: 28px 20px;
+            }
+            
+            .guide-orb { width: 85px; height: 85px; margin-bottom: 5px; }
+            .guide-arrow { display: none; }
+            .ai-orb-container { width: 120px; height: 120px; }
+        }
+        
+        /* ===== 錯誤提示 ===== */
+        .error-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(180, 80, 80, 0.9);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .error-toast.show { opacity: 1; }
+    </style>
+</head>
+<body>
+    <canvas id="stars-canvas"></canvas>
+    
+    <div class="tunnel-rings">
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring"></div>
+        <div class="tunnel-ring"></div>
+    </div>
+    
+    <div id="warp-overlay"></div>
+    
+    <!-- 錯誤提示 -->
+    <div class="error-toast" id="error-toast"></div>
+    
+    <!-- 入口 -->
+    <div id="layer-entrance" class="layer active">
+        <div class="orb-container" onclick="enterPortal()">
+            <div class="orb-outer-aura"></div>
+            <div class="orb-ring"></div>
+            <div class="orb-ring reverse"></div>
+            <img src="ai-avatar.png" alt="Portal" class="orb-image">
+        </div>
+        <div class="entrance-text">
+            <h1>SPACE BETWEEN HEALING</h1>
+            <p>準備好往內走了嗎？</p>
+            <button class="enter-btn" onclick="enterPortal()">進入</button>
+        </div>
+    </div>
+    
+    <!-- 理念 -->
+    <div id="layer-philosophy" class="layer">
+        <div class="orb-container">
+            <div class="orb-outer-aura"></div>
+            <img src="ai-avatar.png" alt="" class="orb-image">
+        </div>
+        <div class="philosophy-content">
+            <div class="brand-title">SPACE BETWEEN HEALING</div>
+            <p class="philosophy-line">我們相信，<span>裂痕不是缺陷</span>。</p>
+            <p class="philosophy-line">那是光進來的地方。</p>
+            <p class="philosophy-line">每個品牌都有它的傷口與困頓。</p>
+            <p class="philosophy-line">我們不修補它，我們用<span>金</span>填滿它。</p>
+            <button class="continue-btn" onclick="goToGuides()">選擇你的引導者</button>
+        </div>
+    </div>
+    
+    <!-- 選擇引導者 -->
+    <div id="layer-guides" class="layer">
+        <div class="guides-title">三位引導者，三種療癒節奏</div>
+        <div class="guides-grid">
+            <div class="guide-card" onclick="selectGuide('guangguang')">
+                <div class="guide-orb"><img src="ai-avatar.png" alt="光光"></div>
+                <div class="guide-info">
+                    <h3>光光</h3>
+                    <p>照亮但不刺眼<br>讓你自己發現答案</p>
+                </div>
+                <div class="guide-arrow">→</div>
+            </div>
+            <div class="guide-card" onclick="selectGuide('sumu')">
+                <div class="guide-orb"><img src="ai-avatar.png" alt="蘇牧"></div>
+                <div class="guide-info">
+                    <h3>蘇牧</h3>
+                    <p>陪伴讓你鬆開<br>慢慢來，不用急</p>
+                </div>
+                <div class="guide-arrow">→</div>
+            </div>
+            <div class="guide-card" onclick="selectGuide('guyan')">
+                <div class="guide-orb"><img src="ai-avatar.png" alt="顧言"></div>
+                <div class="guide-info">
+                    <h3>顧言</h3>
+                    <p>直接說破真相<br>推你一把</p>
+                </div>
+                <div class="guide-arrow">→</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 對話 -->
+    <div id="layer-dialogue" class="layer">
+        <div class="dialogue-scene">
+            <div class="ai-presence">
+                <div class="ai-orb-container" id="ai-orb-container">
+                    <div class="orb-outer-aura" id="ai-aura"></div>
+                    <img src="ai-avatar.png" alt="" id="ai-orb-img">
+                </div>
+                <div class="ai-name" id="ai-name"></div>
+            </div>
+            
+            <div class="dialogue-area">
+                <div class="dialogue-messages" id="dialogue-messages"></div>
+            </div>
+            
+            <div class="response-area">
+                <div class="free-input-area">
+                    <textarea 
+                        class="free-input" 
+                        id="free-input" 
+                        placeholder="說說你的想法⋯⋯"
+                        rows="1"
+                    ></textarea>
+                    <button class="send-btn" id="send-btn" onclick="sendMessage()">↑</button>
+                </div>
+                <div class="input-hint">按 Enter 發送，或點擊箭頭</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 洞察 -->
+    <div id="layer-insight" class="layer">
+        <div class="insight-scene">
+            <div class="orb-container">
+                <div class="orb-outer-aura"></div>
+                <img src="ai-avatar.png" alt="" class="orb-image">
+            </div>
+            <div class="insight-label">品 牌 能 量 初 診</div>
+            <p class="insight-main" id="insight-main"></p>
+            <p class="insight-hook">這道裂痕藏著什麼，需要更深的對話才能看見。</p>
+            <div class="cta-buttons">
+                <button class="cta-btn cta-primary">預約深度諮詢</button>
+                <button class="cta-btn cta-secondary">了解訂閱服務</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // 🔧 配置區 - 在這裡填入你的 n8n Webhook URL
+        // ============================================
+        const WEBHOOK_URL = 'https://spacebetween.app.n8n.cloud/webhook/brand-healing';
+        // 例如: 'https://your-n8n.app.n8n.cloud/webhook/healing-chat'
+        // ============================================
+        
+        // 星空系統
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+        let warpSpeed = 1;
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+        
+        class Star {
+            constructor() { this.reset(); }
+            
+            reset() {
+                const angle = Math.random() * Math.PI * 2;
+                const dist = Math.random() * Math.max(canvas.width, canvas.height) * 0.8;
+                this.x = canvas.width / 2 + Math.cos(angle) * dist;
+                this.y = canvas.height / 2 + Math.sin(angle) * dist;
+                this.z = Math.random() * 1500 + 500;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.color = Math.random() > 0.75 ? '#d4a574' : (Math.random() > 0.5 ? '#7db8a8' : '#ffffff');
+            }
+            
+            update() {
+                this.z -= 2 * warpSpeed;
+                if (this.z <= 0) { this.reset(); this.z = 1500; }
+            }
+            
+            draw() {
+                const scale = 600 / this.z;
+                const x = (this.x - canvas.width / 2) * scale + canvas.width / 2;
+                const y = (this.y - canvas.height / 2) * scale + canvas.height / 2;
+                const size = Math.max(0.5, this.size * scale);
+                const opacity = Math.min(1, (1500 - this.z) / 800);
+                
+                if (x < -50 || x > canvas.width + 50 || y < -50 || y > canvas.height + 50) return;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = opacity * 0.8;
+                ctx.fill();
+                
+                if (warpSpeed > 2 && size > 0.8) {
+                    const tailLen = warpSpeed * 4;
+                    const tx = x + (canvas.width / 2 - x) * 0.015 * tailLen;
+                    const ty = y + (canvas.height / 2 - y) * 0.015 * tailLen;
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(tx, ty);
+                    ctx.strokeStyle = this.color;
+                    ctx.globalAlpha = opacity * 0.3;
+                    ctx.lineWidth = size * 0.6;
+                    ctx.stroke();
+                }
+                ctx.globalAlpha = 1;
+            }
+        }
+        
+        const isMobile = window.innerWidth < 768;
+        for (let i = 0; i < (isMobile ? 100 : 180); i++) stars.push(new Star());
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(s => { s.update(); s.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+        
+        // 層級切換
+        function warpTo(fromId, toId) {
+            const from = document.getElementById(fromId);
+            const to = document.getElementById(toId);
+            const overlay = document.getElementById('warp-overlay');
+            
+            warpSpeed = 8;
+            overlay.classList.add('warping');
+            from.classList.add('exiting');
+            
+            setTimeout(() => {
+                from.classList.remove('active', 'exiting');
+                to.classList.add('active');
+                warpSpeed = 1;
+            }, 500);
+            
+            setTimeout(() => overlay.classList.remove('warping'), 1000);
+        }
+        
+        function enterPortal() { warpTo('layer-entrance', 'layer-philosophy'); }
+        function goToGuides() { warpTo('layer-philosophy', 'layer-guides'); }
+        
+        // 引導者配置
+        const guideConfig = {
+            guangguang: {
+                name: '光光',
+                filter: 'brightness(1.1) saturate(1.1)',
+                auraColor: 'rgba(212, 165, 116, 0.25)',
+                firstMessage: '你來了。在這裡，不需要假裝清醒。告訴我——此刻，什麼讓你感到困住？'
+            },
+            sumu: {
+                name: '蘇牧',
+                filter: 'brightness(1.05) saturate(0.9) hue-rotate(120deg)',
+                auraColor: 'rgba(125, 184, 168, 0.25)',
+                firstMessage: '你好。不用急著說什麼，先在這裡待一會兒。今天的你，感覺怎麼樣？'
+            },
+            guyan: {
+                name: '顧言',
+                filter: 'brightness(1) saturate(0.7) hue-rotate(180deg)',
+                auraColor: 'rgba(143, 164, 184, 0.25)',
+                firstMessage: '你來找我，通常不是因為好奇。是因為卡住了。說吧——你的品牌，現在最讓你不安的是什麼？'
+            }
+        };
+        
+        let currentGuide = null;
+        let conversationHistory = [];
+        let messageCount = 0;
+        
+        // 選擇引導者
+        function selectGuide(key) {
+            currentGuide = key;
+            conversationHistory = [];
+            messageCount = 0;
+            
+            const config = guideConfig[key];
+            const img = document.getElementById('ai-orb-img');
+            const aura = document.getElementById('ai-aura');
+            const name = document.getElementById('ai-name');
+            
+            img.style.filter = config.filter;
+            aura.style.background = `radial-gradient(circle, ${config.auraColor} 0%, transparent 70%)`;
+            name.textContent = config.name;
+            
+            document.getElementById('dialogue-messages').innerHTML = '';
+            
+            warpTo('layer-guides', 'layer-dialogue');
+            
+            setTimeout(() => {
+                showAIMessage(config.firstMessage);
+                conversationHistory.push({ role: 'assistant', content: config.firstMessage });
+            }, 700);
+        }
+        
+        // 顯示 AI 訊息
+        function showAIMessage(text) {
+            const container = document.getElementById('dialogue-messages');
+            const orbContainer = document.getElementById('ai-orb-container');
+            
+            orbContainer.classList.add('speaking');
+            
+            const typing = document.createElement('div');
+            typing.className = 'message ai';
+            typing.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+            container.appendChild(typing);
+            container.scrollTop = container.scrollHeight;
+            
+            setTimeout(() => {
+                typing.remove();
+                orbContainer.classList.remove('speaking');
+                
+                const msg = document.createElement('div');
+                msg.className = 'message ai';
+                msg.textContent = text;
+                container.appendChild(msg);
+                container.scrollTop = container.scrollHeight;
+                
+                document.getElementById('free-input').disabled = false;
+                document.getElementById('send-btn').disabled = false;
+                document.getElementById('free-input').focus();
+            }, 1000);
+        }
+        
+        // 顯示用戶訊息
+        function showUserMessage(text) {
+            const container = document.getElementById('dialogue-messages');
+            const msg = document.createElement('div');
+            msg.className = 'message user';
+            msg.textContent = text;
+            container.appendChild(msg);
+            container.scrollTop = container.scrollHeight;
+        }
+        
+        // 發送訊息到 n8n
+        async function sendMessage() {
+            const input = document.getElementById('free-input');
+            const text = input.value.trim();
+            
+            if (!text) return;
+            
+            // 禁用輸入
+            input.disabled = true;
+            document.getElementById('send-btn').disabled = true;
+            input.value = '';
+            input.style.height = 'auto';
+            
+            // 顯示用戶訊息
+            showUserMessage(text);
+            conversationHistory.push({ role: 'user', content: text });
+            messageCount++;
+            
+            // 檢查是否到達對話終點（例如 5 輪後）
+            if (messageCount >= 5) {
+                setTimeout(() => {
+                    generateInsight();
+                }, 500);
+                return;
+            }
+            
+            // 顯示 AI 正在輸入
+            const container = document.getElementById('dialogue-messages');
+            const orbContainer = document.getElementById('ai-orb-container');
+            orbContainer.classList.add('speaking');
+            
+            const typing = document.createElement('div');
+            typing.className = 'message ai';
+            typing.id = 'typing-msg';
+            typing.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+            container.appendChild(typing);
+            container.scrollTop = container.scrollHeight;
+            
+            try {
+                // 呼叫 n8n Webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        guide: currentGuide,
+                        message: text,
+                        history: conversationHistory.slice(0, -1) // 不包含剛發的這條
+                    })
+                });
+                
+                const data = await response.json();
+                
+                // 移除打字指示
+                document.getElementById('typing-msg')?.remove();
+                orbContainer.classList.remove('speaking');
+                
+                if (data.success && data.message) {
+                    showAIMessage(data.message);
+                    conversationHistory.push({ role: 'assistant', content: data.message });
+                } else {
+                    throw new Error(data.error || 'Unknown error');
+                }
+                
+            } catch (error) {
+                console.error('API Error:', error);
+                document.getElementById('typing-msg')?.remove();
+                orbContainer.classList.remove('speaking');
+                
+                // 顯示錯誤
+                showError('連接中斷，請稍後再試');
+                
+                // 使用備用回應
+                const fallbackResponses = {
+                    guangguang: '我聽到了。讓我們慢慢來⋯⋯你說的這些，背後藏著什麼？',
+                    sumu: '謝謝你告訴我。不用急，我們可以慢慢聊⋯⋯',
+                    guyan: '繼續說。你還沒說到重點。'
+                };
+                
+                setTimeout(() => {
+                    showAIMessage(fallbackResponses[currentGuide]);
+                }, 1500);
+            }
+        }
+        
+        // 生成洞察
+        function generateInsight() {
+            const insights = {
+                guangguang: '你的品牌正在保護一個它以為很脆弱的核心。但那個核心，其實是你最珍貴的東西——它只是還沒被允許發光。',
+                sumu: '你的品牌需要的不是更多策略，而是一個「允許」——允許它不必完美，允許它有自己的節奏，允許它在混亂中慢慢找到自己的形狀。',
+                guyan: '你的品牌在撒的謊，其實是你對自己撒的謊。好消息是：當你敢說出來的那一刻，謊言就開始失去力量了。'
+            };
+            
+            document.getElementById('insight-main').textContent = insights[currentGuide];
+            warpTo('layer-dialogue', 'layer-insight');
+        }
+        
+        // 顯示錯誤
+        function showError(msg) {
+            const toast = document.getElementById('error-toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+        
+        // Enter 發送
+        document.getElementById('free-input').addEventListener('keypress', e => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+        
+        // 自動調整輸入框高度
+        document.getElementById('free-input').addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+    </script>
+</body>
+</html>
