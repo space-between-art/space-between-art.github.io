@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z531JX2XR4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z531JX2XR4");</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>蘇牧 · 隙光樹洞 | space-between.art</title>
+    <meta name="description" content="蘇牧是書店角落裡的提問者。他不會告訴你答案，但會問你一個讓你突然安靜下來的問題。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg:#0A0D0A;--bg2:#111411;--bg3:#171B17;
+            --t:#F0F4EC;--tb:#E2E8DA;--tm:#BDC7B0;--tq:#8E9A80;
+            --sage:#7FA87F;--ss:#5E8A5E;--sl:rgba(127,168,127,.15);--sg:rgba(127,168,127,.06);
+            --glow:rgba(127,168,127,.03);
+            --sf:'Noto Serif TC',serif;--sn:'Noto Sans TC',sans-serif;--en:'Cormorant Garamond',serif;
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html,body{height:100%;overflow:hidden}
+        body{background:var(--bg);color:var(--tb);font-family:var(--sf);-webkit-font-smoothing:antialiased}
+        ::selection{background:rgba(127,168,127,.3);color:#fff}
+        a{color:inherit;text-decoration:none}
+
+        .app{display:flex;flex-direction:column;height:100vh;height:100dvh;position:relative;overflow:hidden}
+        #leaves{position:fixed;inset:0;pointer-events:none;z-index:0}
+
+        .nav{position:relative;z-index:10;background:rgba(10,13,10,.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--sl);height:56px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+        .nav-back{font-family:var(--sn);font-size:11px;color:var(--tq);letter-spacing:1px;transition:color .3s;display:flex;align-items:center;gap:6px}
+        .nav-back:hover{color:var(--sage)}
+        .nav-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px}
+        .nav-av{width:28px;height:28px;border-radius:50%;background:rgba(127,168,127,.1);border:1px solid rgba(127,168,127,.2);display:flex;align-items:center;justify-content:center;font-size:14px}
+        .nav-name{font-family:var(--sn);font-size:13px;font-weight:500;color:var(--t);letter-spacing:1px}
+        .nav-status{font-family:var(--sn);font-size:10px;color:var(--ss);letter-spacing:1px}
+        .nav-right{font-family:var(--sn);font-size:11px;color:var(--tq)}
+
+        .welcome{text-align:center;padding:48px 24px 20px;flex-shrink:0;position:relative;z-index:1}
+        .welcome-av{width:64px;height:64px;border-radius:50%;background:rgba(127,168,127,.06);border:1px solid rgba(127,168,127,.12);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 16px;animation:breathe 4s infinite}
+        .welcome h2{font-size:20px;font-weight:600;color:var(--t);margin-bottom:4px}
+        .welcome-en{font-family:var(--en);font-size:13px;font-style:italic;color:var(--tq);margin-bottom:12px;letter-spacing:2px}
+        .welcome-desc{font-size:14px;line-height:2.2;color:var(--tb);max-width:360px;margin:0 auto}
+        .welcome-desc em{color:var(--sage);font-style:normal}
+
+        .messages{flex:1;overflow-y:auto;padding:16px 16px 8px;position:relative;z-index:1;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+        .messages::-webkit-scrollbar{width:3px}
+        .messages::-webkit-scrollbar-track{background:transparent}
+        .messages::-webkit-scrollbar-thumb{background:rgba(127,168,127,.1);border-radius:2px}
+        .msg{display:flex;gap:10px;margin-bottom:16px;animation:msg-in .4s ease-out both;max-width:600px}
+        .msg-ai{align-self:flex-start}
+        .msg-user{flex-direction:row-reverse;margin-left:auto}
+        .msg-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:2px}
+        .msg-ai .msg-av{background:rgba(127,168,127,.08);border:1px solid rgba(127,168,127,.15)}
+        .msg-user .msg-av{background:rgba(160,160,160,.08);border:1px solid rgba(160,160,160,.1)}
+        .msg-bubble{padding:14px 18px;border-radius:16px;font-family:var(--sn);font-size:15px;line-height:1.9;max-width:min(420px,75vw);word-break:break-word}
+        .msg-ai .msg-bubble{background:var(--bg2);border:1px solid var(--sl);border-top-left-radius:4px;color:var(--t)}
+        .msg-user .msg-bubble{background:rgba(127,168,127,.08);border:1px solid rgba(127,168,127,.1);border-top-right-radius:4px;color:var(--t)}
+
+        .typing{display:none;gap:10px;margin-bottom:16px;align-items:flex-end}
+        .typing.show{display:flex}
+        .typing .msg-av{width:28px;height:28px;border-radius:50%;background:rgba(127,168,127,.08);border:1px solid rgba(127,168,127,.15);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+        .typing-dots{padding:12px 18px;background:var(--bg2);border:1px solid var(--sl);border-radius:16px;border-top-left-radius:4px;display:flex;gap:4px;align-items:center}
+        .typing-dot{width:5px;height:5px;border-radius:50%;background:var(--ss);animation:dot-pulse 1.4s infinite}
+        .typing-dot:nth-child(2){animation-delay:.2s}
+        .typing-dot:nth-child(3){animation-delay:.4s}
+
+        .suggestions{padding:4px 16px 8px;display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:1;flex-shrink:0}
+        .sug{font-family:var(--sn);font-size:13px;color:var(--tm);background:var(--sg);border:1px solid var(--sl);padding:8px 18px;border-radius:20px;cursor:pointer;transition:all .3s;white-space:nowrap}
+        .sug:hover{background:rgba(127,168,127,.12);color:var(--sage);transform:translateY(-1px)}
+
+        .input-area{position:relative;z-index:10;padding:8px 16px 16px;background:linear-gradient(to top,var(--bg) 70%,transparent);flex-shrink:0}
+        .input-wrap{display:flex;gap:10px;align-items:flex-end;max-width:600px;margin:0 auto}
+        .input-field{flex:1;background:var(--bg2);border:1px solid var(--sl);border-radius:20px;padding:11px 18px;font-family:var(--sn);font-size:15px;color:var(--t);line-height:1.6;resize:none;outline:none;transition:border-color .3s;max-height:120px;overflow-y:auto;min-height:42px}
+        .input-field::placeholder{color:var(--tm)}
+        .input-field:focus{border-color:rgba(127,168,127,.3)}
+        .send-btn{width:42px;height:42px;border-radius:50%;background:var(--sage);border:none;color:var(--bg);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;flex-shrink:0}
+        .send-btn:hover{transform:scale(1.05);box-shadow:0 4px 16px rgba(127,168,127,.3)}
+        .send-btn:disabled{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none}
+
+        .foot-note{text-align:center;padding:4px 16px 12px;position:relative;z-index:1;flex-shrink:0}
+        .foot-note span{font-family:var(--sn);font-size:10px;color:var(--tq);letter-spacing:1px}
+
+        @media(max-width:480px){
+            .welcome{padding:32px 20px 12px}
+            .welcome-av{width:52px;height:52px;font-size:26px}
+            .welcome h2{font-size:18px}
+            .welcome-desc{font-size:13px}
+            .messages{padding:12px 12px 8px}
+            .msg-bubble{font-size:14px;max-width:85vw}
+            .input-area{padding:6px 12px 12px}
+            .suggestions{padding:4px 12px 6px}
+        }
+
+        .app.chatting .welcome{display:none}
+        .app.chatting .suggestions{display:none}
+
+        @keyframes breathe{0%,100%{box-shadow:0 0 0 0 rgba(127,168,127,0)}50%{box-shadow:0 0 16px 2px rgba(127,168,127,.06)}}
+        @keyframes msg-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes dot-pulse{0%,60%,100%{opacity:.3;transform:scale(.8)}30%{opacity:1;transform:scale(1)}}
+    </style>
+</head>
+<body>
+
+<div class="app" id="app">
+    <canvas id="leaves"></canvas>
+
+    <nav class="nav">
+        <a href="../" class="nav-back">← 書架</a>
+        <div class="nav-center">
+            <div class="nav-av">🌿</div>
+            <div>
+                <div class="nav-name">蘇牧</div>
+                <div class="nav-status">online · 角落模式</div>
+            </div>
+        </div>
+        <div class="nav-right">24h</div>
+    </nav>
+
+    <div class="welcome" id="welcome">
+        <div class="welcome-av">🌿</div>
+        <h2>蘇牧</h2>
+        <div class="welcome-en">Su Mu · The Questioner</div>
+        <div class="welcome-desc">
+            書店角落裡嘅提問者。<br>
+            佢唔會話你聽答案，<br>
+            但會問你一個讓你突然<em>安靜落嚟</em>嘅問題。
+        </div>
+    </div>
+
+    <div class="messages" id="messages"></div>
+
+    <div class="typing" id="typing">
+        <div class="msg-av">🌿</div>
+        <div class="typing-dots">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+    </div>
+
+    <div class="suggestions" id="suggestions">
+        <div class="sug" onclick="sendSuggestion(this)">我覺得自己一直在重複同樣的循環</div>
+        <div class="sug" onclick="sendSuggestion(this)">我不知道自己真正想要什麼</div>
+        <div class="sug" onclick="sendSuggestion(this)">品牌做了很久但沒有方向感</div>
+    </div>
+
+    <div class="input-area">
+        <div class="input-wrap">
+            <textarea class="input-field" id="input" rows="1" placeholder="和蘇牧說⋯⋯" enterkeyhint="send"></textarea>
+            <button class="send-btn" id="sendBtn" onclick="send()" disabled aria-label="傳送">↑</button>
+        </div>
+    </div>
+
+    <div class="foot-note">
+        <span>蘇牧由 AI 驅動 · 不替代專業諮詢</span>
+    </div>
+</div>
+
+<script>
+(function(){
+    // ═══ FALLING LEAVES ═══
+    const cv=document.getElementById('leaves'),cx=cv.getContext('2d');
+    function resizeCanvas(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight}
+    resizeCanvas();window.addEventListener('resize',resizeCanvas);
+    const particles=[];for(let i=0;i<18;i++)particles.push({x:Math.random()*2000,y:Math.random()*2000,r:Math.random()*1.2+.4,dx:(Math.random()-.5)*.15,dy:Math.random()*.2+.05,o:Math.random()*.03+.008,rot:Math.random()*Math.PI*2,rv:(Math.random()-.5)*.01});
+    function drawLeaves(){cx.clearRect(0,0,cv.width,cv.height);particles.forEach(p=>{cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.beginPath();cx.ellipse(0,0,p.r*2,p.r*.8,0,0,Math.PI*2);cx.fillStyle=`rgba(127,168,127,${p.o})`;cx.fill();cx.restore();p.x+=p.dx;p.y+=p.dy;p.rot+=p.rv;if(p.y>cv.height+10){p.y=-10;p.x=Math.random()*cv.width}});requestAnimationFrame(drawLeaves)}
+    drawLeaves();
+
+    // ═══ STATE ═══
+    const API='https://spacebetween.app.n8n.cloud/webhook/sumo-chat';
+    let history=[];
+    let sending=false;
+
+    const app=document.getElementById('app');
+    const msgBox=document.getElementById('messages');
+    const input=document.getElementById('input');
+    const sendBtn=document.getElementById('sendBtn');
+    const typingEl=document.getElementById('typing');
+
+    input.addEventListener('input',function(){
+        this.style.height='auto';
+        this.style.height=Math.min(this.scrollHeight,120)+'px';
+        sendBtn.disabled=!this.value.trim()||sending;
+    });
+    input.addEventListener('keydown',function(e){
+        if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}
+    });
+
+    function addMsg(role,text){
+        const isAI=role==='ai';
+        const div=document.createElement('div');
+        div.className='msg msg-'+(isAI?'ai':'user');
+        div.innerHTML=`
+            <div class="msg-av">${isAI?'🌿':'👤'}</div>
+            <div class="msg-bubble">${formatText(text)}</div>
+        `;
+        msgBox.appendChild(div);
+        msgBox.scrollTop=msgBox.scrollHeight;
+    }
+
+    function formatText(text){
+        return text
+            .replace(/\n/g,'<br>')
+            .replace(/\*\*(.*?)\*\*/g,'<strong style="color:var(--t)">$1</strong>')
+            .replace(/\*(.*?)\*/g,'<em style="color:var(--sage)">$1</em>');
+    }
+
+    window.send=async function(){
+        const text=input.value.trim();
+        if(!text||sending)return;
+
+        sending=true;
+        sendBtn.disabled=true;
+        input.value='';
+        input.style.height='auto';
+
+        if(!app.classList.contains('chatting'))app.classList.add('chatting');
+
+        addMsg('user',text);
+        history.push({role:'user',content:text});
+
+        typingEl.classList.add('show');
+        msgBox.scrollTop=msgBox.scrollHeight;
+
+        try{
+            const res=await fetch(API,{
+                method:'POST',
+                headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({messages:history})
+            });
+
+            if(!res.ok)throw new Error('API error '+res.status);
+
+            const data=await res.json();
+            let reply='';
+
+            if(data.content&&Array.isArray(data.content)){
+                reply=data.content.filter(c=>c.type==='text').map(c=>c.text).join('\n');
+            }else if(data.reply){
+                reply=data.reply;
+            }else if(data.text){
+                reply=data.text;
+            }else if(typeof data==='string'){
+                reply=data;
+            }else{
+                reply=JSON.stringify(data);
+            }
+
+            reply=reply.replace(/---SUMMARY_START---[\s\S]*?---SUMMARY_END---/g,'').trim();
+            if(!reply)reply='⋯⋯（蘇牧沉默了一下）可以再說一次嗎？';
+
+            history.push({role:'assistant',content:reply});
+            typingEl.classList.remove('show');
+            addMsg('ai',reply);
+
+        }catch(err){
+            console.error('Chat error:',err);
+            typingEl.classList.remove('show');
+            addMsg('ai','（書頁翻動的聲音）⋯⋯ 連線似乎斷了。等一下再試？');
+        }
+
+        sending=false;
+        sendBtn.disabled=!input.value.trim();
+        input.focus();
+    };
+
+    window.sendSuggestion=function(el){
+        input.value=el.textContent;
+        input.dispatchEvent(new Event('input'));
+        send();
+    };
+
+    if(window.innerWidth>768)input.focus();
+})();
+</script>
+</body>
+</html>

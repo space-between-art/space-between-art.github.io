@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z531JX2XR4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z531JX2XR4");</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心宅：禁室 — 隙光文學 | space-between.art</title>
+    <meta name="description" content="梧桐街47號，一棟維多利亞式老宅，二十年來只有一個住戶——蘇雨。六位心理學派專家聯手，解開一扇鎖了二十年的門。心宅系列第一冊。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:#0A090E;--bgr:#110F18;--bgc:#161320;--bgh:#1B1828;
+            --t:#D4D0DD;--td:#8D88A0;--tf:#5A5670;
+            --plum:#A67DB8;--pd:#7E5C90;--pg:rgba(166,125,184,.07);--pl:rgba(166,125,184,.14);
+            --crim:#C45B6E;--cd:#9A4456;--cg:rgba(196,91,110,.06);--ccl:rgba(196,91,110,.12);
+            --lav:#B8A9D4;--warm:#E8D5C0;
+            --sf:'Noto Serif TC',serif;--sn:'Noto Sans TC',sans-serif;
+            --en:'Cormorant Garamond',serif;--eb:'EB Garamond',serif;
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--t);font-family:var(--sf);line-height:1.8;-webkit-font-smoothing:antialiased}
+        ::selection{background:rgba(166,125,184,.25);color:#fff}
+        a{color:inherit;text-decoration:none}
+
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,9,14,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--pl);height:56px;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between}
+        .nav-b{font-family:var(--sn);font-size:11px;letter-spacing:3px;color:var(--td)}
+        .nav-b strong{color:var(--plum);font-weight:500}
+        .nav-l{display:flex;gap:24px}
+        .nav-l a{font-family:var(--sn);font-size:11px;letter-spacing:1px;color:var(--tf);transition:color .3s}
+        .nav-l a:hover{color:var(--plum)}
+
+        .hero{position:relative;padding:140px clamp(24px,6vw,80px) 80px;min-height:85vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden}
+        #dust{position:absolute;inset:0;pointer-events:none;z-index:0}
+        .hero>*{position:relative;z-index:1}
+        .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:220px;background:linear-gradient(to top,var(--bg),transparent);pointer-events:none;z-index:1}
+        .hero-badge{display:inline-block;font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--pd);border:1px solid var(--pl);padding:6px 20px;border-radius:2px;margin-bottom:40px;animation:fu .8s both}
+        .hero h1{font-size:clamp(36px,7vw,72px);font-weight:700;letter-spacing:10px;color:var(--t);margin-bottom:8px;animation:fu .8s .15s both}
+        .hero-en{font-family:var(--en);font-size:clamp(14px,2vw,20px);font-style:italic;color:var(--tf);letter-spacing:4px;margin-bottom:44px;animation:fu .8s .3s both}
+        .hero-desc{max-width:560px;font-size:15px;line-height:2.4;color:var(--td);margin-bottom:36px;animation:fu .8s .45s both}
+        .hero-desc em{color:var(--plum);font-style:normal}
+        .hero-meta{display:flex;gap:32px;align-items:center;font-family:var(--sn);font-size:11px;color:var(--tf);flex-wrap:wrap;justify-content:center;animation:fu .8s .6s both}
+        .hero-meta .n{color:var(--plum);font-size:14px;font-weight:500}
+        .hero-scroll{position:absolute;bottom:36px;z-index:2;font-family:var(--en);font-size:12px;font-style:italic;color:var(--tf);letter-spacing:2px;animation:pulse 2.5s infinite}
+
+        .epigraph{padding:60px clamp(24px,6vw,80px);text-align:center}
+        .epigraph-text{font-size:clamp(16px,2.5vw,22px);line-height:2.6;color:var(--td);max-width:560px;margin:0 auto;font-style:italic}
+        .epigraph-text em{color:var(--plum);font-style:normal}
+        .epigraph-attr{font-family:var(--en);font-size:12px;font-style:italic;color:var(--tf);margin-top:24px}
+
+        .toc{max-width:920px;margin:0 auto;padding:40px clamp(20px,4vw,40px) 80px}
+        .toc-intro{text-align:center;margin-bottom:56px}
+        .toc-intro-label{font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--pd);margin-bottom:14px}
+        .toc-intro-title{font-size:clamp(20px,3vw,28px);font-weight:600;color:var(--t);margin-bottom:6px}
+        .toc-intro-sub{font-family:var(--en);font-size:14px;font-style:italic;color:var(--tf)}
+
+        /* Chapter layout - different from episode-based novels */
+        .part{margin-bottom:48px;position:relative}
+        .part::before{content:'';position:absolute;left:23px;top:52px;bottom:0;width:1px;background:linear-gradient(to bottom,var(--pl),transparent)}
+        .part-h{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-left:8px}
+        .part-n{width:32px;height:32px;border:1px solid var(--pl);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:13px;font-style:italic;color:var(--pd);flex-shrink:0;background:var(--bg);position:relative;z-index:1}
+        .part-t{font-family:var(--sn);font-size:12px;letter-spacing:2px;color:var(--plum)}
+        .part-hint{font-family:var(--sn);font-size:10px;color:var(--tf);margin-left:8px}
+
+        .ch{display:grid;grid-template-columns:48px 1fr auto;gap:0 16px;align-items:start;padding:13px 8px 13px 0;margin-left:8px;cursor:pointer;transition:background .3s;border-radius:6px;position:relative}
+        .ch:hover{background:var(--pg)}
+        .ch:hover .ch-title{color:var(--t)}
+        .ch:hover .ch-arrow{opacity:1;transform:translateX(0)}
+        .ch-dot{width:48px;display:flex;justify-content:center;padding-top:4px;position:relative;z-index:1}
+        .ch-dot::before{content:'';width:7px;height:7px;background:var(--bgc);border:1px solid rgba(166,125,184,.25);border-radius:50%;transition:all .3s}
+        .ch:hover .ch-dot::before{background:var(--plum);border-color:var(--plum);box-shadow:0 0 10px rgba(166,125,184,.35)}
+        .ch-body{min-width:0}
+        .ch-num{font-family:var(--en);font-size:11px;font-style:italic;color:var(--tf);margin-bottom:2px}
+        .ch-title{font-size:16px;font-weight:500;color:var(--td);transition:color .3s;margin-bottom:4px}
+        .ch-expert{font-family:var(--sn);font-size:10px;color:var(--crim);margin-bottom:6px;display:inline-block;padding:2px 8px;background:var(--cg);border-radius:3px}
+        .ch-ex{font-size:12px;line-height:1.8;color:var(--tf)}
+        .ch-r{display:flex;align-items:center;gap:12px;padding-top:4px;padding-right:12px}
+        .ch-arrow{font-family:var(--en);font-size:16px;color:var(--plum);opacity:0;transform:translateX(-4px);transition:all .3s}
+
+        /* Appendix sub-row */
+        .app{display:grid;grid-template-columns:48px 1fr;gap:0 16px;padding:6px 8px 6px 0;margin-left:8px}
+        .app-dot{width:48px;display:flex;justify-content:center;padding-top:6px;position:relative;z-index:1}
+        .app-dot::before{content:'';width:4px;height:4px;background:rgba(196,91,110,.3);border-radius:50%}
+        .app-body{min-width:0}
+        .app-label{font-family:var(--en);font-size:10px;font-style:italic;color:var(--cd)}
+        .app-title{font-size:12px;color:var(--tf)}
+
+        .epi{margin-top:40px;padding:28px 32px;background:var(--bgc);border:1px solid var(--pl);border-radius:10px;text-align:center;transition:border-color .4s}
+        .epi:hover{border-color:rgba(166,125,184,.3)}
+        .epi-label{font-family:var(--sn);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--pd);margin-bottom:10px}
+        .epi-title{font-size:20px;font-weight:600;color:var(--t);margin-bottom:4px}
+        .epi-en{font-family:var(--en);font-size:13px;font-style:italic;color:var(--tf);margin-bottom:14px}
+        .epi-desc{font-size:14px;line-height:2.2;color:var(--td);max-width:480px;margin:0 auto 20px}
+        .epi-desc em{color:var(--plum);font-style:normal}
+
+        .cta{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;background:var(--pg);border:1px solid var(--pl);border-radius:24px;font-family:var(--sn);font-size:12px;color:var(--plum);transition:all .3s}
+        .cta:hover{background:rgba(166,125,184,.14);transform:translateY(-1px)}
+        .cta--c{color:var(--crim);background:var(--cg);border-color:var(--ccl)}
+        .cta--c:hover{background:rgba(196,91,110,.12)}
+
+        .about{max-width:720px;margin:0 auto;padding:80px clamp(20px,4vw,40px)}
+        .about-label{font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--pd);text-align:center;margin-bottom:24px}
+        .about-title{font-size:clamp(20px,3vw,26px);font-weight:600;text-align:center;color:var(--t);margin-bottom:32px}
+        .about-body{font-size:14px;line-height:2.4;color:var(--td);column-count:2;column-gap:40px}
+        @media(max-width:640px){.about-body{column-count:1}}
+        .about-body em{color:var(--plum);font-style:normal}
+
+        .expert{max-width:720px;margin:0 auto;padding:0 clamp(20px,4vw,40px) 60px}
+        .expert-label{font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--pd);text-align:center;margin-bottom:24px}
+        .expert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+        .expert-card{padding:18px;background:var(--bgr);border:1px solid rgba(166,125,184,.08);border-radius:8px;transition:border-color .3s}
+        .expert-card:hover{border-color:var(--pl)}
+        .expert-name{font-size:15px;font-weight:500;color:var(--t);margin-bottom:4px}
+        .expert-role{font-family:var(--sn);font-size:11px;color:var(--plum);margin-bottom:4px}
+        .expert-school{font-family:var(--sn);font-size:10px;color:var(--crim);margin-bottom:8px}
+        .expert-desc{font-size:12px;color:var(--tf);line-height:1.7}
+
+        /* Series preview */
+        .series{max-width:720px;margin:0 auto;padding:40px clamp(20px,4vw,40px) 60px}
+        .series-label{font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--pd);text-align:center;margin-bottom:24px}
+        .series-list{display:flex;flex-direction:column;gap:12px}
+        .series-item{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--bgr);border:1px solid rgba(166,125,184,.06);border-radius:8px}
+        .series-item.active{border-color:var(--pl);background:var(--bgc)}
+        .series-num{font-family:var(--en);font-size:20px;font-style:italic;color:var(--pd);width:28px;text-align:center;flex-shrink:0}
+        .series-info{flex:1}
+        .series-name{font-size:14px;font-weight:500;color:var(--t);margin-bottom:2px}
+        .series-name .en{font-family:var(--en);font-size:12px;font-style:italic;color:var(--tf);margin-left:8px}
+        .series-theme{font-size:11px;color:var(--tf)}
+        .series-badge{font-family:var(--sn);font-size:9px;color:var(--plum);background:var(--pg);padding:3px 10px;border-radius:3px;flex-shrink:0}
+
+        .foot{text-align:center;padding:60px 24px;border-top:1px solid rgba(166,125,184,.06)}
+        .foot-logo{font-family:var(--sn);font-size:10px;letter-spacing:4px;color:var(--tf);margin-bottom:8px}
+        .foot-copy{font-family:var(--en);font-size:11px;font-style:italic;color:rgba(90,86,112,.5)}
+
+        @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes pulse{0%,100%{opacity:.4;transform:translateY(0)}50%{opacity:1;transform:translateY(4px)}}
+        @media(max-width:640px){
+            .hero{padding:120px 20px 60px;min-height:80vh}
+            .hero-meta{gap:16px}
+            .ch{grid-template-columns:40px 1fr;gap:0 10px}
+            .ch-r{display:none}
+            .nav-l{gap:14px}
+            .expert-grid{grid-template-columns:1fr}
+        }
+    
+        /* READING CONTROLS */
+        .rc{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+        .rc-toggle{width:40px;height:40px;border-radius:50%;background:rgba(30,30,30,.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+        .rc-toggle:hover{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.8)}
+        .rc-panel{display:none;background:rgba(24,24,28,.92);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;min-width:200px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+        .rc-panel.open{display:block}
+        .rc-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+        .rc-row:last-child{margin-bottom:0}
+        .rc-label{font-family:var(--sn,sans-serif);font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.35)}
+        .rc-btns{display:flex;gap:6px}
+        .rc-btn{width:34px;height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:var(--sn,sans-serif)}
+        .rc-btn:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+        .rc-btn.active{border-color:rgba(201,165,90,.4);color:rgba(201,165,90,.9);background:rgba(201,165,90,.1)}
+        .rc-bright{width:34px;height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:12px}
+        .rc-bright:hover{border-color:rgba(255,255,255,.2)}
+        .rc-bright.active{border-color:rgba(201,165,90,.4)}
+        .rc-bright[data-m="dark"]{background:rgba(20,20,24,.9);color:rgba(255,255,255,.3)}
+        .rc-bright[data-m="dim"]{background:rgba(50,48,44,.9);color:rgba(220,215,200,.5)}
+        .rc-bright[data-m="light"]{background:rgba(235,230,218,.9);color:rgba(60,55,45,.5)}
+        body.mode-dim{--bg:#1E1D1A!important;--bgr:#24231F!important;--bgc:#2A2925!important;--t:#E8E4DA!important;--td:#A8A295!important;--tf:#706A5E!important}
+        body.mode-light{--bg:#F2EDE3!important;--bgr:#EAE5DA!important;--bgc:#E2DDD2!important;--t:#2C2822!important;--td:#4A4538!important;--tf:#8A8478!important}
+        body.mode-light .nav{background:rgba(242,237,227,.92)!important;border-bottom-color:rgba(0,0,0,.06)!important}
+        body.mode-light .rc-toggle{background:rgba(230,225,215,.9);border-color:rgba(0,0,0,.08);color:rgba(0,0,0,.4)}
+        body.mode-light .rc-panel{background:rgba(240,236,228,.95);border-color:rgba(0,0,0,.08)}
+        body.mode-light .rc-label{color:rgba(0,0,0,.3)}
+        body.mode-light .rc-btn{border-color:rgba(0,0,0,.08);background:rgba(0,0,0,.03);color:rgba(0,0,0,.4)}
+        body.mode-light .rc-btn:hover{background:rgba(0,0,0,.08);color:rgba(0,0,0,.6)}
+        body.mode-light .rc-btn.active{border-color:rgba(140,120,60,.4);color:rgba(140,120,60,.9);background:rgba(140,120,60,.08)}
+        body.mode-dim .rc-toggle{background:rgba(40,38,34,.9)}
+        @media(max-width:480px){.rc{bottom:16px;right:16px}.rc-panel{min-width:180px;padding:14px 16px}}
+
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-b"><strong>隙光文學</strong> · 心宅：禁室</div>
+    <div class="nav-l">
+        <a href="#toc">目錄</a>
+        <a href="#about">關於</a>
+        <a href="#experts">角色</a>
+        <a href="#series">系列</a>
+        <a href="../">← 書架</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <canvas id="dust"></canvas>
+    <div class="hero-badge">心理懸疑 · 創傷記憶 · 六派聯診</div>
+    <h1>心宅：禁室</h1>
+    <div class="hero-en">The Forbidden Room</div>
+    <div class="hero-desc">
+        梧桐街47號。<br>
+        一棟維多利亞式老宅，二十年來只有一個住戶。<br>
+        社區稱它為<em>「悲傷之屋」</em>，而她是<em>「守墓人」</em>。<br>
+        六位心理學派專家受邀而來，<br>
+        試圖打開那扇鎖了二十年的門。
+    </div>
+    <div class="hero-meta">
+        <span><span class="n">9</span> 章 + 序幕 + 間章</span>
+        <span>｜</span>
+        <span><span class="n">8</span> 篇專家附錄</span>
+        <span>｜</span>
+        <span>心宅系列 · 第一冊</span>
+    </div>
+    <div class="hero-scroll">scroll ↓</div>
+</section>
+
+<div class="epigraph">
+    <div class="epigraph-text">
+        「不是我住在裡面，<br>
+        是<em>它住在我裡面</em>。」
+    </div>
+    <div class="epigraph-attr">—— 蘇雨</div>
+</div>
+
+<section class="toc" id="toc">
+    <div class="toc-intro">
+        <div class="toc-intro-label">Contents</div>
+        <div class="toc-intro-title">全書目錄</div>
+        <div class="toc-intro-sub">9 chapters + prologue + interlude + 8 appendices</div>
+    </div>
+
+    <!-- PART I: 門外 -->
+    <div class="part">
+        <div class="part-h">
+            <div class="part-n">I</div>
+            <div class="part-t">門外 · BEFORE THE DOOR</div>
+            <div class="part-hint">序幕 · 間章</div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Prologue</div>
+                <div class="ch-title">序幕：悲傷之屋</div>
+                <div class="ch-expert">林默 · 心理建築師</div>
+                <div class="ch-ex">雨中，林默站在梧桐街47號鐵藝大門外。三層磚石老宅，尖頂閣樓像被遺忘的禮帽。社區異常現象記錄：三樓房間自動亮燈17分鐘、不存在的地下室傳出敲擊聲、每逢新月在地板上畫迷宮。蘇雨開門說：「房子最近心情不好。」空氣中有不屬於這個季節的薰衣草和消毒水氣味。</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Interlude</div>
+                <div class="ch-title">間章：蘇雨的夜</div>
+                <div class="ch-ex">他們離開後，房子安靜了。蘇雨赤足踩在反覆擦洗的淺色地板上，每道刮痕都是她留下的，每次清洗都是一場小型贖罪儀式。走到二樓走廊，她停在那扇漆成牆壁顏色的門前。門把手積著薄灰。「還沒有。再等一下。」她把手貼上門板——木頭是冰的，但她總覺得能感受到另一側的體溫。</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+    </div>
+
+    <!-- PART II: 六把手術刀 -->
+    <div class="part">
+        <div class="part-h">
+            <div class="part-n">II</div>
+            <div class="part-t">六把手術刀 · SIX SCALPELS</div>
+            <div class="part-hint">第一章 – 第六章</div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Chapter 1</div>
+                <div class="ch-title">地基的幽靈</div>
+                <div class="ch-expert">陳深 · 精神分析學派</div>
+                <div class="ch-ex">銀髮的陳深帶著牛皮公文包抵達，像上個世紀精心保存的儀器。他用催眠探入蘇雨的潛意識——發現被「隔離」的地下室記憶。蘇雨在催眠中說出那句話：「地板吞不掉血。」壓抑了二十年的創傷冰山，終於從裂縫滲出一角。牆面浮現一扇不存在的門。</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="app">
+            <div class="app-dot"></div>
+            <div class="app-body">
+                <div class="app-label">Appendix I</div>
+                <div class="app-title">陳深醫師的語音備忘錄 — 凌晨 02:47，關於冰山與防禦機制</div>
+            </div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Chapter 2</div>
+                <div class="ch-title">精準的牢籠</div>
+                <div class="ch-expert">李維 · 行為主義學派</div>
+                <div class="ch-ex">白色廂型車裡的移動實驗室。李維用感測器繪製蘇雨的儀式行為鏈：教堂鐘聲 → 觸摸右耳垂 → 走向廚房 → 等待47度角光斑 → 擺放雙人份餐具 → 焦慮下降23%。每週三下午三點，她在禁室門前靜止17分鐘。操作制約維持了二十年。</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="app">
+            <div class="app-dot"></div>
+            <div class="app-body">
+                <div class="app-label">Appendix II</div>
+                <div class="app-title">李維的數據分析報告 — 行為鏈重建與干預嘗試</div>
+            </div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Chapter 3</div>
+                <div class="ch-title">向光的囚徒</div>
+                <div class="ch-expert">羅晴 · 人本主義學派</div>
+                <div class="ch-ex">苔綠色老旅行車，竹籃裡裝著多肉植物和畫筆。羅晴帶了一盆「靜夜」——在陽光不多的地方也能活，夜裡葉尖會凝水珠像星星。蘇雨拿起畫筆：第一幅全是灰黑，但角落沾了一點檸檬黃。她問出壓抑二十年的問題：「妳希望成為什麼樣子？」</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="app">
+            <div class="app-dot"></div>
+            <div class="app-body">
+                <div class="app-label">Appendix III</div>
+                <div class="app-title">羅晴的療程札記 — 關於那一點檸檬黃與無條件積極關注</div>
+            </div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Chapter 4</div>
+                <div class="ch-title">被刪除的藍圖</div>
+                <div class="ch-expert">劉思遠 · 認知心理學派</div>
+                <div class="ch-ex">眼動測試揭示蘇雨系統性迴避特定詞彙：「妹妹」停留僅17毫秒（正常值250ms），「責任」23ms，「原諒」31ms。隱含聯想測試更驚人：她的潛意識裡，「自我」與「危險」強連結。她相信自己不是「處於危險中」，而是「本身就是危險源」。</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="app">
+            <div class="app-dot"></div>
+            <div class="app-body">
+                <div class="app-label">Appendix IV</div>
+                <div class="app-title">劉思遠的認知地圖草稿 — 核心信念「自我＝危險」與認知扭曲分類</div>
+            </div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Chapter 5</div>
+                <div class="ch-title">血脈中的密碼</div>
+                <div class="ch-expert">趙明 · 生物心理學派</div>
+                <div class="ch-ex">便攜式腦電圖、基因檢測套件。趙明發現蘇雨攜帶 MAOA 基因低活性變異——媒體稱為「戰士基因」，但科學遠比標籤複雜。她與妹妹蘇雲共享同一變異，表現卻完全相反：蘇雲外化（衝動），蘇雨內化（自我封閉）。藥物緩解了焦慮，卻引發指向禁室的夢遊。</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="app">
+            <div class="app-dot"></div>
+            <div class="app-body">
+                <div class="app-label">Appendix V</div>
+                <div class="app-title">趙明的實驗室報告 — 神經影像、基因與「同樣基因不同命運」</div>
+            </div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Chapter 6</div>
+                <div class="ch-title">沉默的共謀</div>
+                <div class="ch-expert">吳曉薇 · 社會心理學派</div>
+                <div class="ch-ex">一籃檸檬蛋糕，從45號開始敲門。吳曉薇揭開梧桐街二十年的集體沉默——所有鄰居都知道，但沒人願說。「悲傷之屋」和「守墓人」的標籤既是隔離也是扭曲的尊重。78歲退休老郵差是關鍵證人：他是那個雨夜，最後一個見到蘇雲的人。臨終的請求終於浮現。</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="app">
+            <div class="app-dot"></div>
+            <div class="app-body">
+                <div class="app-label">Appendix VI</div>
+                <div class="app-title">吳曉薇的田野筆記 — 檸檬蛋糕、標籤化與老郵差的證詞</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PART III: 開門 -->
+    <div class="part">
+        <div class="part-h">
+            <div class="part-n">III</div>
+            <div class="part-t">開門 · THE DOOR OPENS</div>
+            <div class="part-hint">第七章 – 第九章</div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Chapter 7</div>
+                <div class="ch-title">整合的藍圖</div>
+                <div class="ch-expert">林默 · 整合行動</div>
+                <div class="ch-ex">白板寫滿時間線、症狀圖、基因圖譜、社區關係網——像進攻複雜堡壘的作戰地圖。六位專家齊聚：陳深找到潛意識的門，李維標定了3:00-3:17的維護窗口，羅晴準備接住情緒，劉思遠等待事實來重構認知，趙明穩定生理，吳曉薇帶來社區的證詞。行動前夜，蘇雨坦白：「我欠她一個承諾。」</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="app">
+            <div class="app-dot"></div>
+            <div class="app-body">
+                <div class="app-label">Appendix VII</div>
+                <div class="app-title">林默的案件整合檔案 — 六把鑰匙與生物-心理-社會模型</div>
+            </div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Chapter 8</div>
+                <div class="ch-title">禁室之門</div>
+                <div class="ch-expert">全員 · 週三下午三點</div>
+                <div class="ch-ex">鉛灰色天空，梧桐街屏息。李維將環境光調至暖黃4000K，所有設備靜默運行。3:00，蘇雨站在門前。她轉動門把——門開了。房間很小，牆壁是薰衣草色。窗台有乾枯的真正薰衣草，書架上是妹妹蘇雲的日記。紫色盒子裡那封信揭示真相：蘇雲主動請求「消失」。二十年的秘密不是罪孽，是兩姐妹用極端方式表達的愛。</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="ch">
+            <div class="ch-dot"></div>
+            <div class="ch-body">
+                <div class="ch-num">Chapter 9</div>
+                <div class="ch-title">重建的曙光</div>
+                <div class="ch-expert">一年後 · 春天</div>
+                <div class="ch-ex">薰衣草開了——不是記憶中陰鬱的氣味，而是真實的、活生生的紫色花叢，種在封死的地下室入口上方。蘇雨在47號舉辦畫展，邀請所有人進入曾經的禁室。老郵差歸還蘇雲遺物，鄰居們前來道歉與和解。林默收到新的邀請——一座沉默的海邊燈塔。療癒的故事仍在繼續。</div>
+            </div>
+            <div class="ch-r"><div class="ch-arrow">→</div></div>
+        </div>
+
+        <div class="app">
+            <div class="app-dot"></div>
+            <div class="app-body">
+                <div class="app-label">Appendix VIII</div>
+                <div class="app-title">團隊結案報告 — 創傷的本質、意義重構與後創傷成長</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 下冊預告 -->
+    <div class="epi">
+        <div class="epi-label">Next Volume</div>
+        <div class="epi-title">下冊預告：心宅——迴聲</div>
+        <div class="epi-en">The Forbidden Room · Vol. 2: Echoes</div>
+        <div class="epi-desc">
+            一座沉默的<em>海邊燈塔</em>。<br>
+            依附理論、複雜性創傷。<br>
+            林默將面對新的心宅——<br>
+            以及自己尚未打開的那扇門。
+        </div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="../" class="cta">← 回到書架</a>
+            <a href="#series" class="cta cta--c">心宅系列 →</a>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="about-label">About This Novel</div>
+    <div class="about-title">關於這個故事</div>
+    <div class="about-body">
+        《心宅：禁室》的核心隱喻是<em>房子即心靈</em>。梧桐街47號不只是蘇雨的住所，它是她心理狀態的物質化身——每一道修補痕跡都是防禦機制的外顯，每一個異常現象都是潛意識在說話。
+        <br><br>
+        本書獨特的<em>「六派聯診」</em>結構，讓六位不同心理學派的專家——精神分析的陳深、行為主義的李維、人本主義的羅晴、認知心理的劉思遠、生物心理的趙明、社會心理的吳曉薇——輪流進入同一個案例，各自用自己的理論框架診斷、介入、碰壁。
+        <br><br>
+        每位專家都對了一部分，也都錯過了一部分。這正是本書的核心論點：<em>沒有單一學派能解釋全部的人</em>。真正的理解需要整合——生物、心理、社會三個層面的交織。
+        <br><br>
+        每章附錄以專家個人筆記形式呈現，既是學派理論的科普入口，也是角色性格的側寫。陳深的凌晨煙灰、李維的精密數據、羅晴的手寫札記——每把「手術刀」都有自己的溫度。
+        <br><br>
+        禁室裡的真相不是恐怖，而是<em>愛</em>。一個絕望的女孩對最信任的人提出最沉重的請求。蘇雨用十六歲所知最好的方式回應了它，然後守了二十年。
+    </div>
+</section>
+
+<section class="expert" id="experts">
+    <div class="expert-label">Characters · The Six Scalpels</div>
+    <div class="expert-grid">
+        <div class="expert-card">
+            <div class="expert-name">林默</div>
+            <div class="expert-role">心理建築師 · 統籌者</div>
+            <div class="expert-school">整合取向</div>
+            <div class="expert-desc">閱讀空間的情緒、建築承載的記憶。帶著捲尺、熱像儀和筆記本，是六把手術刀的手術台。</div>
+        </div>
+        <div class="expert-card">
+            <div class="expert-name">蘇雨</div>
+            <div class="expert-role">案主 · 守墓人</div>
+            <div class="expert-school">梧桐街47號唯一住戶</div>
+            <div class="expert-desc">28歲，獨居二十年。把自己的病一點點餵給了房子，直到分不清是她在守房子，還是房子在困她。</div>
+        </div>
+        <div class="expert-card">
+            <div class="expert-name">陳深</div>
+            <div class="expert-role">精神分析師</div>
+            <div class="expert-school">弗洛伊德學派</div>
+            <div class="expert-desc">六十歲，銀髮一絲不苟，像上個世紀的精密儀器。凌晨抽菸寫備忘錄，相信潛意識的冰山。</div>
+        </div>
+        <div class="expert-card">
+            <div class="expert-name">李維</div>
+            <div class="expert-role">行為主義專家</div>
+            <div class="expert-school">斯金納學派</div>
+            <div class="expert-desc">移動實驗室，無框眼鏡，一切皆可測量。他繪製了蘇雨精確到秒的儀式行為鏈。</div>
+        </div>
+        <div class="expert-card">
+            <div class="expert-name">羅晴</div>
+            <div class="expert-role">人本主義治療師</div>
+            <div class="expert-school">羅傑斯學派</div>
+            <div class="expert-desc">亞麻長裙，竹籃裝著多肉與畫筆。不問「為什麼」，只問「妳希望成為什麼樣子？」</div>
+        </div>
+        <div class="expert-card">
+            <div class="expert-name">劉思遠</div>
+            <div class="expert-role">認知心理學家</div>
+            <div class="expert-school">認知行為取向</div>
+            <div class="expert-desc">行走的實驗室，說話像同行評審的論文。發現蘇雨眼球在「妹妹」這個詞上只停留17毫秒。</div>
+        </div>
+        <div class="expert-card">
+            <div class="expert-name">趙明</div>
+            <div class="expert-role">生物心理學家</div>
+            <div class="expert-school">神經科學取向</div>
+            <div class="expert-desc">臨床般的抽離感，記錄一切如實驗動物行為。發現姐妹共享「戰士基因」，卻走向完全不同的路。</div>
+        </div>
+        <div class="expert-card">
+            <div class="expert-name">吳曉薇</div>
+            <div class="expert-role">社會心理學家</div>
+            <div class="expert-school">社會建構取向</div>
+            <div class="expert-desc">帶著檸檬蛋糕敲門，像新搬來的鄰居。她不分析蘇雨，她分析整條街二十年的沉默。</div>
+        </div>
+    </div>
+</section>
+
+<section class="series" id="series">
+    <div class="series-label">心宅系列 · The Hearthouse Series</div>
+    <div class="series-list">
+        <div class="series-item active">
+            <div class="series-num">1</div>
+            <div class="series-info">
+                <div class="series-name">心宅：禁室 <span class="en">The Forbidden Room</span></div>
+                <div class="series-theme">創傷記憶 · 壓抑與整合治療</div>
+            </div>
+            <div class="series-badge">本冊</div>
+        </div>
+        <div class="series-item">
+            <div class="series-num">2</div>
+            <div class="series-info">
+                <div class="series-name">心宅：迴聲 <span class="en">Echoes</span></div>
+                <div class="series-theme">依附理論 · 複雜性創傷</div>
+            </div>
+        </div>
+        <div class="series-item">
+            <div class="series-num">3</div>
+            <div class="series-info">
+                <div class="series-name">心宅：倒影 <span class="en">Reflections</span></div>
+                <div class="series-theme">自我認同 · 解離性身份</div>
+            </div>
+        </div>
+        <div class="series-item">
+            <div class="series-num">4</div>
+            <div class="series-info">
+                <div class="series-name">心宅：地基 <span class="en">Foundations</span></div>
+                <div class="series-theme">代際創傷 · 家族秘密</div>
+            </div>
+        </div>
+        <div class="series-item">
+            <div class="series-num">5</div>
+            <div class="series-info">
+                <div class="series-name">心宅：窗 <span class="en">Windows</span></div>
+                <div class="series-theme">社交焦慮 · 孤立與連結</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="foot">
+    <div class="foot-logo">隙光文學 SPACE-BETWEEN.ART</div>
+    <div class="foot-copy">© 2026 Space Between Studio · All Rights Reserved</div>
+</footer>
+
+<script>
+// Floating dust particles
+const c=document.getElementById('dust'),x=c.getContext('2d');
+function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight}
+resize();window.addEventListener('resize',resize);
+const ps=[];
+for(let i=0;i<60;i++){
+    ps.push({x:Math.random()*2000,y:Math.random()*2000,r:Math.random()*1.5+.3,dx:(Math.random()-.5)*.3,dy:Math.random()*-.4-.1,o:Math.random()*.12+.02,phase:Math.random()*Math.PI*2});
+}
+let t=0;
+function draw(){
+    t+=.008;
+    x.clearRect(0,0,c.width,c.height);
+    ps.forEach(p=>{
+        const wobble=Math.sin(t+p.phase)*12;
+        x.beginPath();
+        x.arc(p.x+wobble,p.y,p.r,0,Math.PI*2);
+        x.fillStyle=`rgba(166,125,184,${p.o+Math.sin(t*2+p.phase)*.03})`;
+        x.fill();
+        p.y+=p.dy;p.x+=p.dx;
+        if(p.y<-10){p.y=c.height+10;p.x=Math.random()*c.width}
+        if(p.x<-10)p.x=c.width+10;
+        if(p.x>c.width+10)p.x=-10;
+    });
+    requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+
+<!-- Reading Controls -->
+<div class="rc" id="rc">
+    <div class="rc-panel" id="rcPanel">
+        <div class="rc-row">
+            <span class="rc-label">字型大小</span>
+            <div class="rc-btns">
+                <button class="rc-btn" onclick="rcSize(-1)">A-</button>
+                <button class="rc-btn" onclick="rcSize(0)">A</button>
+                <button class="rc-btn" onclick="rcSize(1)">A+</button>
+            </div>
+        </div>
+        <div class="rc-row">
+            <span class="rc-label">光暗模式</span>
+            <div class="rc-btns">
+                <button class="rc-bright active" data-m="dark" onclick="rcMode('dark')">🌙</button>
+                <button class="rc-bright" data-m="dim" onclick="rcMode('dim')">🌅</button>
+                <button class="rc-bright" data-m="light" onclick="rcMode('light')">☀️</button>
+            </div>
+        </div>
+    </div>
+    <button class="rc-toggle" onclick="document.getElementById('rcPanel').classList.toggle('open')" aria-label="閱讀設定">Aa</button>
+</div>
+<script>
+(function(){
+    const targets=document.querySelectorAll('.ch-body,.ep-body');
+    let sz=0;const base=15;
+    window.rcSize=function(d){
+        if(d===0)sz=0;else sz=Math.max(-3,Math.min(5,sz+d));
+        targets.forEach(t=>t.style.fontSize=(base+sz)+'px');
+        document.querySelectorAll('.rc-btns .rc-btn').forEach((b,i)=>{b.classList.toggle('active',d===0?i===1:false)});
+    };
+    window.rcMode=function(m){
+        document.body.classList.remove('mode-dim','mode-light');
+        if(m!=='dark')document.body.classList.add('mode-'+m);
+        document.querySelectorAll('.rc-bright').forEach(b=>b.classList.toggle('active',b.dataset.m===m));
+        try{localStorage.setItem('rc-mode',m)}catch(e){}
+    };
+    try{const saved=localStorage.getItem('rc-mode');if(saved&&saved!=='dark')rcMode(saved)}catch(e){}
+})();
+</script>
+
+</body>
+</html>

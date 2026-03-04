@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z531JX2XR4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z531JX2XR4");</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>慢慢成為自己的品牌 — 隙光文學 | space-between.art</title>
+    <meta name="description" content="品牌是創辦人內在的投射。蘇牧陪你從霧中走出來，慢慢成為自己。序章＋第一章免費試讀。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#0D0E0C;--bgr:#141513;--bgc:#1A1B18;--t:#D0CDC4;--td:#8A857A;--tf:#5A564C;--seed:#8DB580;--sd:#6A8E5E;--sg:rgba(141,181,128,.07);--sl:rgba(141,181,128,.14);--warm:#D4C4A8;--sf:'Noto Serif TC',serif;--sn:'Noto Sans TC',sans-serif;--en:'Cormorant Garamond',serif}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--t);font-family:var(--sf);line-height:1.8;-webkit-font-smoothing:antialiased}
+        ::selection{background:rgba(141,181,128,.25);color:#fff}
+        a{color:inherit;text-decoration:none}
+
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,14,12,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--sl);height:56px;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between}
+        .nav-b{font-family:var(--sn);font-size:11px;letter-spacing:3px;color:var(--td)}.nav-b strong{color:var(--seed);font-weight:500}
+        .nav-l{display:flex;gap:20px}.nav-l a{font-family:var(--sn);font-size:11px;letter-spacing:1px;color:var(--tf);transition:color .3s}.nav-l a:hover{color:var(--seed)}
+
+        .hero{position:relative;padding:140px clamp(24px,6vw,80px) 80px;min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden}
+        #glow{position:absolute;inset:0;pointer-events:none;z-index:0}
+        .hero>*{position:relative;z-index:1}
+        .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:240px;background:linear-gradient(to top,var(--bg),transparent);pointer-events:none;z-index:1}
+        .hero-badge{display:inline-block;font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--sd);border:1px solid var(--sl);padding:6px 20px;border-radius:2px;margin-bottom:40px;animation:fu .8s both}
+        .hero h1{font-size:clamp(32px,6vw,56px);font-weight:700;letter-spacing:6px;color:var(--t);margin-bottom:8px;animation:fu .8s .15s both}
+        .hero-en{font-family:var(--en);font-size:clamp(14px,2vw,20px);font-style:italic;color:var(--tf);letter-spacing:4px;margin-bottom:48px;animation:fu .8s .3s both}
+        .hero-desc{max-width:460px;font-size:15px;line-height:2.6;color:var(--td);margin-bottom:44px;animation:fu .8s .45s both}
+        .hero-desc em{color:var(--seed);font-style:normal}
+        .hero-meta{display:flex;gap:28px;font-family:var(--sn);font-size:11px;color:var(--tf);flex-wrap:wrap;justify-content:center;animation:fu .8s .6s both}
+        .hero-meta .n{color:var(--seed);font-size:14px;font-weight:500}
+        .hero-scroll{position:absolute;bottom:36px;z-index:2;font-family:var(--en);font-size:12px;font-style:italic;color:var(--tf);animation:pulse 2.5s infinite}
+
+        .toc{max-width:640px;margin:0 auto;padding:60px clamp(20px,4vw,40px) 40px}
+        .toc-label{font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--sd);text-align:center;margin-bottom:24px}
+        .toc-title{font-size:22px;font-weight:600;text-align:center;color:var(--t);margin-bottom:32px}
+        .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+        .toc-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:8px;transition:background .3s;cursor:pointer}
+        .toc-item:hover{background:var(--sg)}
+        .toc-item.free .toc-badge{background:rgba(141,181,128,.15);color:var(--seed)}
+        .toc-item.locked .toc-name{color:var(--tf)}
+        .toc-item.locked .toc-badge{background:rgba(90,86,76,.12);color:var(--tf)}
+        .toc-num{font-family:var(--en);font-size:13px;font-style:italic;color:var(--tf);width:28px;text-align:center;flex-shrink:0}
+        .toc-name{font-size:15px;color:var(--td);flex:1;transition:color .3s}
+        .toc-item:hover .toc-name{color:var(--t)}
+        .toc-badge{font-family:var(--sn);font-size:9px;padding:3px 10px;border-radius:3px;flex-shrink:0}
+
+        .reading{max-width:640px;margin:0 auto;padding:60px clamp(20px,5vw,48px)}
+        .ch-label{font-family:var(--sn);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--sd);text-align:center;margin-bottom:12px}
+        .ch-title{font-size:clamp(22px,4vw,32px);font-weight:600;text-align:center;color:var(--t);margin-bottom:6px}
+        .ch-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--tf);text-align:center;margin-bottom:40px}
+        .ch-body{font-size:15px;line-height:2.4;color:var(--td)}
+        .ch-body p{margin-bottom:1.6em;text-indent:2em}
+        .ch-body p.no-indent{text-indent:0}
+        .ch-body p.center{text-align:center;text-indent:0;color:var(--tf);font-style:italic}
+        .ch-body p.sig{text-align:right;text-indent:0;color:var(--tf);font-style:italic;margin-top:2em}
+        .ch-body em{color:var(--seed);font-style:normal}
+        .ch-body strong{color:var(--t);font-weight:500}
+        .ch-body blockquote{margin:2em 0;padding:16px 24px;border-left:2px solid var(--sl);color:var(--tf);font-style:italic;font-size:14px;line-height:2.2}
+        .ch-sep{text-align:center;padding:32px 0;color:var(--tf);font-family:var(--en);font-size:16px;letter-spacing:8px}
+        .ch-divider{border:0;border-top:1px solid var(--sl);margin:60px auto;max-width:640px}
+
+        .paywall{max-width:640px;margin:0 auto;padding:60px clamp(20px,4vw,40px) 80px;text-align:center}
+        .pw-box{padding:48px 32px;background:var(--bgr);border:1px solid var(--sl);border-radius:14px}
+        .pw-icon{font-size:40px;margin-bottom:16px}
+        .pw-title{font-size:20px;font-weight:600;color:var(--t);margin-bottom:8px}
+        .pw-desc{font-size:14px;color:var(--td);line-height:2;margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto}
+        .pw-desc em{color:var(--seed);font-style:normal}
+        .pw-price{font-family:var(--en);font-size:42px;color:var(--seed);margin-bottom:4px}
+        .pw-price small{font-size:16px;color:var(--sd)}
+        .pw-includes{font-size:12px;color:var(--tf);margin-bottom:24px}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:28px;font-family:var(--sn);font-size:14px;font-weight:500;transition:all .3s;border:none;cursor:pointer}
+        .btn-p{background:var(--seed);color:var(--bg)}
+        .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(141,181,128,.25)}
+        .btn-s{background:var(--sg);color:var(--seed);border:1px solid var(--sl);margin-top:12px}
+        .btn-s:hover{background:rgba(141,181,128,.14)}
+        .pw-bundle{margin-top:20px;padding:16px;background:rgba(212,196,168,.06);border:1px solid rgba(212,196,168,.1);border-radius:10px}
+        .pw-bundle-title{font-size:12px;color:var(--warm);margin-bottom:4px}
+        .pw-bundle-desc{font-size:11px;color:var(--tf);line-height:1.8}
+
+        .about{max-width:640px;margin:0 auto;padding:40px clamp(20px,4vw,40px) 60px}
+        .about-label{font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--sd);text-align:center;margin-bottom:24px}
+        .about-title{font-size:22px;font-weight:600;text-align:center;color:var(--t);margin-bottom:28px}
+        .about-body{font-size:14px;line-height:2.4;color:var(--td);column-count:2;column-gap:36px}
+        @media(max-width:640px){.about-body{column-count:1}}
+        .about-body em{color:var(--seed);font-style:normal}
+
+        .foot{text-align:center;padding:60px 24px;border-top:1px solid rgba(141,181,128,.06)}
+        .foot-logo{font-family:var(--sn);font-size:10px;letter-spacing:4px;color:var(--tf);margin-bottom:8px}
+        .foot-copy{font-family:var(--en);font-size:11px;font-style:italic;color:rgba(90,86,76,.4)}
+
+        @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes pulse{0%,100%{opacity:.4;transform:translateY(0)}50%{opacity:1;transform:translateY(4px)}}
+        @media(max-width:640px){.hero{padding:120px 20px 60px;min-height:80vh}.hero-meta{gap:16px}.nav-l{gap:12px}}
+    
+        /* READING CONTROLS */
+        .rc{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+        .rc-toggle{width:40px;height:40px;border-radius:50%;background:rgba(30,30,30,.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+        .rc-toggle:hover{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.8)}
+        .rc-panel{display:none;background:rgba(24,24,28,.92);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;min-width:200px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+        .rc-panel.open{display:block}
+        .rc-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+        .rc-row:last-child{margin-bottom:0}
+        .rc-label{font-family:var(--sn,sans-serif);font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.35)}
+        .rc-btns{display:flex;gap:6px}
+        .rc-btn{width:34px;height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:var(--sn,sans-serif)}
+        .rc-btn:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+        .rc-btn.active{border-color:rgba(201,165,90,.4);color:rgba(201,165,90,.9);background:rgba(201,165,90,.1)}
+        .rc-bright{width:34px;height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:12px}
+        .rc-bright:hover{border-color:rgba(255,255,255,.2)}
+        .rc-bright.active{border-color:rgba(201,165,90,.4)}
+        .rc-bright[data-m="dark"]{background:rgba(20,20,24,.9);color:rgba(255,255,255,.3)}
+        .rc-bright[data-m="dim"]{background:rgba(50,48,44,.9);color:rgba(220,215,200,.5)}
+        .rc-bright[data-m="light"]{background:rgba(235,230,218,.9);color:rgba(60,55,45,.5)}
+        body.mode-dim{--bg:#1E1D1A!important;--bgr:#24231F!important;--bgc:#2A2925!important;--t:#E8E4DA!important;--td:#A8A295!important;--tf:#706A5E!important}
+        body.mode-light{--bg:#F2EDE3!important;--bgr:#EAE5DA!important;--bgc:#E2DDD2!important;--t:#2C2822!important;--td:#4A4538!important;--tf:#8A8478!important}
+        body.mode-light .nav{background:rgba(242,237,227,.92)!important;border-bottom-color:rgba(0,0,0,.06)!important}
+        body.mode-light .rc-toggle{background:rgba(230,225,215,.9);border-color:rgba(0,0,0,.08);color:rgba(0,0,0,.4)}
+        body.mode-light .rc-panel{background:rgba(240,236,228,.95);border-color:rgba(0,0,0,.08)}
+        body.mode-light .rc-label{color:rgba(0,0,0,.3)}
+        body.mode-light .rc-btn{border-color:rgba(0,0,0,.08);background:rgba(0,0,0,.03);color:rgba(0,0,0,.4)}
+        body.mode-light .rc-btn:hover{background:rgba(0,0,0,.08);color:rgba(0,0,0,.6)}
+        body.mode-light .rc-btn.active{border-color:rgba(140,120,60,.4);color:rgba(140,120,60,.9);background:rgba(140,120,60,.08)}
+        body.mode-dim .rc-toggle{background:rgba(40,38,34,.9)}
+        @media(max-width:480px){.rc{bottom:16px;right:16px}.rc-panel{min-width:180px;padding:14px 16px}}
+
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-b"><strong>隙光文學</strong> · 慢慢成為自己的品牌</div>
+    <div class="nav-l">
+        <a href="#toc">目錄</a>
+        <a href="#prologue">試讀</a>
+        <a href="#buy">購買</a>
+        <a href="../">← 書架</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <canvas id="glow"></canvas>
+    <div class="hero-badge">品牌療癒 · 工具書 · 金繼哲學</div>
+    <h1>慢慢成為自己的品牌</h1>
+    <div class="hero-en">Slowly Becoming Your Own Brand</div>
+    <div class="hero-desc">
+        不是教你做什麼。<br>
+        是陪你<em>慢慢成為</em>一個你自己也認得出來的樣子。<br><br>
+        設計師<em>蘇牧</em>陪伴迷失的創業者<em>林若晴</em>，<br>
+        用金繼的方式，修補品牌的裂痕。
+    </div>
+    <div class="hero-meta">
+        <span><span class="n">10</span> 章 + 序章 + 後記</span>
+        <span>｜</span>
+        <span>互動 PDF · Notion 模版</span>
+        <span>｜</span>
+        <span style="color:var(--warm)">HKD 168</span>
+    </div>
+    <div class="hero-scroll">scroll ↓</div>
+</section>
+
+<!-- TOC -->
+<section class="toc" id="toc">
+    <div class="toc-label">Contents</div>
+    <div class="toc-title">全書目錄</div>
+    <ul class="toc-list">
+        <li class="toc-item free" onclick="document.getElementById('prologue').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">0</div><div class="toc-name">序章 · 蘇牧的自述</div><div class="toc-badge">試讀</div>
+        </li>
+        <li class="toc-item free" onclick="document.getElementById('ch1').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">1</div><div class="toc-name">第一章 · 霧中</div><div class="toc-badge">試讀</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">2</div><div class="toc-name">第二章 · 為什麼</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">3</div><div class="toc-name">第三章 · 光光</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">4</div><div class="toc-name">第四章 · 陰影</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">5</div><div class="toc-name">第五章 · 鏡像</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">6</div><div class="toc-name">第六章 · 裂縫</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">7</div><div class="toc-name">第七章 · 命名</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">8</div><div class="toc-name">第八章 · 連結</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">9</div><div class="toc-name">第九章 · 呼吸</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">10</div><div class="toc-name">第十章 · 金繕</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">⊹</div><div class="toc-name">後記 · 程慢山的最後一課</div><div class="toc-badge">🔒</div>
+        </li>
+    </ul>
+</section>
+
+<!-- TRIAL: PROLOGUE -->
+<section class="reading" id="prologue">
+    <div class="ch-label">Prologue · 試讀</div>
+    <div class="ch-title">序章：蘇牧的自述</div>
+    <div class="ch-en">Su Mu's Preface</div>
+    <div class="ch-body">
+        <p class="no-indent">在我開始這個故事之前，我想先說說我自己。</p>
+        <p>我叫蘇牧，今年三十五歲。在過去十年裡，我做過 in-house 設計師、freelancer、也在別人的工作室工作過。我幫過很多品牌做設計——從 logo 到整套視覺識別，從名片到網站，從社群貼文到產品包裝。</p>
+        <p class="no-indent">我很擅長把別人的想法變成看得見的東西。</p>
+        <p class="no-indent">但我從來沒有做過自己的東西。</p>
+        <p>這聽起來很奇怪，對吧？一個幫別人做品牌的人，自己卻沒有品牌。就像一個幫別人裝修房子的人，自己卻住在租來的房間裡。</p>
+        <p>我曾經告訴自己很多理由：還沒想好要做什麼、時機不對、先累積經驗再說。但我心裡知道，真正的原因只有一個——</p>
+        <p class="no-indent"><em>我害怕。</em></p>
+        <p>害怕第一次為自己做的事情就失敗。害怕被人看見我的不完美。害怕證明那些說「做自己的事很難」的人是對的。</p>
+        <p>所以我一直躲在別人的品牌後面。</p>
+        <p>直到我遇見了<strong>程慢山</strong>老師。</p>
+        <p>程老師是我的品牌療癒啟蒙者。她教會我一件事：品牌不是做出來的，是<em>長出來的</em>。它從創辦人的內在長出來，從那些我們不敢面對的裂痕中長出來。</p>
+        <p>她還說：「<em>裂痕不是缺陷，是故事的入口。</em>」</p>
+        <p>這句話改變了我。</p>
+        <p>程老師五年前走了。但她留下的東西，我一直在傳承。現在我在一間小小的工作室裡，陪伴那些跟我一樣迷失過的創業者，用金繼的方式，修補他們品牌的裂痕。</p>
+        <p><strong>金繼</strong>，是一種日本的修復技術。用金漆把碎裂的陶器補起來，不是讓裂痕消失，而是讓裂痕發光。</p>
+        <p>我相信，每個品牌都值得被這樣對待。</p>
+        <p>這本書記錄的，是我陪伴一個叫<strong>林若晴</strong>的設計師，慢慢找回自己的過程。她的故事，也許也是你的故事。</p>
+        <p>如果你正在讀這本書，也許你也正站在某個十字路口，不知道該往哪裡走。</p>
+        <p class="no-indent">沒關係。</p>
+        <p class="no-indent"><em>慢慢來，不用急。</em></p>
+        <p class="no-indent">我們一起走。</p>
+        <p class="sig">——蘇牧<br>寫於緩坡工作室</p>
+    </div>
+</section>
+
+<hr class="ch-divider">
+
+<!-- TRIAL: CHAPTER 1 -->
+<section class="reading" id="ch1">
+    <div class="ch-label">Chapter 1 · 試讀</div>
+    <div class="ch-title">第一章：霧中</div>
+    <div class="ch-en">In the Fog</div>
+    <div class="ch-body">
+        <blockquote>
+            「人們不會買你做的東西，他們買的是你為什麼做。」—— Simon Sinek《Start with Why》<br><br>
+            「在刺激與反應之間，有一個空間。在那個空間裡，我們有力量選擇自己的回應。」—— Viktor Frankl《活出意義來》
+        </blockquote>
+        <p class="center">✦</p>
+        <p class="no-indent">林若晴在便利商店買了第三杯咖啡。</p>
+        <p class="no-indent">不是因為想喝，是因為不知道要去哪裡。</p>
+        <p>她辭職已經四個月了。每天早上，她會像以前一樣七點起床，洗臉、刷牙、換好出門的衣服，然後坐在窗邊，等待一個不會來的通勤時刻。室友小文出門上班後，整間公寓就剩下她和窗台上那盆快要枯死的薄荷。</p>
+        <p class="no-indent">她應該澆水的。但她連這個都做不到。</p>
+        <p>那些年她在廣告公司設計過上百個別人的品牌。運動飲料的活力、保養品的優雅、寵物食品的溫馨——她可以在兩天內交出三種風格的提案，客戶說好就好，說改就改。主管說她是公司最穩定的美術，意思是：不會出錯，不會惹麻煩，不會有意見。</p>
+        <p>她以為那是一種稱讚。</p>
+        <p>直到有一天，她對著電腦螢幕上的色票發呆了三個小時，突然發現自己<em>不知道自己喜歡什麼顏色了</em>。</p>
+        <p>那天晚上，她在公司廁所哭了很久。不是因為難過，是因為空。一種從胸口蔓延到四肢的空洞感，好像自己只是一個容器，裝過很多別人的東西，但裡面什麼都沒有。</p>
+        <p class="center">✦</p>
+        <p>咖啡有點冷了。她坐在便利商店外的椅子上，看著對面新開的一間選物店。玻璃窗裡陳列著乾燥花、手工皂、棉麻布製品。午後的陽光斜斜照進去，把那些物件都染上一層蜂蜜色的光澤。</p>
+        <p>她的視線落在角落的幾瓶香氛蠟燭上。琥珀色的玻璃罐，簡單的手寫標籤，看起來像是某個人在自己家裡慢慢做出來的東西。不是工廠的產品，是某個人的心意。</p>
+        <p>她想起小時候，在外婆家的院子裡，把花瓣泡在水裡，假裝自己在做香水。</p>
+        <p>外婆家在南部的一個小鎮，前院種了一棵雞蛋花樹，夏天會開滿白色的花，香味可以飄到整條巷子。若晴那時候大概七、八歲，暑假都會去外婆家住。她最喜歡早上起來，趁露水還沒乾的時候，撿地上掉落的花瓣，一片一片放進外婆用來裝果醬的玻璃罐裡。</p>
+        <p class="no-indent">加水。用樹枝攪拌。放在陽台上曬太陽。</p>
+        <p>她真心相信那樣可以做出香水。</p>
+        <p>外婆沒有笑她，只是說：「<em>曬三天才會香喔。</em>」</p>
+        <p>三天後，那罐水變成淡褐色，聞起來有一點點甜味，混著一點點腐爛的氣息。但若晴還是很寶貝地把它收在房間裡。</p>
+        <p>那個夏天結束後，她回到家，用剛買的彩色筆畫了一整本「我的夢想商店」。封面寫著：「若晴的香水店」，裡面畫了櫃台、畫了瓶瓶罐罐、畫了穿著圍裙的自己站在店門口，笑得很開心。</p>
+        <p>然後爸爸看了一眼。</p>
+        <p>「<strong>畫這個能當飯吃嗎？功課寫完沒？</strong>」</p>
+        <p>他沒有說重話，只是那樣淡淡地問了一句。但若晴記得自己當下的感覺——像是被人從很高的地方推了下來，還來不及害怕，就已經摔在地上了。</p>
+        <p>她把那本畫冊收進書桌抽屜最深處，再也沒有打開過。</p>
+        <p class="center">✦</p>
+        <p>每次有什麼「想做」的念頭浮現，她就會聽到爸爸那句話。不是責罵，只是淡淡的否定，比責罵更讓人無力反駁。因為他說的好像也沒錯——畫畫不能當飯吃，做夢不能當飯吃，喜歡不能當飯吃。</p>
+        <p>所以她學會做「可以當飯吃」的事。聯考填了設計系，因為「至少有一技之長」。進了廣告公司，因為「薪水還可以」。每一個選擇都很合理，每一步都走得很穩。</p>
+        <p class="no-indent"><em>穩到她不知道自己是誰了。</em></p>
+        <p>手機震動，是芮恩傳來的訊息。</p>
+        <p>「還沒想好要幹嘛嗎？」</p>
+        <p>「要不要來我店裡坐坐，順便聊聊？」</p>
+        <p>芮恩是她大學室友。念書的時候，芮恩是那種會在期末考前一天說「我要去學做蛋糕」然後真的翹課去上烘焙課的人。現在芮恩經營網路甜點品牌「Sugarcoat」，IG 有十萬粉絲，每週開單都秒殺。</p>
+        <p>那是另一個世界的人。</p>
+        <p>她回：「好啊，這週可以嗎？」</p>
+        <p>芮恩秒回：「週四下午，我把一個人介紹給妳。」</p>
+        <p>「誰？」</p>
+        <p>「幫我做品牌的人。妳現在需要的不是再想下去，是找人聊聊。」</p>
+        <p>若晴本來想拒絕。她還沒準備好，她還沒想清楚，她的想法還太不成熟——</p>
+        <p>但這些話她已經跟自己說了四個月了。</p>
+        <p>「好。」她回。</p>
+        <p>按下送出的那一刻，她突然感覺很輕，又很重。</p>
+        <p class="no-indent"><em>像是站在霧裡，終於願意往前踏一步，即使不知道前面是什麼。</em></p>
+        <p class="center">✦</p>
+        <p>週四下午，若晴到芮恩的工作室。</p>
+        <p>那是一間位於巷弄裡的老公寓，一樓改建成烘焙空間，空氣中飄著奶油和香草的甜味。芮恩穿著圍裙出來迎接她，臉上有一點麵粉，笑起來的樣子和大學時一模一樣。</p>
+        <p>「妳瘦了。」芮恩說，把她拉進門。</p>
+        <p>「妳也瘦了。」若晴說，但芮恩的瘦是忙碌的瘦，是有重心的瘦。而自己的瘦，只是空。</p>
+        <p>芮恩倒了兩杯茶，從冰箱拿出一盒試做的檸檬塔。</p>
+        <p>「先吃東西，等等再說正事。」</p>
+        <p>若晴咬了一口檸檬塔。酸甜的味道在嘴裡化開，她突然有點想哭。她已經很久沒有好好吃東西了。這四個月，她每天都在吃，但只是把食物塞進嘴裡，沒有真的「吃」。</p>
+        <p>「好吃嗎？」芮恩問。</p>
+        <p>「很好吃。」若晴說，聲音有點啞。</p>
+        <p>芮恩看著她，沒有追問，只是又給她倒了一杯茶。</p>
+        <p>過了一會兒，芮恩開口：「我知道妳現在的感覺。」</p>
+    </div>
+    <div class="ch-sep">— 試讀結束 —</div>
+</section>
+
+<!-- PAYWALL -->
+<section class="paywall" id="buy">
+    <div class="pw-box">
+        <div class="pw-icon">🌱</div>
+        <div class="pw-title">繼續閱讀完整旅程</div>
+        <div class="pw-desc">
+            你剛讀完序章和第一章。<br>
+            若晴即將遇見蘇牧——<br>
+            從<em>為什麼</em>開始、穿過<em>陰影</em>與<em>裂縫</em>，<br>
+            到最終的<em>金繕</em>：讓裂痕發光。
+        </div>
+        <div class="pw-price"><small>HKD</small> 168</div>
+        <div class="pw-includes">互動式 PDF（可填寫）+ Notion 模版 · 即時交付</div>
+        <a href="https://pay.airwallex.com/hkhexbdv6fvp" class="btn btn-p">立即購買 →</a><br>
+        <a href="https://spacebetweenstudio.site/selection.html" class="btn btn-s">瀏覽全部選物</a>
+        <div class="pw-bundle">
+            <div class="pw-bundle-title">🎁 療癒雙書組合 HKD 198（省 HKD 38）</div>
+            <div class="pw-bundle-desc">含《賣雨的人》+《慢慢成為自己的品牌》完整套組，另贈「學費即訂金」代碼，可全額折抵 HKD 198 設計諮詢費。<br><a href="https://pay.airwallex.com/hkhexbevtwaa" style="color:var(--warm)">購買組合 →</a></div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="about-label">About This Book</div>
+    <div class="about-title">關於《慢慢成為自己的品牌》</div>
+    <div class="about-body">
+        這不是一本教你「做品牌」的工具書。它是一個故事——設計師<em>蘇牧</em>陪伴迷失的創業者<em>林若晴</em>，從霧中走出來的過程。十個章節，十個品牌療癒主題：從「為什麼」到「金繕」，從迷失到找回自己。
+        <br><br>
+        書中融合了 Simon Sinek 的黃金圈理論、Viktor Frankl 的意義療法、榮格的陰影心理學，以及日本<em>金繼哲學</em>。每一章都附有可填寫的練習題和 Notion 模版，讓你在閱讀的同時實際操練。
+        <br><br>
+        角色<em>光光</em>和<em>蘇牧</em>——一個溫暖陪伴、一個深層提問——正是 Space Between Studio 的 AI 雙人組原型。故事即方法論，方法論即故事。
+    </div>
+</section>
+
+<footer class="foot">
+    <div class="foot-logo">隙光文學 SPACE-BETWEEN.ART</div>
+    <div class="foot-copy">© 2026 Space Between Studio · All Rights Reserved</div>
+</footer>
+
+<script>
+const c=document.getElementById('glow'),x=c.getContext('2d');
+function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight}
+resize();window.addEventListener('resize',resize);
+const particles=[];
+for(let i=0;i<40;i++)particles.push({x:Math.random()*2000,y:Math.random()*2000,r:Math.random()*2+.5,dx:(Math.random()-.5)*.3,dy:-Math.random()*.4-.1,o:Math.random()*.06+.01});
+function draw(){x.clearRect(0,0,c.width,c.height);particles.forEach(p=>{x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=`rgba(141,181,128,${p.o})`;x.fill();p.x+=p.dx;p.y+=p.dy;if(p.y<-10){p.y=c.height+10;p.x=Math.random()*c.width}if(p.x<-10||p.x>c.width+10)p.x=Math.random()*c.width});requestAnimationFrame(draw)}
+draw();
+</script>
+
+<!-- Reading Controls -->
+<div class="rc" id="rc">
+    <div class="rc-panel" id="rcPanel">
+        <div class="rc-row">
+            <span class="rc-label">字型大小</span>
+            <div class="rc-btns">
+                <button class="rc-btn" onclick="rcSize(-1)">A-</button>
+                <button class="rc-btn" onclick="rcSize(0)">A</button>
+                <button class="rc-btn" onclick="rcSize(1)">A+</button>
+            </div>
+        </div>
+        <div class="rc-row">
+            <span class="rc-label">光暗模式</span>
+            <div class="rc-btns">
+                <button class="rc-bright active" data-m="dark" onclick="rcMode('dark')">🌙</button>
+                <button class="rc-bright" data-m="dim" onclick="rcMode('dim')">🌅</button>
+                <button class="rc-bright" data-m="light" onclick="rcMode('light')">☀️</button>
+            </div>
+        </div>
+    </div>
+    <button class="rc-toggle" onclick="document.getElementById('rcPanel').classList.toggle('open')" aria-label="閱讀設定">Aa</button>
+</div>
+<script>
+(function(){
+    const targets=document.querySelectorAll('.ch-body,.ep-body');
+    let sz=0;const base=15;
+    window.rcSize=function(d){
+        if(d===0)sz=0;else sz=Math.max(-3,Math.min(5,sz+d));
+        targets.forEach(t=>t.style.fontSize=(base+sz)+'px');
+        document.querySelectorAll('.rc-btns .rc-btn').forEach((b,i)=>{b.classList.toggle('active',d===0?i===1:false)});
+    };
+    window.rcMode=function(m){
+        document.body.classList.remove('mode-dim','mode-light');
+        if(m!=='dark')document.body.classList.add('mode-'+m);
+        document.querySelectorAll('.rc-bright').forEach(b=>b.classList.toggle('active',b.dataset.m===m));
+        try{localStorage.setItem('rc-mode',m)}catch(e){}
+    };
+    try{const saved=localStorage.getItem('rc-mode');if(saved&&saved!=='dark')rcMode(saved)}catch(e){}
+})();
+</script>
+
+</body>
+</html>

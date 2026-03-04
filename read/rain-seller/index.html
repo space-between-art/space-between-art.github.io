@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z531JX2XR4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z531JX2XR4");</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賣雨的人 — 隙光文學 | space-between.art</title>
+    <meta name="description" content="如果雨有味道，你會買哪一場？調香師林予安的品牌療癒都市寓言。序章＋第一章免費試讀。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#0C0D10;--bgr:#11131A;--bgc:#161A24;--t:#CDD4E0;--td:#7E8AA0;--tf:#505870;--rain:#6EA8D7;--rd:#4D7EA8;--rg:rgba(110,168,215,.07);--rl:rgba(110,168,215,.14);--warm:#D4C4A8;--sf:'Noto Serif TC',serif;--sn:'Noto Sans TC',sans-serif;--en:'Cormorant Garamond',serif}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{background:var(--bg);color:var(--t);font-family:var(--sf);line-height:1.8;-webkit-font-smoothing:antialiased}
+        ::selection{background:rgba(110,168,215,.25);color:#fff}
+        a{color:inherit;text-decoration:none}
+
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,13,16,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--rl);height:56px;padding:0 clamp(20px,4vw,48px);display:flex;align-items:center;justify-content:space-between}
+        .nav-b{font-family:var(--sn);font-size:11px;letter-spacing:3px;color:var(--td)}.nav-b strong{color:var(--rain);font-weight:500}
+        .nav-l{display:flex;gap:20px}.nav-l a{font-family:var(--sn);font-size:11px;letter-spacing:1px;color:var(--tf);transition:color .3s}.nav-l a:hover{color:var(--rain)}
+
+        .hero{position:relative;padding:140px clamp(24px,6vw,80px) 80px;min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden}
+        #rain{position:absolute;inset:0;pointer-events:none;z-index:0}
+        .hero>*{position:relative;z-index:1}
+        .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:240px;background:linear-gradient(to top,var(--bg),transparent);pointer-events:none;z-index:1}
+        .hero-badge{display:inline-block;font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--rd);border:1px solid var(--rl);padding:6px 20px;border-radius:2px;margin-bottom:40px;animation:fu .8s both}
+        .hero h1{font-size:clamp(40px,8vw,76px);font-weight:700;letter-spacing:10px;color:var(--t);margin-bottom:8px;animation:fu .8s .15s both}
+        .hero-en{font-family:var(--en);font-size:clamp(14px,2vw,22px);font-style:italic;color:var(--tf);letter-spacing:5px;margin-bottom:48px;animation:fu .8s .3s both}
+        .hero-desc{max-width:480px;font-size:15px;line-height:2.6;color:var(--td);margin-bottom:44px;animation:fu .8s .45s both}
+        .hero-desc em{color:var(--rain);font-style:normal}
+        .hero-meta{display:flex;gap:28px;font-family:var(--sn);font-size:11px;color:var(--tf);flex-wrap:wrap;justify-content:center;animation:fu .8s .6s both}
+        .hero-meta .n{color:var(--rain);font-size:14px;font-weight:500}
+        .hero-scroll{position:absolute;bottom:36px;z-index:2;font-family:var(--en);font-size:12px;font-style:italic;color:var(--tf);animation:pulse 2.5s infinite}
+
+        /* TOC */
+        .toc{max-width:640px;margin:0 auto;padding:60px clamp(20px,4vw,40px) 40px}
+        .toc-label{font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--rd);text-align:center;margin-bottom:24px}
+        .toc-title{font-size:22px;font-weight:600;text-align:center;color:var(--t);margin-bottom:32px}
+        .toc-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+        .toc-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:8px;transition:background .3s;cursor:pointer}
+        .toc-item:hover{background:var(--rg)}
+        .toc-item.free .toc-badge{background:rgba(110,168,215,.15);color:var(--rain)}
+        .toc-item.locked .toc-name{color:var(--tf)}
+        .toc-item.locked .toc-badge{background:rgba(80,88,112,.12);color:var(--tf)}
+        .toc-num{font-family:var(--en);font-size:13px;font-style:italic;color:var(--tf);width:28px;text-align:center;flex-shrink:0}
+        .toc-name{font-size:15px;color:var(--td);flex:1;transition:color .3s}
+        .toc-item:hover .toc-name{color:var(--t)}
+        .toc-badge{font-family:var(--sn);font-size:9px;padding:3px 10px;border-radius:3px;flex-shrink:0}
+
+        /* READING SECTION */
+        .reading{max-width:640px;margin:0 auto;padding:60px clamp(20px,5vw,48px)}
+        .ch-label{font-family:var(--sn);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--rd);text-align:center;margin-bottom:12px}
+        .ch-title{font-size:clamp(22px,4vw,32px);font-weight:600;text-align:center;color:var(--t);margin-bottom:6px}
+        .ch-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--tf);text-align:center;margin-bottom:40px}
+        .ch-body{font-size:15px;line-height:2.4;color:var(--td)}
+        .ch-body p{margin-bottom:1.6em;text-indent:2em}
+        .ch-body p.no-indent{text-indent:0}
+        .ch-body p.center{text-align:center;text-indent:0;color:var(--tf);font-style:italic}
+        .ch-body em{color:var(--rain);font-style:normal}
+        .ch-body strong{color:var(--t);font-weight:500}
+        .ch-sep{text-align:center;padding:32px 0;color:var(--tf);font-family:var(--en);font-size:16px;letter-spacing:8px}
+        .ch-divider{border:0;border-top:1px solid var(--rl);margin:60px 0}
+
+        /* PAYWALL */
+        .paywall{max-width:640px;margin:0 auto;padding:60px clamp(20px,4vw,40px) 80px;text-align:center}
+        .pw-box{padding:48px 32px;background:var(--bgr);border:1px solid var(--rl);border-radius:14px}
+        .pw-icon{font-size:40px;margin-bottom:16px}
+        .pw-title{font-size:20px;font-weight:600;color:var(--t);margin-bottom:8px}
+        .pw-desc{font-size:14px;color:var(--td);line-height:2;margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto}
+        .pw-desc em{color:var(--rain);font-style:normal}
+        .pw-price{font-family:var(--en);font-size:42px;color:var(--rain);margin-bottom:4px}
+        .pw-price small{font-size:16px;color:var(--rd)}
+        .pw-includes{font-size:12px;color:var(--tf);margin-bottom:24px}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border-radius:28px;font-family:var(--sn);font-size:14px;font-weight:500;transition:all .3s;border:none;cursor:pointer}
+        .btn-p{background:var(--rain);color:var(--bg)}
+        .btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(110,168,215,.25)}
+        .btn-s{background:var(--rg);color:var(--rain);border:1px solid var(--rl);margin-top:12px}
+        .btn-s:hover{background:rgba(110,168,215,.14)}
+        .pw-bundle{margin-top:20px;padding:16px;background:rgba(212,196,168,.06);border:1px solid rgba(212,196,168,.1);border-radius:10px}
+        .pw-bundle-title{font-size:12px;color:var(--warm);margin-bottom:4px}
+        .pw-bundle-desc{font-size:11px;color:var(--tf);line-height:1.8}
+
+        /* ABOUT */
+        .about{max-width:640px;margin:0 auto;padding:40px clamp(20px,4vw,40px) 60px}
+        .about-label{font-family:var(--sn);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--rd);text-align:center;margin-bottom:24px}
+        .about-title{font-size:22px;font-weight:600;text-align:center;color:var(--t);margin-bottom:28px}
+        .about-body{font-size:14px;line-height:2.4;color:var(--td);column-count:2;column-gap:36px}
+        @media(max-width:640px){.about-body{column-count:1}}
+        .about-body em{color:var(--rain);font-style:normal}
+
+        .foot{text-align:center;padding:60px 24px;border-top:1px solid rgba(110,168,215,.06)}
+        .foot-logo{font-family:var(--sn);font-size:10px;letter-spacing:4px;color:var(--tf);margin-bottom:8px}
+        .foot-copy{font-family:var(--en);font-size:11px;font-style:italic;color:rgba(80,88,112,.4)}
+
+        @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes pulse{0%,100%{opacity:.4;transform:translateY(0)}50%{opacity:1;transform:translateY(4px)}}
+        @media(max-width:640px){.hero{padding:120px 20px 60px;min-height:80vh}.hero-meta{gap:16px}.nav-l{gap:12px}}
+    
+        /* READING CONTROLS */
+        .rc{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+        .rc-toggle{width:40px;height:40px;border-radius:50%;background:rgba(30,30,30,.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+        .rc-toggle:hover{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.8)}
+        .rc-panel{display:none;background:rgba(24,24,28,.92);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;min-width:200px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+        .rc-panel.open{display:block}
+        .rc-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+        .rc-row:last-child{margin-bottom:0}
+        .rc-label{font-family:var(--sn,sans-serif);font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.35)}
+        .rc-btns{display:flex;gap:6px}
+        .rc-btn{width:34px;height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:var(--sn,sans-serif)}
+        .rc-btn:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+        .rc-btn.active{border-color:rgba(201,165,90,.4);color:rgba(201,165,90,.9);background:rgba(201,165,90,.1)}
+        .rc-bright{width:34px;height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:12px}
+        .rc-bright:hover{border-color:rgba(255,255,255,.2)}
+        .rc-bright.active{border-color:rgba(201,165,90,.4)}
+        .rc-bright[data-m="dark"]{background:rgba(20,20,24,.9);color:rgba(255,255,255,.3)}
+        .rc-bright[data-m="dim"]{background:rgba(50,48,44,.9);color:rgba(220,215,200,.5)}
+        .rc-bright[data-m="light"]{background:rgba(235,230,218,.9);color:rgba(60,55,45,.5)}
+        body.mode-dim{--bg:#1E1D1A!important;--bgr:#24231F!important;--bgc:#2A2925!important;--t:#E8E4DA!important;--td:#A8A295!important;--tf:#706A5E!important}
+        body.mode-light{--bg:#F2EDE3!important;--bgr:#EAE5DA!important;--bgc:#E2DDD2!important;--t:#2C2822!important;--td:#4A4538!important;--tf:#8A8478!important}
+        body.mode-light .nav{background:rgba(242,237,227,.92)!important;border-bottom-color:rgba(0,0,0,.06)!important}
+        body.mode-light .rc-toggle{background:rgba(230,225,215,.9);border-color:rgba(0,0,0,.08);color:rgba(0,0,0,.4)}
+        body.mode-light .rc-panel{background:rgba(240,236,228,.95);border-color:rgba(0,0,0,.08)}
+        body.mode-light .rc-label{color:rgba(0,0,0,.3)}
+        body.mode-light .rc-btn{border-color:rgba(0,0,0,.08);background:rgba(0,0,0,.03);color:rgba(0,0,0,.4)}
+        body.mode-light .rc-btn:hover{background:rgba(0,0,0,.08);color:rgba(0,0,0,.6)}
+        body.mode-light .rc-btn.active{border-color:rgba(140,120,60,.4);color:rgba(140,120,60,.9);background:rgba(140,120,60,.08)}
+        body.mode-dim .rc-toggle{background:rgba(40,38,34,.9)}
+        @media(max-width:480px){.rc{bottom:16px;right:16px}.rc-panel{min-width:180px;padding:14px 16px}}
+
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-b"><strong>隙光文學</strong> · 賣雨的人</div>
+    <div class="nav-l">
+        <a href="#toc">目錄</a>
+        <a href="#prologue">試讀</a>
+        <a href="#buy">購買</a>
+        <a href="../">← 書架</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <canvas id="rain"></canvas>
+    <div class="hero-badge">都市寓言 · 品牌療癒 · 感官小說</div>
+    <h1>賣雨的人</h1>
+    <div class="hero-en">The Rain Seller</div>
+    <div class="hero-desc">
+        如果雨有味道，你會買哪一場？<br><br>
+        調香師<em>林予安</em>逃離了玻璃大樓的配方機器，<br>
+        在老城區的唐樓裡，用<em>泥土的味道</em>治療靈魂。<br>
+        這是一個關於真實如何在完美的圍剿中存活的故事。
+    </div>
+    <div class="hero-meta">
+        <span><span class="n">9</span> 章 + 序章 + 後記</span>
+        <span>｜</span>
+        <span>PDF · ePub · 有聲書</span>
+        <span>｜</span>
+        <span style="color:var(--warm)">HKD 68</span>
+    </div>
+    <div class="hero-scroll">scroll ↓</div>
+</section>
+
+<!-- TOC -->
+<section class="toc" id="toc">
+    <div class="toc-label">Contents</div>
+    <div class="toc-title">全書目錄</div>
+    <ul class="toc-list">
+        <li class="toc-item free" onclick="document.getElementById('prologue').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">0</div><div class="toc-name">序章 · 雨的味道</div><div class="toc-badge">試讀</div>
+        </li>
+        <li class="toc-item free" onclick="document.getElementById('ch1').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">1</div><div class="toc-name">第一章 · 氣味的顏色</div><div class="toc-badge">試讀</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">2</div><div class="toc-name">第二章 · 這不是一瓶香水</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">3</div><div class="toc-name">第三章 · 陰影工作坊</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">4</div><div class="toc-name">第四章 · 感官的戰爭</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">5</div><div class="toc-name">第五章 · 無知的樂觀與知情的悲觀</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">6</div><div class="toc-name">第六章 · 深夜的品牌治療</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">7</div><div class="toc-name">第七章 · 重塑敘事</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">8</div><div class="toc-name">第八章 · 與黑暗共舞</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">9</div><div class="toc-name">第九章 · 賣雨的人</div><div class="toc-badge">🔒</div>
+        </li>
+        <li class="toc-item locked" onclick="document.getElementById('buy').scrollIntoView({behavior:'smooth'})">
+            <div class="toc-num">⊹</div><div class="toc-name">後記 · 致讀者的一封信</div><div class="toc-badge">🔒</div>
+        </li>
+    </ul>
+</section>
+
+<!-- TRIAL: PROLOGUE -->
+<section class="reading" id="prologue">
+    <div class="ch-label">Prologue · 試讀</div>
+    <div class="ch-title">序章：雨的味道</div>
+    <div class="ch-en">The Smell of Rain</div>
+    <div class="ch-body">
+        <p class="no-indent">在這座城市，雨是奢侈品。</p>
+        <p>不是因為它稀少。恰恰相反，這裡的雨季漫長而潮濕，梅雨、颱風、突如其來的午後雷陣雨，都是城市居民的日常。但真正能夠「聞到」雨的人，越來越少了。</p>
+        <p>他們聞到的是地鐵裡的消毒水味。是寫字樓裡循環再循環的冷氣味。是便利店微波食品的塑膠味。是加班到深夜時，外賣盒裡殘留的油膩味。是同事身上那種千篇一律的「成功人士」香水味——前調是野心，中調是焦慮，尾調是空虛。</p>
+        <p>這座城市用效率和數據構建了一個完美的穹頂，把所有原始的、野性的、帶著泥土氣息的東西都隔絕在外。人們在這個穹頂下活著、工作、消費、焦慮，然後在某個深夜突然醒來，發現自己已經很久很久沒有真正呼吸過了。</p>
+        <p>他們不知道自己缺的是什麼。他們只知道自己很累，很空，很想逃，卻不知道該逃去哪裡。於是他們買更多的東西，下載更多的 App，報名更多的課程，希望能填補那個說不清楚的空洞。但那個空洞只是越來越大。</p>
+        <p class="center">✦</p>
+        <p class="no-indent">這是一個關於<em>賣雨的人</em>的故事。</p>
+        <p>她不是在賣香水。她在賣一種記憶。一種在暴雨中被允許脆弱的權利。一種在這個要求你永遠堅強、永遠向上、永遠正能量的世界裡，難能可貴的庇護所。</p>
+        <p>她的名字叫<strong>林予安</strong>。她曾經是一個在玻璃大樓裡調配「快樂」的調香師。現在，她是一個在老城區的唐樓裡，用泥土的味道治療靈魂的人。</p>
+        <p>這也是一個關於<em>品牌</em>的故事。關於一個小小的、脆弱的、沒有資源的品牌，如何在巨人的陰影下找到自己的位置。關於「真實」如何在「完美」的圍剿中存活下來。關於那些被主流市場遺忘的人，如何找到彼此，形成一個小小的部落。</p>
+        <p>但最重要的，這是一個關於<em>療癒</em>的故事。關於我們如何在破碎中找到金色的光。關於那些裂痕，如何從傷疤變成勳章。</p>
+        <p>如果你也曾在某個加班的夜晚，突然想起童年夏天的那場暴雨——泥土的氣息、屋簷下的躲避、外婆溫熱的手——那麼，這個故事是寫給你的。</p>
+        <p class="no-indent">讓我們從一場崩潰開始。</p>
+    </div>
+</section>
+
+<hr class="ch-divider" style="max-width:640px;margin-left:auto;margin-right:auto">
+
+<!-- TRIAL: CHAPTER 1 -->
+<section class="reading" id="ch1">
+    <div class="ch-label">Chapter 1 · 試讀</div>
+    <div class="ch-title">第一章：氣味的顏色</div>
+    <div class="ch-en">The Color of Scent</div>
+    <div class="ch-body">
+        <p class="no-indent">2025年，金融區。一座玻璃幕牆大樓的四十八樓。</p>
+        <p class="no-indent"><em>這座城市患有一種集體性的感官失語症。</em></p>
+        <p>這是林予安站在落地窗前，看著港灣灰藍色的海面時，腦中浮現的第一個念頭。窗外的天空是那種被污染過的灰白色，太陽藏在雲層後面，像是一個不願露面的證人。遠處的貨輪緩慢移動，在海面上留下淡淡的尾跡，很快就消失在灰濛濛的空氣中。</p>
+        <p>在這裡，所有東西看起來都很完美——光滑的玻璃、筆挺的西裝、無菌的空氣——但摸起來都是冷的，聞起來都是數據的味道。</p>
+        <p>她在這家跨國香氛企業工作了五年。五年來，她從一個懷抱理想的調香師，變成了一台精準的配方機器。每一款香水的誕生，都要經過市場調研、消費者焦點小組、大數據分析、A/B 測試。最後出來的東西，聞起來都像是同一個模子刻出來的——甜、亮、衝擊力強，能在三秒內抓住消費者的注意力，然後在三小時內被遺忘。</p>
+        <p>就像這座城市本身。</p>
+        <p>她記得剛入行時的自己。那時候她相信香水是一種藝術，相信每一瓶香水都應該講述一個獨特的故事。她會花幾個月的時間研究一種花的生長環境，會為了捕捉「黎明前最後一小時的森林」這種抽象的概念而徹夜不眠。她的畢業作品是一款名為<strong>「外婆的衣櫃」</strong>的香水，混合了樟腦、舊木頭、陽光曬過的棉布和一絲絲茉莉花的味道。評審老師說那是他聞過最有「靈魂」的學生作品。</p>
+        <p>但那是五年前的事了。</p>
+        <p>現在，她的「靈魂」被鎖在一堆 Excel 表格和 PowerPoint 報告裡，每天的工作就是把市場部的數據翻譯成化學配方。他們說要「年輕」，她就加入更多的柑橘和薄荷；他們說要「性感」，她就調高麝香和琥珀的比例；他們說要「獨特」，她就在標準配方裡加入 0.5% 的某種異國香料，剛好夠讓人覺得「有點不一樣」，但又不會真的挑戰任何人的舒適區。</p>
+        <p class="center">✦</p>
+        <p>「予安，市場部說這款『夏日戀人』的尾調不夠『快樂』。」</p>
+        <p>說話的是 Sarah，亞太區總監。她穿著剪裁銳利的黑色套裝，頭髮盤成完美的低髻，妝容是精心計算過的「專業但不過分」。她的高跟鞋在大理石地板上敲出節奏分明的聲音。那個聲音在予安的腦海裡化成了一串尖銳的橘紅色光點。</p>
+        <p>「快樂？」予安轉過身，實驗室白袍上沾著香精油漬。她不想看 Sarah 的眼睛，因為在予安的<strong>聯覺（Synesthesia）</strong>世界裡，Sarah 的聲音像是一把生鏽的鋸子在切割保麗龍。</p>
+        <p>聯覺是一種神經現象，大約 4% 的人口擁有這種能力。對予安來說，聲音有顏色，氣味有形狀，觸感有味道。薰衣草的氣味是淡紫色的橢圓形；檸檬的氣味是明亮的黃色三角形；而合成麝香——是一種黏膩的灰色，像有人在她耳邊持續播放單調的白噪音。</p>
+        <p>「對，大數據顯示，今年 Z 世代喜歡高甜度的果香調。」Sarah 滑動著螢幕上的圖表，「根據消費者洞察報告，『快樂』這個情緒關鍵詞的搜索量在過去六個月增長了 47%。人們想要感覺好一點，想要逃離現實，想要——」</p>
+        <p>她做了一個揮手的動作：「想要那種<em>一噴下去就彷彿置身遊樂園</em>的多巴胺衝擊。」</p>
+        <p>「所以我們要加重乙基麥芽酚的比例，讓它聞起來像……像棉花糖融化在熱巧克力裡，再撒上一層糖霜。」</p>
+        <p>予安感到一陣噁心。對她來說，過量的乙基麥芽酚是一種令人窒息的、高飽和度的螢光粉紅。那種粉紅色不是自然界存在的任何粉紅，不是櫻花的淡粉，而是一種人工合成的、帶有攻擊性的螢光粉。它在空氣中尖叫，蓋過了所有細微的聲音。</p>
+        <p>「可是 Sarah，這款香水的定位是『安撫焦慮』。如果加重甜度，它會過度刺激杏仁核。焦慮的人需要的是低頻的氣味，比如雪松或岩蘭草，那些是大提琴的聲音，能讓人心跳慢下來……」</p>
+        <p>「沒人在乎大提琴，予安。」Sarah 打斷她，語氣冰冷得像液態氮，「客戶要的是銷量。下週一前給我新的配方。要甜，要大聲。」</p>
+        <p>高跟鞋聲漸漸遠去。</p>
+        <p class="center">✦</p>
+        <p>突然間，那股螢光粉紅色的甜膩氣味彷彿實體化了，開始擠壓她的肺部。視線開始模糊，心跳急遽加速。她能感覺到自己的手在顫抖，呼吸變得又淺又快。</p>
+        <p><strong>恐慌症發作。</strong></p>
+        <p>這是老朋友了。自從三年前過勞住院之後，它就時不時來拜訪。她看著自己的手，覺得那不屬於自己。四周的玻璃牆開始扭曲，像是要把她困在一個巨大的試管裡。</p>
+        <p class="no-indent"><em>我要空氣。我要真的東西。</em></p>
+        <p>她跌跌撞撞地衝向私人調香台——實驗室角落裡唯一不受監控的地方。在那裡，她藏著一些「不合規」的原料——被公司認定為「不具商業價值」的東西。</p>
+        <p>她的手顫抖著，掃落了一排昂貴的玫瑰精油。玻璃碎裂的聲音像是什麼東西終於破碎了。</p>
+        <p>她憑著本能，在一堆冷門原料中翻找。手指觸碰到一個深褐色的玻璃瓶。標籤上寫著：</p>
+        <p class="center" style="color:var(--rain);font-size:17px;font-style:normal;letter-spacing:2px"><strong>Geosmin（土臭素）</strong></p>
+        <p>這是一種由土壤中的放線菌產生的有機化合物，是<em>雨後泥土氣味的來源</em>。人類對 Geosmin 的敏感度極高——我們能夠察覺到低至十億分之五的濃度。這種敏感度是演化的禮物，因為它幫助我們的祖先找到水源。</p>
+        <p>但在商業香水中，Geosmin 通常只被微量使用，因為它太「髒」、太不「商業」。</p>
+        <p>予安拔開瓶蓋。</p>
+        <p>一瞬間，實驗室消失了。玻璃幕牆消失了。Sarah 的高跟鞋聲消失了。</p>
+        <p>她聞到了雨。</p>
+        <p>真正的雨。</p>
+    </div>
+    <div class="ch-sep">— 試讀結束 —</div>
+</section>
+
+<!-- PAYWALL -->
+<section class="paywall" id="buy">
+    <div class="pw-box">
+        <div class="pw-icon">🌧️</div>
+        <div class="pw-title">繼續閱讀完整故事</div>
+        <div class="pw-desc">
+            你剛讀完序章和第一章。<br>
+            林予安的旅程才剛開始——<br>
+            從崩潰、到<em>陰影工作坊</em>、到重塑敘事，<br>
+            直到成為那個在唐樓裡<em>賣雨的人</em>。
+        </div>
+        <div class="pw-price"><small>HKD</small> 68</div>
+        <div class="pw-includes">PDF + ePub + 有聲書 · 即時交付</div>
+        <a href="https://pay.airwallex.com/hkhexbb35cle" class="btn btn-p">立即購買 →</a><br>
+        <a href="https://spacebetweenstudio.site/selection.html" class="btn btn-s">瀏覽全部選物</a>
+        <div class="pw-bundle">
+            <div class="pw-bundle-title">🎁 療癒雙書組合 HKD 198（省 HKD 38）</div>
+            <div class="pw-bundle-desc">含《賣雨的人》+《慢慢成為自己的品牌》，另贈「學費即訂金」代碼，可全額折抵 HKD 198 設計諮詢費。<br><a href="https://pay.airwallex.com/hkhexbevtwaa" style="color:var(--warm)">購買組合 →</a></div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="about-label">About This Novel</div>
+    <div class="about-title">關於《賣雨的人》</div>
+    <div class="about-body">
+        《賣雨的人》是一個用<em>感官語言</em>講述的品牌療癒寓言。主角林予安擁有聯覺（Synesthesia），能看見氣味的顏色、聽見觸感的聲音。她從跨國香氛企業逃離，在老城區的唐樓裡創立了一個微小品牌——用真正的泥土氣味，治療城市人失去的感官。
+        <br><br>
+        故事融合了<em>調香學、品牌策略、榮格心理學</em>（陰影工作坊）和東方金繼哲學。每一章都是一堂品牌課：從「為什麼做」的黃金圈，到與陰影共舞的勇氣，到重塑敘事的技術。
+        <br><br>
+        「品牌是創辦人內在的投射。如果你是分裂的，品牌就是分裂的。」——這句話出自書中角色程慢山，也是整個 Space Between 療癒生態系的核心信念。
+    </div>
+</section>
+
+<footer class="foot">
+    <div class="foot-logo">隙光文學 SPACE-BETWEEN.ART</div>
+    <div class="foot-copy">© 2026 Space Between Studio · All Rights Reserved</div>
+</footer>
+
+<script>
+const c=document.getElementById('rain'),x=c.getContext('2d');
+function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight}
+resize();window.addEventListener('resize',resize);
+const drops=[];for(let i=0;i<100;i++)drops.push({x:Math.random()*2000,y:Math.random()*2000,l:Math.random()*16+6,s:Math.random()*3.5+2.5,o:Math.random()*.1+.02});
+function draw(){x.clearRect(0,0,c.width,c.height);drops.forEach(d=>{x.beginPath();x.moveTo(d.x,d.y);x.lineTo(d.x-.3,d.y+d.l);x.strokeStyle=`rgba(110,168,215,${d.o})`;x.lineWidth=.5;x.stroke();d.y+=d.s;d.x-=.15;if(d.y>c.height){d.y=-20;d.x=Math.random()*c.width}});requestAnimationFrame(draw)}
+draw();
+</script>
+
+<!-- Reading Controls -->
+<div class="rc" id="rc">
+    <div class="rc-panel" id="rcPanel">
+        <div class="rc-row">
+            <span class="rc-label">字型大小</span>
+            <div class="rc-btns">
+                <button class="rc-btn" onclick="rcSize(-1)">A-</button>
+                <button class="rc-btn" onclick="rcSize(0)">A</button>
+                <button class="rc-btn" onclick="rcSize(1)">A+</button>
+            </div>
+        </div>
+        <div class="rc-row">
+            <span class="rc-label">光暗模式</span>
+            <div class="rc-btns">
+                <button class="rc-bright active" data-m="dark" onclick="rcMode('dark')">🌙</button>
+                <button class="rc-bright" data-m="dim" onclick="rcMode('dim')">🌅</button>
+                <button class="rc-bright" data-m="light" onclick="rcMode('light')">☀️</button>
+            </div>
+        </div>
+    </div>
+    <button class="rc-toggle" onclick="document.getElementById('rcPanel').classList.toggle('open')" aria-label="閱讀設定">Aa</button>
+</div>
+<script>
+(function(){
+    const targets=document.querySelectorAll('.ch-body,.ep-body');
+    let sz=0;const base=15;
+    window.rcSize=function(d){
+        if(d===0)sz=0;else sz=Math.max(-3,Math.min(5,sz+d));
+        targets.forEach(t=>t.style.fontSize=(base+sz)+'px');
+        document.querySelectorAll('.rc-btns .rc-btn').forEach((b,i)=>{b.classList.toggle('active',d===0?i===1:false)});
+    };
+    window.rcMode=function(m){
+        document.body.classList.remove('mode-dim','mode-light');
+        if(m!=='dark')document.body.classList.add('mode-'+m);
+        document.querySelectorAll('.rc-bright').forEach(b=>b.classList.toggle('active',b.dataset.m===m));
+        try{localStorage.setItem('rc-mode',m)}catch(e){}
+    };
+    try{const saved=localStorage.getItem('rc-mode');if(saved&&saved!=='dark')rcMode(saved)}catch(e){}
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z531JX2XR4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z531JX2XR4");</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拾味小館 — 隙光文學 | space-between.art</title>
+    <meta name="description" content="一間六張桌子的小館，一個能嚐到情緒的女人。18集療癒寓言，近十萬字完整連載。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F0E0D;
+            --bg-raised: #161514;
+            --bg-card: #1A1918;
+            --bg-hover: #1E1D1B;
+            --text: #D4CFC7;
+            --text-dim: #8A857C;
+            --text-faint: #5A564F;
+            --accent: #B8926A;
+            --accent-dim: #8A6E50;
+            --accent-glow: rgba(184,146,106,0.08);
+            --gold-line: rgba(184,146,106,0.12);
+            --serif: 'Noto Serif TC', serif;
+            --sans: 'Noto Sans TC', sans-serif;
+            --en: 'Cormorant Garamond', serif;
+            --display: 'Playfair Display', serif;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--serif);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::selection { background: rgba(184,146,106,0.25); color: #fff; }
+
+        /* ──────── NAV ──────── */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(15,14,13,0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--gold-line);
+            padding: 0 clamp(20px, 4vw, 48px);
+            height: 56px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-brand {
+            font-family: var(--sans);
+            font-size: 11px; letter-spacing: 3px;
+            color: var(--text-dim);
+        }
+        .nav-brand strong { color: var(--accent); font-weight: 500; }
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a {
+            font-family: var(--sans);
+            font-size: 11px; letter-spacing: 1px;
+            color: var(--text-faint);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ──────── HERO ──────── */
+        .hero {
+            position: relative;
+            padding: 140px clamp(24px, 6vw, 80px) 80px;
+            min-height: 80vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(184,146,106,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(160,130,90,0.04) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 200px;
+            background: linear-gradient(to top, var(--bg), transparent);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-block;
+            font-family: var(--sans);
+            font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
+            color: var(--accent-dim);
+            border: 1px solid var(--gold-line);
+            padding: 6px 20px; border-radius: 2px;
+            margin-bottom: 40px;
+            position: relative;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        .hero-title {
+            font-family: var(--serif);
+            font-size: clamp(36px, 7vw, 72px);
+            font-weight: 700;
+            letter-spacing: 8px;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            animation: fadeInDown 0.8s ease-out 0.15s both;
+        }
+        .hero-title-en {
+            font-family: var(--display);
+            font-size: clamp(14px, 2vw, 20px);
+            font-weight: 400; font-style: italic;
+            color: var(--text-faint);
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out 0.3s both;
+        }
+        .hero-desc {
+            max-width: 560px;
+            font-family: var(--serif);
+            font-size: 15px; line-height: 2.2;
+            color: var(--text-dim);
+            margin-bottom: 32px;
+            animation: fadeInDown 0.8s ease-out 0.45s both;
+        }
+        .hero-meta {
+            display: flex; gap: 32px; align-items: center;
+            font-family: var(--sans);
+            font-size: 11px; color: var(--text-faint);
+            animation: fadeInDown 0.8s ease-out 0.6s both;
+        }
+        .hero-meta span { display: flex; align-items: center; gap: 6px; }
+        .hero-meta .num { color: var(--accent); font-size: 14px; font-weight: 500; }
+
+        /* ──────── ACTS / TOC ──────── */
+        .toc {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 60px clamp(20px, 4vw, 40px) 80px;
+        }
+        .toc-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .toc-intro-label {
+            font-family: var(--sans);
+            font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
+            color: var(--accent-dim);
+            margin-bottom: 16px;
+        }
+        .toc-intro-title {
+            font-family: var(--serif);
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .toc-intro-sub {
+            font-family: var(--en);
+            font-size: 14px; font-style: italic;
+            color: var(--text-faint);
+        }
+
+        /* Act group */
+        .act {
+            margin-bottom: 48px;
+            position: relative;
+        }
+        .act::before {
+            content: '';
+            position: absolute; left: 23px; top: 56px; bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--gold-line), transparent);
+        }
+        .act-header {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 20px;
+            padding-left: 8px;
+        }
+        .act-number {
+            width: 32px; height: 32px;
+            border: 1px solid var(--gold-line);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--en);
+            font-size: 13px; font-style: italic;
+            color: var(--accent-dim);
+            flex-shrink: 0;
+            background: var(--bg);
+            position: relative; z-index: 1;
+        }
+        .act-title {
+            font-family: var(--sans);
+            font-size: 12px; letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 400;
+        }
+        .act-title-hint {
+            font-family: var(--sans);
+            font-size: 10px;
+            color: var(--text-faint);
+            margin-left: 8px;
+        }
+
+        /* Episode row */
+        .ep {
+            display: grid;
+            grid-template-columns: 48px 1fr auto;
+            gap: 0 16px;
+            align-items: start;
+            padding: 14px 0 14px 0;
+            margin-left: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 6px;
+            position: relative;
+        }
+        .ep:hover { background: var(--accent-glow); }
+        .ep:hover .ep-title { color: var(--text); }
+        .ep:hover .ep-arrow { opacity: 1; transform: translateX(0); }
+        .ep-dot {
+            width: 48px;
+            display: flex; justify-content: center;
+            padding-top: 4px;
+            position: relative; z-index: 1;
+        }
+        .ep-dot::before {
+            content: '';
+            width: 7px; height: 7px;
+            background: var(--bg-card);
+            border: 1px solid rgba(184,146,106,0.25);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        .ep:hover .ep-dot::before {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 8px rgba(184,146,106,0.3);
+        }
+        .ep-body { min-width: 0; }
+        .ep-num {
+            font-family: var(--en);
+            font-size: 11px; font-style: italic;
+            color: var(--text-faint);
+            margin-bottom: 2px;
+        }
+        .ep-title {
+            font-family: var(--serif);
+            font-size: 16px; font-weight: 500;
+            color: var(--text-dim);
+            transition: color 0.3s;
+            margin-bottom: 4px;
+        }
+        .ep-excerpt {
+            font-family: var(--serif);
+            font-size: 12px; line-height: 1.8;
+            color: var(--text-faint);
+        }
+        .ep-right {
+            display: flex; align-items: center; gap: 12px;
+            padding-top: 4px; padding-right: 12px;
+        }
+        .ep-chars {
+            font-family: var(--sans);
+            font-size: 10px;
+            color: var(--text-faint);
+            white-space: nowrap;
+        }
+        .ep-arrow {
+            font-family: var(--en);
+            font-size: 16px;
+            color: var(--accent);
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: all 0.3s;
+        }
+
+        /* ──────── BONUS / 番外篇 ──────── */
+        .bonus {
+            position: relative;
+            padding: 80px clamp(20px, 4vw, 40px);
+            overflow: hidden;
+        }
+        .bonus::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(184,146,106,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .bonus-inner {
+            max-width: 920px;
+            margin: 0 auto;
+        }
+        .bonus-divider {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 48px;
+        }
+        .bonus-divider::before, .bonus-divider::after {
+            content: ''; flex: 1; height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold-line), transparent);
+        }
+        .bonus-divider-text {
+            font-family: var(--sans);
+            font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+            color: var(--accent-dim);
+            white-space: nowrap;
+        }
+        .bonus-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: var(--bg-card);
+            border: 1px solid var(--gold-line);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.4s;
+        }
+        .bonus-card:hover { border-color: rgba(184,146,106,0.3); }
+        .bonus-narrative {
+            padding: 48px 44px;
+            display: flex; flex-direction: column;
+            justify-content: center;
+        }
+        .bonus-label {
+            font-family: var(--sans);
+            font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+            color: var(--accent-dim);
+            margin-bottom: 16px;
+        }
+        .bonus-title {
+            font-family: var(--serif);
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+        .bonus-title-en {
+            font-family: var(--en);
+            font-size: 14px; font-style: italic;
+            color: var(--text-faint);
+            margin-bottom: 24px;
+        }
+        .bonus-desc {
+            font-family: var(--serif);
+            font-size: 14px; line-height: 2.2;
+            color: var(--text-dim);
+            margin-bottom: 28px;
+        }
+        .bonus-quote {
+            font-family: var(--serif);
+            font-size: 13px; font-style: italic;
+            line-height: 2.0;
+            color: var(--accent);
+            opacity: 0.7;
+            padding-left: 16px;
+            border-left: 2px solid rgba(184,146,106,0.2);
+            margin-bottom: 28px;
+        }
+        .bonus-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 24px;
+            background: rgba(184,146,106,0.08);
+            border: 1px solid rgba(184,146,106,0.18);
+            border-radius: 24px;
+            font-family: var(--sans);
+            font-size: 12px;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+        .bonus-cta:hover {
+            background: rgba(184,146,106,0.15);
+            transform: translateY(-1px);
+        }
+        .bonus-visual {
+            background: linear-gradient(145deg, rgba(166,126,86,0.06) 0%, rgba(15,14,13,0.95) 100%);
+            padding: 48px 40px;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .bonus-visual::before {
+            content: '';
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 240px; height: 240px;
+            background: radial-gradient(circle, rgba(184,146,106,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .bonus-tea-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+            filter: grayscale(0.3);
+        }
+        .bonus-tea-title {
+            font-family: var(--serif);
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .bonus-tea-sub {
+            font-family: var(--en);
+            font-size: 12px; font-style: italic;
+            color: var(--text-faint);
+            margin-bottom: 32px;
+        }
+        .tea-pills {
+            display: flex; flex-direction: column; gap: 10px;
+            width: 100%;
+            max-width: 260px;
+        }
+        .tea-pill {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 14px;
+            background: rgba(15,14,13,0.5);
+            border: 1px solid rgba(184,146,106,0.06);
+            border-radius: 6px;
+            transition: border-color 0.3s;
+        }
+        .tea-pill:hover { border-color: rgba(184,146,106,0.18); }
+        .tea-pill-icon { font-size: 18px; width: 28px; text-align: center; }
+        .tea-pill-text {
+            flex: 1;
+        }
+        .tea-pill-name {
+            font-family: var(--sans);
+            font-size: 11px;
+            color: var(--text);
+        }
+        .tea-pill-role {
+            font-family: var(--sans);
+            font-size: 9px; letter-spacing: 1px;
+            color: var(--accent-dim);
+        }
+
+        /* ──────── METZ CROSSOVER ──────── */
+        .crossover {
+            position: relative;
+            padding: 60px clamp(20px, 4vw, 40px) 80px;
+            overflow: hidden;
+        }
+        .crossover::before {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(184,146,106,0.04) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(200,168,107,0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .crossover-inner {
+            max-width: 920px; margin: 0 auto;
+        }
+        .crossover-divider {
+            display: flex; align-items: center; gap: 16px;
+            margin-bottom: 40px;
+        }
+        .crossover-divider::before, .crossover-divider::after {
+            content: ''; flex: 1; height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold-line), transparent);
+        }
+        .crossover-divider-text {
+            font-family: var(--sans);
+            font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+            color: var(--accent-dim);
+            white-space: nowrap;
+        }
+        .collab-preview {
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(166,126,86,0.04) 0%, rgba(15,14,13,0.8) 100%);
+            border: 1px solid var(--gold-line);
+            border-radius: 10px;
+            position: relative; overflow: hidden;
+        }
+        .collab-preview::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(184,146,106,0.4), transparent);
+        }
+        .collab-header {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 24px;
+        }
+        .collab-badge {
+            font-family: var(--sans); font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+            color: #A67E56; background: rgba(166,126,86,0.1);
+            padding: 4px 12px; border-radius: 10px; border: 1px solid rgba(166,126,86,0.15);
+        }
+        .collab-x {
+            font-family: var(--en); font-size: 14px; font-style: italic;
+            color: var(--text-faint);
+        }
+        .collab-partner {
+            font-family: var(--sans); font-size: 11px; letter-spacing: 2px;
+            color: var(--text-dim);
+        }
+        .collab-title {
+            font-family: var(--serif); font-size: 20px; font-weight: 600;
+            color: var(--text); line-height: 1.4; margin-bottom: 6px;
+        }
+        .collab-title-en {
+            font-family: var(--en); font-size: 13px; font-style: italic;
+            color: var(--text-faint); margin-bottom: 24px;
+        }
+        .collab-body { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+        .collab-story {
+            font-family: var(--serif); font-size: 14px; line-height: 2.2; color: var(--text-dim);
+        }
+        .collab-story em { color: var(--accent); font-style: normal; }
+        .collab-tea-cards { display: flex; flex-direction: column; gap: 10px; }
+        .tea-card {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 14px; background: rgba(15,14,13,0.6);
+            border: 1px solid rgba(184,146,106,0.06); border-radius: 6px; transition: border-color 0.3s;
+        }
+        .tea-card:hover { border-color: rgba(184,146,106,0.15); }
+        .tea-emoji { font-size: 18px; width: 28px; text-align: center; }
+        .tea-info { flex: 1; }
+        .tea-name { font-family: var(--sans); font-size: 11px; color: var(--text); margin-bottom: 2px; }
+        .tea-desc { font-family: var(--sans); font-size: 10px; color: var(--text-faint); }
+        .tea-role { font-family: var(--sans); font-size: 9px; color: #A67E56; letter-spacing: 1px; }
+        .collab-cta-row { display: flex; gap: 12px; margin-top: 28px; align-items: center; }
+        .collab-cta-primary {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 10px 20px; background: rgba(184,146,106,0.08);
+            border: 1px solid rgba(184,146,106,0.18); border-radius: 20px;
+            font-family: var(--sans); font-size: 12px;
+            color: var(--accent); text-decoration: none; transition: all 0.3s;
+        }
+        .collab-cta-primary:hover { background: rgba(184,146,106,0.15); transform: translateY(-1px); }
+        .collab-coming { font-family: var(--sans); font-size: 11px; color: var(--text-faint); font-style: italic; }
+
+        /* ──────── FOOTER ──────── */
+        .footer {
+            padding: 60px 24px 40px;
+            text-align: center;
+            border-top: 1px solid var(--gold-line);
+        }
+        .footer-brand {
+            font-family: var(--sans);
+            font-size: 10px; letter-spacing: 4px;
+            color: var(--text-faint);
+            margin-bottom: 8px;
+        }
+        .footer-brand strong { color: var(--accent-dim); font-weight: 400; }
+        .footer-links {
+            display: flex; justify-content: center; gap: 24px;
+            margin-bottom: 20px;
+        }
+        .footer-links a {
+            font-family: var(--sans); font-size: 11px;
+            color: var(--text-faint); text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--accent); }
+        .footer-copy {
+            font-family: var(--sans);
+            font-size: 10px;
+            color: rgba(90,86,79,0.6);
+        }
+
+        /* ──────── ANIMATIONS ──────── */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ──────── RESPONSIVE ──────── */
+        @media (max-width: 768px) {
+            .hero { padding: 120px 20px 60px; min-height: 70vh; }
+            .hero-meta { flex-wrap: wrap; gap: 16px; justify-content: center; }
+            .bonus-card { grid-template-columns: 1fr; }
+            .bonus-narrative { padding: 32px 24px; }
+            .bonus-visual { padding: 32px 24px; }
+            .collab-body { grid-template-columns: 1fr; }
+            .collab-preview { padding: 24px 20px; }
+            .ep { grid-template-columns: 40px 1fr; }
+            .ep-right { display: none; }
+            .act::before { left: 19px; }
+            .nav-links { gap: 16px; }
+        }
+        @media (max-width: 480px) {
+            .hero-title { letter-spacing: 4px; }
+        }
+    
+        /* READING CONTROLS */
+        .rc{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+        .rc-toggle{width:40px;height:40px;border-radius:50%;background:rgba(30,30,30,.85);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.5);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+        .rc-toggle:hover{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.8)}
+        .rc-panel{display:none;background:rgba(24,24,28,.92);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;min-width:200px;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+        .rc-panel.open{display:block}
+        .rc-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+        .rc-row:last-child{margin-bottom:0}
+        .rc-label{font-family:var(--sn,sans-serif);font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.35)}
+        .rc-btns{display:flex;gap:6px}
+        .rc-btn{width:34px;height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:var(--sn,sans-serif)}
+        .rc-btn:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+        .rc-btn.active{border-color:rgba(201,165,90,.4);color:rgba(201,165,90,.9);background:rgba(201,165,90,.1)}
+        .rc-bright{width:34px;height:30px;border-radius:6px;border:1px solid rgba(255,255,255,.08);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:12px}
+        .rc-bright:hover{border-color:rgba(255,255,255,.2)}
+        .rc-bright.active{border-color:rgba(201,165,90,.4)}
+        .rc-bright[data-m="dark"]{background:rgba(20,20,24,.9);color:rgba(255,255,255,.3)}
+        .rc-bright[data-m="dim"]{background:rgba(50,48,44,.9);color:rgba(220,215,200,.5)}
+        .rc-bright[data-m="light"]{background:rgba(235,230,218,.9);color:rgba(60,55,45,.5)}
+        body.mode-dim{--bg:#1E1D1A!important;--bgr:#24231F!important;--bgc:#2A2925!important;--t:#E8E4DA!important;--td:#A8A295!important;--tf:#706A5E!important}
+        body.mode-light{--bg:#F2EDE3!important;--bgr:#EAE5DA!important;--bgc:#E2DDD2!important;--t:#2C2822!important;--td:#4A4538!important;--tf:#8A8478!important}
+        body.mode-light .nav{background:rgba(242,237,227,.92)!important;border-bottom-color:rgba(0,0,0,.06)!important}
+        body.mode-light .rc-toggle{background:rgba(230,225,215,.9);border-color:rgba(0,0,0,.08);color:rgba(0,0,0,.4)}
+        body.mode-light .rc-panel{background:rgba(240,236,228,.95);border-color:rgba(0,0,0,.08)}
+        body.mode-light .rc-label{color:rgba(0,0,0,.3)}
+        body.mode-light .rc-btn{border-color:rgba(0,0,0,.08);background:rgba(0,0,0,.03);color:rgba(0,0,0,.4)}
+        body.mode-light .rc-btn:hover{background:rgba(0,0,0,.08);color:rgba(0,0,0,.6)}
+        body.mode-light .rc-btn.active{border-color:rgba(140,120,60,.4);color:rgba(140,120,60,.9);background:rgba(140,120,60,.08)}
+        body.mode-dim .rc-toggle{background:rgba(40,38,34,.9)}
+        @media(max-width:480px){.rc{bottom:16px;right:16px}.rc-panel{min-width:180px;padding:14px 16px}}
+
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-brand"><strong>隙光文學</strong> space-between.art</div>
+    <div class="nav-links">
+        <a href="#">作品</a>
+        <a href="#toc">目錄</a>
+        <a href="#bonus">番外</a>
+        <a href="#crossover">聯名</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">隙光文學 · 第一號作品</div>
+    <h1 class="hero-title">拾味小館</h1>
+    <p class="hero-title-en">The Flavor Bistro</p>
+    <p class="hero-desc">
+        一間六張桌子的小餐館。<br>
+        老闆娘沈若能嚐到每個客人的情緒——<br>
+        鹹是悲傷，苦是恐懼，辣是憤怒，酸是焦慮。<br>
+        直到一個失去味覺的男人走進來。<br>
+        她嚐不到他。
+    </p>
+    <div class="hero-meta">
+        <span><span class="num">18</span>集正篇</span>
+        <span style="color:var(--gold-line);">+</span>
+        <span><span class="num">1</span>番外篇</span>
+        <span style="color:var(--gold-line);">·</span>
+        <span>近 <span class="num">100,000</span> 字</span>
+        <span style="color:var(--gold-line);">·</span>
+        <span>完結</span>
+    </div>
+</section>
+
+<!-- TOC -->
+<section class="toc" id="toc">
+    <div class="toc-intro reveal">
+        <div class="toc-intro-label">Table of Contents</div>
+        <div class="toc-intro-title">章節目錄</div>
+        <div class="toc-intro-sub">Five Acts · Eighteen Episodes</div>
+    </div>
+
+    <!-- ACT I -->
+    <div class="act reveal">
+        <div class="act-header">
+            <div class="act-number">I</div>
+            <div class="act-title">相遇<span class="act-title-hint">— 世界觀、能力、療癒方法論</span></div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 01</div>
+                <div class="ep-title">嚐味者</div>
+                <div class="ep-excerpt">沈若在渡口區開了一間只有六張桌子的小餐館。三年來從來沒有失手——直到他走進來。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~8,800 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 02</div>
+                <div class="ep-title">魚與記憶</div>
+                <div class="ep-excerpt">賀淮成了常客。沈若在清蒸鱸魚裡發現了他失去味覺的原因——父親消失在海上。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~5,100 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 03</div>
+                <div class="ep-title">調味的試探</div>
+                <div class="ep-excerpt">五種基本味覺的系統測試。辣椒素刺激痛覺而非味蕾。蛋炒飯的鑊氣帶來三秒嗅覺閃回。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~6,000 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 04</div>
+                <div class="ep-title">第一滴味道</div>
+                <div class="ep-excerpt">黃魚湯裡嚐到了鹹——沈若沒有加鹽，那是留在魚肉裡的海水。記憶撬開了封鎖。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~5,600 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRANSITION -->
+    <div class="act reveal">
+        <div class="act-header">
+            <div class="act-number">⊹</div>
+            <div class="act-title">轉場<span class="act-title-hint">— 關係建立、能力坦白</span></div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 05</div>
+                <div class="ep-title">六點鐘</div>
+                <div class="ep-excerpt">六點成為儀式。FM2 相機重新按下快門。「你不是怪物，你只是有一份很累的天賦。」</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~5,500 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACT II -->
+    <div class="act reveal">
+        <div class="act-header">
+            <div class="act-number">II</div>
+            <div class="act-title">方家姊妹<span class="act-title-hint">— 第一組完整療癒案例</span></div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 06</div>
+                <div class="ep-title">方家姊妹（上）</div>
+                <div class="ep-excerpt">雅琪裁員、雅婷自由。母親的忌日，三年後第一次面對面。四張空桌子的距離。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~6,400 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 07</div>
+                <div class="ep-title">方家姊妹（中）</div>
+                <div class="ep-excerpt">鏡像關係。雅婷覺得自己不夠穩重，雅琪羨慕妹妹的自由。她們不恨對方——她們害怕成為對方。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~5,600 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 08</div>
+                <div class="ep-title">方家姊妹（下）</div>
+                <div class="ep-excerpt">各做一碗麵，然後交換吃。白水蛋花麵和媽媽的甜辣味。「你的也不容易。」</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~5,000 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACT III (深化) -->
+    <div class="act reveal">
+        <div class="act-header">
+            <div class="act-number">III</div>
+            <div class="act-title">深化<span class="act-title-hint">— 情感核心、邊界</span></div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 09</div>
+                <div class="ep-title">雨夜</div>
+                <div class="ep-excerpt">父親失蹤五週年。賀淮帶著一瓶酒和滿身的雨走進來。沈若第一次不做菜——她關了廚房，伸出手。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~6,200 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 10</div>
+                <div class="ep-title">數位的入侵</div>
+                <div class="ep-excerpt">美食博主的文章帶來了五倍客人。三十幾個人的味道混在一起——「像把所有顏料攪成一團灰棕色。」</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~5,600 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 11</div>
+                <div class="ep-title">不會哭的男人（上）</div>
+                <div class="ep-excerpt">陳志遠，六十三歲。五十年沒哭過。太太胰臟癌末期。口袋裡有一封不敢打開的信。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~4,300 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 12</div>
+                <div class="ep-title">不會哭的男人（下）</div>
+                <div class="ep-excerpt">學做紅燒肉。切肉切得大小不一。信裡不是埋怨——是一份食譜。「老陳，不用說了。我都知道了。」</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~5,500 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACT IV -->
+    <div class="act reveal">
+        <div class="act-header">
+            <div class="act-number">IV</div>
+            <div class="act-title">沈若<span class="act-title-hint">— 療癒者的崩潰與修復</span></div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 13</div>
+                <div class="ep-title">母親的遺物</div>
+                <div class="ep-excerpt">一個鐵盒子。一本手寫食譜。一封未寄出的信。母親說：「媽把自己的懦弱當成了這個能力的錯。」</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~4,200 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 14</div>
+                <div class="ep-title">能力的重量</div>
+                <div class="ep-excerpt">關了三天的店。能力失控。賀淮從門縫底下塞了一張照片和一碗很難吃的蛋花陽春麵。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~3,600 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 15</div>
+                <div class="ep-title">弟弟</div>
+                <div class="ep-excerpt">沈晨帶著三年的怨氣來了。「你走了以後，所有的事都是我一個人在處理。」他們一起做了桂花糖蓮藕。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~4,600 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACT V -->
+    <div class="act reveal">
+        <div class="act-header">
+            <div class="act-number">V</div>
+            <div class="act-title">收束<span class="act-title-hint">— 告白、群像、新的開始</span></div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 16</div>
+                <div class="ep-title">告白</div>
+                <div class="ep-excerpt">沈若把自己的情緒做成一碗酸菜魚。「這是我的味道。你嚐嚐看。」他每一種都嚐對了。</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~3,300 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 17</div>
+                <div class="ep-title">小年夜</div>
+                <div class="ep-excerpt">每個人帶了一道菜。六張桌子第一次拼成一張。沈若什麼都沒做——「今天我是吃的那個。」</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~4,600 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+        <div class="ep" onclick="location.href='#'">
+            <div class="ep-dot"></div>
+            <div class="ep-body">
+                <div class="ep-num">Episode 18</div>
+                <div class="ep-title">春天</div>
+                <div class="ep-excerpt">桂花開了。三十四張底片沖好了——三十三張是海，第三十四張是她的廚房。「逗號後面還有下一句。」</div>
+            </div>
+            <div class="ep-right">
+                <span class="ep-chars">~4,400 字</span>
+                <span class="ep-arrow">→</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BONUS: 番外篇 -->
+<section class="bonus" id="bonus">
+    <div class="bonus-inner">
+        <div class="bonus-divider">
+            <span class="bonus-divider-text">番外篇 · Bonus Episode</span>
+        </div>
+        <div class="bonus-card reveal">
+            <div class="bonus-narrative">
+                <div class="bonus-label">拾味小館 × 深夜茶會</div>
+                <div class="bonus-title">純淨之夜</div>
+                <div class="bonus-title-en">A Night of Pure Tea</div>
+                <p class="bonus-desc">
+                    晚上十一點。拾味小館打烊了，但沈若沒有關燈。<br><br>
+                    三個焦慮的創辦人。三杯處方茶。<br>
+                    沈若不做菜。只泡茶。<br><br>
+                    茶的味道比食物安靜——你要安靜下來才嚐得到。<br>
+                    嚐到的時候，你已經安靜了。
+                </p>
+                <div class="bonus-quote">
+                    「焦慮的人不需要答案。需要一杯夠淡的茶、<br>
+                    一段夠長的沉默、和一個不急著給建議的人。」
+                </div>
+                <a href="#" class="bonus-cta">閱讀番外篇 →</a>
+            </div>
+            <div class="bonus-visual">
+                <div class="bonus-tea-icon">🍵</div>
+                <div class="bonus-tea-title">三杯處方茶</div>
+                <div class="bonus-tea-sub">Three Prescriptions</div>
+                <div class="tea-pills">
+                    <div class="tea-pill">
+                        <span class="tea-pill-icon">🌼</span>
+                        <div class="tea-pill-text">
+                            <div class="tea-pill-name">洋甘菊 · Chamomile</div>
+                            <div class="tea-pill-role">安撫 · 慢性焦慮</div>
+                        </div>
+                    </div>
+                    <div class="tea-pill">
+                        <span class="tea-pill-icon">🫐</span>
+                        <div class="tea-pill-text">
+                            <div class="tea-pill-name">水果香茶 · Berry Tisane</div>
+                            <div class="tea-pill-role">沉澱 · 恐懼與熱情</div>
+                        </div>
+                    </div>
+                    <div class="tea-pill">
+                        <span class="tea-pill-icon">🍃</span>
+                        <div class="tea-pill-text">
+                            <div class="tea-pill-name">薄荷留蘭香 · Peppermint</div>
+                            <div class="tea-pill-role">釋放 · 不甘心</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- METZ CROSSOVER -->
+<section class="crossover" id="crossover">
+    <div class="crossover-inner">
+        <div class="crossover-divider">
+            <span class="crossover-divider-text">Crossover · 聯名企劃</span>
+        </div>
+        <div class="collab-preview reveal">
+            <div class="collab-header">
+                <span class="collab-badge">聯名企劃</span>
+                <span class="collab-x">×</span>
+                <span class="collab-partner">METZ LUXURY TEA</span>
+            </div>
+            <div class="collab-title">當拾味小館遇見加拿大茶香</div>
+            <div class="collab-title-en">The Flavor Bistro × METZ Luxury Tea</div>
+            <div class="collab-body">
+                <div class="collab-story">
+                    在番外篇《純淨之夜》中，沈若第一次不做菜，只泡茶。<br><br>
+                    三杯茶對應三種焦慮——洋甘菊的安撫、水果香茶的沉澱、薄荷的釋放。<br><br>
+                    這次，來自加拿大的 <em>METZ Luxury Tea</em> 將故事裡的療癒茶香帶到現實。
+                    金字塔茶包裡的整葉茶在熱水中緩緩舒展，
+                    就像一個人終於願意說出心事的樣子。<br><br>
+                    三款茶，三種療癒。讀故事，品茶香。
+                </div>
+                <div class="collab-tea-cards">
+                    <div class="tea-card">
+                        <span class="tea-emoji">🫐</span>
+                        <div class="tea-info">
+                            <div class="tea-name">有機莓果茶 Organic Berry Berry</div>
+                            <div class="tea-desc">濃郁漿果味，淡淡奶油香，甜而不膩</div>
+                        </div>
+                        <div class="tea-role">安撫</div>
+                    </div>
+                    <div class="tea-card">
+                        <span class="tea-emoji">🌊</span>
+                        <div class="tea-info">
+                            <div class="tea-name">地中海蝶豆花茶 Mediterranean Blue</div>
+                            <div class="tea-desc">舒緩腸胃不適，高抗氧化</div>
+                        </div>
+                        <div class="tea-role">沉澱</div>
+                    </div>
+                    <div class="tea-card">
+                        <span class="tea-emoji">🍃</span>
+                        <div class="tea-info">
+                            <div class="tea-name">有機薄荷留蘭香茶 Cascade Peppermint</div>
+                            <div class="tea-desc">提神消化舒緩，來自美國產薄荷</div>
+                        </div>
+                        <div class="tea-role">釋放</div>
+                    </div>
+                </div>
+            </div>
+            <div class="collab-cta-row">
+                <a href="#bonus" class="collab-cta-primary">閱讀番外篇：純淨之夜 →</a>
+                <span class="collab-coming">禮盒即將推出</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-brand"><strong>隙光文學</strong> · space-between.art</div>
+    <div class="footer-links">
+        <a href="https://spacebetweenstudio.site">選物店</a>
+        <a href="https://spacebetweenhealing.com">品牌療癒</a>
+        <a href="#">文學 IP</a>
+        <a href="https://spacebetweenstudio.asia">亞太</a>
+    </div>
+    <div class="footer-copy">© 2026 Space Between Studio. All rights reserved.</div>
+</footer>
+
+<!-- SCROLL REVEAL -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+});
+</script>
+
+
+<!-- Reading Controls -->
+<div class="rc" id="rc">
+    <div class="rc-panel" id="rcPanel">
+        <div class="rc-row">
+            <span class="rc-label">字型大小</span>
+            <div class="rc-btns">
+                <button class="rc-btn" onclick="rcSize(-1)">A-</button>
+                <button class="rc-btn" onclick="rcSize(0)">A</button>
+                <button class="rc-btn" onclick="rcSize(1)">A+</button>
+            </div>
+        </div>
+        <div class="rc-row">
+            <span class="rc-label">光暗模式</span>
+            <div class="rc-btns">
+                <button class="rc-bright active" data-m="dark" onclick="rcMode('dark')">🌙</button>
+                <button class="rc-bright" data-m="dim" onclick="rcMode('dim')">🌅</button>
+                <button class="rc-bright" data-m="light" onclick="rcMode('light')">☀️</button>
+            </div>
+        </div>
+    </div>
+    <button class="rc-toggle" onclick="document.getElementById('rcPanel').classList.toggle('open')" aria-label="閱讀設定">Aa</button>
+</div>
+<script>
+(function(){
+    const targets=document.querySelectorAll('.ch-body,.ep-body');
+    let sz=0;const base=15;
+    window.rcSize=function(d){
+        if(d===0)sz=0;else sz=Math.max(-3,Math.min(5,sz+d));
+        targets.forEach(t=>t.style.fontSize=(base+sz)+'px');
+        document.querySelectorAll('.rc-btns .rc-btn').forEach((b,i)=>{b.classList.toggle('active',d===0?i===1:false)});
+    };
+    window.rcMode=function(m){
+        document.body.classList.remove('mode-dim','mode-light');
+        if(m!=='dark')document.body.classList.add('mode-'+m);
+        document.querySelectorAll('.rc-bright').forEach(b=>b.classList.toggle('active',b.dataset.m===m));
+        try{localStorage.setItem('rc-mode',m)}catch(e){}
+    };
+    try{const saved=localStorage.getItem('rc-mode');if(saved&&saved!=='dark')rcMode(saved)}catch(e){}
+})();
+</script>
+
+</body>
+</html>

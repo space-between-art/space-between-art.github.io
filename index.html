@@ -3,1058 +3,575 @@
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z531JX2XR4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-Z531JX2XR4');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z531JX2XR4");</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Between Art 間隙藝術 | 療癒系奇幻小說《逐光的藥師》《違章靈魂改建事務所》《拾味小館》《心宅：禁室》</title>
-    <meta name="description" content="在光與暗之間，故事發生。療癒系創作空間，連載都市奇幻療癒小說《逐光的藥師》《違章靈魂改建事務所》《拾味小館》與心理驚悚療癒《心宅：禁室》。">
-    <meta name="keywords" content="療癒小說, 都市奇幻, 逐光的藥師, 違章靈魂改建事務所, 拾味小館, 心宅禁室, 心理療癒, 繁體中文小說, 華文創作">
-    <meta name="author" content="Space Between Art">
-    <link rel="canonical" href="https://space-between.art/">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://space-between.art/">
-    <meta property="og:title" content="Space Between Art | 療癒系奇幻小說創作空間">
-    <meta property="og:description" content="在光與暗之間，故事發生。連載都市奇幻療癒小說與心理驚悚療癒《心宅》系列">
-    <meta property="og:image" content="https://space-between.art/og-image.jpg">
-    <meta property="og:locale" content="zh_TW">
-    <meta name="theme-color" content="#2C5F2D">
-    
+    <title>隙光文學 | space-between.art</title>
+    <meta name="description" content="隙光文學 — 一個安靜的地方，放著一些能修復你的故事。六部原創療癒小說、AI 樹洞、療癒專欄。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cream: #FDF8F3;
-            --cream-dark: #F5EDE4;
-            --text-dark: #2A2A2A;
-            --text-muted: #6B6B6B;
-            
-            /* 逐光的藥師 */
-            --pharmacist-green: #2C5F2D;
-            --pharmacist-dark: #1A3A1B;
-            --pharmacist-gold: #D4A84B;
-            --pharmacist-gold-light: #E8C97A;
-            
-            /* 違章靈魂改建事務所 */
-            --renovator-blue: #2C3E50;
-            --renovator-dark: #1A252F;
-            --renovator-copper: #B87333;
-            --renovator-copper-light: #D4956A;
-            
-            /* 拾味小館 */
-            --bistro-amber: #8B5A2B;
-            --bistro-dark: #5C3D1E;
-            --bistro-gold: #DAA520;
-            --bistro-gold-light: #F4D03F;
-            
-            /* 心宅系列 */
-            --hearthouse-violet: #4A3658;
-            --hearthouse-dark: #2D1B3D;
-            --hearthouse-lavender: #9B8AA8;
-            --hearthouse-lavender-light: #C4B8D0;
-            --hearthouse-gold: #D4A84B;
-            
-            --shadow-soft: rgba(0,0,0,0.08);
-            --shadow-medium: rgba(0,0,0,0.15);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background: var(--cream);
-            color: var(--text-dark);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 1rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(253, 248, 243, 0.95);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 2px 30px var(--shadow-soft);
-            transition: all 0.4s ease;
-        }
-
-        nav.scrolled { padding: 0.8rem 3rem; }
-
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--pharmacist-green), var(--hearthouse-violet));
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after { width: 100%; }
-
-        .mobile-menu-btn {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .mobile-menu-btn span {
-            width: 24px;
-            height: 2px;
-            background: var(--text-dark);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, 
-                var(--pharmacist-dark) 0%, 
-                var(--renovator-dark) 33%,
-                var(--hearthouse-dark) 66%,
-                var(--pharmacist-dark) 100%);
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            opacity: 0.15;
-            background-image: 
-                radial-gradient(circle at 20% 30%, var(--pharmacist-gold) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, var(--hearthouse-lavender) 0%, transparent 40%);
-            animation: heroFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes heroFloat {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-        }
-
-        .particles {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--pharmacist-gold);
-            border-radius: 50%;
-            opacity: 0;
-            animation: particleFloat 15s infinite;
-        }
-
-        .particle:nth-child(odd) { background: var(--hearthouse-lavender); }
-
-        @keyframes particleFloat {
-            0% { opacity: 0; transform: translateY(100vh) scale(0); }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { opacity: 0; transform: translateY(-100vh) scale(1); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 2rem;
-            max-width: 900px;
-        }
-
-        .hero-logo { margin-bottom: 2rem; animation: logoReveal 1.5s ease-out; }
-
-        @keyframes logoReveal {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .hero-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 400;
-            color: white;
-            margin-bottom: 1rem;
-            letter-spacing: 0.1em;
-            animation: titleFade 1.5s ease-out 0.3s both;
-        }
-
-        .hero-subtitle {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 2.5rem;
-            animation: titleFade 1.5s ease-out 0.6s both;
-        }
-
-        @keyframes titleFade {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-tagline {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.6);
-            letter-spacing: 0.3em;
-            margin-bottom: 3rem;
-            animation: titleFade 1.5s ease-out 0.9s both;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: titleFade 1.5s ease-out 1.2s both;
-        }
-
-        .cta-btn {
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.4s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .cta-btn.primary {
-            background: linear-gradient(135deg, var(--pharmacist-gold), var(--pharmacist-gold-light));
-            color: var(--pharmacist-dark);
-            box-shadow: 0 10px 40px rgba(212, 168, 75, 0.4);
-        }
-
-        .cta-btn.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(212, 168, 75, 0.5);
-        }
-
-        .cta-btn.secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid rgba(255,255,255,0.4);
-        }
-
-        .cta-btn.secondary:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: white;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* Works Section */
-        .works-section {
-            padding: 6rem 2rem;
-            background: var(--cream);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-        }
-
-        .section-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--text-dark);
-        }
-
-        /* 2x2 Grid */
-        .works-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .work-card {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            min-height: 520px;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .work-card:hover { transform: translateY(-10px); }
-
-        .work-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-        }
-
-        .work-card.pharmacist {
-            background: linear-gradient(180deg, var(--pharmacist-dark) 0%, var(--pharmacist-green) 100%);
-        }
-        .work-card.pharmacist::before {
-            background: radial-gradient(circle at 30% 70%, rgba(212, 168, 75, 0.3) 0%, transparent 50%);
-        }
-
-        .work-card.renovator {
-            background: linear-gradient(180deg, var(--renovator-dark) 0%, var(--renovator-blue) 100%);
-        }
-        .work-card.renovator::before {
-            background: radial-gradient(circle at 70% 30%, rgba(184, 115, 51, 0.3) 0%, transparent 50%);
-        }
-
-        .work-card.bistro {
-            background: linear-gradient(180deg, var(--bistro-dark) 0%, var(--bistro-amber) 100%);
-        }
-        .work-card.bistro::before {
-            background: radial-gradient(circle at 50% 60%, rgba(218, 165, 32, 0.3) 0%, transparent 50%);
-        }
-
-        .work-card.hearthouse {
-            background: linear-gradient(180deg, var(--hearthouse-dark) 0%, var(--hearthouse-violet) 100%);
-        }
-        .work-card.hearthouse::before {
-            background: radial-gradient(circle at 40% 50%, rgba(155, 138, 168, 0.3) 0%, transparent 50%);
-        }
-
-        .work-card-content {
-            position: relative;
-            z-index: 10;
-            padding: 2rem;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            color: white;
-        }
-
-        .work-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 1rem;
-            background: rgba(255,255,255,0.15);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            width: fit-content;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .work-card.pharmacist .work-badge { background: rgba(212, 168, 75, 0.3); color: var(--pharmacist-gold-light); }
-        .work-card.renovator .work-badge { background: rgba(184, 115, 51, 0.3); color: var(--renovator-copper-light); }
-        .work-card.bistro .work-badge { background: rgba(218, 165, 32, 0.3); color: var(--bistro-gold-light); }
-        .work-card.hearthouse .work-badge { background: rgba(155, 138, 168, 0.3); color: var(--hearthouse-lavender-light); }
-
-        .work-title-zh {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .work-title-en {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
-            opacity: 0.7;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .work-genre {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .genre-tag {
-            padding: 0.25rem 0.7rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            font-size: 0.7rem;
-        }
-
-        .work-description {
-            font-size: 0.85rem;
-            line-height: 1.7;
-            opacity: 0.9;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .work-highlight {
-            padding: 1rem;
-            background: rgba(0,0,0,0.2);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            border-left: 3px solid;
-        }
-
-        .work-card.pharmacist .work-highlight { border-color: var(--pharmacist-gold); }
-        .work-card.renovator .work-highlight { border-color: var(--renovator-copper); }
-        .work-card.bistro .work-highlight { border-color: var(--bistro-gold); }
-        .work-card.hearthouse .work-highlight { border-color: var(--hearthouse-gold); }
-
-        .highlight-quote {
-            font-family: 'Noto Serif TC', serif;
-            font-style: italic;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .work-stats {
-            display: flex;
-            gap: 1.2rem;
-            margin-bottom: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-item { text-align: center; }
-
-        .stat-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .work-card.pharmacist .stat-value { color: var(--pharmacist-gold-light); }
-        .work-card.renovator .stat-value { color: var(--renovator-copper-light); }
-        .work-card.bistro .stat-value { color: var(--bistro-gold-light); }
-        .work-card.hearthouse .stat-value { color: var(--hearthouse-lavender-light); }
-
-        .stat-label { font-size: 0.65rem; opacity: 0.7; }
-
-        .work-cta {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-        }
-
-        .work-btn {
-            flex: 1;
-            min-width: 70px;
-            padding: 0.7rem;
-            border-radius: 10px;
-            text-decoration: none;
-            text-align: center;
-            font-size: 0.75rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .work-btn.primary { color: var(--pharmacist-dark); }
-        .work-card.pharmacist .work-btn.primary { background: var(--pharmacist-gold); }
-        .work-card.renovator .work-btn.primary { background: var(--renovator-copper); color: white; }
-        .work-card.bistro .work-btn.primary { background: var(--bistro-gold); color: var(--bistro-dark); }
-        .work-card.hearthouse .work-btn.primary { background: var(--hearthouse-lavender); color: var(--hearthouse-dark); }
-
-        .work-btn.secondary {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .work-btn:hover { transform: translateY(-2px); }
-
-        .work-deco {
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
-            font-size: 4rem;
-            opacity: 0.08;
-        }
-
-        /* Series Badge */
-        .series-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            padding: 0.3rem 0.8rem;
-            background: rgba(155, 138, 168, 0.5);
-            border-radius: 6px;
-            font-size: 0.65rem;
-            color: white;
-            backdrop-filter: blur(5px);
-            z-index: 15;
-        }
-
-        /* About Section */
-        .about-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--pharmacist-dark) 0%, var(--hearthouse-dark) 100%);
-            color: white;
-        }
-
-        .about-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .about-title span {
-            background: linear-gradient(90deg, var(--pharmacist-gold), var(--hearthouse-lavender));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 2;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .feature-item {
-            padding: 2rem 1.5rem;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .feature-item:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .feature-title { font-family: 'Noto Serif TC', serif; font-size: 1rem; margin-bottom: 0.5rem; }
-        .feature-desc { font-size: 0.8rem; opacity: 0.7; }
-
-        /* Newsletter */
-        .newsletter-section {
-            padding: 5rem 2rem;
-            background: var(--cream-dark);
-            text-align: center;
-        }
-
-        .newsletter-container { max-width: 600px; margin: 0 auto; }
-
-        .newsletter-title {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .newsletter-desc { color: var(--text-muted); margin-bottom: 2rem; }
-
-        .newsletter-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--pharmacist-green), var(--hearthouse-violet));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(44, 95, 45, 0.3);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-brand p { font-size: 0.9rem; opacity: 0.7; line-height: 1.6; }
-
-        .footer-links h4 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            color: var(--pharmacist-gold-light);
-        }
-
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.5rem; }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover { color: white; }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
-
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .works-grid { grid-template-columns: repeat(2, 1fr); }
-            .about-features { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0; right: 0;
-                background: var(--cream);
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 1rem;
-                box-shadow: 0 10px 30px var(--shadow-medium);
-            }
-            .nav-links.active { display: flex; }
-            .mobile-menu-btn { display: flex; }
-            .hero-cta { flex-direction: column; align-items: center; }
-            .works-grid { grid-template-columns: 1fr; max-width: 500px; }
-            .work-card { min-height: 480px; }
-            .about-features { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; text-align: center; }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+            --bg:#17140F;--bg2:#1D1A14;--bg3:#211E17;--bg3h:#28241C;
+            --t:#F0EBE1;--tb:#D5CEBD;--tm:#A89F8F;--tq:#736B5E;
+            --gold:#C9A55A;--gs:#B8926A;--gl:rgba(201,165,90,.15);--gg:rgba(201,165,90,.08);
+            --sage:#7FA87F;--ss:rgba(127,168,127,.12);--sl:rgba(127,168,127,.2);
+            --sky:#7EA8C4;--sks:rgba(126,168,196,.1);--skl:rgba(126,168,196,.18);
+            --rose:#C49B8A;--rs:rgba(196,155,138,.1);--rl:rgba(196,155,138,.18);
+            --plum:#9B8EB0;--ps:rgba(155,142,176,.1);--pl:rgba(155,142,176,.18);
+            --sf:'Noto Serif TC','Georgia',serif;--sn:'Noto Sans TC','Helvetica Neue',sans-serif;
+            --en:'Cormorant Garamond',serif;--dp:'Playfair Display',serif;
+            --px:clamp(24px,6vw,72px);--sy:clamp(64px,10vh,100px);
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{background:var(--bg);color:var(--tb);font-family:var(--sf);line-height:2;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+        ::selection{background:rgba(201,165,90,.3);color:#fff}
+        a{color:inherit;text-decoration:none}
+        .mw{max-width:1100px;margin:0 auto}
+        button{font-family:inherit;border:none;cursor:pointer;background:none}
+
+        /* NAV */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(23,20,15,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--gl);height:60px;padding:0 var(--px);display:flex;align-items:center;justify-content:space-between}
+        .nav-b{font-family:var(--en);font-size:20px;font-weight:500;color:var(--t);letter-spacing:2px}
+        .nav-b em{color:var(--gold);font-style:normal}
+        .nav-l{display:flex;gap:24px}
+        .nav-l a{font-family:var(--sn);font-size:13px;color:var(--tm);transition:color .3s}
+        .nav-l a:hover{color:var(--gold)}
+
+        /* DIVIDERS */
+        .sd{display:flex;align-items:center;gap:16px;margin-bottom:48px}
+        .sd::before,.sd::after{content:'';flex:1;height:1px}
+        .sd--g::before,.sd--g::after{background:linear-gradient(90deg,transparent,var(--gl),transparent)}
+        .sd--s::before,.sd--s::after{background:linear-gradient(90deg,transparent,var(--sl),transparent)}
+        .sd--k::before,.sd--k::after{background:linear-gradient(90deg,transparent,var(--skl),transparent)}
+        .sd--p::before,.sd--p::after{background:linear-gradient(90deg,transparent,var(--pl),transparent)}
+        .sd span{font-family:var(--sn);font-size:11px;letter-spacing:5px;text-transform:uppercase;white-space:nowrap}
+        .sd--g span{color:var(--gs)}.sd--s span{color:var(--sage)}.sd--k span{color:var(--sky)}.sd--p span{color:var(--plum)}
+
+        /* BUTTONS */
+        .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:24px;font-family:var(--sn);font-size:13px;transition:all .3s;cursor:pointer}
+        .btn--g{color:var(--gold);background:var(--gg);border:1px solid var(--gl)}
+        .btn--g:hover{background:rgba(201,165,90,.14);transform:translateY(-1px)}
+        .btn--s{color:var(--sage);background:var(--ss);border:1px solid var(--sl)}
+        .btn--s:hover{background:rgba(127,168,127,.2);transform:translateY(-1px)}
+        .btn--k{color:var(--sky);background:var(--sks);border:1px solid var(--skl)}
+        .btn--k:hover{background:rgba(126,168,196,.18);transform:translateY(-1px)}
+        .btn--p{color:var(--plum);background:var(--ps);border:1px solid var(--pl)}
+        .btn--p:hover{background:rgba(155,142,176,.18);transform:translateY(-1px)}
+        .badge{font-family:var(--sn);font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px}
+        .badge--g{color:var(--gold);border:1px solid rgba(201,165,90,.25)}
+        .badge--s{color:var(--sage);border:1px solid var(--sl)}
+        .badge--k{color:var(--sky);border:1px solid var(--skl)}
+        .badge--r{color:var(--rose);border:1px solid var(--rl)}
+        .badge--p{color:var(--plum);border:1px solid var(--pl)}
+
+        /* ═══ HERO ═══ */
+        .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px var(--px) 80px;overflow:hidden}
+        #particles{position:absolute;inset:0;pointer-events:none;z-index:0}
+        .hero>*{position:relative;z-index:1}
+        .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--bg),transparent);pointer-events:none;z-index:1}
+        .hero-sigil{width:64px;height:64px;border:1px solid var(--gl);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--en);font-size:26px;font-style:italic;color:var(--gs);margin-bottom:40px;animation:fadeIn 1s}
+        .hero-label{font-family:var(--sn);font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gs);margin-bottom:28px;opacity:0;animation:fadeUp .8s .5s both}
+        .hero h1{font-size:clamp(36px,7vw,64px);font-weight:700;letter-spacing:10px;color:var(--t);margin-bottom:10px;opacity:0;animation:fadeUp .8s .7s both}
+        .hero-en{font-family:var(--dp);font-size:clamp(15px,2vw,20px);font-style:italic;color:var(--tm);letter-spacing:5px;margin-bottom:44px;opacity:0;animation:fadeUp .8s .9s both}
+        .hero-tw{max-width:540px;font-size:16px;line-height:2.4;color:var(--tb);min-height:120px;opacity:0;animation:fadeUp .8s 1.1s both}
+        .hero-tw .cursor{display:inline-block;width:2px;height:1.1em;background:var(--gold);margin-left:2px;animation:blink 1s infinite;vertical-align:text-bottom}
+        .hero-scroll{position:absolute;bottom:36px;z-index:2;font-family:var(--en);font-size:13px;font-style:italic;color:var(--tq);letter-spacing:2px;animation:pulse 2.5s infinite}
+
+        /* ═══ MANIFESTO ═══ */
+        .mani{padding:var(--sy) var(--px);text-align:center}
+        .mani-line{font-size:clamp(17px,2.5vw,22px);line-height:2.6;color:var(--tb);max-width:580px;margin:0 auto}
+        .mani-line em{color:var(--gold);font-style:normal}
+        .mani-attr{font-family:var(--en);font-size:13px;font-style:italic;color:var(--tq);margin-top:28px}
+
+        /* ═══ TASTE QUIZ ═══ */
+        .quiz{padding:var(--sy) var(--px);position:relative}
+        .quiz::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(155,142,176,.04) 0%,transparent 60%);pointer-events:none}
+        .quiz-inner{max-width:640px;margin:0 auto;text-align:center;position:relative}
+        .quiz-intro h2{font-size:clamp(22px,3.5vw,30px);font-weight:600;color:var(--t);margin-bottom:8px}
+        .quiz-intro-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--plum);margin-bottom:16px}
+        .quiz-intro p{font-size:15px;line-height:2.2;color:var(--tb);margin-bottom:32px}
+        .quiz-q{display:none;text-align:center}
+        .quiz-q.active{display:block;animation:fadeUp .5s both}
+        .quiz-q-text{font-size:18px;font-weight:500;color:var(--t);margin-bottom:24px;line-height:1.8}
+        .quiz-q-num{font-family:var(--en);font-size:12px;color:var(--tq);margin-bottom:12px;letter-spacing:2px}
+        .quiz-opts{display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto}
+        .quiz-opt{padding:14px 20px;background:var(--bg3);border:1px solid var(--pl);border-radius:10px;font-family:var(--sf);font-size:14px;color:var(--tb);text-align:left;transition:all .3s;cursor:pointer;line-height:1.8}
+        .quiz-opt:hover{border-color:rgba(155,142,176,.4);background:var(--bg3h);transform:translateX(4px)}
+        .quiz-opt.selected{border-color:var(--plum);background:var(--ps)}
+        .quiz-result{display:none;text-align:center;animation:fadeUp .6s both}
+        .quiz-result.active{display:block}
+        .quiz-result-icon{font-size:56px;margin-bottom:16px}
+        .quiz-result-title{font-size:24px;font-weight:600;color:var(--t);margin-bottom:6px}
+        .quiz-result-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--plum);margin-bottom:20px}
+        .quiz-result-desc{font-size:15px;line-height:2.2;color:var(--tb);margin-bottom:28px;max-width:460px;margin-left:auto;margin-right:auto}
+        .quiz-result-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+        .quiz-reset{font-family:var(--sn);font-size:12px;color:var(--tq);margin-top:20px;cursor:pointer;transition:color .3s}
+        .quiz-reset:hover{color:var(--plum)}
+        .quiz-progress{width:100%;max-width:300px;height:3px;background:rgba(155,142,176,.1);border-radius:2px;margin:0 auto 32px;overflow:hidden}
+        .quiz-progress-bar{height:100%;background:var(--plum);border-radius:2px;transition:width .4s ease-out}
+
+        /* ═══ BOOKSTORE ═══ */
+        .bookstore{padding:0 var(--px);max-width:1100px;margin:0 auto}
+        .bs-img{width:100%;height:auto;border-radius:14px;border:1px solid var(--gl);display:block;object-fit:cover;max-height:480px;opacity:.85;transition:opacity .6s}
+        .bs-wrap{position:relative;overflow:hidden;border-radius:14px}
+        .bs-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(23,20,15,.3) 0%,rgba(23,20,15,.1) 40%,rgba(23,20,15,.5) 100%);pointer-events:none;border-radius:14px}
+        .bs-caption{position:absolute;bottom:24px;left:0;right:0;text-align:center;z-index:2}
+        .bs-caption span{font-family:var(--en);font-size:14px;font-style:italic;color:rgba(240,235,225,.5);letter-spacing:4px}
+
+        /* ═══ WORKS ═══ */
+        .works{padding:20px var(--px) var(--sy)}
+        .wg{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .wc{position:relative;background:var(--bg3);border:1px solid var(--gl);border-radius:12px;padding:36px 32px;transition:all .4s;display:flex;flex-direction:column;overflow:hidden}
+        .wc:hover{border-color:rgba(201,165,90,.3);transform:translateY(-3px);background:var(--bg3h)}
+        .wc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,165,90,.3),transparent);opacity:0;transition:opacity .4s}
+        .wc:hover::before{opacity:1}
+        .wc-icon{font-size:36px;margin-bottom:16px;transition:transform .3s,filter .3s}
+        .wc:hover .wc-icon{transform:scale(1.15) rotate(-3deg);filter:drop-shadow(0 0 12px rgba(201,165,90,.3))}
+        .wc--feat{grid-column:1/-1;display:grid;grid-template-columns:1.2fr .8fr;padding:0}
+        .wc--feat .wc-nar{padding:44px 40px}
+        .wc--feat .wc-vis{background:linear-gradient(150deg,rgba(201,165,90,.05) 0%,var(--bg) 100%);padding:44px 32px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+        .wc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+        .wc-genre{font-family:var(--sn);font-size:11px;color:var(--tq)}
+        .wc-title{font-size:clamp(20px,2.5vw,26px);font-weight:600;color:var(--t);line-height:1.5;margin-bottom:4px}
+        .wc-title-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--tm);margin-bottom:18px}
+        .wc-desc{font-size:15px;line-height:2.2;color:var(--tb);margin-bottom:20px;flex:1}
+        .wc-stats{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--sn);font-size:12px;color:var(--tm);margin-bottom:20px}
+        .wc-stats .n{color:var(--gold);font-weight:500;font-size:13px}
+        .fi{font-size:52px;margin-bottom:20px;animation:float 4s ease-in-out infinite}
+        .fg{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:240px;margin-top:4px}
+        .fs{text-align:center;padding:12px 6px;background:rgba(23,20,15,.5);border:1px solid var(--gl);border-radius:8px}
+        .fs .n{font-family:var(--en);font-size:26px;font-weight:500;color:var(--gold);display:block}
+        .fs .l{font-family:var(--sn);font-size:10px;color:var(--tm)}
+
+        /* ═══ AI 樹洞 ═══ */
+        .tree{padding:var(--sy) var(--px);position:relative}
+        .tree::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(127,168,127,.04) 0%,transparent 60%);pointer-events:none}
+        .tree-intro{text-align:center;margin-bottom:48px}
+        .tree-intro h2{font-size:clamp(22px,3.5vw,32px);font-weight:600;color:var(--t);margin-bottom:6px}
+        .tree-intro-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--sage);margin-bottom:16px}
+        .tree-intro p{font-size:16px;line-height:2.3;color:var(--tb);max-width:520px;margin:0 auto}
+        .tg{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .tc{background:var(--bg3);border:1px solid var(--sl);border-radius:12px;padding:36px 32px;transition:all .4s;position:relative;overflow:hidden}
+        .tc:hover{border-color:rgba(127,168,127,.4);background:var(--bg3h);transform:translateY(-2px)}
+        .tc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(127,168,127,.35),transparent);opacity:0;transition:opacity .4s}
+        .tc:hover::before{opacity:1}
+        .tc-av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px;transition:transform .3s}
+        .tc:hover .tc-av{transform:scale(1.1) rotate(5deg)}
+        .tc-av--gg{background:rgba(201,165,90,.12);border:1px solid rgba(201,165,90,.2)}
+        .tc-av--sm{background:var(--ss);border:1px solid var(--sl)}
+        .tc-name{font-size:22px;font-weight:600;color:var(--t);margin-bottom:2px}
+        .tc-name-en{font-family:var(--en);font-size:13px;font-style:italic;color:var(--tm);margin-bottom:4px}
+        .tc-role{font-family:var(--sn);font-size:11px;letter-spacing:1px;margin-bottom:16px}
+        .tc-role--gg{color:var(--gs)}.tc-role--sm{color:var(--sage)}
+        .tc-desc{font-size:15px;line-height:2.2;color:var(--tb);margin-bottom:20px}
+        .tc-preview{background:var(--bg);border-radius:8px;padding:16px;margin-bottom:24px;border:1px solid rgba(255,255,255,.04)}
+        .tc-preview-msg{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px}
+        .tc-preview-msg:last-child{margin-bottom:0}
+        .tc-preview-dot{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:2px}
+        .tc-preview-dot--ai{background:rgba(201,165,90,.15)}
+        .tc-preview-dot--u{background:rgba(255,255,255,.06)}
+        .tc-preview-bubble{font-family:var(--sn);font-size:12px;line-height:1.8;color:var(--tm);padding:8px 12px;border-radius:8px;max-width:85%}
+        .tc-preview-bubble--ai{background:rgba(201,165,90,.06)}
+        .tc-preview-bubble--u{background:rgba(255,255,255,.04);margin-left:auto}
+
+        /* ═══ 隙光專欄 ═══ */
+        .col{padding:var(--sy) var(--px)}
+        .col-intro{text-align:center;margin-bottom:48px}
+        .col-intro h2{font-size:clamp(22px,3.5vw,32px);font-weight:600;color:var(--t);margin-bottom:6px}
+        .col-intro-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--sky);margin-bottom:16px}
+        .col-intro p{font-size:16px;line-height:2.3;color:var(--tb);max-width:480px;margin:0 auto}
+        .cg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .cc{background:var(--bg3);border:1px solid var(--skl);border-radius:12px;padding:32px 28px;transition:all .4s;cursor:pointer;position:relative;overflow:hidden}
+        .cc:hover{border-color:rgba(126,168,196,.4);background:var(--bg3h)}
+        .cc-tag{font-family:var(--sn);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sky);margin-bottom:14px}
+        .cc-title{font-size:18px;font-weight:600;color:var(--t);line-height:1.7;margin-bottom:14px;transition:color .3s}
+        .cc:hover .cc-title{color:var(--sky)}
+        .cc-ex{font-size:14px;line-height:2.2;color:var(--tb);margin-bottom:12px}
+        .cc-expand{max-height:0;overflow:hidden;transition:max-height .5s ease-out,opacity .4s;opacity:0}
+        .cc.open .cc-expand{max-height:400px;opacity:1}
+        .cc-expand-inner{padding-top:16px;border-top:1px solid var(--skl);font-size:14px;line-height:2.2;color:var(--tb)}
+        .cc-toggle{font-family:var(--sn);font-size:11px;color:var(--sky);display:flex;align-items:center;gap:4px;transition:color .3s}
+        .cc-toggle-arrow{display:inline-block;transition:transform .3s}
+        .cc.open .cc-toggle-arrow{transform:rotate(180deg)}
+        .cc-date{font-family:var(--sn);font-size:11px;color:var(--tq);margin-top:12px}
+
+        /* ═══ CROSSOVER ═══ */
+        .xo{padding:var(--sy) var(--px)}
+        .xo-card{display:grid;grid-template-columns:1.1fr .9fr;background:var(--bg3);border:1px solid var(--gl);border-radius:12px;overflow:hidden;transition:border-color .4s}
+        .xo-card:hover{border-color:rgba(201,165,90,.3)}
+        .xo-nar{padding:44px 40px}
+        .xo-label{font-family:var(--sn);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gs);margin-bottom:14px}
+        .xo-brands{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+        .xo-brands span{font-family:var(--sn);font-size:12px;letter-spacing:2px;color:var(--tm)}
+        .xo-x{font-family:var(--en);font-size:16px;font-style:italic;color:var(--tq)}
+        .xo-title{font-size:22px;font-weight:600;color:var(--t);margin-bottom:6px}
+        .xo-title-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--tm);margin-bottom:20px}
+        .xo-desc{font-size:15px;line-height:2.2;color:var(--tb);margin-bottom:24px}
+        .xo-desc em{color:var(--gold);font-style:normal}
+        .xo-q{font-size:14px;font-style:italic;line-height:2;color:var(--gold);opacity:.8;padding-left:14px;border-left:2px solid var(--gl)}
+        .xo-vis{background:linear-gradient(150deg,rgba(201,165,90,.04) 0%,var(--bg) 100%);padding:44px 32px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+        .xo-vi{font-size:44px;margin-bottom:20px}
+        .xo-vt{font-size:16px;color:var(--t);margin-bottom:4px}
+        .xo-ve{font-family:var(--en);font-size:12px;font-style:italic;color:var(--tm);margin-bottom:24px}
+        .xo-list{list-style:none;width:100%;max-width:260px}
+        .xo-list li{font-family:var(--sn);font-size:12px;color:var(--tb);padding:10px 0;border-bottom:1px solid rgba(201,165,90,.08);display:flex;align-items:center;gap:8px}
+        .xo-list li:last-child{border-bottom:none}
+        .xo-list .ic{font-size:14px;opacity:.7}
+
+        /* ═══ ABOUT ═══ */
+        .about{padding:var(--sy) var(--px);max-width:680px;margin:0 auto;text-align:center}
+        .about-icon{font-family:var(--en);font-size:30px;font-style:italic;color:var(--gs);margin-bottom:24px}
+        .about h3{font-size:22px;font-weight:600;color:var(--t);margin-bottom:6px}
+        .about-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--tm);margin-bottom:28px}
+        .about-body{font-size:16px;line-height:2.4;color:var(--tb)}
+        .about-body em{color:var(--gold);font-style:normal}
+        .eco{display:flex;justify-content:center;gap:36px;margin-top:40px;flex-wrap:wrap}
+        .eco a{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--sn);font-size:12px;color:var(--tq);transition:color .3s}
+        .eco a:hover{color:var(--gold)}
+        .eco-d{width:7px;height:7px;border:1px solid var(--gl);border-radius:50%;transition:all .3s}
+        .eco a:hover .eco-d{background:var(--gold);border-color:var(--gold)}
+
+        .ft{padding:48px var(--px) 32px;text-align:center;border-top:1px solid var(--gl)}
+        .ft-b{font-family:var(--en);font-size:15px;color:var(--tq);letter-spacing:3px;margin-bottom:12px}
+        .ft-c{font-family:var(--sn);font-size:11px;color:rgba(115,107,94,.5)}
+
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes pulse{0%,100%{opacity:.35}50%{opacity:.75}}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+        .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease-out,transform .7s ease-out}
+        .rv.v{opacity:1;transform:translateY(0)}
+
+        @media(max-width:900px){.wg,.wc--feat,.tg,.xo-card{grid-template-columns:1fr}.cg{grid-template-columns:1fr 1fr}.xo-nar,.xo-vis,.wc--feat .wc-nar,.wc--feat .wc-vis{padding:32px 24px}}
+        @media(max-width:560px){.cg{grid-template-columns:1fr}.hero h1{letter-spacing:5px}.wc{padding:28px 22px}.nav-l{gap:14px}.nav-l a{font-size:12px}}
     </style>
 </head>
 <body>
-    <nav id="navbar">
-        <a href="/" class="nav-logo">
-            <svg viewBox="0 0 40 40" width="36" height="36">
-                <defs>
-                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#D4A84B"/>
-                        <stop offset="100%" style="stop-color:#9B8AA8"/>
-                    </linearGradient>
-                </defs>
-                <circle cx="20" cy="20" r="18" fill="none" stroke="#2A2A2A" stroke-width="1.5"/>
-                <text x="20" y="26" font-family="Cormorant Garamond, serif" font-size="18" fill="url(#logoGradient)" text-anchor="middle">S</text>
-            </svg>
-            Space Between Art
-        </a>
-        <ul class="nav-links">
-            <li><a href="#works">作品</a></li>
-            <li><a href="ai-chat.html">心光咨詢站</a></li>
-            <li><a href="academy.html">療癒學院</a></li>
-            <li><a href="gallery.html">畫廊</a></li>
-            <li><a href="community.html">互動區</a></li>
-            <li><a href="#about">關於</a></li>
-        </ul>
-        <button class="mobile-menu-btn" aria-label="選單">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
 
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="particles">
-            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-            <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
-            <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
-            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
-            <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
-            <div class="particle" style="left: 80%; animation-delay: 0.5s;"></div>
-            <div class="particle" style="left: 90%; animation-delay: 3.5s;"></div>
-        </div>
-        
-        <div class="hero-content">
-            <div class="hero-logo">
-                <svg viewBox="0 0 120 120" width="100" height="100">
-                    <defs>
-                        <linearGradient id="heroGold" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#F5D998"/>
-                            <stop offset="50%" style="stop-color:#D4A84B"/>
-                            <stop offset="100%" style="stop-color:#9B8AA8"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="60" cy="60" r="55" fill="none" stroke="url(#heroGold)" stroke-width="2"/>
-                    <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                    <text x="60" y="75" font-family="Cormorant Garamond, serif" font-size="50" fill="url(#heroGold)" text-anchor="middle">S</text>
-                </svg>
-            </div>
-            <h1 class="hero-title">Space Between Art</h1>
-            <p class="hero-subtitle">在光與暗之間，故事發生</p>
-            <p class="hero-tagline">療癒系都市奇幻創作工作室</p>
-            <div class="hero-cta">
-                <a href="#works" class="cta-btn primary">
-                    <span>探索作品</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
-                <a href="ai-chat.html" class="cta-btn secondary">
-                    <span>心光諮詢室</span>
-                </a>
-            </div>
-        </div>
+<nav class="nav">
+    <a href="#" class="nav-b"><em>隙</em>光文學</a>
+    <div class="nav-l">
+        <a href="#quiz">測驗</a>
+        <a href="#works">書架</a>
+        <a href="#treehouse">樹洞</a>
+        <a href="#column">專欄</a>
+        <a href="https://spacebetweenstudio.site">選物店</a>
+    </div>
+</nav>
 
-        <div class="scroll-indicator">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-        </div>
-    </section>
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+    <canvas id="particles"></canvas>
+    <div class="hero-sigil">光</div>
+    <div class="hero-label">Therapeutic Literature Library</div>
+    <h1>隙光文學</h1>
+    <p class="hero-en">space-between.art</p>
+    <div class="hero-tw" id="typewriter"></div>
+    <div class="hero-scroll">scroll ↓</div>
+</section>
 
-    <section class="works-section" id="works">
-        <div class="section-header fade-in">
-            <p class="section-label">Our Stories</p>
-            <h2 class="section-title">作品系列</h2>
-        </div>
+<!-- ════════ MANIFESTO ════════ -->
+<section class="mani rv">
+    <p class="mani-line">
+        這裡是一間安靜的書店。<br>
+        放著一些能<em>修復你</em>的故事。<br>
+        你不需要買什麼。<br>
+        你只需要坐下來，翻開一頁。
+    </p>
+    <p class="mani-attr">— 隙光文學 · 老靈魂的獨立書店</p>
+</section>
 
-        <div class="works-grid">
-            <!-- 逐光的藥師 -->
-            <div class="work-card pharmacist fade-in">
-                <div class="work-deco">🌿</div>
-                <div class="work-card-content">
-                    <div class="work-badge"><span>✦</span> 完結・115,000字</div>
-                    <h3 class="work-title-zh">逐光的藥師</h3>
-                    <p class="work-title-en">The Light-Chasing Pharmacist</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">都市奇幻</span>
-                        <span class="genre-tag">療癒</span>
-                        <span class="genre-tag">植物魔法</span>
-                    </div>
-                    <p class="work-description">
-                        二十三歲的曜經營著「間隙書屋」二手書店，擁有能看見人們「心光」的特殊能力。
-                        在社工師晴的協助下，他用植物的芳香與智慧，療癒社區居民被黑暗侵蝕的靈魂。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">「每個人的心裡都有光，只是有時候會被遮住。」</p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item"><div class="stat-value">25</div><div class="stat-label">章節</div></div>
-                        <div class="stat-item"><div class="stat-value">12</div><div class="stat-label">療癒植物</div></div>
-                        <div class="stat-item"><div class="stat-value">∞</div><div class="stat-label">心光</div></div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="https://www.mirrorfiction.com/book/42470" class="work-btn primary" target="_blank">閱讀 ↗</a>
-                        <a href="pharmacist/index.html" class="work-btn secondary">簡介</a>
-                        <a href="pharmacist/characters.html" class="work-btn secondary">角色</a>
+<!-- ════════ BOOKSTORE ════════ -->
+<section class="bookstore" id="bookstore">
+    <div class="bs-wrap">
+        <img src="bookstore.png" alt="隙光書店一角" class="bs-img" loading="lazy">
+        <div class="bs-overlay"></div>
+        <div class="bs-caption"><span>the bookshop between the cracks</span></div>
+    </div>
+</section>
+
+<!-- ════════ TASTE QUIZ ════════ -->
+<section class="quiz" id="quiz">
+    <div class="quiz-inner mw rv" id="quizApp">
+        <div class="quiz-intro" id="quizIntro">
+            <h2>你現在是什麼味道？</h2>
+            <div class="quiz-intro-en">What Does Your Heart Taste Like?</div>
+            <p>回答三個問題，讓我們幫你嚐一嚐。<br>每一種味道都有一個故事等著你。</p>
+            <button class="btn btn--p" onclick="startQuiz()">開始 →</button>
+        </div>
+        <div id="quizBody" style="display:none">
+            <div class="quiz-progress"><div class="quiz-progress-bar" id="quizBar" style="width:0%"></div></div>
+            <div id="quizQuestions"></div>
+        </div>
+        <div class="quiz-result" id="quizResult">
+            <div class="quiz-result-icon" id="resIcon"></div>
+            <div class="quiz-result-title" id="resTitle"></div>
+            <div class="quiz-result-en" id="resEn"></div>
+            <div class="quiz-result-desc" id="resDesc"></div>
+            <div class="quiz-result-cta" id="resCta"></div>
+            <div class="quiz-reset" onclick="resetQuiz()">重新測驗 ↻</div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ WORKS ════════ -->
+<section class="works" id="works">
+    <div class="mw">
+        <div class="sd sd--g"><span>書架 · Library</span></div>
+        <div class="wg">
+            <div class="wc wc--feat rv">
+                <div class="wc-nar">
+                    <div class="wc-meta"><span class="badge badge--g">完結</span><span class="badge badge--r">v3 修訂版</span><span class="wc-genre">都市療癒 · 味覺寓言</span></div>
+                    <div class="wc-title">拾味小館</div>
+                    <div class="wc-title-en">The Flavor Bistro</div>
+                    <p class="wc-desc">沈若在渡口區開了一間只有六張桌子的小餐館。她能嚐到每個客人的情緒——鹹是悲傷，苦是恐懼，辣是憤怒，酸是焦慮。三年來從來沒有失手。直到一個失去味覺的男人走進來。</p>
+                    <a href="read/bistro/" class="btn btn--g">閱讀全 18 集 + 番外 →</a>
+                </div>
+                <div class="wc-vis">
+                    <div class="fi">🏮</div>
+                    <div class="fg">
+                        <div class="fs"><span class="n">18</span><span class="l">集正篇</span></div>
+                        <div class="fs"><span class="n">1</span><span class="l">番外篇</span></div>
+                        <div class="fs"><span class="n">~94K</span><span class="l">字</span></div>
+                        <div class="fs"><span class="n">5</span><span class="l">幕結構</span></div>
                     </div>
                 </div>
             </div>
-
-            <!-- 違章靈魂改建事務所 -->
-            <div class="work-card renovator fade-in">
-                <div class="work-deco">🔧</div>
-                <div class="work-card-content">
-                    <div class="work-badge"><span>◆</span> 優化中・25集</div>
-                    <h3 class="work-title-zh">違章靈魂改建事務所</h3>
-                    <p class="work-title-en">The Soul Renovator</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">都市奇幻</span>
-                        <span class="genre-tag">心理懸疑</span>
-                        <span class="genre-tag">療癒</span>
-                    </div>
-                    <p class="work-description">
-                        路遙是一名「心靈建築改建師」，能看見每個人心中的「房子」——
-                        沒有門的玻璃屋、銅牆鐵壁的碉堡、無限迴圈的樓梯⋯⋯
-                        他用藍圖之眼和共感錘，改建那些違章的靈魂結構。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">「每一座違章建築，都是一道沒有被聽見的求救信號。」</p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item"><div class="stat-value">25</div><div class="stat-label">集數</div></div>
-                        <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">心靈法器</div></div>
-                        <div class="stat-item"><div class="stat-value">∞</div><div class="stat-label">建築</div></div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="https://www.penana.com/story/199696/違章靈魂改建事務所" class="work-btn primary" target="_blank">閱讀 ↗</a>
-                        <a href="renovator/index.html" class="work-btn secondary">簡介</a>
-                        <a href="renovator/characters.html" class="work-btn secondary">角色</a>
-                    </div>
-                </div>
+            <div class="wc rv">
+                <div class="wc-icon">✦</div>
+                <div class="wc-meta"><span class="badge badge--g">完結</span><span class="wc-genre">都市奇幻 · 療癒懸疑</span></div>
+                <div class="wc-title">逐光的藥師</div><div class="wc-title-en">The Light Chaser</div>
+                <p class="wc-desc">有些人天生能看見光。光是情緒的殘留物——依附在人身上，有些是溫暖的金色，有些是吞噬一切的黑洞。藥師的工作是調配處方，修復快要熄滅的光。</p>
+                <div class="wc-stats"><span><span class="n">25</span> 集 + 尾聲</span><span><span class="n">~147K</span> 字</span></div>
+                <a href="read/light-chaser/" class="btn btn--g">開始閱讀 →</a>
             </div>
-
-            <!-- 拾味小館 -->
-            <div class="work-card bistro fade-in">
-                <div class="work-deco">🍳</div>
-                <div class="work-card-content">
-                    <div class="work-badge"><span>✦</span> 完結・130,000字</div>
-                    <h3 class="work-title-zh">拾味小館</h3>
-                    <p class="work-title-en">The Taste Collector</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">都市奇幻</span>
-                        <span class="genre-tag">美食療癒</span>
-                        <span class="genre-tag">愛情</span>
-                    </div>
-                    <p class="work-description">
-                        沈若能「嚐」到別人的情緒——快樂是甜的，悲傷是鹹的。
-                        她在渡口區開了一間小餐館，用食物療癒每個客人。
-                        直到一個失去味覺五年的攝影師走進來——他是她唯一嚐不到的人。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">「人間滋味，皆可下嚥。唯有情之所繫，方能入心。」</p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item"><div class="stat-value">22</div><div class="stat-label">集數</div></div>
-                        <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">味覺情緒</div></div>
-                        <div class="stat-item"><div class="stat-value">∞</div><div class="stat-label">療癒料理</div></div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="#" class="work-btn primary">閱讀 ↗</a>
-                        <a href="bistro/index.html" class="work-btn secondary">簡介</a>
-                        <a href="bistro/characters.html" class="work-btn secondary">角色</a>
-                    </div>
-                </div>
+            <div class="wc rv">
+                <div class="wc-icon">🏚️</div>
+                <div class="wc-meta"><span class="badge badge--g">精裝擴充版</span><span class="wc-genre">心理療癒 · 建築隱喻</span></div>
+                <div class="wc-title">違章靈魂改建事務所</div><div class="wc-title-en">The Soul Renovator</div>
+                <p class="wc-desc">「每個人都住在自己蓋的房子裡，而我的工作是幫他們改建。」S 市永遠在下雨，有一座修不好的斷橋，還有一間沒有招牌的事務所。</p>
+                <div class="wc-stats"><span><span class="n">25</span> 集</span><span><span class="n">~106K</span> 字</span></div>
+                <a href="read/soul-renovator/" class="btn btn--g">開始閱讀 →</a>
             </div>
-
-            <!-- 心宅：禁室 -->
-            <div class="work-card hearthouse fade-in">
-                <div class="series-badge">心宅系列 1/5</div>
-                <div class="work-deco">🚪</div>
-                <div class="work-card-content">
-                    <div class="work-badge"><span>◈</span> 心宅系列・第一冊</div>
-                    <h3 class="work-title-zh">心宅：禁室</h3>
-                    <p class="work-title-en">The Forbidden Room</p>
-                    <div class="work-genre">
-                        <span class="genre-tag">心理驚悚</span>
-                        <span class="genre-tag">創傷療癒</span>
-                        <span class="genre-tag">整合心理學</span>
-                    </div>
-                    <p class="work-description">
-                        梧桐街47號，一棟維多利亞式老宅，二十年的沉默。
-                        心理建築師林默召集六位心理學專家——精神分析師、行為主義者、人本治療師、認知心理學家、生物心理學家、社會心理學家——用六把不同的手術刀，解開「悲傷之屋」與守墓人蘇雨的禁室之謎。
-                    </p>
-                    <div class="work-highlight">
-                        <p class="highlight-quote">「每個人的心靈都是一座宅邸，創傷是裂縫，記憶是房間，療癒是重建。」</p>
-                    </div>
-                    <div class="work-stats">
-                        <div class="stat-item"><div class="stat-value">11</div><div class="stat-label">章節</div></div>
-                        <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">心理學派</div></div>
-                        <div class="stat-item"><div class="stat-value">8</div><div class="stat-label">專業附錄</div></div>
-                    </div>
-                    <div class="work-cta">
-                        <a href="#" class="work-btn primary">閱讀 ↗</a>
-                        <a href="hearthouse/index.html" class="work-btn secondary">簡介</a>
-                        <a href="hearthouse/series.html" class="work-btn secondary">系列</a>
-                    </div>
-                </div>
+            <div class="wc rv">
+                <div class="wc-icon">🚪</div>
+                <div class="wc-meta"><span class="badge badge--k">系列第一冊</span><span class="wc-genre">心理懸疑 · 治療敘事</span></div>
+                <div class="wc-title">心宅：禁室</div><div class="wc-title-en">The Forbidden Room</div>
+                <p class="wc-desc">梧桐街 47 號，二十年來只有一個住戶。社區稱它為「悲傷之屋」。六位心理學專家各持不同學派，共同面對一個鎖了二十年的房間。</p>
+                <div class="wc-stats"><span><span class="n">9</span> 章</span><span><span class="n">~61K</span> 字</span><span style="color:var(--sky)">5 冊系列</span></div>
+                <a href="read/forbidden-room/" class="btn btn--k">開始閱讀 →</a>
+            </div>
+            <div class="wc rv">
+                <div class="wc-icon">🌧️</div>
+                <div class="wc-meta"><span class="badge badge--r">電子書</span><span class="wc-genre">都市寓言</span></div>
+                <div class="wc-title">賣雨的人</div><div class="wc-title-en">The Rain Seller</div>
+                <p class="wc-desc">如果雨有味道，你會買哪一場？一個關於失去與找回的都市寓言。序章 + 第一章免費試讀。</p>
+                <div class="wc-stats"><span>PDF · ePub · 有聲書</span><span style="color:var(--gold)">HKD 68</span></div>
+                <a href="read/rain-seller/" class="btn btn--g">試讀兩章 →</a>
+            </div>
+            <div class="wc rv">
+                <div class="wc-icon">🌱</div>
+                <div class="wc-meta"><span class="badge badge--r">互動工具書</span><span class="wc-genre">療癒練習</span></div>
+                <div class="wc-title">慢慢成為自己的品牌</div><div class="wc-title-en">Slowly Becoming Your Own Brand</div>
+                <p class="wc-desc">不是教你做什麼。是陪你慢慢成為一個你自己也認得出來的樣子。序章 + 第一章免費試讀。</p>
+                <div class="wc-stats"><span>互動 PDF · Notion</span><span style="color:var(--gold)">HKD 168</span></div>
+                <a href="read/manman/" class="btn btn--g">試讀兩章 →</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="about-section" id="about">
-        <div class="about-container fade-in">
-            <h2 class="about-title">關於 <span>Space Between Art</span></h2>
-            <p class="about-text">
-                我們相信，最深刻的療癒發生在「之間」——
-                光與暗之間、現實與幻想之間、傷口與痊癒之間。
-                透過都市奇幻的框架，我們探索人心的建築、靈魂的光譜，
-                用故事為每一個需要被看見的人，點亮一盞燈。
-            </p>
-            <div class="about-features">
-                <div class="feature-item">
-                    <div class="feature-icon">🌿</div>
-                    <h3 class="feature-title">植物魔法</h3>
-                    <p class="feature-desc">洋甘菊的安撫、迷迭香的記憶、聖約翰草的光明</p>
+<!-- ════════ AI 樹洞 ════════ -->
+<section class="tree" id="treehouse">
+    <div class="mw">
+        <div class="sd sd--s"><span>樹洞 · Soul Companions</span></div>
+        <div class="tree-intro rv">
+            <h2>書店裡有兩個人。</h2>
+            <div class="tree-intro-en">One warms you up. The other asks the right question.</div>
+            <p>一個在櫃檯後面沖茶，會跟你聊天。<br>另一個在角落看書，偶爾抬頭問你一句。<br>24 小時。不評判。慢慢嚟。</p>
+        </div>
+        <div class="tg">
+            <div class="tc rv">
+                <div class="tc-av tc-av--gg">✨</div>
+                <div class="tc-name">光光</div><div class="tc-name-en">Guangguang</div>
+                <div class="tc-role tc-role--gg">書店的暖場店員 · 廣東話</div>
+                <div class="tc-preview">
+                    <div class="tc-preview-msg"><div class="tc-preview-dot tc-preview-dot--u">👤</div><div class="tc-preview-bubble tc-preview-bubble--u">最近覺得好累，但又講唔出原因⋯</div></div>
+                    <div class="tc-preview-msg"><div class="tc-preview-dot tc-preview-dot--ai">✨</div><div class="tc-preview-bubble tc-preview-bubble--ai">收到你嘅訊號 ✨ 講唔出原因都唔緊要。有時身體知道嘅嘢，腦袋要遲啲先明白。你而家最想做咩？</div></div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🏠</div>
-                    <h3 class="feature-title">心靈建築</h3>
-                    <p class="feature-desc">每個人心中都有一座房子，等待被看見與改建</p>
+                <a href="guangguang/" class="btn btn--g">同光光傾偈 →</a>
+            </div>
+            <div class="tc rv">
+                <div class="tc-av tc-av--sm">🌿</div>
+                <div class="tc-name">蘇牧</div><div class="tc-name-en">Su Mu</div>
+                <div class="tc-role tc-role--sm">角落裡的提問者 · 蘇格拉底式</div>
+                <div class="tc-preview">
+                    <div class="tc-preview-msg"><div class="tc-preview-dot tc-preview-dot--u">👤</div><div class="tc-preview-bubble tc-preview-bubble--u">我覺得自己一直在重複同樣的循環</div></div>
+                    <div class="tc-preview-msg"><div class="tc-preview-dot tc-preview-dot--ai">🌿</div><div class="tc-preview-bubble tc-preview-bubble--ai">你說的「同樣的循環」——如果畫成一條路線，終點和起點是同一個地方嗎？還是每次回來的時候，你其實站高了一點？</div></div>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🍜</div>
-                    <h3 class="feature-title">味覺療癒</h3>
-                    <p class="feature-desc">酸甜苦辣鹹，每種滋味都是一種情緒的出口</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🚪</div>
-                    <h3 class="feature-title">心宅探索</h3>
-                    <p class="feature-desc">創傷是裂縫，記憶是房間，療癒是重建</p>
-                </div>
+                <a href="sumu/" class="btn btn--s">和蘇牧對話 →</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="newsletter-section" id="newsletter">
-        <div class="newsletter-container fade-in">
-            <h2 class="newsletter-title">📬 訂閱創作電子報</h2>
-            <p class="newsletter-desc">每週療癒小語、創作幕後、新章節更新通知、獨家番外篇</p>
-            <a href="https://spacebetweenart.substack.com" class="newsletter-btn" target="_blank">
-                <span>免費訂閱</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
+<!-- ════════ 隙光專欄 ════════ -->
+<section class="col" id="column">
+    <div class="mw">
+        <div class="sd sd--k"><span>隙光專欄 · Editorial</span></div>
+        <div class="col-intro rv">
+            <h2>在書店角落讀到的文字</h2>
+            <div class="col-intro-en">Essays on healing, literature &amp; the quiet life</div>
+            <p>療癒哲學、創作手記、生活裡的安靜觀察。<br>不趕時間的時候，坐下來讀。</p>
         </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <div class="footer-logo">Space Between Art</div>
-                <p>在光與暗之間，故事發生。<br>療癒系都市奇幻創作工作室。</p>
+        <div class="cg">
+            <div class="cc rv" onclick="this.classList.toggle('open')">
+                <div class="cc-tag">療癒哲學</div>
+                <div class="cc-title">金繼不是修復，<br>是重新定義完整</div>
+                <p class="cc-ex">日本金繕的核心不是「修好」——而是承認破碎已經發生，然後用金線讓裂縫成為新的美。</p>
+                <div class="cc-expand"><div class="cc-expand-inner">我們總想要一個完美的開始——完美的計劃、完美的時機、完美的狀態。但大多數真正動人的事，都是從一個不完美的裂縫開始的。金繼教我們的不是修復，是接受。接受了以後，才能真正開始。無論是一段關係、一個夢想、還是一碗有缺口的碗。</div></div>
+                <div class="cc-toggle">展開閱讀 <span class="cc-toggle-arrow">↓</span></div>
+                <div class="cc-date">2026.03</div>
             </div>
-            <div class="footer-links">
-                <h4>作品</h4>
-                <ul>
-                    <li><a href="pharmacist/index.html">逐光的藥師</a></li>
-                    <li><a href="renovator/index.html">違章靈魂改建事務所</a></li>
-                    <li><a href="bistro/index.html">拾味小館</a></li>
-                    <li><a href="hearthouse/index.html">心宅：禁室</a></li>
+            <div class="cc rv" onclick="this.classList.toggle('open')">
+                <div class="cc-tag">創作手記</div>
+                <div class="cc-title">為什麼拾味小館<br>只有六張桌子</div>
+                <p class="cc-ex">六張桌子是一個隱喻——你能好好對待的人，永遠是有限的。</p>
+                <div class="cc-expand"><div class="cc-expand-inner">寫這個設定的時候，我在想一件事：為什麼有些餐廳明明很好吃，一擴張就不好吃了？因為廚師的注意力被攤薄了。人也是。你不需要被所有人喜歡。你只需要讓坐在你對面的那個人，覺得這碗湯是專門為他煮的。六張桌子就夠了。</div></div>
+                <div class="cc-toggle">展開閱讀 <span class="cc-toggle-arrow">↓</span></div>
+                <div class="cc-date">2026.02</div>
+            </div>
+            <div class="cc rv" onclick="this.classList.toggle('open')">
+                <div class="cc-tag">安靜觀察</div>
+                <div class="cc-title">凌晨三點還醒著的人，<br>都在想什麼</div>
+                <p class="cc-ex">凌晨三點的世界很安靜。安靜到你終於聽見自己一直在說的那句話。</p>
+                <div class="cc-expand"><div class="cc-expand-inner">大部分人在凌晨三點想的事情，白天都不會承認。不是什麼秘密——只是太柔軟了。太柔軟的東西在日光下會蒸發。所以我們都學會了在天亮之前把它收起來。但收起來不代表不存在。有時候，你需要一個地方讓那些凌晨三點的念頭安全地攤開。這裡就是那個地方。</div></div>
+                <div class="cc-toggle">展開閱讀 <span class="cc-toggle-arrow">↓</span></div>
+                <div class="cc-date">2026.01</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ CROSSOVER ════════ -->
+<section class="xo" id="crossover">
+    <div class="mw">
+        <div class="sd sd--g"><span>聯名 · Crossover</span></div>
+        <div class="xo-card rv">
+            <div class="xo-nar">
+                <div class="xo-label">Crossover Project</div>
+                <div class="xo-brands"><span>隙光文學</span><span class="xo-x">×</span><span>METZ LUXURY TEA</span></div>
+                <div class="xo-title">當文學遇見茶香</div>
+                <div class="xo-title-en">Where Stories Meet Tea</div>
+                <p class="xo-desc">在拾味小館番外篇《純淨之夜》中，沈若第一次不做菜——只泡茶。三杯處方茶對應三種情緒。<br><br>來自加拿大的 <em>METZ Luxury Tea</em> 將故事裡的茶香帶到現實。金字塔茶包裡的整葉茶在熱水中緩緩舒展，就像一個人終於願意說出心事的樣子。</p>
+                <div class="xo-q">「你要安靜下來才嚐得到。嚐到的時候，你已經安靜了。」<br><span style="font-size:11px;opacity:.6">—— 拾味小館・番外篇</span></div>
+            </div>
+            <div class="xo-vis">
+                <div class="xo-vi">🍵</div>
+                <div class="xo-vt">療癒茶禮盒</div><div class="xo-ve">Healing Tea Gift Box</div>
+                <ul class="xo-list">
+                    <li><span class="ic">🌼</span> 洋甘菊 — 安撫焦慮</li>
+                    <li><span class="ic">🫐</span> 莓果茶 — 沉澱恐懼</li>
+                    <li><span class="ic">🍃</span> 薄荷留蘭香 — 釋放不甘心</li>
+                    <li><span class="ic">📖</span> 兩本電子書 QR Code</li>
                 </ul>
-            </div>
-            <div class="footer-links">
-                <h4>探索</h4>
-                <ul>
-                    <li><a href="ai-chat.html">心光咨詢站</a></li>
-                    <li><a href="academy.html">療癒學院</a></li>
-                    <li><a href="gallery.html">畫廊</a></li>
-                    <li><a href="community.html">互動區</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>聯絡</h4>
-                <ul>
-                    <li><a href="mailto:hello@space-between.art">hello@space-between.art</a></li>
-                    <li><a href="https://www.penana.com/user/123456" target="_blank">Penana</a></li>
-                    <li><a href="https://spacebetweenart.substack.com" target="_blank">Substack</a></li>
-                </ul>
+                <a href="read/bistro/#bonus" class="btn btn--g" style="margin-top:24px">閱讀番外篇 →</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Space Between Art. All rights reserved.</p>
-        </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
+<!-- ════════ ABOUT ════════ -->
+<section class="about" id="about">
+    <div class="sd sd--g" style="max-width:680px;margin:0 auto 48px"><span>關於 · About</span></div>
+    <div class="about-icon rv">隙</div>
+    <h3 class="rv">隙光文學</h3>
+    <div class="about-en rv">space-between.art</div>
+    <p class="about-body rv">
+        隙光是一間老靈魂的獨立書店。<br>
+        門口沒有招牌。推開門會聞到一點木頭和紙的味道。<br><br>
+        書架上放著六部原創療癒小說，<br>
+        橫跨味覺寓言、都市奇幻、心理懸疑。<br>
+        角落有兩個人——一個跟你聊天，一個問你問題。<br>
+        桌上有一本翻開的專欄，寫著一些安靜的觀察。<br><br>
+        你不一定要買什麼。<br>
+        你只需要<em>坐下來</em>。<br>
+        走的時候如果肩膀鬆了一點，那就夠了。
+    </p>
+    <div class="eco rv">
+        <a href="https://spacebetweenstudio.site"><div class="eco-d"></div>選物店 .site</a>
+        <a href="https://spacebetweenhealing.com"><div class="eco-d"></div>療癒顧問 .com</a>
+        <a href="#"><div class="eco-d" style="background:var(--gold);border-color:var(--gold)"></div>文學書店 .art</a>
+        <a href="https://spacebetweenstudio.asia"><div class="eco-d"></div>亞太 .asia</a>
+    </div>
+</section>
 
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
-        });
+<footer class="ft">
+    <div class="ft-b">space-between.art</div>
+    <div class="ft-c">© 2026 Space Between Studio. All rights reserved.</div>
+</footer>
 
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
+<script>
+/* ═══ PARTICLES ═══ */
+(function(){
+    const c=document.getElementById('particles'),ctx=c.getContext('2d');let W,H,pts=[],mouse={x:-999,y:-999};
+    function resize(){W=c.width=c.parentElement.offsetWidth;H=c.height=c.parentElement.offsetHeight}
+    window.addEventListener('resize',resize);resize();
+    for(let i=0;i<55;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.5,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)-.12,a:Math.random()*.35+.1,color:['rgba(201,165,90,','rgba(127,168,127,','rgba(126,168,196,','rgba(155,142,176,'][Math.floor(Math.random()*4)]});
+    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top});
+    c.addEventListener('mouseleave',()=>{mouse.x=-999;mouse.y=-999});
+    function draw(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{const dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<120){const f=.8*(1-dist/120);p.x+=dx/dist*f;p.y+=dy/dist*f}p.x+=p.vx;p.y+=p.vy;if(p.x<-10)p.x=W+10;if(p.x>W+10)p.x=-10;if(p.y<-10)p.y=H+10;if(p.y>H+10)p.y=-10;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.color+p.a+')';ctx.fill();ctx.beginPath();ctx.arc(p.x,p.y,p.r*3,0,Math.PI*2);ctx.fillStyle=p.color+(p.a*.2)+')';ctx.fill()});requestAnimationFrame(draw)}draw()
+})();
 
-        fadeElements.forEach(el => observer.observe(el));
-    </script>
+/* ═══ TYPEWRITER ═══ */
+(function(){
+    const el=document.getElementById('typewriter');
+    const lines=['一個安靜的地方，','放著一些能修復你的故事。','','六部原創療癒小說。','兩個願意聽你說話的 AI。','一本不趕時間的專欄。','','推開門，坐下來。'];
+    const full=lines.join('\n');let i=0;
+    function type(){if(i<=full.length){el.innerHTML=full.slice(0,i).replace(/\n/g,'<br>')+'<span class="cursor"></span>';i++;setTimeout(type,50+Math.random()*30)}else{setTimeout(()=>{el.innerHTML=full.replace(/\n/g,'<br>')},2000)}}
+    setTimeout(type,1800);
+})();
+
+/* ═══ TASTE QUIZ (universal emotions, not brand-specific) ═══ */
+const quizData=[
+    {q:'現在閉上眼，深呼吸一次。你嘴巴裡殘留的是什麼味道？',opts:[
+        {text:'酸酸的，像沒睡好的早晨',val:'sour'},
+        {text:'苦苦的，像硬撐了很久',val:'bitter'},
+        {text:'鹹鹹的，像眼淚流進嘴角',val:'salty'},
+        {text:'辣辣的，像一股憋著的火',val:'spicy'}
+    ]},
+    {q:'如果今晚你一個人待在家，你最可能在做什麼？',opts:[
+        {text:'反覆想明天的事，越想越睡不著',val:'sour'},
+        {text:'什麼都不想做，但又覺得應該做點什麼',val:'bitter'},
+        {text:'翻舊照片、舊訊息，想某個人',val:'salty'},
+        {text:'很煩躁，想摔個東西但又忍住了',val:'spicy'}
+    ]},
+    {q:'如果有一間餐廳能煮出你的情緒，端上來的會是？',opts:[
+        {text:'一碗太淡的粥——什麼味道都抓不住',val:'sour'},
+        {text:'一杯放冷了的茶——本來很好，但已經涼了',val:'bitter'},
+        {text:'一碟鹹魚——以前很珍貴，現在只剩味道',val:'salty'},
+        {text:'一鍋沸騰的湯——快要溢出來了',val:'spicy'}
+    ]}
+];
+const results={
+    sour:{icon:'🍋',title:'酸——你在焦慮',en:'Anxiety',desc:'不是做得不好，而是不確定「好」長什麼樣子。你的心一直在打轉，卻找不到一個可以停下來的地方。',novel:'拾味小館',link:'read/bistro/',why:'沈若能嚐到焦慮的味道——酸的。她不會叫你別焦慮，只是端一碗酸辣湯給你，讓你知道被嚐到了。'},
+    bitter:{icon:'🫖',title:'苦——你很疲憊',en:'Exhaustion',desc:'一直在做「應該做的事」。那個最初讓你興奮的東西，好像已經看不見了。不是不想動，是動不了。',novel:'逐光的藥師',link:'read/light-chaser/',why:'藥師的工作是找到快熄滅的光，然後調一帖處方。不是讓你振作，是讓你先休息。'},
+    salty:{icon:'🌊',title:'鹹——你在悲傷',en:'Grief',desc:'不一定是失去了什麼人。有時候是失去了一個相信——相信自己值得被看見。你其實做得很好，只是世界還沒學會怎麼看你。',novel:'心宅：禁室',link:'read/forbidden-room/',why:'有些房間鎖了二十年，不是因為裡面有壞東西，是因為還沒準備好打開。這個故事陪你走到門前。'},
+    spicy:{icon:'🔥',title:'辣——你在憤怒',en:'Anger',desc:'氣時間不夠、氣世界不公平、氣自己為什麼還沒到那裡。火不是壞東西——但一直燒著會把自己燒完。',novel:'違章靈魂改建事務所',link:'read/soul-renovator/',why:'每個人都住在自己用情緒蓋的房子裡。這個故事教你怎麼改建，不用拆掉重來。'}
+};
+let qIdx=0,answers=[];
+function startQuiz(){document.getElementById('quizIntro').style.display='none';document.getElementById('quizBody').style.display='block';qIdx=0;answers=[];renderQ()}
+function renderQ(){const d=quizData[qIdx];document.getElementById('quizBar').style.width=(qIdx/quizData.length*100)+'%';let h=`<div class="quiz-q active"><div class="quiz-q-num">${qIdx+1} / ${quizData.length}</div><div class="quiz-q-text">${d.q}</div><div class="quiz-opts">`;d.opts.forEach((o,i)=>{h+=`<button class="quiz-opt" onclick="pickOpt(${i},'${o.val}')">${o.text}</button>`});h+='</div></div>';document.getElementById('quizQuestions').innerHTML=h}
+function pickOpt(i,val){answers.push(val);document.querySelectorAll('.quiz-opt')[i].classList.add('selected');setTimeout(()=>{qIdx++;if(qIdx<quizData.length)renderQ();else showResult()},400)}
+function showResult(){document.getElementById('quizBar').style.width='100%';const cnt={};answers.forEach(a=>{cnt[a]=(cnt[a]||0)+1});let top='sour',max=0;for(let k in cnt)if(cnt[k]>max){max=cnt[k];top=k}const r=results[top];document.getElementById('quizBody').style.display='none';document.getElementById('resIcon').textContent=r.icon;document.getElementById('resTitle').textContent=r.title;document.getElementById('resEn').textContent=r.en;document.getElementById('resDesc').textContent=r.desc;document.getElementById('resCta').innerHTML=`<div style="text-align:center;margin-top:8px"><p style="font-size:14px;color:var(--tm);margin-bottom:6px;line-height:2">推薦你讀：<strong style="color:var(--t)">${r.novel}</strong></p><p style="font-size:13px;color:var(--tq);line-height:2;max-width:380px;margin:0 auto 20px">${r.why}</p><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a href="${r.link}" class="btn btn--g">去讀這個故事 →</a><a href="#treehouse" class="btn btn--s">找樹洞聊聊 →</a></div></div>`;document.getElementById('quizResult').classList.add('active')}
+function resetQuiz(){document.getElementById('quizResult').classList.remove('active');document.getElementById('quizIntro').style.display='block';document.getElementById('quizBody').style.display='none'}
+
+/* ═══ SCROLL REVEAL ═══ */
+document.addEventListener('DOMContentLoaded',()=>{const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.rv').forEach(el=>io.observe(el))});
+</script>
 </body>
 </html>
