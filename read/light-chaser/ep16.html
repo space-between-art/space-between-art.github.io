@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第16集：反噬 — 逐光的藥師 | Space Between Art</title>
+    <meta name="description" content="在灰暗蔓延的城市裡，有一位能看見光的藥師。&lt;br&gt;他用草藥和茶湯，為每一個失去色彩的靈魂調配專屬的處方。">
+    <link rel="canonical" href="https://space-between.art/read/light-chaser/ep16.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/reading.css">
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z531JX2XR4"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z531JX2XR4");</script>
+</head>
+<body>
+    <div class="ambient-crack"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    <nav class="site-nav" id="siteNav">
+        <a href="/read.html" class="nav-brand">Space Between Art</a>
+        <span class="nav-book-title">逐光的藥師</span>
+        <div class="nav-actions">
+            <button onclick="toggleToc()" title="目錄">☰</button>
+            <button onclick="toggleSettings()" title="閱讀設定">Aa</button>
+        </div>
+    </nav>
+    <div class="toc-overlay" id="tocOverlay" onclick="toggleToc()"></div>
+    <div class="toc-panel" id="tocPanel">
+        <button class="toc-close" onclick="toggleToc()">✕</button>
+        <div class="toc-book-title">逐光的藥師</div>
+        <div class="toc-book-subtitle">療癒都市奇幻 — 作者：隙光</div>
+        <ul class="toc-list">
+            <li><a href="ep01.html">第1集：看見光的人</a></li>
+            <li><a href="ep02.html">第2集：殘燭</a></li>
+            <li><a href="ep03.html">第3集：向陽之廬</a></li>
+            <li><a href="ep04.html">第4集：第一杯茶</a></li>
+            <li><a href="ep05.html">第5集：記憶之匣</a></li>
+            <li><a href="ep06.html">第6集：第一片葉子</a></li>
+            <li><a href="ep07.html">第7集：社工與藥師</a></li>
+            <li><a href="ep08.html">第8集：灰色世界</a></li>
+            <li><a href="ep09.html">第9集：撕開的帷幕</a></li>
+            <li><a href="ep10.html">第10集：碎裂的麵包</a></li>
+            <li><a href="ep11.html">第11集：真相的碎片</a></li>
+            <li><a href="ep12.html">第12集：平庸之惡</a></li>
+            <li><a href="ep13.html">第13集：雨中對峙</a></li>
+            <li><a href="ep14.html">第14集：深淵凝視</a></li>
+            <li><a href="ep15.html">第15集：黑洞</a></li>
+            <li><a href="ep16.html" class="current">第16集：反噬</a></li>
+            <li><a href="ep17.html">第17集：冬日的太陽</a></li>
+            <li><a href="ep18.html">第18集：召集</a></li>
+            <li><a href="ep19.html">第19集：黎明之前</a></li>
+            <li><a href="ep20.html">第20集：瘴氣的反撲</a></li>
+            <li><a href="ep21.html">第21集：眾人的選擇</a></li>
+            <li><a href="ep22.html">第22集：小夏的告別</a></li>
+            <li><a href="ep23.html">第23集：重生的公園</a></li>
+            <li><a href="ep24.html">第24集：傳承</a></li>
+            <li><a href="epilogue.html">尾聲：光之循環</a></li>
+        </ul>
+    </div>
+    <div class="settings-overlay" id="settingsOverlay" onclick="toggleSettings()"></div>
+    <div class="settings-panel" id="settingsPanel">
+        <button class="close-settings" onclick="toggleSettings()">✕</button>
+        <div class="settings-group">
+            <div class="settings-label">文字大小</div>
+            <div class="settings-row">
+                <button class="settings-btn" onclick="changeFontSize(-1)">A-</button>
+                <span class="settings-value" id="fontSizeValue">17px</span>
+                <button class="settings-btn" onclick="changeFontSize(1)">A+</button>
+            </div>
+        </div>
+        <div class="settings-group">
+            <div class="settings-label">行距</div>
+            <div class="settings-row">
+                <button class="settings-btn" onclick="changeLineHeight(-0.1)">緊</button>
+                <span class="settings-value" id="lineHeightValue">2.0</span>
+                <button class="settings-btn" onclick="changeLineHeight(0.1)">鬆</button>
+            </div>
+        </div>
+    </div>
+    <header class="chapter-header">
+        <div class="chapter-label">逐光的藥師</div>
+        <div class="chapter-number">Episode 16</div>
+        <h1 class="chapter-title">第16集：反噬</h1>
+        <div class="chapter-title-en">Backlash</div>
+
+        <div class="chapter-divider"></div>
+    </header>
+    <article class="story-content" id="storyContent">
+            <p>*纈草（Valerian）的根莖聞起來像穿了三天的襪子，但它的鎮靜效果無可替代。這提醒我們：最有效的療癒，有時來自最不討喜的來源。如果你只追求舒適，你可能會錯過真正的解藥。*</p>
+            <p>──《逐光藥師的植物魔典·卷十三·不適的智慧》</p>
+            <p>一、殼的裂縫</p>
+            <p>當曜觸碰到林薇內心那團黑色物質的邊緣時，一股冰冷的、黏稠的絕望感瞬間沿著他的感知倒灌進來。</p>
+            <p>那不是普通的悲傷──那是長年壓抑、變質成自我厭惡的孤獨。是被迫早熟的孩子，在衣櫃裡捂住耳朵時，對自己說的第一句謊言：「我不需要任何人。」</p>
+            <p class="dialogue">「嗚⋯⋯」</p>
+            <p>林薇發出一聲壓抑的抽泣，整個人蜷縮在沙發上，雙手緊緊抱住自己。她的身體劇烈顫抖，像一株被暴風雨襲擊的小樹。</p>
+            <p>曜強迫自己收回感知，但那股寒意已經滲入他的骨髓。他的指尖開始麻木，視野邊緣出現灰色的斑點──這是感知過載的早期症狀。</p>
+            <p class="dialogue">「林薇，」他咬緊牙關，聲音因克制顫抖而顯得生硬，「那個哭聲⋯⋯不是外面的東西。是你自己的聲音。」</p>
+            <p>林薇抬起頭，淚水模糊了她眼中的防禦。</p>
+            <p class="dialogue">「什麼⋯⋯意思？」</p>
+            <p class="dialogue">「你小時候，」曜緩緩說，每個字都像在搬運沉重的石頭，「是不是經常一個人哭？在沒人聽見的地方？」</p>
+            <p>林薇的瞳孔驟然收縮。</p>
+            <p>二、衣櫃裡的女孩</p>
+            <p>記憶的閘門被強行撬開了一道縫。</p>
+            <p>七歲的林薇，穿著過大的睡衣，蹲在臥室衣櫃的最深處。衣櫃外，父母的爭吵像一場永不停歇的暴風雨──玻璃碎裂的聲音、尖銳的指責、沉重的摔門聲。</p>
+            <p>她用手捂住耳朵，但那些聲音還是鑽進來。於是她開始對自己唱歌，唱一首幼稚的、不成調的兒歌。聲音很小，小到只有她自己能聽見。</p>
+            <p class="dialogue">「只要我不出聲，他們就不會發現我，」她在心裡默念，「只要我不需要，我就不會受傷。」</p>
+            <p>這個信念，像一顆種子，在她心裡生根發芽。</p>
+            <p>二十年後，它長成了一層堅硬光滑的殼。她用完美主義、用工作狂熱、用對一切情感需求的否認，一層層加固這個殼。</p>
+            <p>直到三個月前。</p>
+            <p>直到公園的集體療癒釋放出巨大的情緒能量，像一場地震，震裂了她精心建造的防禦工事。</p>
+            <p>殼裡的東西──那個七歲的、還在衣櫃裡哭泣的自己──開始甦醒。</p>
+            <p class="dialogue">「我⋯⋯我以為我早就忘記了，」林薇喃喃道，眼淚無聲滑落，「我搬出來，自己工作，自己生活。我不需要他們，我也不需要任何人。」</p>
+            <p class="dialogue">「但你需要，」曜輕聲說，「那個七歲的你，一直在等有人聽見她的哭聲。」</p>
+            <p>林薇崩潰了。</p>
+            <p>不是歇斯底里的大哭，而是一種更深沉的、從靈魂深處湧出的哀鳴。她蜷縮在地上，像個孩子一樣哭泣，聲音裡沒有成年人的克制，只有純粹的、積壓了二十年的痛苦。</p>
+            <p>曜靜靜坐在她身邊，沒有碰她，只是讓自己的心光保持穩定、溫暖的頻率。</p>
+            <p>像一盞不滅的夜燈。</p>
+            <p>三、曜的代價</p>
+            <p>當林薇終於哭累，陷入疲憊的睡眠時，曜才允許自己鬆懈下來。</p>
+            <p>代價立刻湧現。</p>
+            <p>他踉蹌著站起來，眼前一黑，差點跌倒。扶住牆壁時，他感覺到一股熟悉的、冰冷的虛弱感從胸口蔓延開來──心光透支。</p>
+            <p>比上次對張偉使用快樂鼠尾草時更嚴重。</p>
+            <p>因為這一次，他沒有強行介入，而是長時間維持高強度的共鳴狀態。像一根蠟燭，不是突然被吹滅，而是緩慢地燃燒殆盡。</p>
+            <p>他摸索著從背包裡拿出聖約翰草油，顫抖著塗在手腕上。溫暖的氣息稍微穩定了他的心跳，但虛弱感沒有消失。</p>
+            <p>必須回向陽廬。</p>
+            <p>他給林薇蓋上一條毯子，在茶几上留下字條和一小瓶纈草根茶包（助眠，但氣味不佳），然後輕輕關上門。</p>
+            <p>四、晴的發現</p>
+            <p>走出公寓時，曜發現晴站在樓下，臉色凝重。</p>
+            <p class="dialogue">「我感覺到不對勁，」晴快步走過來，扶住他搖晃的身體，「你的光⋯⋯變暗了。」</p>
+            <p>在晴的普通視覺中，她看不見心光，但她能感覺到──一種微妙的、氛圍上的變化。就像房間裡突然少了一盞燈，雖然還有其他光源，但整體亮度下降了。</p>
+            <p class="dialogue">「我沒事，」曜勉強說，「只是⋯⋯有點累。」</p>
+            <p class="dialogue">「別騙我，」晴的聲音裡帶著少見的嚴厲，「我送你去向陽廬。」</p>
+            <p>路上，晴開著車，不時從後視鏡看曜。他靠在車窗上，眼睛半閉，臉色蒼白得像紙。</p>
+            <p class="dialogue">「林薇怎麼樣了？」晴問。</p>
+            <p class="dialogue">「她開始面對了，」曜輕聲說，「但這只是開始。殼裂開了，裡面的東西⋯⋯很痛。」</p>
+            <p>晴沉默了一會兒。</p>
+            <p class="dialogue">「就像我弟弟當年那樣？」</p>
+            <p class="dialogue">「類似，但不完全一樣，」曜說，「晨是感官過載，世界失去顏色。林薇是⋯⋯情感隔離，她用完美控制來避免感受任何痛苦。結果就是，連快樂也感受不到了。」</p>
+            <p class="dialogue">「能治好嗎？」</p>
+            <p class="dialogue">「沒有『治好』這種事，」曜閉上眼睛，「只有學會與傷口共存。她需要很長時間，可能幾年，才能重建一種健康的防禦方式──不是殼，而是皮膚。能呼吸，能感受，也能保護。」</p>
+            <p>五、曦婆婆的診斷</p>
+            <p>向陽廬的溫室裡，曦婆婆一看見曜的樣子，就知道發生了什麼。</p>
+            <p class="dialogue">「你又過度付出了，」她沒有責備，只是嘆了口氣，「把手給我。」</p>
+            <p>她握住曜的手腕，閉上眼睛。一股溫和而強大的能量從她的掌心流入曜的身體，像一股暖流，緩緩滋潤他乾涸的心光。</p>
+            <p class="dialogue">「這次不是暴力透支，是慢性消耗，」曦婆婆睜開眼，「你維持共鳴狀態太久了。就像陪一個人走過沙漠，你自己也忘了喝水。」</p>
+            <p>她轉身調製藥劑──聖約翰草、洋甘菊、一點點蜂蜜，還有一味曜不認識的、散發著泥土氣息的黑色根莖。</p>
+            <p class="dialogue">「這是什麼？」曜問。</p>
+            <p class="dialogue">「南非醉茄（Ashwagandha），適應原草藥，」曦婆婆說，「它能幫你的身體適應壓力，重建平衡。但你接下來一週，不能使用任何能力。必須徹底休息。」</p>
+            <p class="dialogue">「一週？」曜皺眉，「但社區裡還有很多人──」</p>
+            <p class="dialogue">「如果你現在倒下，那些人連一點幫助都得不到，」曦婆婆打斷他，語氣不容置疑，「療癒不是犧牲競賽。真正的藥師懂得可持續性。你要像農夫一樣思考──耕種、休耕、輪作。而不是一次性燒盡所有養分。」</p>
+            <p>她將調好的藥茶遞給曜。</p>
+            <p class="dialogue">「喝下去，然後去睡覺。晴會留下來照顧你。」</p>
+            <p>六、晴的守夜</p>
+            <p>那天晚上，曜發燒了。</p>
+            <p>不是生理性的發燒，是心光系統的過熱反應。他的皮膚發燙，但體內感到寒冷，意識在清醒與夢境之間浮沉。</p>
+            <p>晴坐在床邊，用濕毛巾擦拭他的額頭。她不會草藥，不會心光療法，但她會最基礎的照顧──陪伴。</p>
+            <p>午夜時分，曜在夢囈中喃喃道：「小夏⋯⋯對不起⋯⋯」</p>
+            <p>晴握住他的手。</p>
+            <p class="dialogue">「他原諒你了，」她輕聲說，「你也該原諒自己了。」</p>
+            <p>曜安靜下來，呼吸漸漸平穩。</p>
+            <p>晴看著他蒼白的臉，想起三個月前第一次在樓梯間相遇的場景──那個躲閃的、不敢看人眼睛的年輕人，現在卻為了別人，一次次把自己推向極限。</p>
+            <p class="dialogue">「你也是個傻瓜，」她低聲說，嘴角卻帶著溫柔的笑意，「和我弟弟一樣的傻瓜。」</p>
+            <p>窗外，夜色深沉。</p>
+            <p>但在溫室裡，植物們靜靜呼吸，散發著療癒的氣息。</p>
+            <p>七、林薇的第一個早晨</p>
+            <p>第二天清晨，林薇醒來時，發現自己躺在地板上，身上蓋著毯子。</p>
+            <p>她坐起來，頭痛欲裂，眼睛腫得像核桃。但奇怪的是，胸口那種常年存在的、緊繃的壓迫感，鬆動了一點。</p>
+            <p>像殼裂開了一道縫，新鮮空氣漏了進來。</p>
+            <p>她看見茶几上的字條：</p>
+            <p>林薇：</p>
+            <p>纈草茶包，味道不好，但助眠。</p>
+            <p>如果需要說話，我在閣樓書店。</p>
+            <p>──曜</p>
+            <p>P.S. 哭不是軟弱，是呼吸。</p>
+            <p>林薇盯著那行「哭不是軟弱，是呼吸」，看了很久。</p>
+            <p>然後她走進浴室，看著鏡子裡那個憔悴的女人。</p>
+            <p>二十七年來，她第一次允許自己說出那句話：</p>
+            <p class="dialogue">「我很孤獨。</p>
+            <p>我需要幫助。」</p>
+            <p>聲音很小，但她在說。</p>
+            <p>八、光之網絡的萌芽</p>
+            <p>曜休息的這一週，社區裡發生了微妙的變化。</p>
+            <p>林伯做了幾個小木雕，讓晴帶給幾個獨居的老人。</p>
+            <p>陳默畫了一套四張的「情緒四季」明信片，放在社區中心供人取用。</p>
+            <p>李哥每天多做一打「重生麵包」，請晴送給那些看起來需要一點溫暖的人。</p>
+            <p>這些行動很小，不引人注目。</p>
+            <p>但晴在社區地圖上，用金色的細線標出了這些善意的流動。</p>
+            <p>她發現，一個隱形的、非正式的互助網絡，正在緩慢成形。</p>
+            <p>不是由藥師主導的療癒，而是由普通人自發的、小小的善意連結。</p>
+            <p>這或許才是真正的治癒力──不是來自一個英雄，而是來自整個生態系統的自癒能力。</p>
+            <p>九、第七天的黎明</p>
+            <p>第七天清晨，曜醒來時，感覺體力恢復了大半。</p>
+            <p>他走到溫室，看見曦婆婆正在給一株新植物澆水──那是一株矮小的、葉片呈灰綠色的灌木，開著不起眼的小白花。</p>
+            <p class="dialogue">「這是什麼？」曜問。</p>
+            <p class="dialogue">「矢車菊（Centaury），」曦婆婆說，「它的花語是『遇見』。傳說中，半人馬喀戎用它治癒了赫拉克勒斯造成的傷口。但它最特別的能力是──幫助人找到被遺忘的資源。」</p>
+            <p>她摘下一片葉子，遞給曜。</p>
+            <p class="dialogue">「你接下來的工作，不是去『治療』，而是去『發現』。發現那些已經在社區裡存在的療癒力，然後把它們連結起來。」</p>
+            <p>曜接過葉子，聞到一股淡淡的、苦澀的香氣。</p>
+            <p class="dialogue">「就像林伯、陳默、李哥他們正在做的？」</p>
+            <p class="dialogue">「是的，」曦婆婆微笑，「你點燃了第一把火，現在火已經傳遞出去了。你的新角色，不是繼續添柴，而是確保火不會熄滅，並讓更多人能靠近取暖。」</p>
+            <p>她拍了拍曜的肩膀。</p>
+            <p class="dialogue">「今天你可以回書店了。但記住──每天工作不超過四小時。其餘時間，你必須學習為自己充能。」</p>
+            <p>十、書店的新訪客</p>
+            <p>下午，曜回到閣樓書店時，發現門口站著一個人。</p>
+            <p>是林薇。</p>
+            <p>她穿著整齊的套裝，手裡提著一個小紙袋，眼神雖然還有些閃躲，但至少敢直視曜了。</p>
+            <p class="dialogue">「我⋯⋯我烤了餅乾，」她把紙袋遞過來，聲音很輕，「不太好看，但應該能吃。」</p>
+            <p>曜接過紙袋，聞到黃油和巧克力的香氣。</p>
+            <p class="dialogue">「謝謝，」他說，「要進來坐坐嗎？」</p>
+            <p>林薇猶豫了一下，點點頭。</p>
+            <p>她走進書店，好奇地打量著那些按情感分類的書架。</p>
+            <p class="dialogue">「這裡的氣味⋯⋯很安心。」</p>
+            <p class="dialogue">「這是時間的味道，」曜泡了兩杯洋甘菊茶，「書頁緩慢氧化，釋放出的香氣。像一種溫和的鎮靜劑。」</p>
+            <p>兩人坐在窗邊的小桌前，沉默地喝了一會兒茶。</p>
+            <p class="dialogue">「我昨晚睡著了，」林薇突然說，「沒有聽見哭聲。三年來第一次。」</p>
+            <p class="dialogue">「因為你終於聽見了自己，」曜說，「那個聲音不需要再尖叫了。」</p>
+            <p>林薇低下頭，手指摩挲著茶杯。</p>
+            <p class="dialogue">「我預約了心理諮商。下週開始。」</p>
+            <p class="dialogue">「很好。」</p>
+            <p class="dialogue">「但我還是⋯⋯害怕。害怕一旦打開那個殼，裡面的東西會淹沒我。」</p>
+            <p>曜看向窗台上的晨曦之光。它已經長出了第五片葉子，在午後陽光下閃爍著微弱的金光。</p>
+            <p class="dialogue">「你不會一個人面對的，」他說，「這個社區裡，有很多人正在學習如何與自己的黑暗共存。你可以加入他們。」</p>
+            <p>林薇順著他的目光看去。</p>
+            <p class="dialogue">「那是什麼植物？會發光？」</p>
+            <p class="dialogue">「這是晨曦之光，」曜輕聲說，「從一個很深的傷口裡長出來的花。它需要黑暗才能生根，需要眼淚才能發芽，但最後⋯⋯它會開出光。」</p>
+            <p>林薇盯著那株植物，看了很久。</p>
+            <p>然後她說：</p>
+            <p class="dialogue">「我能⋯⋯也能種一株嗎？」</p>
+            <p>曜微笑。</p>
+            <p class="dialogue">「當然。我這裡還有種子。」</p>
+            <p>他從抽屜裡拿出一顆小小的、金色的種子，放在林薇掌心。</p>
+            <p class="dialogue">「記住，它需要黑暗，也需要光。就像我們一樣。」</p>
+            <p>林薇握緊種子，眼淚再次湧出，但這一次，她的嘴角是上揚的。</p>
+            <p>窗外，午後的陽光斜照進來，在書頁上投下溫暖的光斑。</p>
+            <p>在這一刻，曜終於理解了曦婆婆的話。</p>
+            <p>藥師不是太陽。</p>
+            <p>藥師是園丁──準備土壤，播種，澆水，然後耐心等待。</p>
+            <p>發芽的是種子自己。</p>
+            <p>開花的是生命本身。</p>
+            <p>(第十六章完)</p>
+            <p>📌 本集金句</p>
+            <p class="dialogue">「哭不是軟弱，是呼吸。沉默太久的靈魂，需要一點聲音才能記起如何活著。」</p>
+            <p>📺 下集預告</p>
+            <p>矢車菊的指引下，曜發現了一個被遺忘的地方──社區的地下防空洞，裡面鎖著比小夏更早的記憶。</p>
+    </article>
+
+    <nav class="chapter-nav">
+        <a href="ep15.html">← 第15集：黑洞</a>
+        <a href="index.html" class="nav-toc">逐光的藥師</a>
+        <a href="ep17.html">第17集：冬日的太陽 →</a>
+    </nav>
+    <footer class="site-footer">
+        <div class="footer-brand">Space Between</div>
+        <div class="footer-tagline">給在城市裡迷失的人，一個慢慢找回自己的空間。<br>裂痕不需要被修好——它需要被看見，然後發光。</div>
+        <div class="footer-links">
+            <a href="https://space-between.art">📖 Art</a>
+            <a href="https://spacebetweenhealing.com">🌿 Healing</a>
+            <a href="https://spacebetweenstudio.site">🔧 Studio</a>
+        </div>
+    </footer>
+    <script src="../../js/reading.js"></script>
+</body>
+</html>

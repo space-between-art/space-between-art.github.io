@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第11集：圖書館的禁書區 — 違章靈魂改建事務所 | Space Between Art</title>
+    <meta name="description" content="在S市，每個人的靈魂都有一座建築。&lt;br&gt;當建築違章、傾斜、漏水時，有一間事務所專門負責改建。">
+    <link rel="canonical" href="https://space-between.art/read/soul-renovator/ep11.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/reading.css">
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z531JX2XR4"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z531JX2XR4");</script>
+</head>
+<body>
+    <div class="ambient-crack"></div>
+    <div class="progress-bar" id="progressBar"></div>
+    <nav class="site-nav" id="siteNav">
+        <a href="/read.html" class="nav-brand">Space Between Art</a>
+        <span class="nav-book-title">違章靈魂改建事務所</span>
+        <div class="nav-actions">
+            <button onclick="toggleToc()" title="目錄">☰</button>
+            <button onclick="toggleSettings()" title="閱讀設定">Aa</button>
+        </div>
+    </nav>
+    <div class="toc-overlay" id="tocOverlay" onclick="toggleToc()"></div>
+    <div class="toc-panel" id="tocPanel">
+        <button class="toc-close" onclick="toggleToc()">✕</button>
+        <div class="toc-book-title">違章靈魂改建事務所</div>
+        <div class="toc-book-subtitle">療癒都市奇幻 — 作者：隙光</div>
+        <ul class="toc-list">
+            <li><a href="prologue.html">序章：關於S市的三件事</a></li>
+            <li><a href="ep01.html">第1集：沒有門的玻璃屋</a></li>
+            <li><a href="ep02.html">第2集：沒有門的碉堡</a></li>
+            <li><a href="ep03.html">第3集：樣品屋的假象</a></li>
+            <li><a href="ep04.html">第4集：停滯的時鐘房</a></li>
+            <li><a href="ep05.html">第5集：充滿鏡子的迷宮</a></li>
+            <li><a href="ep06.html">第6集：地基下的白蟻</a></li>
+            <li><a href="ep07.html">第7集：吵架的住客們</a></li>
+            <li><a href="ep08.html">第8集：樓梯間的鬼魂</a></li>
+            <li><a href="ep09.html">第9集：被遺忘的閣樓</a></li>
+            <li><a href="ep10.html">第10集：標準化社區</a></li>
+            <li><a href="ep11.html" class="current">第11集：圖書館的禁書區</a></li>
+            <li><a href="ep12.html">第12集：搖晃的樑柱</a></li>
+            <li><a href="ep13.html">第13集：地下室的怪物</a></li>
+            <li><a href="ep14.html">第14集：共生藤蔓</a></li>
+            <li><a href="ep15.html">第15集：隨時失火的廚房</a></li>
+            <li><a href="ep16.html">第16集：藍圖的篡改</a></li>
+            <li><a href="ep17.html">第17集：廢墟的暴雨</a></li>
+            <li><a href="ep18.html">第18集：召集</a></li>
+            <li><a href="ep19.html">第19集：城市的地基</a></li>
+            <li><a href="ep20.html">第20集：沒有鑰匙的門</a></li>
+            <li><a href="ep21.html">第21集：整合陰影</a></li>
+            <li><a href="ep22.html">第22集：金繕的裂縫</a></li>
+            <li><a href="ep23.html">第23集：窗邊的盆栽</a></li>
+            <li><a href="ep24.html">第24集：不完美的家</a></li>
+            <li><a href="ep25.html">第25集：歡迎光臨</a></li>
+        </ul>
+    </div>
+    <div class="settings-overlay" id="settingsOverlay" onclick="toggleSettings()"></div>
+    <div class="settings-panel" id="settingsPanel">
+        <button class="close-settings" onclick="toggleSettings()">✕</button>
+        <div class="settings-group">
+            <div class="settings-label">文字大小</div>
+            <div class="settings-row">
+                <button class="settings-btn" onclick="changeFontSize(-1)">A-</button>
+                <span class="settings-value" id="fontSizeValue">17px</span>
+                <button class="settings-btn" onclick="changeFontSize(1)">A+</button>
+            </div>
+        </div>
+        <div class="settings-group">
+            <div class="settings-label">行距</div>
+            <div class="settings-row">
+                <button class="settings-btn" onclick="changeLineHeight(-0.1)">緊</button>
+                <span class="settings-value" id="lineHeightValue">2.0</span>
+                <button class="settings-btn" onclick="changeLineHeight(0.1)">鬆</button>
+            </div>
+        </div>
+    </div>
+    <header class="chapter-header">
+        <div class="chapter-label">違章靈魂改建事務所</div>
+        <div class="chapter-number">Episode 11</div>
+        <h1 class="chapter-title">第11集：圖書館的禁書區</h1>
+        <div class="chapter-title-en">The Forbidden Section</div>
+
+        <div class="chapter-divider"></div>
+    </header>
+    <article class="story-content" id="storyContent">
+            <p>本集約 3,143 字</p>
+            <p>第一章：冰點下的診斷書</p>
+            <p>S市的上城區今晚異常安靜。不是那種安詳的寧靜，而是一種真空般的死寂。</p>
+            <p>顧曼的心理診所裡，空調開得很低。</p>
+            <p class="dialogue">「妳這是在模擬停屍間的溫度嗎？現在外面才十五度，妳室內開十八度？」</p>
+            <p>顧曼站在巨大的落地窗前，看著窗外遠處那棟燈火通明的孟氏大樓。</p>
+            <p class="dialogue">「我查不到孟先生的資料。他的檔案是空白的。沒有出生證明，沒有就醫紀錄，甚至沒有學籍資料。他就像是憑空出現在S市的幽靈。」</p>
+            <p class="dialogue">「但我記得妳說過，妳覺得他很眼熟。」</p>
+            <p class="dialogue">「是的。十年前，我在醫學院讀研究所的時候，有一個學長。他是天才，也是瘋子。他主張『情緒是進化的累贅』，認為未來的心理治療應該是『切除』而不是『疏導』。問題是，我不記得他的名字了。也不記得他的長相。每當我試圖回想，我的頭就會劇痛，然後⋯⋯思緒就會像斷線一樣空白。」</p>
+            <p class="dialogue">「有人給妳的記憶上了鎖。或者是⋯⋯妳自己上的鎖。」</p>
+            <p class="dialogue">「介意我看看妳的房子嗎？顧醫師。」</p>
+            <p>顧曼愣了一下。一直以來，都是她在分析路遙，路遙從未真正進入過她的內心。她是醫生，她是觀察者，她習慣站在安全的高地上。</p>
+            <p class="dialogue">「⋯⋯請便。但我警告你，裡面很無聊。沒有怪物，也沒有廢墟。」</p>
+            <p>路遙啟動了「藍圖之眼」。</p>
+            <p>在他眼中，顧曼的身後浮現出一座巨大的、銀白色的圖書館。這不是那種充滿木頭香味的老式圖書館，而是一座充滿未來感的資訊堡壘。所有的書架都是金屬製的，高聳入雲。書籍被嚴格地按照字母、顏色、大小分類。沒有一本書是歪的。這裡沒有灰塵，沒有噪音。甚至⋯⋯沒有「人味」。</p>
+            <p>但在這座圖書館的最深處，有一個區域被厚厚的冰層覆蓋著。那裡的書架結滿了冰霜，空氣是凍結的。門上寫著：「RESTRICTED（禁書區）」。</p>
+            <p class="dialogue">「我看見了。妳不僅僅是上鎖，妳還把它冷凍了。」</p>
+            <p class="dialogue">「那是為了防止『污染』。情緒會干擾判斷。我是醫生，我必須保持絕對的客觀。」</p>
+            <p class="dialogue">「妳所謂的『歸檔』，其實是逃避。走吧。我們去解凍那塊冰。孟先生的線索就在裡面。」</p>
+            <div class="scene-break">✦</div>
+            <p>第二章：禁止喧嘩</p>
+            <p>他們站在一個銀白色的世界裡。無數條螺旋狀的金屬樓梯在空中交錯，通往無窮無盡的書架。空氣中只有一種聲音：空調運轉的低頻嗡嗡聲。</p>
+            <p>一個漂浮的機器人滑了過來。它長著一張類似顧曼的臉，但是沒有五官，只有一個平滑的銀色面具，面具上顯示著一個紅色的靜音符號。這是顧曼的「管理員」——她的超我防禦機制。</p>
+            <p class="dialogue">「噓——禁止喧嘩。禁止奔跑。禁止情緒波動。」</p>
+            <p>路遙注意到，這裡的每一本書的書脊上寫的不是書名，而是標籤。《憤怒的生化反應機制》《悲傷的神經傳導路徑》《失戀的多巴胺戒斷症狀》</p>
+            <p class="dialogue">「妳把所有的情緒都變成了⋯⋯學術論文？」</p>
+            <p class="dialogue">「理解它，就能控制它。當妳知道『心痛』只是前扣帶迴皮質的電訊號活動時，妳就不會那麼痛了。」</p>
+            <p class="dialogue">「這就是理智化。妳用大腦去解釋感受，這樣妳就不用真的去『感受』它。這是一劑強效麻醉藥，顧醫師，但妳上癮了。」</p>
+            <p>他們到了圖書館的最底層。氣溫驟降。路遙呼出的氣變成了白霧。地板上結著厚厚的冰霜。</p>
+            <p class="dialogue">「警告。前方為高風險區域。禁止進入。」</p>
+            <p class="dialogue">「讓開。我是管理者，我有權限。」</p>
+            <p class="dialogue">「權限駁回。該區域已被永久封存。開啟將導致系統崩潰。」</p>
+            <p class="dialogue">「它不聽妳的了。妳的防衛機制已經進化出了自主意識。」</p>
+            <div class="scene-break">✦</div>
+            <p>第三章：融化的冰</p>
+            <p>路遙舉起錘子，砸向那扇冰封的門。錘子反彈回來，震得他虎口發麻。那層冰反而變得更厚了。</p>
+            <p class="dialogue">「沒用的。那是絕對零度的防禦。暴力無法打開它，只會讓它更硬。」</p>
+            <p class="dialogue">「因為它是用『冷漠』凍結的。顧曼，妳為什麼要把這段記憶凍起來？」</p>
+            <p class="dialogue">「我不知道⋯⋯我只記得⋯⋯那是個冬天。實驗室很冷。有人在哭。但我沒有哭。我不能哭。」</p>
+            <p class="dialogue">「為什麼不能哭？」</p>
+            <p class="dialogue">「因為我是醫生！如果連我也崩潰了，誰來救他？我必須保持冷靜！我必須分析數據！我必須找到解藥！」</p>
+            <p>隨著她的情緒波動，周圍的溫度開始不穩定。管理員機器人發出警報，噴出液態氮，試圖重新冷卻現場。</p>
+            <p class="dialogue">「妳當時在救誰？那個學長？」</p>
+            <p class="dialogue">「是的⋯⋯他瘋了。他給自己注射了未經測試的藥劑。他說他要消除痛苦。他的大腦皮層開始燒毀，他在尖叫⋯⋯求我救他⋯⋯」</p>
+            <p class="dialogue">「妳做了什麼？」</p>
+            <p class="dialogue">「我⋯⋯我一直在計算。我計算藥物代謝率，計算腦神經受損比，計算生命體徵⋯⋯我一直在算！直到他心跳停止，我也沒有握住他的手。我還在記錄數據。他死前看著我的眼神⋯⋯像是在看一個機器。」</p>
+            <p>路遙沉默了。這就是創傷的根源。顧曼用「理智」作為盾牌，試圖抵擋死亡的恐懼。但最後，這面盾牌變成了隔絕她與臨終者連結的牆。</p>
+            <p class="dialogue">「所以妳封存了這段記憶。因為妳無法原諒那個冷血的自己。」</p>
+            <p class="dialogue">「我是個怪物⋯⋯」顧曼跪在地上，「我比孟先生還像個機器人。」</p>
+            <p class="dialogue">「不，妳不是。妳那時候只是個學生，妳嚇壞了。妳用妳唯一知道的方法去對抗死神。那不是冷血，那是妳的求生本能。」</p>
+            <p>路遙沒有使用任何工具。他只是用自己的體溫，去溫暖那雙手。</p>
+            <p>奇蹟發生了。那扇堅不可摧的冰門，開始融化。不是被火燒化的，而是被淚水融化的。當顧曼終於承認了自己的恐懼、悔恨和無力感時，那些維持「絕對零度」的能量就消散了。</p>
+            <div class="scene-break">✦</div>
+            <p>第四章：檔案編號 000</p>
+            <p>冰層剝落，露出了裡面生鏽的鐵門。門緩緩打開。</p>
+            <p>裡面是一間小小的、溫暖的舊辦公室。桌上堆滿了雜亂的手稿，牆上貼滿了瘋狂的公式。在桌子的正中央，放著一本厚厚的筆記本。封面上寫著名字：孟何。</p>
+            <p class="dialogue">「孟何⋯⋯我想起來了。他叫孟何。」</p>
+            <p>她翻開那本筆記。那是十年前的孟何留下的實驗記錄。</p>
+            <p class="dialogue">「10月5日：痛苦是人類最大的敵人。我必須找到刪除它的方法。」</p>
+            <p class="dialogue">「12月1日：我發現了關鍵。不是藥物，是結構。只要切斷邊緣系統與前額葉的連結，就能製造出完美的『理性人』。」</p>
+            <p class="dialogue">「12月24日：沒人支持我。連顧曼都覺得我瘋了。但我會證明她是錯的。我要親自實驗。」</p>
+            <p>最後一頁夾著一張照片。是年輕時的顧曼和孟何的合照。兩人都穿著白袍，笑得很開心。</p>
+            <p class="dialogue">「他沒死。那天的急救⋯⋯其實成功了？」</p>
+            <p class="dialogue">「不，那個『孟何』已經死了。活下來的，是一個切斷了所有情感連結的怪物。他把自己變成了第一個『白盒子』。」</p>
+            <p>路遙在筆記的夾層裡發現了一張折疊的藍圖。那是孟氏心靈都更技術的原型圖——「情感阻斷手術」。而在藍圖的邊緣，寫著一行紅字註解：</p>
+            <p class="dialogue">「弱點：極度恐懼混亂。一旦邏輯鏈條斷裂，系統將全面崩塌。」</p>
+            <p class="dialogue">「我們找到了。這就是他的阿基里斯之踵。」</p>
+            <div class="scene-break">✦</div>
+            <p>第五章：解凍的圖書館</p>
+            <p>回到現實，顧曼臉上的淚痕還沒乾。但她的眼神變了。那種彷彿隔著一層玻璃的疏離感消失了。她的眼神變得柔軟、深邃，帶著一絲悲傷，但也帶著力量。</p>
+            <p class="dialogue">「謝謝。」</p>
+            <p class="dialogue">「別客氣，記得付諮詢費。現在我們知道他是誰了，也知道他怕什麼了。」</p>
+            <p>顧曼拿起那杯威士忌，冰塊已經融化了。她喝了一口，這次不再是用來麻痺神經，而是為了品嚐味道。</p>
+            <p class="dialogue">「他怕混亂。因為他的『完美秩序』是建立在切除情感的基礎上的。只要我們能讓他感受到無法計算的情緒⋯⋯」</p>
+            <p class="dialogue">「他的白盒子就會炸開。我們需要一場大火。」</p>
+            <p>在路遙眼中，顧曼身後那座銀白色的圖書館發生了變化。那些冰冷的金屬書架上，開始長出了綠色的藤蔓。有些書掉在了地上，有些書被翻開了。雖然亂了一點，但那不再是數據中心了。那是一個有人閱讀、有人思考、有人感受的書房。</p>
+            <p class="dialogue">「歡迎回到人間，顧醫師。走吧，去吃宵夜。我的胃在抗議了，這可是真實的生理需求，不能理智化。」</p>
+            <p class="dialogue">「好。去吃麻辣鍋。最辣的那種。」</p>
+            <p>【下集預告】</p>
+            <p>一根快要斷裂的樑柱，撐著整棟房子。他當了全家人三十年的支柱，但支柱也會累，也會痛。</p>
+            <p class="chapter-end">（第 11 集 完）</p>
+    </article>
+
+    <nav class="chapter-nav">
+        <a href="ep10.html">← 第10集：標準化社區</a>
+        <a href="index.html" class="nav-toc">違章靈魂改建事務所</a>
+        <a href="ep12.html">第12集：搖晃的樑柱 →</a>
+    </nav>
+    <footer class="site-footer">
+        <div class="footer-brand">Space Between</div>
+        <div class="footer-tagline">給在城市裡迷失的人，一個慢慢找回自己的空間。<br>裂痕不需要被修好——它需要被看見，然後發光。</div>
+        <div class="footer-links">
+            <a href="https://space-between.art">📖 Art</a>
+            <a href="https://spacebetweenhealing.com">🌿 Healing</a>
+            <a href="https://spacebetweenstudio.site">🔧 Studio</a>
+        </div>
+    </footer>
+    <script src="../../js/reading.js"></script>
+</body>
+</html>
