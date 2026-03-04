@@ -665,3 +665,36 @@ body {
     border-left: 2px solid var(--danger);
     background: rgba(107, 58, 58, 0.06);
 }
+
+/* ========== FOOTER CTA ========== */
+.footer-cta {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 24px 0 20px;
+}
+.footer-cta-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border: 1px solid var(--accent-dim);
+    border-radius: 6px;
+    font-family: var(--font-ui);
+    font-size: 13px;
+    color: var(--accent) !important;
+    text-decoration: none;
+    transition: all .3s;
+    letter-spacing: 1px;
+}
+.footer-cta-btn:hover {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+}
+.footer-cta-alt {
+    border-color: rgba(255,255,255,.1);
+    color: var(--text-dim) !important;
+}
+.footer-cta-alt:hover {
+    border-color: rgba(255,255,255,.25);
+    color: var(--text) !important;
+}

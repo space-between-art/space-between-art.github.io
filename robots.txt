@@ -1,14 +1,4 @@
-# robots.txt for spacebetweenhealing.com
-# 隙光設計 Space Between Healing
-
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://spacebetweenhealing.com/sitemap.xml
-
-# Crawl-delay for polite crawling
-Crawl-delay: 1
-
-# Disallow admin or private areas (none currently)
-# Disallow: /admin/
+Sitemap: https://space-between.art/sitemap.xml
