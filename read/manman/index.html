@@ -161,6 +161,7 @@
         "genre": "療癒文學"
     }
     </script>
+<style>.ai-float-btn{position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:rgba(184,146,106,.12);border:1px solid rgba(184,146,106,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;backdrop-filter:blur(8px);text-decoration:none}.ai-float-btn:hover{background:rgba(184,146,106,.25);border-color:#B8926A;transform:scale(1.08);box-shadow:0 4px 24px rgba(184,146,106,.2)}.ai-float-btn .ai-icon{font-size:22px;line-height:1}.ai-float-btn .ai-tooltip{position:absolute;right:64px;background:#151413;border:1px solid rgba(184,146,106,.15);padding:8px 14px;border-radius:6px;font-family:sans-serif;font-size:12px;color:#8A857C;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}.ai-float-btn:hover .ai-tooltip{opacity:1}.ai-menu{position:fixed;bottom:90px;right:28px;z-index:151;background:#151413;border:1px solid rgba(184,146,106,.15);border-radius:12px;padding:12px;display:none;flex-direction:column;gap:6px;min-width:180px;box-shadow:0 8px 32px rgba(0,0,0,.4)}.ai-menu.active{display:flex}.ai-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;text-decoration:none;color:#8A857C;font-family:sans-serif;font-size:13px;transition:all .2s}.ai-menu a:hover{background:rgba(184,146,106,.15);color:#B8926A}.ai-menu .ai-char-icon{font-size:20px}.ai-menu .ai-char-desc{font-size:11px;color:#5A564F;margin-top:2px}@media(max-width:768px){.ai-float-btn{bottom:20px;right:20px;width:48px;height:48px}.ai-menu{right:20px;bottom:78px}}</style>
 </head>
 <body>
 
@@ -444,5 +445,26 @@ draw();
     </div>
     <div style="font-size:11px;color:#3A3732;margin-top:16px">© 2026 Space Between Studio</div>
 </footer>
+    <!-- AI Chat Float -->
+    <div class="ai-menu" id="aiMenu">
+        <a href="/guangguang/">
+            <span class="ai-char-icon">🪴</span>
+            <div>
+                <div>光光</div>
+                <div class="ai-char-desc">廣東話 · 溫暖陪伴</div>
+            </div>
+        </a>
+        <a href="/sumu/">
+            <span class="ai-char-icon">🌿</span>
+            <div>
+                <div>蘇牧</div>
+                <div class="ai-char-desc">蘇格拉底式提問</div>
+            </div>
+        </a>
+    </div>
+    <button class="ai-float-btn" id="aiFloatBtn" onclick="toggleAiMenu()" title="AI 樹洞">
+        <span class="ai-icon">🕯️</span>
+        <span class="ai-tooltip">需要聊聊嗎？</span>
+    </button>
 </body>
 </html>

@@ -123,11 +123,22 @@
 
         /* ═══ WORKS ═══ */
         .works{padding:20px var(--px) var(--sy)}
-        .wg{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-        .wc{position:relative;background:var(--bg3);border:1px solid var(--gl);border-radius:12px;padding:36px 32px;transition:all .4s;display:flex;flex-direction:column;overflow:hidden}
-        .wc:hover{border-color:rgba(201,165,90,.3);transform:translateY(-3px);background:var(--bg3h)}
+        .wg{display:grid;grid-template-columns:1fr 1fr;gap:20px;perspective:1200px}
+        .wc{position:relative;background:var(--bg3);border:1px solid var(--gl);border-radius:12px;padding:36px 32px;transition:transform .5s cubic-bezier(.23,1,.32,1),box-shadow .5s cubic-bezier(.23,1,.32,1),border-color .4s,background .4s;display:flex;flex-direction:column;overflow:hidden;transform-style:preserve-3d}
+        .wc:hover{border-color:rgba(201,165,90,.3);background:var(--bg3h);box-shadow:0 30px 60px rgba(0,0,0,.5),0 15px 30px rgba(0,0,0,.3),0 0 80px rgba(201,165,90,.06)}
         .wc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,165,90,.3),transparent);opacity:0;transition:opacity .4s}
         .wc:hover::before{opacity:1}
+        .wc::after{content:'';position:absolute;bottom:-16px;left:12%;right:12%;height:30px;background:radial-gradient(ellipse,rgba(201,165,90,.06) 0%,transparent 70%);filter:blur(10px);opacity:0;transition:opacity .5s;z-index:-1;pointer-events:none}
+        .wc:hover::after{opacity:1}
+        .wc-light{position:absolute;inset:0;pointer-events:none;border-radius:12px;opacity:0;transition:opacity .3s}
+        .wc:hover .wc-light{opacity:1}
+        .wc-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:12px}
+        .wc-particles .p{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity .5s}
+        .wc:hover .wc-particles .p{opacity:.25;animation:wc-float 3s infinite ease-in-out}
+        .wc-particles .p:nth-child(1){left:15%;top:20%;animation-delay:0s}
+        .wc-particles .p:nth-child(2){left:75%;top:35%;animation-delay:.7s}
+        .wc-particles .p:nth-child(3){left:45%;top:70%;animation-delay:1.4s}
+        @keyframes wc-float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.4)}}
         .wc-icon{font-size:36px;margin-bottom:16px;transition:transform .3s,filter .3s}
         .wc:hover .wc-icon{transform:scale(1.15) rotate(-3deg);filter:drop-shadow(0 0 12px rgba(201,165,90,.3))}
         .wc--feat{grid-column:1/-1;display:grid;grid-template-columns:1.2fr .8fr;padding:0}
@@ -153,9 +164,9 @@
         .tree-intro h2{font-size:clamp(22px,3.5vw,32px);font-weight:600;color:var(--t);margin-bottom:6px}
         .tree-intro-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--sage);margin-bottom:16px}
         .tree-intro p{font-size:16px;line-height:2.3;color:var(--tb);max-width:520px;margin:0 auto}
-        .tg{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-        .tc{background:var(--bg3);border:1px solid var(--sl);border-radius:12px;padding:36px 32px;transition:all .4s;position:relative;overflow:hidden}
-        .tc:hover{border-color:rgba(127,168,127,.4);background:var(--bg3h);transform:translateY(-2px)}
+        .tg{display:grid;grid-template-columns:1fr 1fr;gap:20px;perspective:1200px}
+        .tc{background:var(--bg3);border:1px solid var(--sl);border-radius:12px;padding:36px 32px;transition:all .5s cubic-bezier(.23,1,.32,1);position:relative;overflow:hidden;transform-style:preserve-3d}
+        .tc:hover{border-color:rgba(127,168,127,.4);background:var(--bg3h);box-shadow:0 25px 50px rgba(0,0,0,.4),0 0 60px rgba(127,168,127,.04)}
         .tc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(127,168,127,.35),transparent);opacity:0;transition:opacity .4s}
         .tc:hover::before{opacity:1}
         .tc-av{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px;transition:transform .3s}
@@ -183,9 +194,9 @@
         .col-intro h2{font-size:clamp(22px,3.5vw,32px);font-weight:600;color:var(--t);margin-bottom:6px}
         .col-intro-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--sky);margin-bottom:16px}
         .col-intro p{font-size:16px;line-height:2.3;color:var(--tb);max-width:480px;margin:0 auto}
-        .cg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-        .cc{background:var(--bg3);border:1px solid var(--skl);border-radius:12px;padding:32px 28px;transition:all .4s;cursor:pointer;position:relative;overflow:hidden}
-        .cc:hover{border-color:rgba(126,168,196,.4);background:var(--bg3h)}
+        .cg{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;perspective:1200px}
+        .cc{background:var(--bg3);border:1px solid var(--skl);border-radius:12px;padding:32px 28px;transition:all .5s cubic-bezier(.23,1,.32,1);cursor:pointer;position:relative;overflow:hidden;transform-style:preserve-3d}
+        .cc:hover{border-color:rgba(126,168,196,.4);background:var(--bg3h);box-shadow:0 20px 40px rgba(0,0,0,.3),0 0 40px rgba(126,168,196,.03)}
         .cc-tag{font-family:var(--sn);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sky);margin-bottom:14px}
         .cc-title{font-size:18px;font-weight:600;color:var(--t);line-height:1.7;margin-bottom:14px;transition:color .3s}
         .cc:hover .cc-title{color:var(--sky)}
@@ -274,6 +285,7 @@
         "inLanguage": "zh-TW"
     }
     </script>
+<style>.ai-float-btn{position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:rgba(184,146,106,.12);border:1px solid rgba(184,146,106,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;backdrop-filter:blur(8px);text-decoration:none}.ai-float-btn:hover{background:rgba(184,146,106,.25);border-color:#B8926A;transform:scale(1.08);box-shadow:0 4px 24px rgba(184,146,106,.2)}.ai-float-btn .ai-icon{font-size:22px;line-height:1}.ai-float-btn .ai-tooltip{position:absolute;right:64px;background:#151413;border:1px solid rgba(184,146,106,.15);padding:8px 14px;border-radius:6px;font-family:sans-serif;font-size:12px;color:#8A857C;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}.ai-float-btn:hover .ai-tooltip{opacity:1}.ai-menu{position:fixed;bottom:90px;right:28px;z-index:151;background:#151413;border:1px solid rgba(184,146,106,.15);border-radius:12px;padding:12px;display:none;flex-direction:column;gap:6px;min-width:180px;box-shadow:0 8px 32px rgba(0,0,0,.4)}.ai-menu.active{display:flex}.ai-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;text-decoration:none;color:#8A857C;font-family:sans-serif;font-size:13px;transition:all .2s}.ai-menu a:hover{background:rgba(184,146,106,.15);color:#B8926A}.ai-menu .ai-char-icon{font-size:20px}.ai-menu .ai-char-desc{font-size:11px;color:#5A564F;margin-top:2px}@media(max-width:768px){.ai-float-btn{bottom:20px;right:20px;width:48px;height:48px}.ai-menu{right:20px;bottom:78px}}</style>
 </head>
 <body>
 
@@ -603,8 +615,59 @@ function pickOpt(i,val){answers.push(val);document.querySelectorAll('.quiz-opt')
 function showResult(){document.getElementById('quizBar').style.width='100%';const cnt={};answers.forEach(a=>{cnt[a]=(cnt[a]||0)+1});let top='sour',max=0;for(let k in cnt)if(cnt[k]>max){max=cnt[k];top=k}const r=results[top];document.getElementById('quizBody').style.display='none';document.getElementById('resIcon').textContent=r.icon;document.getElementById('resTitle').textContent=r.title;document.getElementById('resEn').textContent=r.en;document.getElementById('resDesc').textContent=r.desc;document.getElementById('resCta').innerHTML=`<div style="text-align:center;margin-top:8px"><p style="font-size:14px;color:var(--tm);margin-bottom:6px;line-height:2">推薦你讀：<strong style="color:var(--t)">${r.novel}</strong></p><p style="font-size:13px;color:var(--tq);line-height:2;max-width:380px;margin:0 auto 20px">${r.why}</p><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a href="${r.link}" class="btn btn--g">去讀這個故事 →</a><a href="#treehouse" class="btn btn--s">找樹洞聊聊 →</a></div></div>`;document.getElementById('quizResult').classList.add('active')}
 function resetQuiz(){document.getElementById('quizResult').classList.remove('active');document.getElementById('quizIntro').style.display='block';document.getElementById('quizBody').style.display='none'}
 
+/* ═══ 3D TILT EFFECT ═══ */
+document.querySelectorAll('.wc').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+        const rx=((y-r.height/2)/(r.height/2))*-5;
+        const ry=((x-r.width/2)/(r.width/2))*5;
+        card.style.transform=`translateY(-10px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.01)`;
+        const light=card.querySelector('.wc-light');
+        if(light){const px=(x/r.width)*100,py=(y/r.height)*100;light.style.background=`radial-gradient(circle at ${px}% ${py}%,rgba(201,165,90,.04) 0%,transparent 50%)`;light.style.opacity='1'}
+    });
+    card.addEventListener('mouseleave',()=>{
+        card.style.transform='';
+        const light=card.querySelector('.wc-light');
+        if(light)light.style.opacity='0';
+    });
+});
+document.querySelectorAll('.tc').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+        const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
+        const rx=((y-r.height/2)/(r.height/2))*-4;
+        const ry=((x-r.width/2)/(r.width/2))*4;
+        card.style.transform=`translateY(-2px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+});
+
 /* ═══ SCROLL REVEAL ═══ */
 document.addEventListener('DOMContentLoaded',()=>{const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.rv').forEach(el=>io.observe(el))});
+
+/* ═══ AI FLOAT MENU ═══ */
+function toggleAiMenu(){const m=document.getElementById('aiMenu');if(m)m.classList.toggle('active')}
+document.addEventListener('click',e=>{const m=document.getElementById('aiMenu'),b=document.getElementById('aiFloatBtn');if(m&&b&&!m.contains(e.target)&&!b.contains(e.target))m.classList.remove('active')});
 </script>
+    <!-- AI Chat Float -->
+    <div class="ai-menu" id="aiMenu">
+        <a href="/guangguang/">
+            <span class="ai-char-icon">🪴</span>
+            <div>
+                <div>光光</div>
+                <div class="ai-char-desc">廣東話 · 溫暖陪伴</div>
+            </div>
+        </a>
+        <a href="/sumu/">
+            <span class="ai-char-icon">🌿</span>
+            <div>
+                <div>蘇牧</div>
+                <div class="ai-char-desc">蘇格拉底式提問</div>
+            </div>
+        </a>
+    </div>
+    <button class="ai-float-btn" id="aiFloatBtn" onclick="toggleAiMenu()" title="AI 樹洞">
+        <span class="ai-icon">🕯️</span>
+        <span class="ai-tooltip">需要聊聊嗎？</span>
+    </button>
 </body>
 </html>

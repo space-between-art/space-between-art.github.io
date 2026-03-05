@@ -29,6 +29,7 @@
     <nav class="site-nav" id="siteNav">
         <a href="/read/bistro/" class="nav-brand">Space Between Art</a>
         <span class="nav-book-title">拾味小館</span>
+        <span class="chapter-progress">12/20</span>
         <div class="nav-actions">
             <button onclick="toggleToc()" title="目錄">☰</button>
             <button onclick="toggleSettings()" title="閱讀設定">Aa</button>
@@ -83,11 +84,21 @@
             </div>
         </div>
     </div>
+        <div class="settings-group">
+            <div class="settings-label">閱讀主題</div>
+            <div class="theme-options">
+                <button class="theme-btn theme-btn-dark active" data-theme="dark" onclick="applyTheme('dark')">暗</button>
+                <button class="theme-btn theme-btn-warm" data-theme="warm" onclick="applyTheme('warm')">暖</button>
+                <button class="theme-btn theme-btn-sepia" data-theme="sepia" onclick="applyTheme('sepia')">復古</button>
+                <button class="theme-btn theme-btn-paper" data-theme="paper" onclick="applyTheme('paper')">紙</button>
+            </div>
+        </div>
     <header class="chapter-header">
         <div class="chapter-label">拾味小館</div>
         <div class="chapter-number">Episode 12</div>
         <h1 class="chapter-title">第12集：不會哭的男人（下）</h1>
         <div class="chapter-title-en">The Man Who Couldn't Cry II</div>
+    <div class="chapter-read-time" id="readTime"></div>
     </header>
     <article class="chapter-content">
             <div class="scene-break">✦</div>
@@ -367,5 +378,26 @@
         </div>
     </footer>
     <script src="../../js/reading.js"></script>
+    <!-- AI Chat Float -->
+    <div class="ai-menu" id="aiMenu">
+        <a href="/guangguang/">
+            <span class="ai-char-icon">🪴</span>
+            <div>
+                <div>光光</div>
+                <div class="ai-char-desc">廣東話 · 溫暖陪伴</div>
+            </div>
+        </a>
+        <a href="/sumu/">
+            <span class="ai-char-icon">🌿</span>
+            <div>
+                <div>蘇牧</div>
+                <div class="ai-char-desc">蘇格拉底式提問</div>
+            </div>
+        </a>
+    </div>
+    <button class="ai-float-btn" id="aiFloatBtn" onclick="toggleAiMenu()" title="AI 樹洞">
+        <span class="ai-icon">🕯️</span>
+        <span class="ai-tooltip">需要聊聊嗎？</span>
+    </button>
 </body>
 </html>

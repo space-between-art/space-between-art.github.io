@@ -197,3 +197,65 @@ function trackSettingsChange(setting, value) {
         value: value
     });
 }
+
+// ========== FLOATING AI BUTTON ==========
+function toggleAiMenu() {
+    const menu = document.getElementById('aiMenu');
+    if (menu) menu.classList.toggle('active');
+}
+// Close AI menu on outside click
+document.addEventListener('click', (e) => {
+    const menu = document.getElementById('aiMenu');
+    const btn = document.getElementById('aiFloatBtn');
+    if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('active');
+    }
+});
+
+// ========== READING THEMES ==========
+const THEMES = ['dark', 'warm', 'sepia', 'paper'];
+let currentTheme = 'dark';
+
+// Load saved theme
+try {
+    const savedTheme = localStorage.getItem('sba-reading-theme');
+    if (savedTheme && THEMES.includes(savedTheme)) {
+        currentTheme = savedTheme;
+    }
+} catch(e) {}
+
+function applyTheme(theme) {
+    currentTheme = theme;
+    document.body.className = '';
+    if (theme !== 'dark') {
+        document.body.classList.add('theme-' + theme);
+    }
+    // Update active button
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.theme === theme);
+    });
+    try { localStorage.setItem('sba-reading-theme', theme); } catch(e) {}
+    trackEvent('reading_theme', { theme: theme });
+}
+
+// Apply theme on load
+document.addEventListener('DOMContentLoaded', () => {
+    if (currentTheme !== 'dark') {
+        document.body.classList.add('theme-' + currentTheme);
+    }
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.theme === currentTheme);
+    });
+});
+
+// ========== ESTIMATED READ TIME ==========
+document.addEventListener('DOMContentLoaded', () => {
+    const content = document.getElementById('storyContent') || document.querySelector('.chapter-content');
+    const timeEl = document.getElementById('readTime');
+    if (content && timeEl) {
+        const text = content.innerText || content.textContent;
+        const charCount = text.replace(/\s/g, '').length;
+        const minutes = Math.max(1, Math.round(charCount / 500)); // ~500 Chinese chars/min
+        timeEl.textContent = '約 ' + minutes + ' 分鐘閱讀 · ' + charCount.toLocaleString() + ' 字';
+    }
+});
