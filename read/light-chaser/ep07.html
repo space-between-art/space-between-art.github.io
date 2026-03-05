@@ -267,6 +267,21 @@
         <a href="index.html" class="nav-toc">逐光的藥師</a>
         <a href="ep08.html">第8集：灰色世界 →</a>
     </nav>
+        <div class="rw-divider"></div>
+    <section class="resonance-wall" id="resonanceWall" data-novel="light-chaser">
+        <div class="rw-header">
+            <div class="rw-title">共鳴牆</div>
+            <div class="rw-subtitle">Resonance Wall — 匿名留下一句話</div>
+        </div>
+        <div class="rw-messages" id="rwMessages">
+            <div class="rw-empty">載入中⋯⋯</div>
+        </div>
+        <div class="rw-form">
+            <input type="text" class="rw-input" id="rwInput" placeholder="讀完這一章，你想說什麼？" maxlength="200" onkeydown="if(event.key==='Enter')submitResonance()">
+            <button class="rw-submit" id="rwSubmit" onclick="submitResonance()">留下共鳴</button>
+        </div>
+        <div class="rw-hint">匿名 · 最多 200 字 · 你不孤單</div>
+    </section>
     <footer class="site-footer">
         <div class="footer-brand">Space Between</div>
         <div class="footer-tagline">給在城市裡迷失的人，一個慢慢找回自己的空間。<br>裂痕不需要被修好——它需要被看見，然後發光。</div>

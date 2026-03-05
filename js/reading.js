@@ -259,3 +259,81 @@ document.addEventListener('DOMContentLoaded', () => {
         timeEl.textContent = '約 ' + minutes + ' 分鐘閱讀 · ' + charCount.toLocaleString() + ' 字';
     }
 });
+
+// ========== RESONANCE WALL ==========
+const RW_API = 'https://resonance-wall.winsusa2611.workers.dev/api/resonances';
+
+async function loadResonances() {
+    const wall = document.getElementById('resonanceWall');
+    if (!wall) return;
+    const novel = wall.dataset.novel;
+    if (!novel) return;
+    
+    const container = document.getElementById('rwMessages');
+    try {
+        const res = await fetch(`${RW_API}?novel=${novel}`);
+        const data = await res.json();
+        if (data.resonances && data.resonances.length > 0) {
+            container.innerHTML = data.resonances.map((r, i) => `
+                <div class="rw-msg" style="animation-delay:${i * 0.08}s">
+                    <div>${r.message}</div>
+                    <div class="rw-msg-time">${formatTime(r.created_at)}</div>
+                </div>
+            `).join('');
+        } else {
+            container.innerHTML = '<div class="rw-empty">還沒有人留下共鳴。成為第一個？</div>';
+        }
+    } catch (e) {
+        container.innerHTML = '<div class="rw-empty">載入中⋯⋯</div>';
+    }
+}
+
+function formatTime(t) {
+    if (!t) return '';
+    const d = new Date(t + 'Z');
+    const now = new Date();
+    const diff = Math.floor((now - d) / 1000);
+    if (diff < 60) return '剛剛';
+    if (diff < 3600) return Math.floor(diff / 60) + ' 分鐘前';
+    if (diff < 86400) return Math.floor(diff / 3600) + ' 小時前';
+    if (diff < 604800) return Math.floor(diff / 86400) + ' 天前';
+    return d.toLocaleDateString('zh-TW', { month: 'short', day: 'numeric' });
+}
+
+async function submitResonance() {
+    const wall = document.getElementById('resonanceWall');
+    const input = document.getElementById('rwInput');
+    const btn = document.getElementById('rwSubmit');
+    if (!wall || !input || !btn) return;
+    
+    const novel = wall.dataset.novel;
+    const message = input.value.trim();
+    if (!message || message.length < 2) return;
+    
+    btn.disabled = true;
+    btn.textContent = '送出中⋯';
+    
+    try {
+        const res = await fetch(RW_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ novel, message })
+        });
+        const data = await res.json();
+        if (data.success) {
+            input.value = '';
+            btn.textContent = '✓ 已留下';
+            setTimeout(() => { btn.textContent = '留下共鳴'; btn.disabled = false; }, 2000);
+            loadResonances();
+            trackEvent('resonance_submit', { novel: novel });
+        } else {
+            btn.textContent = '留下共鳴';
+            btn.disabled = false;
+        }
+    } catch (e) {
+        btn.textContent = '留下共鳴';
+        btn.disabled = false;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadResonances);
