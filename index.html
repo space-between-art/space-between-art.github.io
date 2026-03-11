@@ -671,7 +671,7 @@ document.addEventListener('DOMContentLoaded',()=>{const io=new IntersectionObser
 /* ═══ LO-FI MUSIC PLAYER ═══ */
 let musicActive = false;
 let musicPlaying = false;
-const YT_LOFI = 'https://www.youtube.com/embed/jfKfPfyJRdk?enablejsapi=1&autoplay=1&loop=1';
+const YT_LOFI = 'https://www.youtube.com/embed/jfKfPfyJRdk?enablejsapi=1&autoplay=1&loop=1&origin=https://space-between.art';
 
 function toggleMusic() {
     const bar = document.getElementById('musicBar');
@@ -683,7 +683,7 @@ function toggleMusic() {
         document.body.classList.add('music-on');
         toggle.classList.add('playing');
         toggle.textContent = '🎶';
-        if (!player.src) {
+        if (!player.getAttribute('src')) {
             player.src = YT_LOFI;
             musicPlaying = true;
             document.getElementById('musicPlayBtn').textContent = '⏸';
@@ -707,7 +707,7 @@ function togglePlayPause() {
         btn.textContent = '▶';
         musicPlaying = false;
     } else {
-        if (!player.src) player.src = YT_LOFI;
+        if (!player.getAttribute('src')) player.src = YT_LOFI;
         player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
         btn.textContent = '⏸';
         musicPlaying = true;
@@ -731,7 +731,7 @@ function closeMusic() {
     musicPlaying = false;
     toggle.classList.remove('playing');
     toggle.textContent = '🎵';
-    player.src = '';
+    player.removeAttribute('src'); player.src = '';
     document.getElementById('musicPlayBtn').textContent = '▶';
 }
 
@@ -750,7 +750,7 @@ document.addEventListener('click',e=>{const m=document.getElementById('aiMenu'),
         </div>
         <span class="mb-close" onclick="closeMusic()">✕</span>
     </div>
-    <iframe id="ytPlayer" width="0" height="0" style="position:absolute;top:-9999px" src="" allow="autoplay" frameborder="0"></iframe>
+    <iframe id="ytPlayer" width="1" height="1" style="position:absolute;top:-9999px;opacity:0" allow="autoplay; encrypted-media" frameborder="0"></iframe>
 
     <!-- AI Chat Float -->
     <div class="ai-menu" id="aiMenu">
