@@ -68,7 +68,8 @@
         .badge--p{color:var(--plum);border:1px solid var(--pl)}
 
         /* ═══ HERO ═══ */
-        .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px var(--px) 80px;overflow:hidden}
+        .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px var(--px) 80px;overflow:hidden;background:url('hero-bg.png') center/cover no-repeat}
+        .hero::before{content:'';position:absolute;inset:0;background:rgba(10,9,8,.7);pointer-events:none;z-index:0}
         #particles{position:absolute;inset:0;pointer-events:none;z-index:0}
         .hero>*{position:relative;z-index:1}
         .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,var(--bg),transparent);pointer-events:none;z-index:1}
@@ -158,8 +159,8 @@
         .fs .l{font-family:var(--sn);font-size:10px;color:var(--tm)}
 
         /* ═══ AI 樹洞 ═══ */
-        .tree{padding:var(--sy) var(--px);position:relative}
-        .tree::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(127,168,127,.04) 0%,transparent 60%);pointer-events:none}
+        .tree{padding:var(--sy) var(--px);position:relative;background:url('treehouse-bg.png') center/cover no-repeat fixed}
+        .tree::before{content:'';position:absolute;inset:0;background:rgba(10,9,8,.82);pointer-events:none}
         .tree-intro{text-align:center;margin-bottom:48px}
         .tree-intro h2{font-size:clamp(22px,3.5vw,32px);font-weight:600;color:var(--t);margin-bottom:6px}
         .tree-intro-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--sage);margin-bottom:16px}
@@ -233,7 +234,10 @@
         .xo-list .ic{font-size:14px;opacity:.7}
 
         /* ═══ ABOUT ═══ */
-        .about{padding:var(--sy) var(--px);max-width:680px;margin:0 auto;text-align:center}
+        .about{padding:var(--sy) var(--px);max-width:100%;margin:0 auto;text-align:center;position:relative;background:url('about-bg.png') center/cover no-repeat fixed}
+        .about::before{content:'';position:absolute;inset:0;background:rgba(10,9,8,.78);pointer-events:none}
+        .about>*{position:relative;z-index:1}
+        .about .mw-inner{max-width:680px;margin:0 auto}
         .about-icon{font-family:var(--en);font-size:30px;font-style:italic;color:var(--gs);margin-bottom:24px}
         .about h3{font-size:22px;font-weight:600;color:var(--t);margin-bottom:6px}
         .about-en{font-family:var(--en);font-size:14px;font-style:italic;color:var(--tm);margin-bottom:28px}
@@ -248,6 +252,26 @@
         .ft{padding:48px var(--px) 32px;text-align:center;border-top:1px solid var(--gl)}
         .ft-b{font-family:var(--en);font-size:15px;color:var(--tq);letter-spacing:3px;margin-bottom:12px}
         .ft-c{font-family:var(--sn);font-size:11px;color:rgba(115,107,94,.5)}
+
+        /* MUSIC BAR */
+        .music-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;height:48px;background:rgba(15,14,13,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(201,165,90,.1);display:flex;align-items:center;padding:0 20px;gap:12px;transform:translateY(100%);transition:transform .4s ease}
+        .music-bar.active{transform:translateY(0)}
+        .music-bar-toggle{position:fixed;bottom:28px;left:28px;z-index:199;width:44px;height:44px;border-radius:50%;background:rgba(184,146,106,.1);border:1px solid rgba(184,146,106,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:18px;backdrop-filter:blur(8px)}
+        .music-bar-toggle:hover{background:rgba(184,146,106,.2);border-color:var(--gold);transform:scale(1.08)}
+        .music-bar-toggle.playing{border-color:var(--gold);animation:pulse 2s infinite}
+        .music-bar .mb-icon{font-size:16px;cursor:pointer;transition:transform .2s}
+        .music-bar .mb-icon:hover{transform:scale(1.2)}
+        .music-bar .mb-title{font-family:var(--sn);font-size:12px;color:var(--tm);flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+        .music-bar .mb-title em{color:var(--gs);font-style:normal}
+        .music-bar .mb-vol{display:flex;align-items:center;gap:6px}
+        .music-bar .mb-vol input[type=range]{width:60px;height:3px;-webkit-appearance:none;background:rgba(201,165,90,.2);border-radius:2px;outline:none}
+        .music-bar .mb-vol input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;border-radius:50%;background:var(--gold);cursor:pointer}
+        .music-bar .mb-close{font-family:var(--sn);font-size:11px;color:var(--tq);cursor:pointer;padding:4px 8px;transition:color .2s}
+        .music-bar .mb-close:hover{color:var(--gold)}
+        body.music-on{padding-bottom:48px}
+        body.music-on .ai-float-btn{bottom:76px}
+        body.music-on .ai-menu{bottom:138px}
+        @media(max-width:768px){.music-bar-toggle{bottom:20px;left:20px;width:40px;height:40px;font-size:16px}.music-bar{height:44px;padding:0 14px;gap:8px}body.music-on .ai-float-btn{bottom:68px}}
 
         @keyframes fadeIn{from{opacity:0}to{opacity:1}}
         @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -644,10 +668,90 @@ document.querySelectorAll('.tc').forEach(card=>{
 /* ═══ SCROLL REVEAL ═══ */
 document.addEventListener('DOMContentLoaded',()=>{const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.rv').forEach(el=>io.observe(el))});
 
+/* ═══ LO-FI MUSIC PLAYER ═══ */
+let musicActive = false;
+let musicPlaying = false;
+const YT_LOFI = 'https://www.youtube.com/embed/jfKfPfyJRdk?enablejsapi=1&autoplay=1&loop=1';
+
+function toggleMusic() {
+    const bar = document.getElementById('musicBar');
+    const toggle = document.getElementById('musicToggle');
+    const player = document.getElementById('ytPlayer');
+    if (!musicActive) {
+        musicActive = true;
+        bar.classList.add('active');
+        document.body.classList.add('music-on');
+        toggle.classList.add('playing');
+        toggle.textContent = '🎶';
+        if (!player.src) {
+            player.src = YT_LOFI;
+            musicPlaying = true;
+            document.getElementById('musicPlayBtn').textContent = '⏸';
+        }
+    } else {
+        if (bar.classList.contains('active')) {
+            bar.classList.remove('active');
+            document.body.classList.remove('music-on');
+        } else {
+            bar.classList.add('active');
+            document.body.classList.add('music-on');
+        }
+    }
+}
+
+function togglePlayPause() {
+    const player = document.getElementById('ytPlayer');
+    const btn = document.getElementById('musicPlayBtn');
+    if (musicPlaying) {
+        player.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        btn.textContent = '▶';
+        musicPlaying = false;
+    } else {
+        if (!player.src) player.src = YT_LOFI;
+        player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        btn.textContent = '⏸';
+        musicPlaying = true;
+    }
+}
+
+function setVolume(val) {
+    const player = document.getElementById('ytPlayer');
+    if (player.contentWindow) {
+        player.contentWindow.postMessage(`{"event":"command","func":"setVolume","args":[${val}]}`, '*');
+    }
+}
+
+function closeMusic() {
+    const bar = document.getElementById('musicBar');
+    const toggle = document.getElementById('musicToggle');
+    const player = document.getElementById('ytPlayer');
+    bar.classList.remove('active');
+    document.body.classList.remove('music-on');
+    musicActive = false;
+    musicPlaying = false;
+    toggle.classList.remove('playing');
+    toggle.textContent = '🎵';
+    player.src = '';
+    document.getElementById('musicPlayBtn').textContent = '▶';
+}
+
 /* ═══ AI FLOAT MENU ═══ */
 function toggleAiMenu(){const m=document.getElementById('aiMenu');if(m)m.classList.toggle('active')}
 document.addEventListener('click',e=>{const m=document.getElementById('aiMenu'),b=document.getElementById('aiFloatBtn');if(m&&b&&!m.contains(e.target)&&!b.contains(e.target))m.classList.remove('active')});
 </script>
+    <!-- Lo-fi Music Bar -->
+    <button class="music-bar-toggle" id="musicToggle" onclick="toggleMusic()" title="Lo-fi 音樂">🎵</button>
+    <div class="music-bar" id="musicBar">
+        <span class="mb-icon" id="musicPlayBtn" onclick="togglePlayPause()">▶</span>
+        <div class="mb-title"><em>♪</em> 隙光電台 · Lo-fi Healing Beats</div>
+        <div class="mb-vol">
+            <span style="font-size:12px">🔉</span>
+            <input type="range" min="0" max="100" value="30" id="musicVol" oninput="setVolume(this.value)">
+        </div>
+        <span class="mb-close" onclick="closeMusic()">✕</span>
+    </div>
+    <iframe id="ytPlayer" width="0" height="0" style="position:absolute;top:-9999px" src="" allow="autoplay" frameborder="0"></iframe>
+
     <!-- AI Chat Float -->
     <div class="ai-menu" id="aiMenu">
         <a href="/guangguang/">

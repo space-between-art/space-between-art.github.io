@@ -211,6 +211,7 @@
     }
     </script>
 <style>.ai-float-btn{position:fixed;bottom:28px;right:28px;z-index:150;width:52px;height:52px;border-radius:50%;background:rgba(184,146,106,.12);border:1px solid rgba(184,146,106,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;backdrop-filter:blur(8px);text-decoration:none}.ai-float-btn:hover{background:rgba(184,146,106,.25);border-color:#B8926A;transform:scale(1.08);box-shadow:0 4px 24px rgba(184,146,106,.2)}.ai-float-btn .ai-icon{font-size:22px;line-height:1}.ai-float-btn .ai-tooltip{position:absolute;right:64px;background:#151413;border:1px solid rgba(184,146,106,.15);padding:8px 14px;border-radius:6px;font-family:sans-serif;font-size:12px;color:#8A857C;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}.ai-float-btn:hover .ai-tooltip{opacity:1}.ai-menu{position:fixed;bottom:90px;right:28px;z-index:151;background:#151413;border:1px solid rgba(184,146,106,.15);border-radius:12px;padding:12px;display:none;flex-direction:column;gap:6px;min-width:180px;box-shadow:0 8px 32px rgba(0,0,0,.4)}.ai-menu.active{display:flex}.ai-menu a{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;text-decoration:none;color:#8A857C;font-family:sans-serif;font-size:13px;transition:all .2s}.ai-menu a:hover{background:rgba(184,146,106,.15);color:#B8926A}.ai-menu .ai-char-icon{font-size:20px}.ai-menu .ai-char-desc{font-size:11px;color:#5A564F;margin-top:2px}@media(max-width:768px){.ai-float-btn{bottom:20px;right:20px;width:48px;height:48px}.ai-menu{right:20px;bottom:78px}}</style>
+<style>.music-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;height:48px;background:rgba(15,14,13,.95);backdrop-filter:blur(16px);border-top:1px solid rgba(184,146,106,.1);display:flex;align-items:center;padding:0 20px;gap:12px;transform:translateY(100%);transition:transform .4s ease}.music-bar.active{transform:translateY(0)}.music-bar-toggle{position:fixed;bottom:28px;left:28px;z-index:199;width:44px;height:44px;border-radius:50%;background:rgba(184,146,106,.1);border:1px solid rgba(184,146,106,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:18px;backdrop-filter:blur(8px)}.music-bar-toggle:hover{background:rgba(184,146,106,.2);transform:scale(1.08)}.music-bar-toggle.playing{border-color:#C9A55A;animation:mbpulse 2s infinite}@keyframes mbpulse{0%,100%{opacity:.7}50%{opacity:1}}.music-bar .mb-icon{font-size:16px;cursor:pointer}.music-bar .mb-title{font-size:12px;color:#8A857C;flex:1;overflow:hidden;white-space:nowrap}.music-bar .mb-title em{color:#B8926A;font-style:normal}.music-bar .mb-vol{display:flex;align-items:center;gap:6px}.music-bar .mb-vol input[type=range]{width:60px;height:3px;-webkit-appearance:none;background:rgba(184,146,106,.2);border-radius:2px}.music-bar .mb-vol input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;border-radius:50%;background:#B8926A;cursor:pointer}.music-bar .mb-close{font-size:11px;color:#5A564F;cursor:pointer;padding:4px 8px}body.music-on{padding-bottom:48px}body.music-on .ai-float-btn{bottom:76px}</style>
 </head>
 <body>
 
@@ -688,6 +689,18 @@ draw();
 })();
 </script>
 
+        <!-- Lo-fi Music Bar -->
+    <button class="music-bar-toggle" id="musicToggle" onclick="toggleMusic()" title="Lo-fi 音樂">🎵</button>
+    <div class="music-bar" id="musicBar">
+        <span class="mb-icon" id="musicPlayBtn" onclick="togglePlayPause()">▶</span>
+        <div class="mb-title"><em>♪</em> 隙光電台 · Lo-fi Healing Beats</div>
+        <div class="mb-vol">
+            <span style="font-size:12px">🔉</span>
+            <input type="range" min="0" max="100" value="30" id="musicVol" oninput="setVolume(this.value)">
+        </div>
+        <span class="mb-close" onclick="closeMusic()">✕</span>
+    </div>
+    <iframe id="ytPlayer" width="0" height="0" style="position:absolute;top:-9999px" src="" allow="autoplay" frameborder="0"></iframe>
     <!-- AI Chat Float -->
     <div class="ai-menu" id="aiMenu">
         <a href="/guangguang/">
@@ -709,5 +722,6 @@ draw();
         <span class="ai-icon">🕯️</span>
         <span class="ai-tooltip">需要聊聊嗎？</span>
     </button>
+<script>let musicActive=false,musicPlaying=false;const YT_LOFI="https://www.youtube.com/embed/jfKfPfyJRdk?enablejsapi=1&autoplay=1&loop=1";function toggleMusic(){const b=document.getElementById("musicBar"),t=document.getElementById("musicToggle"),p=document.getElementById("ytPlayer");if(!musicActive){musicActive=true;b.classList.add("active");document.body.classList.add("music-on");t.classList.add("playing");t.textContent="🎶";if(!p.src){p.src=YT_LOFI;musicPlaying=true;document.getElementById("musicPlayBtn").textContent="⏸"}}else{b.classList.toggle("active");document.body.classList.toggle("music-on")}}function togglePlayPause(){const p=document.getElementById("ytPlayer"),b=document.getElementById("musicPlayBtn");if(musicPlaying){p.contentWindow.postMessage(JSON.stringify({event:"command",func:"pauseVideo",args:""}),"*");b.textContent="▶";musicPlaying=false}else{if(!p.src)p.src=YT_LOFI;p.contentWindow.postMessage(JSON.stringify({event:"command",func:"playVideo",args:""}),"*");b.textContent="⏸";musicPlaying=true}}function setVolume(v){const p=document.getElementById("ytPlayer");if(p.contentWindow)p.contentWindow.postMessage(JSON.stringify({event:"command",func:"setVolume",args:[parseInt(v)]}),"*")}function closeMusic(){const b=document.getElementById("musicBar"),t=document.getElementById("musicToggle"),p=document.getElementById("ytPlayer");b.classList.remove("active");document.body.classList.remove("music-on");musicActive=false;musicPlaying=false;t.classList.remove("playing");t.textContent="🎵";p.src="";document.getElementById("musicPlayBtn").textContent="▶"}</script>
 </body>
 </html>

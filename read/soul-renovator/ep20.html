@@ -241,6 +241,18 @@
         </div>
     </footer>
     <script src="../../js/reading.js"></script>
+        <!-- Lo-fi Music Bar -->
+    <button class="music-bar-toggle" id="musicToggle" onclick="toggleMusic()" title="Lo-fi 音樂">🎵</button>
+    <div class="music-bar" id="musicBar">
+        <span class="mb-icon" id="musicPlayBtn" onclick="togglePlayPause()">▶</span>
+        <div class="mb-title"><em>♪</em> 隙光電台 · Lo-fi Healing Beats</div>
+        <div class="mb-vol">
+            <span style="font-size:12px">🔉</span>
+            <input type="range" min="0" max="100" value="30" id="musicVol" oninput="setVolume(this.value)">
+        </div>
+        <span class="mb-close" onclick="closeMusic()">✕</span>
+    </div>
+    <iframe id="ytPlayer" width="0" height="0" style="position:absolute;top:-9999px" src="" allow="autoplay" frameborder="0"></iframe>
     <!-- AI Chat Float -->
     <div class="ai-menu" id="aiMenu">
         <a href="/guangguang/">
