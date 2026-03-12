@@ -38,7 +38,7 @@ try {
 } catch(e) {}
 
 function applySettings() {
-    const content = document.getElementById('storyContent');
+    const content = document.getElementById('storyContent') || document.querySelector('.chapter-content');
     if (!content) return;
     content.style.fontSize = fontSize + 'px';
     content.style.lineHeight = lineHeight;
@@ -341,7 +341,79 @@ document.addEventListener('DOMContentLoaded', loadResonances);
 // ========== LO-FI MUSIC PLAYER ==========
 let musicActive=false,musicPlaying=false;
 const YT_LOFI='https://www.youtube.com/embed/jfKfPfyJRdk?enablejsapi=1&autoplay=1&loop=1&origin=https://space-between.art';
-function toggleMusic(){const b=document.getElementById('musicBar'),t=document.getElementById('musicToggle'),p=document.getElementById('ytPlayer');if(!musicActive){musicActive=true;b.classList.add('active');document.body.classList.add('music-on');t.classList.add('playing');t.textContent='🎶';if(!p.getAttribute('src')){p.src=YT_LOFI;musicPlaying=true;document.getElementById('musicPlayBtn').textContent='⏸'}}else{b.classList.toggle('active');document.body.classList.toggle('music-on')}}
-function togglePlayPause(){const p=document.getElementById('ytPlayer'),b=document.getElementById('musicPlayBtn');if(musicPlaying){p.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');b.textContent='▶';musicPlaying=false}else{if(!p.getAttribute('src'))p.src=YT_LOFI;p.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}','*');b.textContent='⏸';musicPlaying=true}}
-function setVolume(v){const p=document.getElementById('ytPlayer');if(p.contentWindow)p.contentWindow.postMessage(`{"event":"command","func":"setVolume","args":[${v}]}`,'*')}
-function closeMusic(){const b=document.getElementById('musicBar'),t=document.getElementById('musicToggle'),p=document.getElementById('ytPlayer');b.classList.remove('active');document.body.classList.remove('music-on');musicActive=false;musicPlaying=false;t.classList.remove('playing');t.textContent='🎵';p.src='';document.getElementById('musicPlayBtn').textContent='▶'}
+
+function toggleMusic(){
+    const b=document.getElementById('musicBar'),t=document.getElementById('musicToggle'),p=document.getElementById('ytPlayer');
+    if(!b||!t||!p)return;
+    if(!musicActive){
+        musicActive=true;
+        b.classList.add('active');
+        document.body.classList.add('music-on');
+        t.classList.add('playing');
+        t.textContent='🎶';
+        if(!p.getAttribute('src')){
+            p.src=YT_LOFI;
+            musicPlaying=true;
+            document.getElementById('musicPlayBtn').textContent='⏸';
+        }
+        try{localStorage.setItem('sba-music','on')}catch(e){}
+    }else{
+        b.classList.toggle('active');
+        document.body.classList.toggle('music-on');
+    }
+}
+function togglePlayPause(){
+    const p=document.getElementById('ytPlayer'),b=document.getElementById('musicPlayBtn');
+    if(!p||!b)return;
+    if(musicPlaying){
+        p.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+        b.textContent='▶';musicPlaying=false;
+        try{localStorage.setItem('sba-music','paused')}catch(e){}
+    }else{
+        if(!p.getAttribute('src'))p.src=YT_LOFI;
+        p.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}','*');
+        b.textContent='⏸';musicPlaying=true;
+        try{localStorage.setItem('sba-music','on')}catch(e){}
+    }
+}
+function setVolume(v){
+    const p=document.getElementById('ytPlayer');
+    if(p&&p.contentWindow)p.contentWindow.postMessage(`{"event":"command","func":"setVolume","args":[${v}]}`,'*');
+    try{localStorage.setItem('sba-music-vol',v)}catch(e){}
+}
+function closeMusic(){
+    const b=document.getElementById('musicBar'),t=document.getElementById('musicToggle'),p=document.getElementById('ytPlayer');
+    if(b)b.classList.remove('active');
+    document.body.classList.remove('music-on');
+    musicActive=false;musicPlaying=false;
+    if(t){t.classList.remove('playing');t.textContent='🎵'}
+    if(p)p.src='';
+    const btn=document.getElementById('musicPlayBtn');if(btn)btn.textContent='▶';
+    try{localStorage.removeItem('sba-music')}catch(e){}
+}
+
+// Auto-resume music on page load if it was playing
+document.addEventListener('DOMContentLoaded',function(){
+    try{
+        const state=localStorage.getItem('sba-music');
+        if(state==='on'){
+            const b=document.getElementById('musicBar'),t=document.getElementById('musicToggle'),p=document.getElementById('ytPlayer');
+            if(b&&t&&p){
+                musicActive=true;
+                b.classList.add('active');
+                document.body.classList.add('music-on');
+                t.classList.add('playing');
+                t.textContent='🎶';
+                p.src=YT_LOFI;
+                musicPlaying=true;
+                const btn=document.getElementById('musicPlayBtn');if(btn)btn.textContent='⏸';
+                const vol=localStorage.getItem('sba-music-vol');
+                if(vol){
+                    const slider=document.getElementById('musicVol');
+                    if(slider)slider.value=vol;
+                    setTimeout(()=>setVolume(vol),2000);
+                }
+            }
+        }
+    }catch(e){}
+});

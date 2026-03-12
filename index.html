@@ -639,6 +639,27 @@ function pickOpt(i,val){answers.push(val);document.querySelectorAll('.quiz-opt')
 function showResult(){document.getElementById('quizBar').style.width='100%';const cnt={};answers.forEach(a=>{cnt[a]=(cnt[a]||0)+1});let top='sour',max=0;for(let k in cnt)if(cnt[k]>max){max=cnt[k];top=k}const r=results[top];document.getElementById('quizBody').style.display='none';document.getElementById('resIcon').textContent=r.icon;document.getElementById('resTitle').textContent=r.title;document.getElementById('resEn').textContent=r.en;document.getElementById('resDesc').textContent=r.desc;document.getElementById('resCta').innerHTML=`<div style="text-align:center;margin-top:8px"><p style="font-size:14px;color:var(--tm);margin-bottom:6px;line-height:2">推薦你讀：<strong style="color:var(--t)">${r.novel}</strong></p><p style="font-size:13px;color:var(--tq);line-height:2;max-width:380px;margin:0 auto 20px">${r.why}</p><div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap"><a href="${r.link}" class="btn btn--g">去讀這個故事 →</a><a href="#treehouse" class="btn btn--s">找樹洞聊聊 →</a></div></div>`;document.getElementById('quizResult').classList.add('active')}
 function resetQuiz(){document.getElementById('quizResult').classList.remove('active');document.getElementById('quizIntro').style.display='block';document.getElementById('quizBody').style.display='none'}
 
+
+// Auto-resume music on page load
+document.addEventListener('DOMContentLoaded',function(){
+    try{
+        const state=localStorage.getItem('sba-music');
+        if(state==='on'){
+            setTimeout(function(){
+                const bar=document.getElementById('musicBar'),toggle=document.getElementById('musicToggle'),player=document.getElementById('ytPlayer');
+                if(bar&&toggle&&player){
+                    musicActive=true;bar.classList.add('active');document.body.classList.add('music-on');
+                    toggle.classList.add('playing');toggle.textContent='🎶';
+                    player.src=YT_LOFI;musicPlaying=true;
+                    document.getElementById('musicPlayBtn').textContent='⏸';
+                    const vol=localStorage.getItem('sba-music-vol');
+                    if(vol){const s=document.getElementById('musicVol');if(s)s.value=vol;setTimeout(()=>{if(player.contentWindow)player.contentWindow.postMessage('{"event":"command","func":"setVolume","args":['+vol+']}','*')},2000)}
+                }
+            },500);
+        }
+    }catch(e){}
+});
+
 /* ═══ 3D TILT EFFECT ═══ */
 document.querySelectorAll('.wc').forEach(card=>{
     card.addEventListener('mousemove',e=>{
@@ -686,6 +707,7 @@ function toggleMusic() {
         if (!player.getAttribute('src')) {
             player.src = YT_LOFI;
             musicPlaying = true;
+            try{localStorage.setItem('sba-music','on')}catch(e){}
             document.getElementById('musicPlayBtn').textContent = '⏸';
         }
     } else {
@@ -706,6 +728,7 @@ function togglePlayPause() {
         player.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
         btn.textContent = '▶';
         musicPlaying = false;
+        try{localStorage.setItem('sba-music','paused')}catch(e){}
     } else {
         if (!player.getAttribute('src')) player.src = YT_LOFI;
         player.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
@@ -729,6 +752,7 @@ function closeMusic() {
     document.body.classList.remove('music-on');
     musicActive = false;
     musicPlaying = false;
+    try{localStorage.removeItem('sba-music')}catch(e){}
     toggle.classList.remove('playing');
     toggle.textContent = '🎵';
     player.removeAttribute('src'); player.src = '';
