@@ -1,832 +1,587 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-region="tw-hk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── SEO: Primary ── -->
   <title>Space Between Studio | 品牌療癒・自我教練工具・台灣香港</title>
-  <meta name="description" content="Space Between Studio 提供品牌金線電子書、自我教練工具與光光工作坊，服務台灣與香港的療癒師、教練與創業者。">
+  <meta name="description" content="Space Between Studio 提供品牌金線電子書、自我教練工具與光光工作坊，服務台灣與香港的療癒師、教練與創業者。找到屬於你的品牌聲音。">
+  <meta name="keywords" content="品牌療癒,自我教練,品牌金線,個人品牌,台灣品牌顧問,香港品牌設計,療癒師品牌,教練品牌,自我教練工具,品牌定位,Space Between Studio">
+  <meta name="author" content="Wins Tsang / 隙光">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://spacebetweenstudio.site/">
+
+  <!-- ── hreflang: Taiwan + Hong Kong ── -->
   <link rel="alternate" hreflang="zh-TW" href="https://spacebetweenstudio.site/">
   <link rel="alternate" hreflang="zh-HK" href="https://spacebetweenstudio.site/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Space Between Studio | 品牌療癒・自我教練">
-  <meta property="og:description" content="找到你的品牌金線。服務台灣與香港。">
-  <meta property="og:locale" content="zh_TW">
+  <link rel="alternate" hreflang="zh-Hant" href="https://spacebetweenstudio.site/">
 
+  <!-- ── OG / Social ── -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spacebetweenstudio.site/">
+  <meta property="og:title" content="Space Between Studio | 品牌療癒・自我教練">
+  <meta property="og:description" content="找到你的品牌金線。服務台灣與香港的療癒師、教練與創業者。">
+  <meta property="og:image" content="https://spacebetweenstudio.site/images/og-cover.jpg">
+  <meta property="og:locale" content="zh_TW">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Space Between Studio | 品牌療癒・自我教練">
+  <meta name="twitter:description" content="找到你的品牌金線。服務台灣與香港。">
+
+  <!-- ── Structured Data: Organization ── -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Space Between Studio","alternateName":"隙光","url":"https://spacebetweenstudio.site","description":"品牌療癒顧問工作室，服務台灣與香港","founder":{"@type":"Person","name":"曾詠詩","alternateName":"Wins Tsang"},"areaServed":["TW","HK"]}
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Space Between Studio",
+    "alternateName": "隙光",
+    "url": "https://spacebetweenstudio.site",
+    "logo": "https://spacebetweenstudio.site/images/logo.png",
+    "description": "品牌療癒顧問工作室，提供品牌金線工作坊、自我教練工具與數位產品，服務台灣與香港。",
+    "founder": {
+      "@type": "Person",
+      "name": "曾詠詩",
+      "alternateName": "Wins Tsang",
+      "jobTitle": "品牌療癒師"
+    },
+    "areaServed": ["TW", "HK"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "hello@spacebetweenstudio.site",
+      "availableLanguage": ["zh-TW", "zh-HK"]
+    },
+    "sameAs": [
+      "https://spacebetweenhealing.com"
+    ]
+  }
+  </script>
+
+  <!-- ── Structured Data: ItemList (Products) ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Space Between Studio 數位產品",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Book",
+          "name": "賣雨的人",
+          "description": "一個調香師的品牌覺醒之旅，互動式電子書",
+          "offers": { "@type": "Offer", "price": "68", "priceCurrency": "HKD" }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Book",
+          "name": "慢慢成為自己的品牌",
+          "description": "9章療癒旅程，63個反思練習",
+          "offers": { "@type": "Offer", "price": "168", "priceCurrency": "HKD" }
+        }
+      }
+    ]
+  }
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Noto+Serif+TC:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+TC:wght@300;400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
-    /* ══════════════════════════════════
-       TOKENS
-    ══════════════════════════════════ */
     :root {
-      --cream:   #FAF6EF;
-      --warm-1:  #F2E8D9;
-      --warm-2:  #E6D4BC;
-      --gold:    #C9A84C;
-      --gold-lt: #E5C97A;
-      --copper:  #C47A45;
-      --teal:    #2D3B35;
-      --teal-md: #4A5E56;
-      --teal-lt: #7A9188;
-      --ink:     #1A1612;
-      --ink-md:  #4A3F35;
-      --ink-lt:  #8C7B6E;
-      --dark:    #110E0B;
+      --cream: #FAF7F2;
+      --warm: #F0E9DC;
+      --gold: #C9A962;
+      --gold-light: #E2C98A;
+      --earth: #3D3530;
+      --earth-mid: #6B5E54;
+      --earth-light: #9C8878;
+      --dark: #1C1815;
     }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       background: var(--cream);
-      color: var(--ink);
-      font-family: 'Noto Serif TC', serif;
+      color: var(--earth);
+      font-family: 'DM Sans', 'Noto Serif TC', sans-serif;
       font-weight: 300;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
     }
 
-    /* ══════════════════════════════════
-       NAV
-    ══════════════════════════════════ */
+    /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      padding: 1.1rem 4rem;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.4rem 3rem;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(250,246,239,0.92);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(201,168,76,0.1);
+      background: rgba(250, 247, 242, 0.93);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 169, 98, 0.15);
     }
-    .logo {
+    .nav-brand {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem; font-weight: 400; letter-spacing: 0.1em;
-      color: var(--ink); text-decoration: none;
+      font-size: 1.15rem; letter-spacing: 0.12em;
+      color: var(--earth); text-decoration: none;
     }
-    .logo em { font-style: italic; color: var(--gold); }
-    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+    .nav-brand em { font-style: italic; color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--ink-md); text-decoration: none; transition: color 0.2s;
+      font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--earth-mid); text-decoration: none; transition: color 0.25s;
     }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-book {
-      padding: 0.6rem 1.6rem;
-      background: var(--teal); color: var(--cream) !important;
-      transition: background 0.2s !important;
-      letter-spacing: 0.08em !important;
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta {
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      transition: all 0.25s !important;
     }
-    .nav-book:hover { background: var(--gold) !important; color: var(--ink) !important; }
+    .nav-cta:hover { background: var(--gold); color: var(--cream) !important; }
 
-    /* ══════════════════════════════════
-       HERO — editorial two-column
-    ══════════════════════════════════ */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 8rem 0 4rem;
-      overflow: hidden;
+      display: flex; align-items: center;
+      padding: 8rem 3rem 5rem;
+      position: relative; overflow: hidden;
     }
-
-    /* LEFT */
-    .hero-left {
-      padding: 0 3rem 0 4rem;
-      position: relative;
-    }
-    .hero-eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--copper);
-      display: flex; align-items: center; gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-    .hero-eyebrow::before {
-      content: ''; display: block;
-      width: 20px; height: 1px; background: var(--copper); flex-shrink: 0;
-    }
-
-    /* The key typography treatment */
-    .hero-setup {
-      font-family: 'Noto Serif TC', serif;
-      font-size: clamp(1.1rem, 2vw, 1.5rem);
-      font-weight: 300;
-      color: var(--ink-md);
-      letter-spacing: 0.05em;
-      margin-bottom: 0.3rem;
-      display: block;
-    }
-    .hero-display {
-      font-family: 'Noto Serif TC', serif;
-      font-size: clamp(4.5rem, 9.5vw, 8.5rem);
-      font-weight: 700;
-      line-height: 0.92;
-      color: var(--ink);
-      letter-spacing: -0.03em;
-      display: block;
-      margin-bottom: 3rem;
-      position: relative;
-    }
-    /* Gold underline on display text */
-    .hero-display::after {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--gold) 0%, transparent 85%);
-      margin-top: 0.6rem;
-    }
-    /* The italic gold accent word */
-    .hero-display .accent {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 600;
-      color: var(--gold);
-      display: block;
-      line-height: 1;
-      font-size: 1.18em;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-sub {
-      font-size: clamp(0.9rem, 1.2vw, 1rem);
-      line-height: 2.1;
-      color: var(--ink-md);
-      max-width: 420px;
-      margin-bottom: 3rem;
-    }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-fill {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 1rem 2.2rem;
-      background: var(--teal); color: var(--cream);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.25s, transform 0.2s;
-    }
-    .btn-fill:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 1rem 2.2rem;
-      border: 1.5px solid var(--ink-md); color: var(--ink-md);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.25s;
-    }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-
-    /* RIGHT — illustration area */
-    .hero-right {
-      position: relative;
-      height: 100%;
-      min-height: 600px;
-      background: var(--warm-1);
-      display: flex; align-items: flex-end; justify-content: center;
-      overflow: hidden;
-    }
-    /* Decorative background layer */
-    .hero-right::before {
+    .hero::after {
       content: '';
       position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 55% 35%, rgba(201,168,76,0.15) 0%, transparent 55%),
-        radial-gradient(ellipse at 30% 75%, rgba(45,59,53,0.07) 0%, transparent 50%);
+      background: radial-gradient(ellipse at 70% 50%, rgba(201, 169, 98, 0.07) 0%, transparent 65%);
+      pointer-events: none;
     }
-    .illus-img {
-      position: relative; z-index: 1;
-      width: 90%; max-width: 520px;
-      display: block;
-      /* fade bottom edge into background */
-      -webkit-mask-image: linear-gradient(to top, transparent 0%, black 18%);
-      mask-image: linear-gradient(to top, transparent 0%, black 18%);
-      filter: drop-shadow(0 24px 48px rgba(45,59,53,0.15));
-    }
-
-    /* ══════════════════════════════════
-       TICKER
-    ══════════════════════════════════ */
-    .ticker {
-      overflow: hidden;
-      border-top: 1px solid var(--warm-2);
-      border-bottom: 1px solid var(--warm-2);
-      padding: 0.9rem 0;
-      background: var(--warm-1);
-    }
-    .ticker-track {
-      display: flex; gap: 2.5rem; width: max-content;
-      animation: tick 30s linear infinite;
-    }
-    .ticker-track span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem; font-style: italic;
-      letter-spacing: 0.12em; color: var(--ink-lt);
-      white-space: nowrap;
-    }
-    .ticker-track .dot { color: var(--gold); font-style: normal; font-size: 0.7rem; }
-    @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ══════════════════════════════════
-       SHARED SECTION STYLES
-    ══════════════════════════════════ */
-    .sec { padding: 8rem 4rem; }
-    .sec-inner { max-width: 1200px; margin: 0 auto; }
-    .sec-label {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase;
-      color: var(--teal-lt); margin-bottom: 1rem;
-    }
-    .sec-title {
+    .hero-glyph {
+      position: absolute;
       font-family: 'Noto Serif TC', serif;
-      font-size: clamp(2.2rem, 4.5vw, 4rem);
-      font-weight: 500; line-height: 1.15; color: var(--ink);
-      margin-bottom: 1.5rem; letter-spacing: -0.02em;
+      font-size: 40vw; font-weight: 300;
+      color: rgba(201, 169, 98, 0.045);
+      right: -6vw; top: 50%; transform: translateY(-50%);
+      line-height: 1; pointer-events: none; user-select: none;
     }
-    .sec-title em {
-      font-style: italic;
+    .hero-inner { max-width: 680px; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 2rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 28px; height: 1px; background: var(--gold);
+    }
+    h1 {
       font-family: 'Cormorant Garamond', serif;
-      color: var(--gold); font-weight: 600;
-      font-size: 1.15em;
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      font-weight: 300; line-height: 1.1;
+      margin-bottom: 2rem; letter-spacing: -0.01em;
     }
-    .sec-sub {
-      font-size: 0.95rem; line-height: 2.1; color: var(--ink-md);
+    h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1rem; line-height: 2;
+      color: var(--earth-mid); max-width: 500px;
+      margin-bottom: 3rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-dark {
+      padding: 0.9rem 2rem; background: var(--earth); color: var(--cream);
+      font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.25s, transform 0.2s;
+    }
+    .btn-dark:hover { background: var(--gold); transform: translateY(-2px); }
+    .btn-outline {
+      padding: 0.9rem 2rem; border: 1px solid var(--earth-mid); color: var(--earth-mid);
+      font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.25s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      overflow: hidden; border-top: 1px solid rgba(201,169,98,0.2);
+      border-bottom: 1px solid rgba(201,169,98,0.2);
+      padding: 0.8rem 0; background: var(--warm);
+    }
+    .marquee-track {
+      display: flex; gap: 3rem;
+      animation: marquee 28s linear infinite; width: max-content;
+    }
+    .marquee-track span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--earth-light); white-space: nowrap;
+    }
+    .marquee-track span.dot { color: var(--gold); }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTION SHARED ── */
+    .section { padding: 7rem 3rem; }
+    .section-label {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--earth-light); margin-bottom: 1rem;
+    }
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300; line-height: 1.25; margin-bottom: 1.2rem;
+    }
+    .section-heading em { font-style: italic; color: var(--gold); }
+    .section-sub {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.92rem; line-height: 2; color: var(--earth-mid);
       max-width: 560px;
     }
 
-    /* ══════════════════════════════════
-       PRODUCTS
-    ══════════════════════════════════ */
-    .products-hd { margin-bottom: 5rem; }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+    /* ── PRODUCTS ── */
+    .products { max-width: 1100px; margin: 0 auto; }
+    .products-header { margin-bottom: 4rem; }
+    .product-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
-    .prod {
+    .product-card {
+      border: 1px solid rgba(201, 169, 98, 0.2);
       background: white;
-      border: 1px solid var(--warm-2);
       text-decoration: none; color: inherit;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
       display: flex; flex-direction: column;
-      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),
-                  box-shadow 0.35s, border-color 0.3s;
-      overflow: hidden;
     }
-    .prod:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(26,22,18,0.1);
-      border-color: var(--gold);
+    .product-card:hover {
+      border-color: rgba(201, 169, 98, 0.6);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(61, 53, 48, 0.08);
     }
-    .prod-cover {
-      aspect-ratio: 4/3;
-      background: var(--warm-1);
+    .product-cover {
+      height: 200px;
       display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+      background: var(--warm);
       position: relative; overflow: hidden;
     }
-    .prod-cover svg { width: 100%; height: 100%; }
-    .prod-cover-coming { opacity: 0.55; }
-
-    .prod-body { padding: 2.2rem; flex: 1; display: flex; flex-direction: column; }
-    .prod-tag {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--copper); margin-bottom: 0.8rem;
+    .product-cover::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(201,169,98,0.1), transparent);
     }
-    .prod-title {
+    .product-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+    .product-tag {
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .product-name {
       font-family: 'Noto Serif TC', serif;
-      font-size: 1.3rem; font-weight: 500; color: var(--ink);
-      line-height: 1.35; margin-bottom: 0.9rem; letter-spacing: -0.01em;
+      font-size: 1.15rem; font-weight: 400;
+      color: var(--earth); margin-bottom: 0.8rem;
     }
-    .prod-desc {
-      font-size: 0.86rem; line-height: 1.95; color: var(--ink-md);
-      flex: 1; margin-bottom: 2rem;
+    .product-desc {
+      font-size: 0.85rem; line-height: 1.8; color: var(--earth-mid);
+      flex: 1; margin-bottom: 1.5rem;
     }
-    .prod-foot {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      padding-top: 1.4rem; border-top: 1px solid var(--warm-2);
+    .product-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(201,169,98,0.15); padding-top: 1.2rem;
     }
-    .prod-price {
+    .product-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem; font-weight: 600; color: var(--ink);
-      line-height: 1;
+      font-size: 1.4rem; color: var(--earth);
     }
-    .prod-price small {
-      display: block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem; color: var(--ink-lt); font-weight: 300;
-      margin-top: 0.3rem; letter-spacing: 0.04em;
+    .product-price span { font-size: 0.75rem; color: var(--earth-light); }
+    .product-cta {
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold);
     }
-    .prod-btn {
-      width: 44px; height: 44px;
-      border: 1.5px solid var(--warm-2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: 1.1rem;
-      transition: all 0.25s; flex-shrink: 0;
+    .product-badge {
+      position: absolute; top: 1rem; right: 1rem; z-index: 1;
+      padding: 0.3rem 0.7rem;
+      background: var(--earth); color: var(--gold);
+      font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
     }
-    .prod:hover .prod-btn {
-      background: var(--gold); border-color: var(--gold); color: var(--ink);
-    }
-    .coming-label {
-      position: absolute; top: 1rem; right: 1rem;
-      padding: 0.3rem 0.9rem;
-      background: rgba(250,246,239,0.9);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--ink-lt); border: 1px solid var(--warm-2);
+    .badge-coming {
+      background: rgba(201,169,98,0.15); color: var(--earth-mid);
+      border: 1px solid rgba(201,169,98,0.3);
     }
 
-    /* ══════════════════════════════════
-       WORKSHOP — dark section
-    ══════════════════════════════════ */
+    /* ── WORKSHOP STRIP ── */
     .workshop {
-      background: var(--teal);
-      padding: 8rem 4rem;
+      background: var(--earth); color: var(--cream);
+      padding: 7rem 3rem;
     }
     .workshop-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1.3fr 1fr;
-      gap: 7rem; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: center;
     }
-    .workshop .sec-label { color: rgba(234,217,196,0.45); }
-    .workshop .sec-title { color: var(--cream); }
-    .workshop .sec-title em { color: var(--gold-lt); }
-    .workshop .sec-sub { color: rgba(250,246,239,0.6); margin-bottom: 3rem; }
-    .ws-list { list-style: none; margin-bottom: 3.5rem; }
-    .ws-list li {
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(201,168,76,0.1);
-      font-size: 0.92rem; color: rgba(250,246,239,0.75);
-      display: flex; align-items: center; gap: 1.2rem;
+    .workshop .section-label { color: rgba(226, 201, 138, 0.6); }
+    .workshop .section-heading { color: var(--cream); margin-bottom: 1.2rem; }
+    .workshop .section-sub { color: rgba(250, 247, 242, 0.65); margin-bottom: 2.5rem; }
+    .workshop-features { list-style: none; margin-bottom: 2.5rem; }
+    .workshop-features li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(201, 169, 98, 0.15);
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.88rem; color: rgba(250,247,242,0.75);
+      display: flex; align-items: center; gap: 1rem;
     }
-    .ws-list li::before {
-      content: ''; display: block;
-      width: 18px; height: 1px; background: var(--gold); flex-shrink: 0;
+    .workshop-features li::before {
+      content: '—'; color: var(--gold); font-family: 'Cormorant Garamond', serif;
     }
-    .btn-gold-outline {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 1rem 2.2rem;
-      border: 1.5px solid var(--gold); color: var(--gold);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+    .btn-gold {
+      display: inline-block;
+      padding: 0.9rem 2rem; border: 1px solid var(--gold); color: var(--gold);
+      font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
       text-decoration: none; transition: all 0.25s;
     }
-    .btn-gold-outline:hover { background: var(--gold); color: var(--teal); }
-    .ws-stats { display: flex; flex-direction: column; gap: 1rem; }
-    .ws-stat {
-      padding: 2.2rem 2.5rem;
-      border: 1px solid rgba(201,168,76,0.15);
-      background: rgba(250,246,239,0.03);
+    .btn-gold:hover { background: var(--gold); color: var(--earth); transform: translateY(-2px); }
+    .workshop-visual {
+      display: flex; flex-direction: column; gap: 1.2rem;
     }
-    .ws-num {
+    .workshop-stat {
+      padding: 1.8rem 2rem;
+      border: 1px solid rgba(201, 169, 98, 0.2);
+      background: rgba(250, 247, 242, 0.04);
+    }
+    .workshop-stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem; font-weight: 600; color: var(--gold);
-      line-height: 1; letter-spacing: -0.02em;
+      font-size: 2.8rem; color: var(--gold); line-height: 1;
     }
-    .ws-lbl {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
-      color: rgba(250,246,239,0.35); margin-top: 0.6rem;
+    .workshop-stat-label {
+      font-size: 0.8rem; color: rgba(250,247,242,0.5);
+      letter-spacing: 0.08em; margin-top: 0.4rem;
     }
 
-    /* ══════════════════════════════════
-       MARKETS
-    ══════════════════════════════════ */
-    .markets { background: var(--warm-1); padding: 8rem 4rem; }
-    .markets-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 2rem; margin-top: 5rem;
+    /* ── MARKET: TW + HK ── */
+    .market {
+      padding: 7rem 3rem;
+      background: var(--warm);
     }
-    .mkt-card {
+    .market-inner { max-width: 1100px; margin: 0 auto; }
+    .market-inner .section-heading { margin-bottom: 3.5rem; }
+    .market-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .market-card {
+      padding: 3rem;
       background: var(--cream);
-      border: 1px solid var(--warm-2);
-      padding: 3.5rem;
-      transition: border-color 0.3s, transform 0.3s;
+      border: 1px solid rgba(201, 169, 98, 0.2);
     }
-    .mkt-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-    .mkt-flag { font-size: 3rem; margin-bottom: 1.8rem; display: block; }
-    .mkt-name {
+    .market-flag {
+      font-size: 2.5rem; margin-bottom: 1.2rem;
+    }
+    .market-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem; font-weight: 600; color: var(--ink);
-      margin-bottom: 0.8rem; letter-spacing: -0.01em;
-      font-style: italic;
+      font-size: 1.6rem; font-weight: 300; margin-bottom: 0.8rem;
     }
-    .mkt-desc {
-      font-size: 0.9rem; line-height: 2; color: var(--ink-md); margin-bottom: 2rem;
-    }
-    .mkt-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .mkt-tag {
-      padding: 0.35rem 1rem;
-      border: 1px solid var(--warm-2);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.68rem; letter-spacing: 0.08em; color: var(--ink-lt);
-    }
-
-    /* ══════════════════════════════════
-       KINTSUGI QUOTE
-    ══════════════════════════════════ */
-    .kintsugi {
-      padding: 10rem 4rem;
-      text-align: center;
-      position: relative; overflow: hidden;
-      background: var(--cream);
-    }
-    .kintsugi-bg-glyph {
-      position: absolute; left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
+    .market-desc {
       font-family: 'Noto Serif TC', serif;
-      font-size: 55vw; font-weight: 700;
-      color: rgba(201,168,76,0.03);
-      line-height: 1; pointer-events: none; user-select: none;
-      white-space: nowrap;
+      font-size: 0.88rem; line-height: 1.9; color: var(--earth-mid);
+      margin-bottom: 1.5rem;
     }
-    .kintsugi-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
-    .kintsugi-open {
+    .market-channels { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .market-channels span {
+      padding: 0.3rem 0.8rem;
+      background: rgba(201,169,98,0.1);
+      border: 1px solid rgba(201,169,98,0.25);
+      font-size: 0.72rem; letter-spacing: 0.08em; color: var(--earth-mid);
+    }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy {
+      padding: 8rem 3rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .philosophy::before {
+      content: '裂';
+      position: absolute;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 50vw; font-weight: 300;
+      color: rgba(201, 169, 98, 0.03);
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .philosophy-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+    .philosophy blockquote {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 8rem; line-height: 0.5;
-      color: var(--gold); opacity: 0.2;
-      margin-bottom: 1.5rem; display: block;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-style: italic; font-weight: 300;
+      line-height: 1.5; color: var(--earth);
+      margin-bottom: 1.5rem;
     }
-    .kintsugi blockquote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 400; font-style: italic;
-      line-height: 1.45; color: var(--ink);
-      margin-bottom: 2rem;
-    }
-    .kintsugi cite {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    .philosophy cite {
+      font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
       color: var(--gold); font-style: normal;
     }
-    .kintsugi-rule { width: 50px; height: 1.5px; background: var(--gold); margin: 2.5rem auto; }
-    .kintsugi-body {
-      font-size: 0.95rem; line-height: 2.1; color: var(--ink-md); margin-bottom: 3.5rem;
+    .philosophy-line {
+      width: 50px; height: 1px; background: var(--gold);
+      margin: 2.5rem auto;
+    }
+    .philosophy-sub {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.92rem; line-height: 2; color: var(--earth-mid);
+      margin-bottom: 3rem;
     }
 
-    /* ══════════════════════════════════
-       FOOTER
-    ══════════════════════════════════ */
+    /* ── FOOTER ── */
     footer {
-      background: var(--dark);
-      padding: 5rem 4rem 2.5rem;
+      background: var(--dark); color: rgba(250,247,242,0.65);
+      padding: 4rem 3rem 2.5rem;
     }
-    .foot-top {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr;
-      gap: 4rem; padding-bottom: 4rem;
-      border-bottom: 1px solid rgba(201,168,76,0.08);
-      margin-bottom: 2.5rem;
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+      margin-bottom: 3rem;
     }
-    .foot-brand {
+    .footer-brand {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem; font-weight: 400; font-style: italic;
-      color: var(--gold); margin-bottom: 1.2rem;
+      font-size: 1.2rem; letter-spacing: 0.1em; color: var(--gold);
+      margin-bottom: 1rem;
     }
-    .foot-tagline {
-      font-size: 0.88rem; line-height: 2; color: rgba(250,246,239,0.3);
+    .footer-tagline {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.85rem; line-height: 1.9;
+      color: rgba(250,247,242,0.45); max-width: 280px;
     }
-    .foot-col h5 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--gold-lt); margin-bottom: 1.5rem;
+    .footer-col h4 {
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 1.2rem;
     }
-    .foot-col ul { list-style: none; }
-    .foot-col li { margin-bottom: 0.9rem; }
-    .foot-col a {
-      font-size: 0.88rem; color: rgba(250,246,239,0.4);
-      text-decoration: none; transition: color 0.2s;
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.6rem; }
+    .footer-col a {
+      font-size: 0.85rem; color: rgba(250,247,242,0.5);
+      text-decoration: none; transition: color 0.25s;
     }
-    .foot-col a:hover { color: var(--gold); }
-    .foot-bottom {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem; align-items: center;
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      max-width: 1100px; margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201,169,98,0.1);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
     }
-    .foot-bottom p {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.7rem; color: rgba(250,246,239,0.2); letter-spacing: 0.06em;
-    }
-    .foot-bottom a { color: rgba(201,168,76,0.45); text-decoration: none; }
+    .footer-bottom p { font-size: 0.75rem; color: rgba(250,247,242,0.3); }
+    .footer-bottom a { color: rgba(201,169,98,0.6); text-decoration: none; }
 
-    /* ══════════════════════════════════
-       REVEAL ANIMATION
-    ══════════════════════════════════ */
-    .rev {
-      opacity: 0; transform: translateY(32px);
-      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.8s cubic-bezier(0.22,1,0.36,1);
-    }
-    .rev.d1 { transition-delay: 0.12s; }
-    .rev.d2 { transition-delay: 0.22s; }
-    .rev.d3 { transition-delay: 0.32s; }
-    .rev.in { opacity: 1; transform: translateY(0); }
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ══════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════ */
-    @media (max-width: 960px) {
-      nav { padding: 1.1rem 1.5rem; }
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 7rem 0 0; }
-      .hero-left { padding: 2rem 1.5rem 3rem; }
-      .hero-right { min-height: 320px; }
-      .hero-display { font-size: clamp(4rem, 14vw, 6rem); }
-      .sec { padding: 5rem 1.5rem; }
-      .products-grid { grid-template-columns: 1fr; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .section { padding: 5rem 1.5rem; }
       .workshop { padding: 5rem 1.5rem; }
       .workshop-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .markets { padding: 5rem 1.5rem; }
-      .markets-grid { grid-template-columns: 1fr; }
-      .kintsugi { padding: 6rem 1.5rem; }
-      footer { padding: 4rem 1.5rem 2rem; }
-      .foot-top { grid-template-columns: 1fr; gap: 2.5rem; }
-      .foot-bottom { flex-direction: column; align-items: flex-start; }
+      .market { padding: 5rem 1.5rem; }
+      .market-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .philosophy { padding: 5rem 1.5rem; }
+      footer { padding: 3rem 1.5rem 2rem; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="./" class="logo">Space Between <em>Studio</em></a>
+    <a href="./" class="nav-brand">Space Between <em>Studio</em></a>
     <ul class="nav-links">
-      <li><a href="./">首頁</a></li>
+      <li><a href="./" class="active">首頁</a></li>
       <li><a href="about.html">關於</a></li>
       <li><a href="shop/">商店</a></li>
       <li><a href="workshop/">光光工作坊</a></li>
-      <li><a href="https://spacebetweenhealing.com" class="nav-book">預約諮詢</a></li>
+      <li><a href="https://spacebetweenhealing.com" class="nav-cta">預約諮詢</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <!-- LEFT -->
-    <div class="hero-left">
-      <span class="hero-eyebrow">品牌療癒生態系 · 台灣 × 香港</span>
-      <h1>
-        <span class="hero-setup">找到你的</span>
-        <span class="hero-display">
-          品牌<span class="accent">金線</span>
-        </span>
-      </h1>
-      <p class="hero-sub">
-        那條連結你的故事、你的專業與你的受眾的核心敘事。從一本書開始，慢慢成為你自己的品牌。
-      </p>
-      <div class="hero-ctas">
-        <a href="shop/" class="btn-fill">探索產品 →</a>
-        <a href="workshop/" class="btn-ghost">光光工作坊</a>
-      </div>
-    </div>
-
-    <!-- RIGHT: Kintsugi vase illustration (background removed) -->
-    <div class="hero-right">
-      <img class="illus-img"
-           src="images/kintsugi-vase.png"
-           alt="金繼花瓶插圖——裂縫是金線進來的地方"
-           width="520" height="560">
-    </div>
-          <!-- Soft ambient shapes -->
-          <ellipse cx="260" cy="300" rx="200" ry="230" fill="rgba(201,168,76,0.06)"/>
-          <ellipse cx="200" cy="260" rx="160" ry="185" fill="rgba(196,122,69,0.05)"/>
-
-          <!-- Large leaf — bottom left -->
-          <path d="M60 430 C30 360 80 270 150 230
-                   C170 310 155 400 120 445
-                   C100 465 70 450 60 430Z"
-                fill="#C47A45" opacity="0.15"/>
-          <path d="M60 430 C95 395 130 340 150 230"
-                stroke="#C47A45" stroke-width="1.5" opacity="0.3" fill="none"/>
-
-          <!-- Large leaf — top right -->
-          <path d="M380 70 C420 95 445 165 420 230
-                   C375 208 350 145 355 100 C358 84 370 66 380 70Z"
-                fill="#2D3B35" opacity="0.13"/>
-          <path d="M380 70 C398 145 410 190 420 230"
-                stroke="#2D3B35" stroke-width="1.2" opacity="0.28" fill="none"/>
-
-          <!-- Medium leaf — top left -->
-          <path d="M80 140 C55 115 65 72 96 62
-                   C108 88 100 118 90 135 C86 144 82 146 80 140Z"
-                fill="#C9A84C" opacity="0.22"/>
-
-          <!-- Small leaf — right middle -->
-          <path d="M420 310 C450 290 470 320 455 350
-                   C438 365 414 355 410 338 C406 324 413 314 420 310Z"
-                fill="#2D3B35" opacity="0.1"/>
-
-          <!-- Central kintsugi vessel outline -->
-          <path d="M190 110 Q240 130 265 160 Q290 190 285 240
-                   Q280 290 268 330 Q255 370 252 400
-                   Q249 425 255 445
-                   Q260 455 265 445 Q271 425 268 400
-                   Q265 370 252 330 Q238 290 234 240
-                   Q230 190 252 160 Q272 130 320 110"
-                stroke="rgba(201,168,76,0.3)" stroke-width="1.5" fill="none"/>
-
-          <!-- Kintsugi gold crack — main vertical -->
-          <path d="M255 160 L242 205 L258 248 L238 295 L252 338 L248 380 L255 445"
-                stroke="#C9A84C" stroke-width="3"
-                stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-
-          <!-- Branch cracks -->
-          <path d="M258 248 L285 268 L275 305"
-                stroke="#C9A84C" stroke-width="2.2"
-                stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path d="M238 295 L210 312 L215 345"
-                stroke="#C9A84C" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <path d="M252 338 L272 355 L264 382"
-                stroke="#C9A84C" stroke-width="1.8"
-                stroke-linecap="round" fill="none"/>
-
-          <!-- Gold dots at nodes -->
-          <circle cx="255" cy="160" r="5.5" fill="#C9A84C" opacity="0.9"/>
-          <circle cx="258" cy="248" r="4.5" fill="#C9A84C" opacity="0.85"/>
-          <circle cx="238" cy="295" r="4" fill="#E5C97A" opacity="0.9"/>
-          <circle cx="252" cy="338" r="3.5" fill="#C9A84C" opacity="0.8"/>
-          <circle cx="255" cy="445" r="4" fill="#C9A84C" opacity="0.75"/>
-
-          <!-- Light rays emanating from top node -->
-          <line x1="255" y1="160" x2="238" y2="98" stroke="#E5C97A" stroke-width="1.5" opacity="0.45"/>
-          <line x1="255" y1="160" x2="278" y2="95" stroke="#E5C97A" stroke-width="1.2" opacity="0.35"/>
-          <line x1="255" y1="160" x2="255" y2="82" stroke="#E5C97A" stroke-width="1.8" opacity="0.55"/>
-          <line x1="255" y1="160" x2="220" y2="108" stroke="#E5C97A" stroke-width="0.9" opacity="0.28"/>
-          <line x1="255" y1="160" x2="295" y2="112" stroke="#E5C97A" stroke-width="0.9" opacity="0.25"/>
-
-          <!-- Botanical sprigs -->
-          <line x1="340" y1="260" x2="385" y2="235" stroke="#4A5E56" stroke-width="1.3" opacity="0.4"/>
-          <ellipse cx="390" cy="230" rx="14" ry="8"
-                   fill="#4A5E56" opacity="0.18" transform="rotate(-35 390 230)"/>
-          <ellipse cx="400" cy="220" rx="11" ry="6"
-                   fill="#4A5E56" opacity="0.13" transform="rotate(-50 400 220)"/>
-          <line x1="340" y1="260" x2="370" y2="250" stroke="#4A5E56" stroke-width="1" opacity="0.3"/>
-          <ellipse cx="376" cy="247" rx="9" ry="5"
-                   fill="#4A5E56" opacity="0.13" transform="rotate(-20 376 247)"/>
-
-          <line x1="165" y1="330" x2="120" y2="300" stroke="#4A5E56" stroke-width="1.2" opacity="0.35"/>
-          <ellipse cx="114" cy="296" rx="13" ry="7"
-                   fill="#4A5E56" opacity="0.15" transform="rotate(25 114 296)"/>
-          <ellipse cx="104" cy="285" rx="10" ry="5.5"
-                   fill="#4A5E56" opacity="0.11" transform="rotate(35 104 285)"/>
-
-          <!-- Small gold accent dots scattered -->
-          <circle cx="315" cy="190" r="3.5" fill="#C9A84C" opacity="0.35"/>
-          <circle cx="325" cy="202" r="2.5" fill="#C9A84C" opacity="0.25"/>
-          <circle cx="308" cy="208" r="2" fill="#E5C97A" opacity="0.3"/>
-          <circle cx="185" cy="185" r="3" fill="#C9A84C" opacity="0.28"/>
-          <circle cx="175" cy="196" r="2" fill="#C9A84C" opacity="0.2"/>
-
-          <!-- Grounding arc at bottom -->
-          <path d="M155 510 Q255 535 355 510"
-                stroke="rgba(201,168,76,0.25)" stroke-width="2.5" fill="none"/>
-
-          <!-- Watermark glyph -->
-          <text x="400" y="500"
-                font-family="Noto Serif TC, serif" font-size="90" font-weight="700"
-                fill="#C9A84C" opacity="0.04" text-anchor="middle">隙</text>
-        </svg>
+    <div class="hero-glyph" aria-hidden="true">隙</div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">品牌療癒生態系 · 台灣 × 香港</p>
+      <h1>找到你的<br><em>品牌金線</em></h1>
+      <p class="hero-sub">那條連結你的故事、你的專業與你的受眾的核心敘事。<br>從一本書開始，慢慢成為你自己的品牌。</p>
+      <div class="hero-actions">
+        <a href="shop/" class="btn-dark">探索產品 →</a>
+        <a href="workshop/" class="btn-outline">光光工作坊</a>
       </div>
     </div>
   </section>
 
-  <!-- TICKER -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>品牌療癒</span><span class="dot"> ✦ </span>
-      <span>Self-Coaching</span><span class="dot"> ✦ </span>
-      <span>品牌金線</span><span class="dot"> ✦ </span>
-      <span>台灣 × 香港</span><span class="dot"> ✦ </span>
-      <span>裂縫是金線進來的地方</span><span class="dot"> ✦ </span>
-      <span>Brand Healing</span><span class="dot"> ✦ </span>
-      <span>Golden Thread</span><span class="dot"> ✦ </span>
-      <span>慢慢來，不用急</span><span class="dot"> ✦ </span>
-      <span>品牌療癒</span><span class="dot"> ✦ </span>
-      <span>Self-Coaching</span><span class="dot"> ✦ </span>
-      <span>品牌金線</span><span class="dot"> ✦ </span>
-      <span>台灣 × 香港</span><span class="dot"> ✦ </span>
-      <span>裂縫是金線進來的地方</span><span class="dot"> ✦ </span>
-      <span>Brand Healing</span><span class="dot"> ✦ </span>
-      <span>Golden Thread</span><span class="dot"> ✦ </span>
-      <span>慢慢來，不用急</span><span class="dot"> ✦ </span>
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span>品牌療癒</span><span class="dot">✦</span>
+      <span>自我教練</span><span class="dot">✦</span>
+      <span>品牌金線</span><span class="dot">✦</span>
+      <span>台灣 × 香港</span><span class="dot">✦</span>
+      <span>裂縫是金線進來的地方</span><span class="dot">✦</span>
+      <span>Brand Healing</span><span class="dot">✦</span>
+      <span>Self-Coaching</span><span class="dot">✦</span>
+      <span>Golden Thread</span><span class="dot">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span>品牌療癒</span><span class="dot">✦</span>
+      <span>自我教練</span><span class="dot">✦</span>
+      <span>品牌金線</span><span class="dot">✦</span>
+      <span>台灣 × 香港</span><span class="dot">✦</span>
+      <span>裂縫是金線進來的地方</span><span class="dot">✦</span>
+      <span>Brand Healing</span><span class="dot">✦</span>
+      <span>Self-Coaching</span><span class="dot">✦</span>
+      <span>Golden Thread</span><span class="dot">✦</span>
     </div>
   </div>
 
   <!-- PRODUCTS -->
-  <section class="sec rev">
-    <div class="sec-inner">
-      <div class="products-hd">
-        <p class="sec-label">數位產品</p>
-        <h2 class="sec-title">從閱讀到<em>行動</em></h2>
-        <p class="sec-sub">每一本書、每一個工具，都是幫你找到品牌金線的一步。</p>
+  <section class="section reveal">
+    <div class="products">
+      <div class="products-header">
+        <p class="section-label">數位產品</p>
+        <h2 class="section-heading">從閱讀到<em>行動</em></h2>
+        <p class="section-sub">每一本書、每一個工具，都是幫你找到品牌金線的一步。</p>
       </div>
-      <div class="products-grid">
+      <div class="product-grid">
 
-        <a href="shop/rain.html" class="prod rev d1">
-          <div class="prod-cover">
-            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none">
-              <rect width="400" height="300" fill="#EAD9C4"/>
-              <ellipse cx="230" cy="150" rx="140" ry="120" fill="#DFC9AA" opacity="0.5"/>
-              <!-- Rain drops -->
-              <g opacity="0.6">
-                <ellipse cx="150" cy="90" rx="3.5" ry="9" fill="#C9A84C" transform="rotate(-12 150 90)"/>
-                <ellipse cx="172" cy="115" rx="3" ry="8" fill="#C9A84C" transform="rotate(-12 172 115)"/>
-                <ellipse cx="195" cy="82" rx="2.8" ry="7.5" fill="#C9A84C" transform="rotate(-12 195 82)"/>
-                <ellipse cx="218" cy="100" rx="3.5" ry="9" fill="#C9A84C" transform="rotate(-12 218 100)"/>
-                <ellipse cx="240" cy="85" rx="3" ry="8" fill="#C9A84C" transform="rotate(-12 240 85)"/>
-                <ellipse cx="162" cy="62" rx="2.5" ry="6.5" fill="#C9A84C" transform="rotate(-12 162 62)"/>
-                <ellipse cx="205" cy="58" rx="2.5" ry="7" fill="#C9A84C" transform="rotate(-12 205 58)"/>
-              </g>
-              <!-- Book -->
-              <rect x="148" y="130" width="104" height="130" rx="3" fill="#2D3B35"/>
-              <rect x="200" y="130" width="2" height="130" fill="#C9A84C" opacity="0.4"/>
-              <!-- Kintsugi crack on cover -->
-              <path d="M162 148 L174 175 L165 205 L171 230"
-                    stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-              <circle cx="174" cy="175" r="3.5" fill="#C9A84C"/>
-              <circle cx="165" cy="205" r="2.5" fill="#E5C97A"/>
-              <!-- Title text on cover -->
-              <text x="185" y="182" font-family="Noto Serif TC,serif" font-size="10"
-                    fill="#E5C97A" opacity="0.85" text-anchor="middle">賣雨的人</text>
-            </svg>
-          </div>
-          <div class="prod-body">
-            <p class="prod-tag">互動式電子書</p>
-            <h3 class="prod-title">賣雨的人</h3>
-            <p class="prod-desc">一個調香師的品牌覺醒之旅。當你把自己最深的感受，變成品牌最有力量的語言。</p>
-            <div class="prod-foot">
-              <div class="prod-price">HKD 68<small>TWD ~280</small></div>
-              <div class="prod-btn">→</div>
+        <a href="shop/rain.html" class="product-card">
+          <div class="product-cover">📖</div>
+          <div class="product-body">
+            <p class="product-tag">互動式電子書</p>
+            <h3 class="product-name">賣雨的人</h3>
+            <p class="product-desc">一個調香師的品牌覺醒之旅。當你把自己最深的感受，變成品牌最有力量的語言。</p>
+            <div class="product-footer">
+              <p class="product-price">HKD 68 <span>/ TWD ~280</span></p>
+              <span class="product-cta">立即閱讀 →</span>
             </div>
           </div>
         </a>
 
-        <a href="shop/brand.html" class="prod rev d2">
-          <div class="prod-cover">
-            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none">
-              <rect width="400" height="300" fill="#E8D5BC"/>
-              <ellipse cx="180" cy="150" rx="150" ry="120" fill="#DEC8A8" opacity="0.45"/>
-              <!-- Workbook -->
-              <rect x="118" y="70" width="164" height="200" rx="4" fill="#C47A45" opacity="0.95"/>
-              <rect x="124" y="76" width="152" height="188" rx="3" fill="#FAF6EF" opacity="0.97"/>
-              <!-- Page lines -->
-              <line x1="142" y1="108" x2="258" y2="108" stroke="#EAD9C4" stroke-width="1.8"/>
-              <line x1="142" y1="124" x2="238" y2="124" stroke="#EAD9C4" stroke-width="1.8"/>
-              <line x1="142" y1="140" x2="248" y2="140" stroke="#EAD9C4" stroke-width="1.8"/>
-              <line x1="142" y1="156" x2="230" y2="156" stroke="#EAD9C4" stroke-width="1.8"/>
-              <line x1="142" y1="172" x2="244" y2="172" stroke="#EAD9C4" stroke-width="1.8"/>
-              <line x1="142" y1="188" x2="220" y2="188" stroke="#EAD9C4" stroke-width="1.5"/>
-              <!-- Golden thread down center -->
-              <path d="M200 86 C206 110 196 135 203 158 C208 175 201 196 200 218"
-                    stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-              <circle cx="200" cy="86" r="4" fill="#C9A84C"/>
-              <circle cx="203" cy="158" r="3.5" fill="#C9A84C"/>
-              <circle cx="200" cy="218" r="3" fill="#E5C97A"/>
-            </svg>
-          </div>
-          <div class="prod-body">
-            <p class="prod-tag">品牌療癒工具書</p>
-            <h3 class="prod-title">慢慢成為自己的品牌</h3>
-            <p class="prod-desc">9章療癒旅程，63個反思練習。不是告訴你怎樣做，而是陪你找到自己的答案。</p>
-            <div class="prod-foot">
-              <div class="prod-price">HKD 168<small>TWD ~680</small></div>
-              <div class="prod-btn">→</div>
+        <a href="shop/brand.html" class="product-card">
+          <div class="product-cover">✍️</div>
+          <div class="product-body">
+            <p class="product-tag">品牌療癒工具書</p>
+            <h3 class="product-name">慢慢成為自己的品牌</h3>
+            <p class="product-desc">9章療癒旅程，63個反思練習。不是告訴你怎樣做，而是陪你找到自己的答案。</p>
+            <div class="product-footer">
+              <p class="product-price">HKD 168 <span>/ TWD ~680</span></p>
+              <span class="product-cta">開始練習 →</span>
             </div>
           </div>
         </a>
 
-        <div class="prod rev d3" style="cursor:default;">
-          <div class="prod-cover prod-cover-coming" style="position:relative;">
-            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" fill="none">
-              <rect width="400" height="300" fill="#EDE4D4"/>
-              <ellipse cx="210" cy="150" rx="130" ry="110" fill="#E2D5C0" opacity="0.5"/>
-              <!-- Card stack -->
-              <rect x="148" y="95" width="104" height="148" rx="5" fill="#2D3B35" opacity="0.2"
-                    transform="rotate(-8 148 95)"/>
-              <rect x="154" y="90" width="104" height="148" rx="5" fill="#2D3B35" opacity="0.35"
-                    transform="rotate(-3 154 90)"/>
-              <rect x="160" y="85" width="104" height="148" rx="5" fill="#2D3B35" opacity="0.75"/>
-              <!-- Card face element -->
-              <circle cx="212" cy="148" r="28" stroke="#C9A84C" stroke-width="2" fill="none" opacity="0.6"/>
-              <text x="212" y="156" font-family="Noto Serif TC,serif" font-size="22" font-weight="700"
-                    fill="#C9A84C" opacity="0.75" text-anchor="middle">隙</text>
-            </svg>
-            <span class="coming-label">即將推出</span>
+        <div class="product-card" style="opacity:0.75; cursor:default;">
+          <div class="product-cover" style="position:relative;">
+            🧭
+            <span class="product-badge badge-coming" style="position:absolute;">即將推出</span>
           </div>
-          <div class="prod-body">
-            <p class="prod-tag">自我教練工具</p>
-            <h3 class="prod-title">品牌金線自我教練卡</h3>
-            <p class="prod-desc">結合 ACF Self-Coaching Cards® 方法論，為品牌主設計的數位自我教練工具。</p>
-            <div class="prod-foot">
-              <div class="prod-price" style="color:var(--ink-lt);">敬請期待<small>訂閱以獲通知</small></div>
-              <div class="prod-btn" style="color:var(--ink-lt);">→</div>
+          <div class="product-body">
+            <p class="product-tag">自我教練工具</p>
+            <h3 class="product-name">品牌金線自我教練卡</h3>
+            <p class="product-desc">結合 ACF Self-Coaching Cards® 方法論，為品牌主設計的數位自我教練工具。</p>
+            <div class="product-footer">
+              <p class="product-price" style="color:var(--earth-light);">敬請期待</p>
+              <span class="product-cta" style="color:var(--earth-light);">訂閱通知</span>
             </div>
           </div>
         </div>
@@ -836,89 +591,88 @@
   </section>
 
   <!-- WORKSHOP -->
-  <section class="workshop rev">
+  <section class="workshop reveal">
     <div class="workshop-inner">
       <div>
-        <p class="sec-label">光光工作坊</p>
-        <h2 class="sec-title">AI 時代的<br><em>自我領導力</em></h2>
-        <p class="sec-sub">不是學 AI，是用 AI 重新認識自己。透過 AI 工具與教練引導，在變動中找到你的方向。</p>
-        <ul class="ws-list">
+        <p class="section-label">光光工作坊</p>
+        <h2 class="section-heading" style="color:var(--cream);">AI 時代的<br><em>自我領導力</em></h2>
+        <p class="section-sub">不是學 AI，是用 AI 重新認識自己。光光工作坊透過 AI 工具與教練引導，幫助你在變動中找到方向。</p>
+        <ul class="workshop-features">
           <li>AI 與自我領導力工作坊</li>
-          <li>AI 網站設計應用課程（12 週）</li>
+          <li>網站設計 AI 應用課程（12週）</li>
           <li>企業客製化工作坊</li>
-          <li>台灣 · 香港均可線上參與</li>
         </ul>
-        <a href="workshop/" class="btn-gold-outline">了解工作坊 →</a>
+        <a href="workshop/" class="btn-gold">了解工作坊 →</a>
       </div>
-      <div class="ws-stats">
-        <div class="ws-stat">
-          <p class="ws-num">12</p>
-          <p class="ws-lbl">週完整課程模組</p>
+      <div class="workshop-visual">
+        <div class="workshop-stat">
+          <p class="workshop-stat-num">12</p>
+          <p class="workshop-stat-label">週完整課程模組</p>
         </div>
-        <div class="ws-stat">
-          <p class="ws-num">ACF</p>
-          <p class="ws-lbl">認可教練技術融入</p>
+        <div class="workshop-stat">
+          <p class="workshop-stat-num">ACF</p>
+          <p class="workshop-stat-label">認可教練技術融入</p>
         </div>
-        <div class="ws-stat">
-          <p class="ws-num">TW×HK</p>
-          <p class="ws-lbl">台灣 · 香港同步服務</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MARKETS -->
-  <section class="markets rev">
-    <div class="sec-inner">
-      <p class="sec-label">服務地區</p>
-      <h2 class="sec-title">台灣 × 香港<br><em>雙市場</em>服務</h2>
-      <div class="markets-grid">
-        <div class="mkt-card">
-          <span class="mkt-flag">🇹🇼</span>
-          <h3 class="mkt-name">台灣市場</h3>
-          <p class="mkt-desc">台灣有豐富的獨立品牌、療癒工作者與創業文化。以台灣為長期發展重點，提供繁體中文全面支援與在地服務。</p>
-          <div class="mkt-tags">
-            <span class="mkt-tag">LINE 官方帳號</span>
-            <span class="mkt-tag">Zoom 線上服務</span>
-            <span class="mkt-tag">台幣計價</span>
-          </div>
-        </div>
-        <div class="mkt-card">
-          <span class="mkt-flag">🇭🇰</span>
-          <h3 class="mkt-name">香港市場</h3>
-          <p class="mkt-desc">Space Between Studio 根植香港，深度服務本地助人工作者、社福機構從業員與品牌主，是我們的起點與根。</p>
-          <div class="mkt-tags">
-            <span class="mkt-tag">WhatsApp 94568231</span>
-            <span class="mkt-tag">Zoom 線上服務</span>
-            <span class="mkt-tag">廣東話 / 繁中</span>
-          </div>
+        <div class="workshop-stat">
+          <p class="workshop-stat-num">TW × HK</p>
+          <p class="workshop-stat-label">台灣 · 香港同步服務</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- KINTSUGI QUOTE -->
-  <section class="kintsugi rev">
-    <div class="kintsugi-bg-glyph" aria-hidden="true">裂</div>
-    <div class="kintsugi-inner">
-      <span class="kintsugi-open">"</span>
-      <blockquote>裂縫，是金線進來的地方。</blockquote>
+  <!-- MARKET -->
+  <section class="market reveal">
+    <div class="market-inner">
+      <p class="section-label">服務地區</p>
+      <h2 class="section-heading">台灣 × 香港<br><em>雙市場</em>服務</h2>
+      <div class="market-grid">
+        <div class="market-card">
+          <p class="market-flag">🇹🇼</p>
+          <h3 class="market-name">台灣市場</h3>
+          <p class="market-desc">台灣有豐富的獨立品牌、療癒工作者與創業文化。我們以台灣為長期發展重點，提供繁體中文全面支援與在地服務。</p>
+          <div class="market-channels">
+            <span>LINE 官方帳號</span>
+            <span>Zoom 線上服務</span>
+            <span>繁體中文</span>
+            <span>台幣計價</span>
+          </div>
+        </div>
+        <div class="market-card">
+          <p class="market-flag">🇭🇰</p>
+          <h3 class="market-name">香港市場</h3>
+          <p class="market-desc">Space Between Studio 根植香港，深度服務本地助人工作者、社福機構從業員與品牌主，是我們的起點與根。</p>
+          <div class="market-channels">
+            <span>WhatsApp 94568231</span>
+            <span>Zoom 線上服務</span>
+            <span>廣東話 / 繁中</span>
+            <span>港幣計價</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy reveal">
+    <div class="philosophy-inner">
+      <blockquote>「裂縫，是金線進來的地方。」</blockquote>
       <cite>— 金繼哲學 · Space Between Studio 核心信念</cite>
-      <div class="kintsugi-rule"></div>
-      <p class="kintsugi-body">你的故事、你的掙扎、你走過的路——這些不是你品牌的弱點，而是你最獨特的聲音。</p>
-      <a href="about.html" class="btn-fill">認識我們 →</a>
+      <div class="philosophy-line"></div>
+      <p class="philosophy-sub">我們不修補裂縫，我們讓它發光。你的故事、你的掙扎、你走過的路——這些不是你品牌的弱點，而是你最獨特的聲音。</p>
+      <a href="about.html" class="btn-dark">認識我們 →</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="foot-top">
+    <div class="footer-inner">
       <div>
-        <p class="foot-brand">Space Between Studio</p>
-        <p class="foot-tagline">品牌療癒 · 自我教練 · 數位產品<br>台灣 × 香港</p>
+        <p class="footer-brand">Space Between Studio</p>
+        <p class="footer-tagline">品牌療癒・自我教練・數位產品<br>台灣 × 香港</p>
       </div>
-      <div class="foot-col">
-        <h5>產品與服務</h5>
+      <div class="footer-col">
+        <h4>產品與服務</h4>
         <ul>
           <li><a href="shop/">數位商店</a></li>
           <li><a href="workshop/">光光工作坊</a></li>
@@ -926,30 +680,29 @@
           <li><a href="https://spacebetweenhealing.com">一對一諮詢</a></li>
         </ul>
       </div>
-      <div class="foot-col">
-        <h5>聯絡</h5>
+      <div class="footer-col">
+        <h4>聯絡我們</h4>
         <ul>
           <li><a href="about.html">關於 Studio</a></li>
-          <li><a href="mailto:hello@spacebetweenstudio.site">hello@spacebetweenstudio.site</a></li>
+          <li><a href="mailto:hello@spacebetweenstudio.site">電郵</a></li>
           <li><a href="https://wa.me/85294568231">WhatsApp（香港）</a></li>
           <li><a href="#">LINE（台灣）</a></li>
         </ul>
       </div>
     </div>
-    <div class="foot-bottom">
+    <div class="footer-bottom">
       <p>© 2026 Space Between Studio · 品牌療癒生態系 · 台灣 × 香港</p>
       <p><a href="https://spacebetweenhealing.com">spacebetweenhealing.com</a></p>
     </div>
   </footer>
 
   <script>
-    const els = document.querySelectorAll('.rev');
-    const io = new IntersectionObserver(
-      e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('in'); }),
-      { threshold: 0.07 }
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.08 }
     );
-    els.forEach(el => io.observe(el));
+    reveals.forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
