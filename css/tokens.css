@@ -1,0 +1,119 @@
+/* ==========================================================================
+   Space Between Studio — Design Tokens
+   依據 Logo System Guidelines v1.1（見 CLAUDE.md）
+   與 space-between-art/spacebetweenstudio.site 的 css/tokens.css 保持一致
+   全站所有顏色、字體、間距、圓角都從這裡取用；頁面內不要再寫死數值。
+
+   字體：每頁 <head> 用 Google Fonts 載入（display=swap）：
+   Montserrat 300/400/500、Noto Sans TC 300/400/500，
+   需要文學感的頁面另載 Noto Serif TC。
+   ========================================================================== */
+
+:root {
+  /* 只用淺色方案：防止手機瀏覽器自動轉深色（配合每頁 <meta name="color-scheme">） */
+  color-scheme: only light;
+
+  /* ── 品牌色（只可用這 5 個） ── */
+  --color-rainforest: #004030;   /* 主色，Logo 專用；亦可用於深色標題／按鈕 */
+  --color-river-stone: #648C7D;  /* 輔助色：連結 hover、分隔線、圖形 */
+  --color-ivory: #F5EFE6;        /* 主背景 */
+  --color-text: #1F2A26;         /* 內文（對 ivory 12.96:1） */
+  --color-white: #FFFFFF;
+
+  /* ── 用色規則（v1.1 對比度規則，所有文字對比 ≥ 4.5:1） ──
+     1. River Stone 只用於：線條、圖形、邊框、分隔線，以及 24px 以上
+        （或 18.66px 以上粗體）的大字。River Stone 對 Ivory 只有 3.3:1，
+        不可用於小字。
+     2. 淺色背景上的小字（nav active、標籤、badge、footer 品牌名等）
+        用 Rainforest（對 Ivory 10.3:1）。
+     3. 深綠背景上的小字用 Ivory（對 Rainforest 10.3:1）。
+     4. 按鈕統一：主要按鈕 = Rainforest 底 + Ivory 字；
+        次要按鈕 = Rainforest 邊框 + Rainforest 字。
+        深綠區塊內的按鈕加 Ivory 1px 內框（--color-button-ring）以保持可見；
+        次要按鈕在深綠區塊內改為 Ivory 邊框 + Ivory 字（規則 3）。
+     5. 舊金色（#C9A962 等）作文字用時一律改為 --color-accent（Rainforest），
+        作線條／邊框用時改為 --color-accent-soft（River Stone）。 */
+
+  /* ── 語意色（全部由品牌色衍生） ── */
+  --color-bg: var(--color-ivory);
+  --color-surface: var(--color-white);
+  --color-surface-alt: color-mix(in srgb, var(--color-river-stone) 10%, var(--color-ivory));
+  --color-surface-strong: color-mix(in srgb, var(--color-river-stone) 22%, var(--color-ivory));
+  --color-heading: var(--color-rainforest);
+  --color-text-muted: color-mix(in srgb, var(--color-text) 75%, var(--color-ivory)); /* 6.1:1 on ivory */
+  --color-accent: var(--color-rainforest);          /* 強調小字、標籤、badge（規則 2） */
+  --color-accent-soft: var(--color-river-stone);    /* 線條、邊框、圖形、大字（規則 1） */
+  --color-accent-tint: color-mix(in srgb, var(--color-river-stone) 14%, transparent);
+  --color-accent-wash: color-mix(in srgb, var(--color-river-stone) 6%, transparent);
+  --color-line: color-mix(in srgb, var(--color-river-stone) 35%, transparent);
+  --color-line-soft: color-mix(in srgb, var(--color-river-stone) 18%, transparent);
+  --color-link-hover: var(--color-river-stone);
+
+  /* 金繼「金線」點綴：本站暫不使用（金色只獲批准用於 space-between-studio.com 嘅 hero-reel）。
+     如需加入，先列出位置問品牌負責人；值暫設為 River Stone。 */
+  --color-gold-thread: var(--color-river-stone);
+
+  /* 深色區塊（footer、強調段落）：Rainforest 底 + Ivory 字（規則 3） */
+  --color-inverse-bg: var(--color-rainforest);
+  --color-inverse-text: var(--color-ivory);
+  --color-inverse-muted: color-mix(in srgb, var(--color-ivory) 75%, var(--color-rainforest)); /* 6.5:1 */
+  --color-inverse-line: color-mix(in srgb, var(--color-ivory) 20%, transparent);
+
+  /* 按鈕（規則 4） */
+  --color-button-bg: var(--color-rainforest);
+  --color-button-text: var(--color-ivory);
+  --color-button-hover-bg: var(--color-text);
+  --color-button-ring: transparent;                 /* 深綠區塊內設為 Ivory */
+
+  /* 覆蓋層、陰影 */
+  --color-overlay: color-mix(in srgb, var(--color-ivory) 94%, transparent);
+  --color-scrim: color-mix(in srgb, var(--color-text) 55%, transparent);
+  --color-scrim-strong: color-mix(in srgb, var(--color-text) 85%, transparent);
+  --color-shadow: color-mix(in srgb, var(--color-text) 10%, transparent);
+  --color-shadow-strong: color-mix(in srgb, var(--color-text) 18%, transparent);
+
+  /* 功能色：錯誤／警告（品牌色以外唯一例外，只用於表單錯誤及警告）
+     #9B2C2C 對 Ivory 6.6:1、對 White 7.5:1；對 Rainforest 只有 1.6:1，
+     所以深綠區塊內的錯誤訊息要放在 Ivory 底（--color-error-bg）上。 */
+  --color-error: #9B2C2C;
+  --color-error-bg: var(--color-ivory);
+
+  /* 區塊作用域：深色區塊在頁面 CSS 內把 --color-text / --color-accent 等
+     重新指向淺色；淺色卡片以 --on-light-* 切回（這些值在 :root 解析，固定不變） */
+  --on-light-text: var(--color-text);
+  --on-light-text-muted: var(--color-text-muted);
+  --on-light-accent: var(--color-accent);
+  --on-light-button-text: var(--color-button-text);
+  --on-light-button-hover-bg: var(--color-button-hover-bg);
+
+  /* ── 字體 ── */
+  --font-display: 'Montserrat', 'Noto Sans TC', sans-serif;  /* 英文標題／品牌字 */
+  --font-body: 'Noto Sans TC', 'Montserrat', sans-serif;     /* 內文 */
+  --font-literary: 'Noto Serif TC', serif;                   /* 需要文學感的頁面 */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  /* ── 間距 ── */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 8rem;
+
+  /* ── 圓角 ── */
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-pill: 999px;
+  --radius-round: 50%;
+}
