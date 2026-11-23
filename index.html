@@ -50,8 +50,9 @@
 
         /* NAV */
         .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--color-overlay);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--gl);height:60px;padding:0 var(--px);display:flex;align-items:center;justify-content:space-between}
-        .nav-b{font-family:var(--en);font-size:20px;font-weight:500;color:var(--t);letter-spacing:2px}
-        .nav-b em{color:var(--gold);font-style:normal}
+        /* 官方 SBS Logo（v1.1）：不可變形、改色；橫版最小 120px 闊 */
+        .nav-b{display:flex;align-items:center;flex-shrink:0}
+        .nav-b img{display:block;width:clamp(120px,32vw,215px);height:auto}
         .nav-l{display:flex;gap:24px}
         .nav-l a{font-family:var(--sn);font-size:13px;color:var(--tm);transition:color .3s}
         .nav-l a:hover{color:var(--gold)}
@@ -299,6 +300,7 @@
 
         @media(max-width:900px){.wg,.wc--feat,.tg,.xo-card{grid-template-columns:1fr}.cg{grid-template-columns:1fr 1fr}.xo-nar,.xo-vis,.wc--feat .wc-nar,.wc--feat .wc-vis{padding:32px 24px}}
         @media(max-width:560px){.cg{grid-template-columns:1fr}.hero h1{letter-spacing:5px}.wc{padding:28px 22px}.nav-l{gap:14px}.nav-l a{font-size:12px}}
+        @media(max-width:400px){.nav-l{gap:10px}}
     </style>
     <meta property="og:title" content="隙光文學 | space-between.art">
     <meta property="og:description" content="隙光文學——六部療癒小說，在裂痕中找到光。">
@@ -330,7 +332,7 @@
 <body>
 
 <nav class="nav">
-    <a href="#" class="nav-b"><em>隙</em>光文學</a>
+    <a href="#" class="nav-b"><img src="assets/logo/COMBO/SBS_COMBO_GREEN.svg" alt="隙光文學｜Space Between Studio" width="215" height="38"></a>
     <div class="nav-l">
         <a href="#quiz">測驗</a>
         <a href="#works">書架</a>

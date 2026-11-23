@@ -22,6 +22,7 @@ Space Between Studio（隙光）的官方網站。品牌核心：金繼（kintsu
 ```
 - 舊色 #2D3B35、#C9A84C（金）、#C67D4A（銅）一律替換，不得再出現。
 - 如需要金繼「金線」點綴，先列出位置問我，唔好自行加色。
+- 金線例外只適用於 space-between-studio.com 嘅 `/hero-reel.html`；本站 `--color-gold-thread` 維持 River Stone，唔可以用金色。
 
 ### 字體
 - 英文標題／品牌字：Montserrat（Light 300 為主，可用 400/500 作層次）
